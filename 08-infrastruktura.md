@@ -360,7 +360,7 @@ CityInfo koristi jasno definisan technology stack koji balansira performanse, ec
 
 | Komponenta | Tehnologija | Zašto |
 | --- | --- | --- |
-| **Backend runtime** | .NET 8 (C#, [ASP.NET](http://ASP.NET) Core) | Odličan za enterprise sisteme, jak typing, brz razvoj API-ja, širok ecosystem biblioteka |
+| **Backend runtime** | .NET 10 LTS (C#, [ASP.NET](http://ASP.NET) Core) | Odličan za enterprise sisteme, jak typing, brz razvoj API-ja, širok ecosystem biblioteka |
 | **API stil** | RESTful sa JSON | Jednostavnost, široka kompatibilnost, dobra tooling podrška |
 | **Baza podataka** | MS SQL Server | ACID garancije, kompleksni upiti, provedena ekspertiza u timu |
 | **Frontend** | Svelte 5 + SvelteKit | Reaktivan, kompaktan output, brz development, server-side rendering |

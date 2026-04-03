@@ -1033,7 +1033,7 @@ Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekci
 
 ### Timeout za changes\_requested
 
-Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ograničeno vrijeme za odgovor. Ako ne reaguje u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (parametar — preporučena početna vrijednost: 7 dana), listing automatski prelazi u `removed` sa `removedReason = inappropriate` (ili odgovarajućim razlogom prema moderatorskoj odluci).
+Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ograničeno vrijeme za odgovor. Ako ne reaguje u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (parametar — preporučena početna vrijednost: 7 dana), listing automatski prelazi u `rejected`.
 
 Sistem šalje reminder notifikaciju korisniku na `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (parametar — preporučena početna vrijednost: 2 dana prije isteka, tj. 5. dan).
 

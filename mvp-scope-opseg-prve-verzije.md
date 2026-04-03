@@ -35,7 +35,7 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | **Kategorije i tagovi** | Odvojeni sistemi za Event i Place kategorije. Primarna + do 10 sekundarnih kategorija. Do 2 taga po listingu. Admin upravljanje kategorijama i tagovima. | 04 - Sadržaj (4.4–4.5) |
 | **Listing status i vidljivost** | Jednostatus model sa 13 eksplicitnih `listingStatus` vrijednosti (`draft`, `in_review`, `published`, `hidden_by_owner`, `removed`, itd.). `isPublic` derivacija iz statusa. `removedReason` za trajno uklanjanje. `wasEverActive` kontrola brisanja. | 04 - Sadržaj (4.8) |
 | **Event hijerarhija** | Parent/child veza za festivale i višednevne događaje (max 2 nivoa). Samo vlasnik parent-a kreira child evente. | 04 - Sadržaj (4.2) |
-| **ListingDocument** | Upload dokumenata za verifikaciju vlasništva/prava upravljanja. Moderator može zatražiti i pregledati dokument. Ograničeni formati (PDF, JPG, PNG) i veličina. Automatski virus scanning putem vanjskog servisa. | 07 - Komunikacija (7.1.6–7.1.7) |
+| **ListingDocument** | Upload dokumenata za verifikaciju vlasništva/prava upravljanja. Moderator može zatražiti i pregledati dokument. Ograničeni formati (PDF, JPG, PNG) i veličina. Automatski virus scanning putem vanjskog servisa. | 04 - Sadržaj (4.7) |
 | **sortDate mehanizam** | Centralno polje za sortiranje. Besplatni ručni refresh jednom u 24h za sve korisnike. | 04 - Sadržaj (4.1), 06 - Monetizacija (6.2) |
 
 **Praktična napomena:** Event hijerarhija je u MVP-u jer višednevni događaji poput Sarajevo Film Festivala predstavljaju ključnu priliku za promociju platforme pri lansiranju. Bez ove funkcionalnosti gubimo najvrednije content partnere.
@@ -50,10 +50,10 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 
 | Funkcionalnost | Šta uključuje | Referenca |
 | --- | --- | --- |
-| **User registracija** | Email registracija, login, bazični profil. | 03 - Korisnici (3.2) |
+| **User registracija** | Email registracija, login, bazični profil. | 03 - Korisnici (3.3) |
 | **Visitor pristup** | Neregistrovani korisnici mogu pregledati javni sadržaj, koristiti pretragu, lajkati i dijeliti — bez kreiranja računa. | 01 - Uvod (1.3) |
-| **Trust Tier sistem (svih 5 nivoa)** | Tier 0 (Restricted) do Tier 4 (Verified Partner). Pre-moderacija za Tier 0–1, post-moderacija za Tier 2+. Sampling za Tier 3. **Uključuje automatsko napredovanje i degradaciju.** | 03 - Korisnici (3.5) |
-| **Staff panel** | Interfejs za moderatore: pregled queue-a, donošenje odluka, upravljanje korisnicima, kategorijama i tagovima. | 03 - Korisnici (3.3) |
+| **Trust Tier sistem (svih 5 nivoa)** | Tier 0 (Restricted) do Tier 4 (Verified Partner). Pre-moderacija za Tier 0–1, post-moderacija za Tier 2+. Sampling za Tier 3. **Uključuje automatsko napredovanje i degradaciju.** | 03 - Korisnici (3.4) |
+| **Staff panel** | Interfejs za moderatore: pregled queue-a, donošenje odluka, upravljanje korisnicima, kategorijama i tagovima. | 03 - Korisnici (3.5) |
 
 **Praktična napomena:** Trust Tier sa automatskim napredovanjem/degradacijom mora biti u MVP-u jer bez toga moderatori moraju ručno pratiti i mijenjati tier za svakog korisnika — što je neodrživo čim platforma dobije i nekoliko desetina aktivnih korisnika. Automatski mehanizam (napredovanje nakon X odobrenih objava, degradacija nakon odbijenih) je jednostavan za implementaciju, a drastično smanjuje operativno opterećenje.
 
@@ -64,7 +64,7 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | Funkcionalnost | Šta uključuje | Referenca |
 | --- | --- | --- |
 | **Pretraga i filteri** | Filter po kategoriji, datumu, lokaciji/mapi. Dva odvojena režima (Događaji / Mjesta). | 02 - Korisnički doživljaj (2.2) |
-| **Naslovna stranica** | Tri grupe sadržaja: Premium+Homepage, ostali Premium, Standard+obični. Default na Events režim. | 02 - Korisnički doživljaj (2.1) |
+| **Naslovna stranica** | Dvije grupe sadržaja na naslovnoj: Premium+Homepage (prioritet), svi ostali. Unutar kategorija: Premium sekcija na vrhu, Standard+obični ispod. Default na Events režim. | 02 - Korisnički doživljaj (2.1) |
 | **Listing prikaz** | Kartice u listama, detail stranica, galerija slika. | 02 - Korisnički doživljaj (2.3) |
 | **Responsive UI** | Mobile-first dizajn, prilagođen za touch i desktop. | 02 - Korisnički doživljaj (2.5) |
 
@@ -133,7 +133,7 @@ Ovo su funkcionalnosti koje očekujemo da će trebati relativno brzo nakon lansi
 | **Push notifikacije** | Firebase/APNs integracija, device token management. | Kad analitika pokaže da korisnici ne reaguju dovoljno brzo na email/in-app notifikacije, posebno za time-sensitive sadržaj. | 07 - Komunikacija (7.2) |
 | **Korisničke preference za notifikacije** | Kontrola tipova notifikacija po kanalima, frekvencija digest emailova, quiet hours. | Kad korisnici počnu davati feedback o previše notifikacija. | 07 - Komunikacija (7.2.3) |
 | **Multi-tenant infrastruktura** | Tenant registry, database izolacija, tenant konfiguracija, cross-tenant operacije. Vidi napomenu ispod. | Kad se pojavi konkretan drugi grad / partner — ili ranije ako se procijeni da je jeftinije graditi multi-tenant od starta nego refaktorisati naknadno. | 08 - Infrastruktura (8.1) |
-| **GlobalAdmin portal** | Zasebna aplikacija ([master.cityinfo.ba](http://master.cityinfo.ba)) za 2–5 sistemskih admina. | Kad postoje 2+ tenanta i kad Staff panel više nije dovoljan za cross-tenant upravljanje. | 03 - Korisnici (3.4) |
+| **GlobalAdmin portal** | Zasebna aplikacija ([master.cityinfo.ba](http://master.cityinfo.ba)) za 2–5 sistemskih admina. | Kad postoje 2+ tenanta i kad Staff panel više nije dovoljan za cross-tenant upravljanje. | 03 - Korisnici (3.6) |
 
 > ⚠️ **Napomena o multi-tenant funkcionalnostima**
 > 

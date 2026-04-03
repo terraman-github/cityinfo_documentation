@@ -410,6 +410,8 @@ U ekstremnim slučajevima, AI može blokirati publikaciju sadržaja bez obzira n
 
 > ⚠️ **Napomena:** Blocking thresholds su konfiguracijski parametri (npr. `AI_BLOCK_HATE_THRESHOLD`, `AI_BLOCK_SPAM_THRESHOLD`). Preporučene početne vrijednosti su 0.95 za hate/adult/violence, 0.90 za illegal content, i 0.98 za spam. Vrijednosti se mogu prilagoditi na osnovu false positive rate-a.
 
+> ⚠️ **Napomena o CRITICAL risk level:** Kada AI dodijeli CRITICAL risk level (više od 2 score-a > 0.7), stavka u queue-u zahtijeva pregled moderatora sa `can_manage_trust_tier` permisijom (vidi sekcija 5.3.3 i BR-MOD-30). Queue interfejs treba filtrirati ili označiti ove stavke kako bi bile dodijeljene odgovarajućem moderatoru.
+
 Kada AI blokira sadržaj:
 
 1. Listing prelazi u `hidden_by_system`
