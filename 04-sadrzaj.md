@@ -5,9 +5,6 @@
 > **Status:** Završeno ✅
 
 * * *
-
-<a id="o-čemu-je-riječ"></a>
-
 ## O čemu je riječ?
 
 Ovaj dokument opisuje srce CityInfo platforme — sadržaj koji korisnici kreiraju i konzumiraju. Objašnjava kako su organizovani događaji (Events) i mjesta (Places), šta im je zajedničko, a šta specifično. Također pokriva sisteme za organizaciju sadržaja (sektori, kategorije i tagovi), multimediju, verifikaciju vlasništva, korisničke interakcije (lajkovi, favoriti, dijeljenje), te životni ciklus svakog listinga od nacrta do arhive.
@@ -15,21 +12,12 @@ Ovaj dokument opisuje srce CityInfo platforme — sadržaj koji korisnici kreira
 Dokument je namijenjen developerima koji grade funkcionalnosti vezane za sadržaj, ali i product ljudima koji trebaju razumjeti kako sistem funkcioniše "ispod haube".
 
 * * *
-
-<a id="41-listing-zajednički-entitet"></a>
-
 ## 4.1 Listing — zajednički entitet
-
-<a id="šta-je-listing"></a>
-
 ### Šta je Listing?
 
 Listing je apstraktni koncept koji obuhvata sve što korisnici mogu kreirati na platformi. Umjesto da Event i Place budu potpuno odvojeni sistemi sa dupliciranom logikom, oni dijele zajedničku osnovu — Listing. Ovo omogućava da promocije, moderacija, pretraga i statistike funkcionišu uniformno, bez obzira na tip sadržaja.
 
 Trenutno postoje dva tipa listinga: **Event** (vremenski ograničen događaj) i **Place** (stalna fizička lokacija). Arhitektura je dizajnirana tako da se novi tipovi mogu dodati u budućnosti bez velikih izmjena postojećeg koda.
-
-<a id="osnovni-atributi"></a>
-
 ### Osnovni atributi
 
 Svaki listing, bez obzira da li je Event ili Place, ima sljedeće zajedničke karakteristike:
@@ -47,9 +35,6 @@ Svaki listing, bez obzira da li je Event ili Place, ima sljedeće zajedničke ka
 | listingUrl | String | Vanjski link (web, booking, meni) | ❌   | —   |
 
 > **📝 Napomena o dvojezičnosti:** Korisnik sam popunjava polja za oba jezika. Polja `name`, `description`, `excerpt` odgovaraju primarnom jeziku tenanta, a `nameAlt`, `descriptionAlt`, `excerptAlt` sekundarnom. Sistem prikazuje odgovarajuću verziju prema jeziku koji je posjetilac odabrao u interfejsu.
-
-<a id="kategorizacija"></a>
-
 ### Kategorizacija
 
 Sadržaj na platformi je organizovan u tri nivoa: **Sektor → Kategorija → Tagovi**. Sektor je široka grupa (npr. "Hrana i piće", "Kupovina"), kategorija je konkretan tip unutar sektora (npr. "Restorani", "Baumarketi"), a tagovi su slobodne oznake koje opisuju specifičnosti listinga (npr. "parking", "wifi", "veganski").
@@ -95,9 +80,6 @@ Baumarket "Penny Shop" ima širok asortiman koji pokriva više kategorija:
 - **Sekundarne kategorije:** Kupovina → Bijela tehnika, Kupovina → Građevinski materijal, Kupovina → Alati, Kupovina → Sanitarije, Kupovina → Namještaj
 
 Korisnik koji pretražuje "baumarketi" pronalazi Penny Shop kroz primarnu kategoriju. Korisnik koji pretražuje "bijela tehnika" pronalazi ga kroz sekundarnu kategoriju. Oba pristupa vode do istog listinga. Još specifičnije pretrage poput "frižider" ili "laminat" pokrivaju se fulltext pretragom po opisu listinga i tagovima — kategorije ostaju na nivou odjela, ne pojedinačnih proizvoda.
-
-<a id="tagovi-denormalizovano"></a>
-
 ### Tagovi (denormalizovano)
 
 Tagovi opisuju karakteristike listinga (npr. "besplatno", "parking", "wifi"). Korisnik može odabrati do `MAX_TAGS_PER_LISTING` tagova (parametar — preporučena početna vrijednost: 2). Slugovi tagova se čuvaju direktno u Listing entitetu radi brzog pristupa.
@@ -108,9 +90,6 @@ Tagovi opisuju karakteristike listinga (npr. "besplatno", "parking", "wifi"). Ko
 | --- | --- | --- | --- | --- |
 | primaryTagSlug | String | Slug prvog taga | ❌   | Referenca na EventTags ili PlaceTags |
 | secondaryTagSlug | String | Slug drugog taga | ❌   | —   |
-
-<a id="status-i-vidljivost"></a>
-
 ### Status i vidljivost
 
 CityInfo koristi **jednostatus model** sa jednim poljem `listingStatus` koje obuhvata kompletan životni ciklus listinga — i fazu i moderacijski status. Ovaj pristup eliminiše nevalidne kombinacije statusa i pojednostavljuje logiku vidljivosti.
@@ -123,9 +102,6 @@ CityInfo koristi **jednostatus model** sa jednim poljem `listingStatus` koje obu
 | isPublic | Boolean | Da li je vidljiv javnosti | ✅   | Kalkulisano polje — automatski se održava |
 | wasEverActive | Boolean | Da li je ikad bio javno vidljiv | ✅   | Jednom true, uvijek true |
 | internalNote | String | Interna napomena za moderatore | ❌   | Nije vidljiva autorima |
-
-<a id="vremenske-oznake"></a>
-
 ### Vremenske oznake
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
@@ -134,9 +110,6 @@ CityInfo koristi **jednostatus model** sa jednim poljem `listingStatus` koje obu
 | lastManualRefreshAt | DateTime | Vrijeme zadnjeg ručnog osvježavanja | ❌   | Za provjeru 24h cooldown-a |
 | createdAt | DateTime | Datum kreiranja | ✅   | Automatski |
 | updatedAt | DateTime | Datum zadnje izmjene | ✅   | Automatski |
-
-<a id="metrike"></a>
-
 ### Metrike
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
@@ -149,21 +122,12 @@ CityInfo koristi **jednostatus model** sa jednim poljem `listingStatus` koje obu
 > **💡 Praktična napomena:** Polje `sortDate` je centralno za kontrolu gdje se listing pojavljuje u listama. Promocije i osvježavanje sadržaja manipulišu upravo ovim poljem. Korisnici mogu besplatno ručno osvježiti poziciju jednom u 24 sata. Više o tome u poglavlju [06 - Monetizacija](../project-specs/06-monetizacija.md).
 
 * * *
-
-<a id="42-event-entitet"></a>
-
 ## 4.2 Event entitet
-
-<a id="šta-je-event"></a>
-
 ### Šta je Event?
 
 Event predstavlja vremenski ograničenu aktivnost — koncert, festival, izložbu, radionicu, konferenciju, sportski događaj. Za razliku od Place-a koji postoji kontinuirano, Event ima jasno definisan početak i kraj, nakon čega automatski prelazi u `expired` status.
 
 Eventi nasljeđuju sve atribute od Listing entiteta i dodaju specifičnosti vezane za vrijeme, lokaciju listinga i hijerarhiju događaja. Zanimljiva karakteristika je mogućnost kreiranja **hijerarhije događaja** — festival može imati pojedinačne koncerte kao pod-događaje, gdje svaki može imati svoju promociju.
-
-<a id="specifični-atributi-event-a"></a>
-
 ### Specifični atributi Event-a
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
@@ -180,9 +144,6 @@ Eventi nasljeđuju sve atribute od Listing entiteta i dodaju specifičnosti veza
 | hasChildren | Boolean | Da li ovaj event ima pod-događaje | ✅   | Default: false |
 
 **Napomena o trajanju:** Ako korisnik ne unese `endDateTime`, sistem automatski postavlja kraj događaja na isti dan kao početak — podrazumijevano trajanje je jedan dan.
-
-<a id="lokacija-listinga-događaja"></a>
-
 ### Lokacija listinga događaja
 
 Svaki event mora imati definisanu lokaciju gdje se održava. Postoje dvije opcije:
@@ -207,9 +168,6 @@ Kada organizator nema vlastiti Place u sistemu, ili održava event na lokaciji k
 | Organizator koristi tuđi prostor | Bend svira u klubu koji nije njihov |
 
 > **💡 Praktična napomena:** Ako organizator želi održati event u tuđem prostoru (npr. bend u klubu), koristi ručnu adresu. Alternativno, može kontaktirati vlasnika mjesta i zamoliti ga da on kreira event — na taj način oboje dobijaju benefit cross-promocije.
-
-<a id="hijerarhija-događaja"></a>
-
 ### Hijerarhija događaja
 
 Sistem podržava dvonivovsku hijerarhiju događaja koja je korisna za festivale, konferencije sa više sesija, ili višednevne događaje:
@@ -231,9 +189,6 @@ Festival (parent, hasChildren = true)
 - `parentEventId` i `hasChildren` su **međusobno isključivi** — event ne može istovremeno biti child (imati `parentEventId`) i parent (imati `hasChildren = true`). Ovo je garancija dvonivovske hijerarhije.
 
 **Zašto** `hasChildren`? Ovaj flag omogućava sistemu da na karticama označi parent evente (npr. "Festival — više događaja") i da pri povlačenju detalja zna treba li dohvatiti child evente — bez skeniranja baze za svaki prikaz.
-
-<a id="brisanje-događaja"></a>
-
 ### Brisanje događaja
 
 Mogućnost brisanja ovisi o tome da li je event ikad bio javno vidljiv (`wasEverActive`):
@@ -246,9 +201,6 @@ Mogućnost brisanja ovisi o tome da li je event ikad bio javno vidljiv (`wasEver
 **Brisanje parent eventa:** Kad vlasnik briše parent event (a `wasEverActive = false`), svi child eventi prolaze istu logiku — oni sa `wasEverActive = false` prelaze u `removed` sa `account_deleted`. Child eventi koji su ikad bili aktivni ne mogu biti obrisani — korisnik ih mora otkazati ili sakriti.
 
 **Napomena:** Eventi koji su ikad bili javno vidljivi (`wasEverActive = true`) ne brišu se trajno — zadržavaju se radi integriteta podataka (statistike, historija, favoriti). Korisnik ih više ne vidi u svom profilu, ali sistem čuva zapis.
-
-<a id="automatski-procesi"></a>
-
 ### Automatski procesi
 
 - **Istek događaja:** Kad `endDateTime` prođe, event automatski prelazi u `expired` status i ostaje javno vidljiv kao historijski zapis sa oznakom "Završeno"
@@ -256,21 +208,12 @@ Mogućnost brisanja ovisi o tome da li je event ikad bio javno vidljiv (`wasEver
 - **Snapshot mjesta:** Ako se povezani Place obriše, event čuva snapshot lokacijskih podataka sa svim potrebnim informacijama za prikaz
 
 * * *
-
-<a id="43-place-entitet"></a>
-
 ## 4.3 Place entitet
-
-<a id="šta-je-place"></a>
-
 ### Šta je Place?
 
 Place predstavlja stalnu fizičku lokaciju — restoran, prodavnica, muzej, frizerski salon, sportski klub, institucija, organizacija i slično. Za razliku od Event-a, Place nema vremensko ograničenje i ostaje aktivan dok ga vlasnik ili moderator ne zatvori.
 
 Places nasljeđuju sve atribute od Listing entiteta i dodaju specifičnosti vezane za fizičku adresu i geolokaciju. Vlasnik Place-a može kreirati Events povezane sa tim mjestom, što omogućava cross-promotion — na stranici mjesta se prikazuju nadolazeći događaji.
-
-<a id="specifični-atributi-place-a"></a>
-
 ### Specifični atributi Place-a
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
@@ -283,9 +226,6 @@ Places nasljeđuju sve atribute od Listing entiteta i dodaju specifičnosti veza
 | googlePlusCode | String | Google Plus Code | ✅   | Automatski iz Google Maps API |
 
 **Napomena o Google Plus Code:** Plus Code se automatski generira na osnovu koordinata putem Google Maps integracije. Ovo osigurava preciznu i standardiziranu identifikaciju lokacije, posebno korisnu za mjesta koja nemaju jasnu adresu.
-
-<a id="place-vs-event-ključne-razlike"></a>
-
 ### Place vs Event — ključne razlike
 
 | Aspekt | Event | Place |
@@ -296,9 +236,6 @@ Places nasljeđuju sve atribute od Listing entiteta i dodaju specifičnosti veza
 | Može biti otkazan | Da (`canceled`) | Ne  |
 | Povezani eventi | Može biti vezan za Place (istog vlasnika) | Prikazuje evente vlasnika |
 | Lokacija listinga | Obavezna (Place ili ručna) | Obavezna (adresa + koordinate) |
-
-<a id="brisanje-place-a"></a>
-
 ### Brisanje Place-a
 
 Brisanje mjesta je kontrolisano zbog povezanih događaja:
@@ -312,13 +249,7 @@ Brisanje mjesta je kontrolisano zbog povezanih događaja:
 > **💡 Praktična napomena:** Snapshot čuva sve potrebne podatke (naziv, adresa, koordinate) tako da prošli eventi i dalje mogu prikazati gdje su se održali, čak i kad originalni Place više ne postoji.
 
 * * *
-
-<a id="44-kategorije"></a>
-
 ## 4.4 Kategorije
-
-<a id="šta-su-kategorije"></a>
-
 ### Šta su kategorije?
 
 Kategorije su osnovna struktura za organizaciju sadržaja na platformi. Organizovane su u dva nivoa: **sektori** (široke grupe poput "Hrana i piće" ili "Kupovina") i **kategorije** (konkretni tipovi unutar sektora, poput "Restorani" ili "Baumarketi"). Svaki listing mora pripadati barem jednoj kategoriji (primarnoj), a može pripadati i dodatnim sekundarnim kategorijama (maksimalan broj definisan parametrom `MAX_SECONDARY_CATEGORIES`). Kategorije su **kontrolisane od strane administratora** — korisnici ih ne mogu kreirati, samo odabrati iz ponuđene liste.
@@ -331,9 +262,6 @@ Korisnik pri kreiranju listinga bira sektor (za lakše snalaženje), zatim kateg
 - Places koriste `PlaceCategory` i `PlaceListingCategories`
 
 Više o arhitekturi čuvanja kategorija (relaciona tabela + denormalizacija) opisano je u sekciji 4.1.
-
-<a id="struktura-kategorije"></a>
-
 ### Struktura kategorije
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
@@ -353,9 +281,6 @@ Više o arhitekturi čuvanja kategorija (relaciona tabela + denormalizacija) opi
 | isActive | Boolean | Da li je aktivna | ✅   | —   |
 
 > **📝 Napomena:** Sektor nije zaseban entitet — `sectorSlug` i `sectorName` su denormalizovani atributi na kategoriji. Ovo pojednostavljuje model jer sektori služe isključivo za UI grupiranje, nemaju vlastitu poslovnu logiku.
-
-<a id="primarna-vs-sekundarne-kategorije"></a>
-
 ### Primarna vs sekundarne kategorije
 
 | Aspekt | Primarna | Sekundarne |
@@ -365,9 +290,6 @@ Više o arhitekturi čuvanja kategorija (relaciona tabela + denormalizacija) opi
 | Glavna svrha | Definira "šta je" listing | Proširuje vidljivost u pretrazi |
 | Prikaz | Uvijek vidljiva na kartici | Vidljive u detaljima i filterima |
 | Čuvanje | Denormalizovano u Listing + relaciona tabela | Samo relaciona tabela |
-
-<a id="kategorije-mjesta-placecategory"></a>
-
 ### Kategorije mjesta (PlaceCategory)
 
 16 sektora pokriva sve tipove mjesta na platformi:
@@ -390,9 +312,6 @@ Više o arhitekturi čuvanja kategorija (relaciona tabela + denormalizacija) opi
 | 14  | 👶 **Djeca i porodica** | Igraonice · Dječija oprema · Zabavni parkovi |
 | 15  | 🐕 **Životinje** | Veterinari · Pet shopovi · Grooming |
 | 16  | 🕌 **Vjerski objekti** | Džamije · Crkve · Katedrale · Sinagoge · Groblja i memorijali |
-
-<a id="kategorije-događaja-eventcategory"></a>
-
 ### Kategorije događaja (EventCategory)
 
 11 sektora pokriva sve tipove događaja na platformi:
@@ -412,9 +331,6 @@ Više o arhitekturi čuvanja kategorija (relaciona tabela + denormalizacija) opi
 | 11  | 🕌 **Vjerski i tradicija** | Ramazanski i bajramski programi · Božićni programi · Vjerska predavanja · Tradicionalne manifestacije |
 
 > **📝 Napomena:** Ove liste su početne i mogu se proširivati po potrebi. Dodavanje nove kategorije u postojeći sektor je jednostavna operacija. Dodavanje novog sektora zahtijeva definisanje `sectorSlug` i `sectorName` na novim kategorijama. Kategorija "Festivali" pojavljuje se pod Muzika i pod Kultura jer festivali mogu biti muzički ili kulturni — organizator bira primarnu kategoriju prema prirodi svog festivala.
-
-<a id="princip-kategorizacije-sektor-kategorija-tagovi"></a>
-
 ### Princip kategorizacije: Sektor → Kategorija → Tagovi
 
 Tri nivoa organizacije imaju jasno razdvojene uloge:
@@ -426,9 +342,6 @@ Tri nivoa organizacije imaju jasno razdvojene uloge:
 | **Tagovi** | Slobodne oznake za specifičnosti — vlasnik dodaje po izboru | can\_manage\_tags / local\_admin | parking, wifi, veganski, besplatan ulaz |
 
 Kategorije su na nivou **odjela** — dovoljno specifične da korisnik lako pronađe šta traži, ali ne toliko granularne da stvaraju dileme pri odabiru. Specifičnosti poput pojedinog proizvoda, usluge ili karakteristike pokrivaju tagovi i fulltext pretraga po opisu listinga.
-
-<a id="aliasi-i-sinonimi"></a>
-
 ### Aliasi i sinonimi
 
 Korisnici često pretražuju koristeći različite termine za isti koncept — "gym" umjesto "teretana", "picerija" umjesto "restorani", "diskoteka" umjesto "noćni život". Sistem održava **tabelu mapiranja aliasa** koja nevidljivo preusmjerava takve pretrage na odgovarajuću kategoriju.
@@ -445,9 +358,6 @@ Aliasi su nevidljivi korisnicima — korisnik vidi samo čiste nazive kategorija
 | doktor | Bolnice i klinike |
 
 > **💡 Praktična napomena:** Tabela aliasa je konfigurabilan parametar po tenantu — svaki grad može imati lokalne sinonime. Aliasi se mogu dodavati iterativno na osnovu podataka iz pretrage (npr. analizom "nula rezultata" upita).
-
-<a id="upravljanje-kategorijama"></a>
-
 ### Upravljanje kategorijama
 
 Kategorijama upravljaju **Staff korisnici sa ulogom local\_admin**. Obični korisnici ne mogu kreirati, mijenjati niti brisati kategorije. Kategorije imaju veće implikacije od tagova — slug je immutable, boja i ikona utiču na branding, a deaktivacija utiče na sve listinge koji koriste tu kategoriju — zato je upravljanje ograničeno na administrativnu ulogu.
@@ -470,9 +380,6 @@ Kategorijama upravljaju **Staff korisnici sa ulogom local\_admin**. Obični kori
 
 - Moguće samo ako **nijedan listing** ne koristi tu kategoriju
 - U praksi se rijetko koristi — preferira se deaktivacija
-
-<a id="default-slike-kategorija"></a>
-
 ### Default slike kategorija
 
 Kada listing nema vlastitu sliku, sistem koristi hijerarhiju za određivanje koja slika će se prikazati:
@@ -486,21 +393,12 @@ Ovo osigurava vizualno bogat sadržaj čak i kad korisnici ne uploaduju slike. `
 > **💡 Praktična napomena:** Slug kategorije se ne može mijenjati nakon kreiranja jer se koristi u URL-ovima. Ako se želi promijeniti slug, potrebno je kreirati novu kategoriju i migrirati sadržaj — što je kompleksna operacija.
 
 * * *
-
-<a id="45-tagovi"></a>
-
 ## 4.5 Tagovi
-
-<a id="šta-su-tagovi"></a>
-
 ### Šta su tagovi?
 
 Tagovi omogućavaju **dodatnu, fleksibilniju klasifikaciju** sadržaja. Za razliku od kategorija koje definiraju "šta je" listing, tagovi opisuju njegove **karakteristike i osobine**. Tagovi su opcioni — listing može postojati bez ijednog taga.
 
 Korisnik može odabrati do `MAX_TAGS_PER_LISTING` tagova (parametar — preporučena početna vrijednost: 2). Slugovi odabranih tagova čuvaju se denormalizovano direktno u Listing entitetu (`primaryTagSlug`, `secondaryTagSlug`) radi brzog pristupa.
-
-<a id="zašto-odvojene-tabele"></a>
-
 ### Zašto odvojene tabele?
 
 Eventi i Places imaju **potpuno odvojene sisteme tagova**:
@@ -518,9 +416,6 @@ Razlog je jednostavan — tagovi su semantički različiti:
 | festival, višednevni | rezervacije, kartice |
 
 Gotovo nema preklapanja, a odvojene tabele sprječavaju greške (npr. da neko tagira koncert sa "parking").
-
-<a id="eventtags-entitet"></a>
-
 ### EventTags entitet
 
 | Atribut | Tip | Opis | Obavezno |
@@ -531,9 +426,6 @@ Gotovo nema preklapanja, a odvojene tabele sprječavaju greške (npr. da neko ta
 | tagIcon | String | Emoji ili ikona (npr. "🎟️") | ❌   |
 | orderIndex | Number | Redoslijed prikaza u UI | ✅   |
 | isActive | Boolean | Da li je tag dostupan za odabir | ✅   |
-
-<a id="placetags-entitet"></a>
-
 ### PlaceTags entitet
 
 | Atribut | Tip | Opis | Obavezno |
@@ -544,9 +436,6 @@ Gotovo nema preklapanja, a odvojene tabele sprječavaju greške (npr. da neko ta
 | tagIcon | String | Emoji ili ikona (npr. "🅿️") | ❌   |
 | orderIndex | Number | Redoslijed prikaza u UI | ✅   |
 | isActive | Boolean | Da li je tag dostupan za odabir | ✅   |
-
-<a id="primjeri-tagova"></a>
-
 ### Primjeri tagova
 
 **EventTags:**
@@ -570,9 +459,6 @@ Gotovo nema preklapanja, a odvojene tabele sprječavaju greške (npr. da neko ta
 | dostava | Dostava | 🚚  |
 | rezervacije | Rezervacije | 📅  |
 | kartice | Kartično plaćanje | 💳  |
-
-<a id="upravljanje-tagovima"></a>
-
 ### Upravljanje tagovima
 
 Tagovima upravljaju **moderatori sa** `can_manage_tags` permisijom ili local\_admin. Za razliku od kategorija koje su ekskluzivna odgovornost local\_admin-a, tagovi su bliži svakodnevnom radu sa sadržajem — moderatori koji pregledaju listinge najbolje vide koje tagove korisnici trebaju. Permisiju `can_manage_tags` dodjeljuje Operator.
@@ -594,9 +480,6 @@ Tagovima upravljaju **moderatori sa** `can_manage_tags` permisijom ili local\_ad
 - Tag se može obrisati
 - Listinzi koji su koristili obrisani tag ostaju bez tog taga (polje postaje NULL)
 - Ovo je sigurna operacija — ne utiče na vidljivost listinga
-
-<a id="spajanje-tagova"></a>
-
 ### Spajanje tagova
 
 Kada postoje tagovi sa istim ili sličnim značenjem (npr. "wifi" i "wi-fi", ili "za-djecu" i "porodicno" nakon odluke da se objedine), moderator sa `can_manage_tags` permisijom (ili local\_admin) može pokrenuti spajanje. Proces je sljedeći:
@@ -611,21 +494,12 @@ Kada postoje tagovi sa istim ili sličnim značenjem (npr. "wifi" i "wi-fi", ili
 > **💡 Praktična napomena:** Trenutni model je namjerno jednostavan. Ako se u budućnosti pokaže potreba za vezivanjem tagova uz specifične kategorije (npr. tag "halal" samo za kategoriju "Restorani"), model se može proširiti bez breaking changes.
 
 * * *
-
-<a id="46-multimedija-sistem"></a>
-
 ## 4.6 Multimedija sistem
-
-<a id="kako-funkcionišu-slike"></a>
-
 ### Kako funkcionišu slike?
 
 Sistem multimedije omogućava korisnicima da dodaju vizuelni sadržaj — glavnu sliku (featured) i galeriju do 5 slika. Svaka uploadovana slika prolazi kroz automatsku validaciju i AI screening prije nego što postane vidljiva.
 
 Arhitektura je dizajnirana za performanse: slike se automatski optimizuju u više verzija za različite uređaje, čuvaju na CDN-u, i lazy-loadaju gdje je moguće.
-
-<a id="image-entitet"></a>
-
 ### Image entitet
 
 | Atribut | Tip | Opis | Obavezno |
@@ -644,9 +518,6 @@ Arhitektura je dizajnirana za performanse: slike se automatski optimizuju u viš
 | isFeatured | Boolean | Da li je glavna slika | ✅   |
 | orderIndex | Number | Redoslijed u galeriji (0-4) | ✅   |
 | uploadedAt | DateTime | Datum uploada | ✅   |
-
-<a id="verzije-slika"></a>
-
 ### Verzije slika
 
 Sistem automatski generiše optimizirane verzije:
@@ -657,9 +528,6 @@ Sistem automatski generiše optimizirane verzije:
 | Medium | 800×600 | Glavni prikaz |
 | Original | Kao uploadovano | Full screen |
 | WebP | Sve verzije | Moderni browseri |
-
-<a id="upload-validacije"></a>
-
 ### Upload validacije
 
 | Provjera | Pravilo |
@@ -668,9 +536,6 @@ Sistem automatski generiše optimizirane verzije:
 | Maksimalna veličina | 5 MB |
 | Minimalna rezolucija | 800×600 piksela |
 | Maksimalna rezolucija | 4000×4000 piksela |
-
-<a id="ai-content-screening"></a>
-
 ### AI Content Screening
 
 Svaka slika prolazi automatsku provjeru neprimjerenog sadržaja. Sistem koristi AI za detekciju:
@@ -683,13 +548,7 @@ Svaka slika prolazi automatsku provjeru neprimjerenog sadržaja. Sistem koristi 
 > **💡 Praktična napomena:** Korisnici čija se slika odbije dobijaju jasno objašnjenje zašto. Ponovljeni pokušaji uploada neprimjerenog sadržaja mogu rezultirati suspenzijom naloga.
 
 * * *
-
-<a id="47-dokumenti-listinga-i-verifikacija-vlasništva"></a>
-
 ## 4.7 Dokumenti listinga i verifikacija vlasništva
-
-<a id="zašto-dokumenti"></a>
-
 ### Zašto dokumenti?
 
 Korisnici mogu uploadovati dokumente vezane za listing — bilo za verifikaciju vlasništva, pojašnjenja tražena od moderatora, ili druge svrhe. Svi dokumenti su centralizirani u jednom entitetu (**ListingDocument**) koji služi kao jedini izvor istine za sve dokumente vezane za listing, bez obzira na svrhu.
@@ -702,9 +561,6 @@ Centralizirani pristup ima značajne prednosti:
 - **Virus scanning** — skeniranje se radi jednom, pri uploadu
 - **Jednostavnije upravljanje** — brisanje, pristup, GDPR compliance
 - **Poruke su lakše** — samo referenciraju dokument, ne sadrže ga direktno
-
-<a id="listingdocument-entitet"></a>
-
 ### ListingDocument entitet
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
@@ -727,9 +583,6 @@ Centralizirani pristup ima značajne prednosti:
 > ⚠️ **Napomena o terminologiji:** `documentStatus` koristi termine `accepted` / `rejected` (umjesto `verified`) da se izbjegne zabuna sa `verificationStatus` na listingu. Dokument može biti `accepted` (moderator je pregledao i prihvatio), a listing `verified` (vlasništvo je potvrđeno). To su dva odvojena koncepta — listing može biti `verified` i bez ikakvih dokumenata, a dokument može biti `accepted` kao dio procesa ali nije jedini osnov za verifikaciju.
 
 > **📝 Napomena:** Lista atributa nije konačna i može se proširivati prema potrebama proizvoda. Dokumenti su privatni — vidljivi samo vlasniku listinga i moderatorima.
-
-<a id="svrhe-dokumenata-purpose"></a>
-
 #### Svrhe dokumenata (purpose)
 
 | Svrha | Opis | Tipični dokumenti |
@@ -737,9 +590,6 @@ Centralizirani pristup ima značajne prednosti:
 | `verification` | Dokaz vlasništva/prava upravljanja | Vlasnički list, ugovor, licenca, rješenje o registraciji |
 | `clarification` | Pojašnjenje za moderatora | Programi, dodatne informacije, dozvole |
 | `other` | Ostalo | Različito |
-
-<a id="upload-i-virus-scanning"></a>
-
 ### Upload i virus scanning
 
 Svi uploadovani dokumenti prolaze kroz automatsko skeniranje prije nego postanu dostupni. Workflow je jednostavan:
@@ -756,9 +606,6 @@ Svi uploadovani dokumenti prolaze kroz automatsko skeniranje prije nego postanu 
 | Dozvoljeni formati | PDF, JPG, PNG |
 | Maksimalna veličina | 10 MB po dokumentu |
 | Maksimalan broj | 3 dokumenta po listingu |
-
-<a id="verifikacija-vlasništva"></a>
-
 ### Verifikacija vlasništva
 
 Upload dokumenta **nije obavezan** za objavu listinga, ali donosi značajne prednosti i direktno utiče na životni ciklus listinga:
@@ -766,9 +613,6 @@ Upload dokumenta **nije obavezan** za objavu listinga, ali donosi značajne pred
 - **Brža moderacija** — listinzi sa dokumentacijom prolaze prioritetno
 - **Veće povjerenje** — verifikovani sadržaj se vizualno ističe korisnicima (badge "✓ Potvrđen vlasnik")
 - **Zaštita od sporova** — dokumentacija služi kao dokaz u slučaju reklamacija
-
-<a id="verificationstatus"></a>
-
 #### verificationStatus
 
 Verifikacija je dio Listing entiteta — svaki listing ima `verificationStatus` atribut koji prati status verifikacije:
@@ -778,9 +622,6 @@ Verifikacija je dio Listing entiteta — svaki listing ima `verificationStatus` 
 | `unverified` | Vlasništvo nije potvrđeno | Bez oznake |
 | `pending` | Dokumentacija čeka pregled moderatora | "U procesu verifikacije" |
 | `verified` | Vlasništvo potvrđeno | ✓ Potvrđen vlasnik (badge) |
-
-<a id="kako-verifikacija-utiče-na-listing"></a>
-
 #### Kako verifikacija utiče na listing
 
 Verifikacija nije odvojen proces — integrisana je u standardnu moderaciju listinga. Moderator može postaviti `verificationStatus = verified` na osnovu priloženog dokumenta, ali i na osnovu drugih informacija — dokument **nije obavezan uslov** za verified status. Moderator koristi vlastitu procjenu.
@@ -792,9 +633,6 @@ Verifikacija nije odvojen proces — integrisana je u standardnu moderaciju list
 | Approve | Nema osnova za verifikaciju | `unverified` |
 | Approve | Nevalidan/nedovoljan dokument | `unverified` + feedback korisniku |
 | Reject | Bilo koji | Nije relevantno (listing odbijen) |
-
-<a id="verifikacija-po-trust-tier-u"></a>
-
 #### Verifikacija po Trust Tier-u
 
 Mehanizam verifikacije se razlikuje po Trust Tier-u korisnika:
@@ -806,9 +644,6 @@ Mehanizam verifikacije se razlikuje po Trust Tier-u korisnika:
 | **4 (Verified Partner)** | Automatska — ugovorni odnos | Nije potreban |
 
 Za Tier 3, `isVerifiedPublisher` flag na nivou korisnika automatski daje `verified` status svim listinzima tog korisnika — bez potrebe za uploadom dokumenata po svakom listingu. Za Tier 4, svi listinzi automatski dobijaju `verified` jer ugovorni odnos već uključuje potvrdu identiteta. Detalji u [05 - Moderacija, sekcija 5.6.3](../project-specs/05-moderacija.md).
-
-<a id="naknadno-traženje-dokumentacije"></a>
-
 #### Naknadno traženje dokumentacije
 
 Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako postoji sumnja u legitimnost. U tom slučaju:
@@ -817,9 +652,6 @@ Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako po
 - Korisnik dobija notifikaciju sa zahtjevom
 - Ima `CHANGES_REQUESTED_TIMEOUT_DAYS` dana za dostavu dokumentacije (parametar — preporučena početna vrijednost: 7 dana)
 - Nedostavljanje može rezultirati skrivanjem listinga
-
-<a id="primjeri-prihvatljivih-dokumenata"></a>
-
 #### Primjeri prihvatljivih dokumenata
 
 **Za Event:** ugovor sa lokacijom, dozvola za održavanje, ovlaštenje organizatora, potvrda zakupa prostora
@@ -829,21 +661,12 @@ Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako po
 > **💡 Praktična napomena:** Za Places, verifikacioni status ima veću težinu jer predstavljaju stalne poslovne subjekte. Dokumenti stariji od 2 godine od zatvaranja listinga mogu biti automatski obrisani radi usklađenosti sa GDPR-om. Detalji o workflow-u verifikacije iz moderatorske perspektive opisani su u [05 - Moderacija, sekcija 5.6](../project-specs/05-moderacija.md).
 
 * * *
-
-<a id="48-lifecycle-i-vidljivost"></a>
-
 ## 4.8 Lifecycle i vidljivost
-
-<a id="novi-statusni-model"></a>
-
 ### Novi statusni model
 
 CityInfo koristi **jednostatus model** koji opisuje kompletan životni ciklus listinga kroz jedno polje `listingStatus` sa 12 eksplicitnih vrijednosti. Ovaj model zamjenjuje stari dvostatus pristup (lifecycleStatus + moderationStatus + closedReason) koji je generisao nevalidne kombinacije statusa i kompleksnu kalkulacijsku logiku.
 
 Ideja je jednostavna: svako stanje u kojem se listing može naći ima svoju eksplicitnu vrijednost — nema skrivene logike koja se izvodi iz kombinacije dva polja. Dijagram tranzicija i narativni scenariji dostupni su u [Novi listing statusni model — specifikacija](../project-specs/migracija-listing-statusni-model-jedan-status/novi-listing-statusni-model-specifikacija.md).
-
-<a id="pregled-statusa"></a>
-
 ### Pregled statusa
 
 | Status | Opis | isPublic | Terminalan? |
@@ -865,9 +688,6 @@ Ideja je jednostavna: svako stanje u kojem se listing može naći ima svoju eksp
 \*\* `canceled` je reverzibilan ako `endDateTime > NOW()`.
 
 **Napomena:** `canceled` važi samo za **Event listing** — Place ne može biti `canceled`.
-
-<a id="vidljivost-za-canceled-status"></a>
-
 ### Vidljivost za `canceled` status
 
 Event u `canceled` statusu ostaje javno dostupan, ali sa važnim ograničenjima:
@@ -877,9 +697,6 @@ Event u `canceled` statusu ostaje javno dostupan, ali sa važnim ograničenjima:
 - **Isključen iz:** naslovne stranice, feed-ova, promoted listi i "nadolazeći događaji" sekcija
 
 Aktivne promocije se **pauziraju** pri prelasku u `canceled` — promotivni timer se zaustavlja i ne troši plaćeni period. Ako vlasnik reaktivira event (a promotivni period nije istekao), promocija se automatski nastavlja od tačke gdje je pauzirana.
-
-<a id="ispublic-derivacija"></a>
-
 ### isPublic derivacija
 
 `isPublic` je **kalkulisano polje** — nikad se ne upisuje direktno. Derivira se iz `listingStatus`:
@@ -895,9 +712,6 @@ isPublic = listingStatus IN (
 ```
 
 Svi ostali statusi rezultuju u `isPublic = false`.
-
-<a id="waseveractive"></a>
-
 ### wasEverActive
 
 `wasEverActive` postaje `true` čim listing prvi put uđe u bilo koji `isPublic = true` status. Jednom kad postane `true`, nikad se ne vraća na `false` — čak ni ako listing naknadno pređe u `hidden` ili `removed` status.
@@ -908,9 +722,6 @@ Praktična implikacija je na **mogućnost brisanja**:
 - `wasEverActive = true` → direktno brisanje nije dostupno; korisnik može sakriti ili otkazati (za evente)
 
 Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili dijeljeni — "brisanje" bi narušilo korisničko iskustvo osoba koje su interagovale sa sadržajem.
-
-<a id="dijagram-tranzicija"></a>
-
 ### Dijagram tranzicija
 
 ```
@@ -970,9 +781,6 @@ stateDiagram-v2
     expired --> [*]
     removed --> [*]
 ```
-
-<a id="tok-po-trust-tier-u"></a>
-
 ### Tok po Trust Tier-u
 
 Korisnikov Trust Tier direktno određuje **koji tok listing prolazi** pri objavi. Kompletna specifikacija Trust Tier sistema je u [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md), a moderacijski workflow u [05 - Moderacija](../project-specs/05-moderacija.md). Ovdje je prikazan praktični efekat na listing:
@@ -993,9 +801,6 @@ Korisnik klikne "Objavi" → listing **odmah prelazi u** `published_under_review
 - Ciljno vrijeme naknadnog pregleda: 8 sati
 
 > **💡 Praktična napomena:** Novi korisnici počinju kao Tier 1. Automatski napreduju prema Tier 2 kada ispune konfigurisane pragove (minimum odobrenih objava, procenat uspješnosti, starost računa). Detalji o napredovanju i degradaciji u [03 - Korisnici i pristup, sekcija 3.4](../project-specs/03-korisnici-i-pristup.md).
-
-<a id="ažuriranje-aktivnog-listinga"></a>
-
 ### Ažuriranje aktivnog listinga
 
 Korisnik može editovati listing koji je već vidljiv javnosti. Ponašanje pri editu ovisi o Trust Tier-u — važno je balansirati dvije potrebe: da promjene budu brzo vidljive i da kvalitet sadržaja ostane pod kontrolom.
@@ -1009,9 +814,6 @@ Listing se pri editu **skriva** (prelazi u `in_review`) i šalje na moderaciju. 
 Listing **ostaje vidljiv** tokom i nakon edita — prelazi u `published_under_review`. Izmjene su odmah primijenjene. Moderator pregleda naknadno; ako utvrdi problem, može sakriti listing ili zatražiti izmjene.
 
 > **💡 Praktična napomena:** Ovaj pristup omogućava Verified Partner-u da ispravi radno vrijeme restorana bez čekanja odobrenja, dok novi korisnik ne može zaobići kontrolu kvaliteta izmjenom sadržaja nakon inicijalnog odobrenja.
-
-<a id="šta-se-dešava-sa-listinzima-blokiranog-korisnika"></a>
-
 ### Šta se dešava sa listinzima blokiranog korisnika
 
 Kada se korisnik blokira (vidi [03 - Korisnici i pristup, sekcija 3.7](../project-specs/03-korisnici-i-pristup.md)), ponašanje ovisi o tipu blokiranja:
@@ -1026,9 +828,6 @@ Kada se korisnik blokira (vidi [03 - Korisnici i pristup, sekcija 3.7](../projec
 **Trajno blokiranje:** Ako se korisnik trajno blokira sa uklanjanjem sadržaja, svi aktivni listinzi prelaze u `hidden_by_system`. Moderator pri pregledu odlučuje o daljem statusu svakog listinga.
 
 Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
-
-<a id="timeout-za-changes_requested"></a>
-
 ### Timeout za changes\_requested
 
 Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ograničeno vrijeme za odgovor. Ako ne reaguje u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (parametar — preporučena početna vrijednost: 7 dana), listing automatski prelazi u `removed` (removedReason: `rejected`).
@@ -1036,33 +835,18 @@ Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ogran
 Sistem šalje reminder notifikaciju korisniku na `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (parametar — preporučena početna vrijednost: 2 dana prije isteka, tj. 5. dan).
 
 > **💡 Praktična napomena:** Timeout sprječava nakupljanje "zombie" listinga koji beskonačno stoje u `changes_requested` statusu. Korisnik uvijek može kreirati novi listing ako propusti rok.
-
-<a id="detaljnija-specifikacija"></a>
-
 ### Detaljnija specifikacija
 
 Za kompletnu tabelu dozvoljenih tranzicija, zabranjene tranzicije, detaljna pravila za `removedReason`, `wasEverActive` granične slučajeve, i narativne scenarije (12 scenarija koji pokrivaju sve tipične tokove), vidi: [Novi listing statusni model — specifikacija](../project-specs/migracija-listing-statusni-model-jedan-status/novi-listing-statusni-model-specifikacija.md).
 
 * * *
-
-<a id="49-korisničke-interakcije"></a>
-
 ## 4.9 Korisničke interakcije
-
-<a id="šta-su-korisničke-interakcije"></a>
-
 ### Šta su korisničke interakcije?
 
 Pored kreiranja sadržaja, korisnici mogu interagovati sa listinzima na tri načina: **lajkovanje** (appreciation), **spremanje u favorite** i **dijeljenje**. Ove interakcije obogaćuju korisničko iskustvo i pružaju socijalne signale koji pomažu u otkrivanju kvalitetnog sadržaja.
-
-<a id="lajkovi-appreciation"></a>
-
 ### Lajkovi (Appreciation)
 
 Lajk je najjednostavnija forma interakcije — korisnik izražava pozitivan stav prema listingu. Sistem podržava lajkove i za registrovane korisnike i za neregistrovane posjetioce (visitors), ali sa različitom logikom.
-
-<a id="registrovani-korisnici"></a>
-
 #### Registrovani korisnici
 
 Za registrovane korisnike, lajkovi se trajno evidentiraju i korisnik može vidjeti historiju svojih lajkova. Korisnik može unlike-ovati listing — lajk se uklanja i `totalAppreciations` se dekrementira.
@@ -1077,9 +861,6 @@ Za registrovane korisnike, lajkovi se trajno evidentiraju i korisnik može vidje
 | createdAt | DateTime | Vrijeme lajka | ✅   | —   |
 
 > **📝 Napomena:** Lista atributa nije konačna. Kombinacija `userId + listingId` je jedinstvena — korisnik može lajkati isti listing samo jednom.
-
-<a id="neregistrovani-korisnici-visitors"></a>
-
 #### Neregistrovani korisnici (Visitors)
 
 Visitors mogu lajkati listinge, ali na jednostavniji način:
@@ -1093,9 +874,6 @@ Visitor lajkovi ne kreiraju Appreciation zapis — samo inkrementiraju `totalApp
 > ⚠️ **Smjernica za implementaciju:** Sistem ne čuva IP adresu ni fingerprint podatke u sirovom obliku. Za detekciju duplikata koristi se jednosmjerni hash kombinacije identifikacionih signala i listingId — ovaj hash nije reverzibilan i ne predstavlja lični podatak u smislu GDPR-a. Ne praviti tabelu sa sirovim visitor podacima.
 
 > **💡 Praktična napomena:** `totalAppreciations` uključuje i registrovane i visitor lajkove, čime se listing broj uvijek reflektuje ukupnu popularnost. Za preciznu statistiku, može se prebrojati Appreciation entitete (registrovani) i oduzeti od ukupnog broja (razlika su visitor lajkovi).
-
-<a id="favoriti-saved-listings"></a>
-
 ### Favoriti (Saved listings)
 
 Registrovani korisnici mogu spremiti listinge u listu favorita za kasniji pristup. Ovo je korisno za planiranje — npr. korisnik pronađe zanimljive evente za vikend i spremi ih dok ne odluči koji da posjeti.
@@ -1117,9 +895,6 @@ Registrovani korisnici mogu spremiti listinge u listu favorita za kasniji pristu
 - Lista favorita je dostupna u korisnikovom profilu
 - Ako se listing zatvori ili obriše, zapis ostaje u favoritima ali se prikazuje kao "Više nije dostupan" (graceful degradation)
 - Favoriti su privatni — samo korisnik vidi svoju listu
-
-<a id="dijeljenje-share"></a>
-
 ### Dijeljenje (Share)
 
 Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehanizam dijeljenja koristi **native share API** preglednika/uređaja gdje je dostupan (mobilni uređaji), a kao fallback nudi **copy-to-clipboard** opciju.
@@ -1132,13 +907,7 @@ Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehaniza
 **Praktična napomena:** Dijeljenje ne zahtijeva nikakvu autentifikaciju. Dijeljeni link vodi na javnu stranicu listinga koju može vidjeti bilo ko, uključujući visitors.
 
 * * *
-
-<a id="410-api-endpoints"></a>
-
 ## 4.10 API Endpoints
-
-<a id="event-operacije"></a>
-
 ### Event operacije
 
 | Metoda | Putanja | Opis |
@@ -1157,9 +926,6 @@ Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehaniza
 | POST | `/events/{id}/children` | Kreiranje child eventa |
 | GET | `/events/{id}/children` | Lista child evenata |
 | POST | `/events/{id}/refresh` | Ručno osvježavanje sortDate (jednom u 24h) |
-
-<a id="place-operacije"></a>
-
 ### Place operacije
 
 | Metoda | Putanja | Opis |
@@ -1175,9 +941,6 @@ Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehaniza
 | POST | `/places/{id}/hide` | Sakrivanje mjesta (`published` → `hidden_by_owner`) |
 | POST | `/places/{id}/unhide` | Ponovno prikazivanje (`hidden_by_owner` → `published`) |
 | POST | `/places/{id}/refresh` | Ručno osvježavanje sortDate (jednom u 24h) |
-
-<a id="kategorije"></a>
-
 ### Kategorije
 
 | Metoda | Putanja | Opis |
@@ -1187,9 +950,6 @@ Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehaniza
 | POST | `/event-categories` | Kreiranje kategorije (local\_admin) |
 | PUT | `/event-categories/{id}` | Ažuriranje kategorije (local\_admin) |
 | DELETE | `/event-categories/{id}` | Brisanje kategorije (local\_admin) |
-
-<a id="tagovi"></a>
-
 ### Tagovi
 
 | Metoda | Putanja | Opis |
@@ -1206,9 +966,6 @@ Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehaniza
 | PUT | `/place-tags/{slug}` | Ažuriranje taga (can\_manage\_tags / local\_admin) |
 | DELETE | `/place-tags/{slug}` | Brisanje taga (can\_manage\_tags / local\_admin) |
 | POST | `/place-tags/merge` | Spajanje dva taga (can\_manage\_tags / local\_admin) |
-
-<a id="aliasi-kategorija"></a>
-
 ### Aliasi kategorija
 
 | Metoda | Putanja | Opis |
@@ -1216,9 +973,6 @@ Korisnici (uključujući visitors) mogu podijeliti listing putem linka. Mehaniza
 | GET | `/category-aliases` | Lista svih aliasa |
 | POST | `/category-aliases` | Kreiranje aliasa (local\_admin) |
 | DELETE | `/category-aliases/{id}` | Brisanje aliasa (local\_admin) |
-
-<a id="slike"></a>
-
 ### Slike
 
 Endpoint-i za slike koriste generički `/listings/{id}/...` path koji funkcioniše za oba tipa listinga (Event i Place).
@@ -1230,9 +984,6 @@ Endpoint-i za slike koriste generički `/listings/{id}/...` path koji funkcioni�
 | DELETE | `/images/{id}` | Brisanje slike |
 | POST | `/images/{id}/set-featured` | Postavljanje kao glavne slike |
 | PUT | `/listings/{id}/images/reorder` | Promjena redoslijeda |
-
-<a id="dokumenti-listinga"></a>
-
 ### Dokumenti listinga
 
 Kao i slike, dokumenti koriste generički `/listings/{id}/...` path.
@@ -1251,9 +1002,6 @@ POST /listings/{id}/documents
 Request: { file (multipart), purpose }
 Response: { documentId, virusScanStatus, uploadedAt }
 ```
-
-<a id="korisničke-interakcije"></a>
-
 ### Korisničke interakcije
 
 | Metoda | Putanja | Opis |
@@ -1269,9 +1017,6 @@ Response: { documentId, virusScanStatus, uploadedAt }
 > **📝 Napomena:** Ova lista predstavlja osnovne operacije. Detaljni request/response formati, validacije i error kodovi dokumentovani su u API specifikaciji.
 
 * * *
-
-<a id="šta-dalje"></a>
-
 ## Šta dalje?
 
 Nakon razumijevanja strukture sadržaja, preporučeni sljedeći koraci:
@@ -1281,9 +1026,6 @@ Nakon razumijevanja strukture sadržaja, preporučeni sljedeći koraci:
 - **Korisnički doživljaj:** [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md) — kako se sadržaj prikazuje korisnicima
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis |

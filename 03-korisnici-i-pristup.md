@@ -5,9 +5,6 @@
 > **Status:** Završeno ✅
 
 * * *
-
-<a id="o-čemu-je-riječ"></a>
-
 ## O čemu je riječ?
 
 CityInfo koristi arhitekturu sa **tri potpuno odvojena korisnička sistema** — umjesto tradicionalnog pristupa gdje sve uloge žive u jednoj tabeli. Ova separacija nije slučajna: različite grupe korisnika imaju fundamentalno različite potrebe, sigurnosne zahtjeve i načine rada. Kompromitovanje jednog sistema ne ugrožava druge, svaki grad (tenant) može rasti nezavisno, a GDPR compliance je značajno jednostavniji kada su podaci jasno razdvojeni.
@@ -21,13 +18,7 @@ CityInfo koristi arhitekturu sa **tri potpuno odvojena korisnička sistema** —
 **📌 Praktična napomena:** Novi developer treba razumjeti da ova tri sistema koriste odvojene baze, odvojene autentifikacijske mehanizme i odvojene API-je. Ne postoji način da se User token iskoristi za pristup admin panelu — to je by design.
 
 * * *
-
-<a id="31-pregled-korisničkih-sistema"></a>
-
 ## 3.1 Pregled korisničkih sistema
-
-<a id="zašto-tri-odvojena-sistema"></a>
-
 ### Zašto tri odvojena sistema?
 
 Separacija korisnika nije samo tehnička odluka već reflektuje stvarne operativne potrebe. Običan korisnik koji kreira događaje ima potpuno drugačije potrebe od moderatora koji pregledava sadržaj ili sistemskog administratora koji postavlja nove gradove. Držanjem ovih sistema odvojenim dobijamo:
@@ -36,9 +27,6 @@ Separacija korisnika nije samo tehnička odluka već reflektuje stvarne operativ
 - **Skalabilnost** — User baza može rasti eksponencijalno dok Staff ostaje mali
 - **Compliance** — jasna separacija podataka olakšava GDPR zahtjeve
 - **Fleksibilnost** — različite konfiguracije i sigurnosne politike po sistemu
-
-<a id="arhitektura-na-visokom-nivou"></a>
-
 ### Arhitektura na visokom nivou
 
 User i Staff podaci žive zajedno u istoj tenant bazi — svaki grad ima svoju vlastitu bazu koja sadrži i korisnike i osoblje tog grada. GlobalAdmin je jedini koji ima zasebnu, globalnu bazu (master) koja ne sadrži podatke ni jednog tenanta, već samo infrastrukturne informacije poput registra gradova.
@@ -55,9 +43,6 @@ graph TD
     U2[👤 User / Zagreb] --> ZGB[(Zagreb DB<br/>Users · Staff<br/>Events · Places)]
     S2[🛡️ Staff / Zagreb] --> ZGB
 ```
-
-<a id="pristupne-tačke"></a>
-
 ### Pristupne tačke
 
 | Sistem | URL | Namjena |
@@ -69,21 +54,12 @@ graph TD
 **📌 Praktična napomena:** Svaki od ovih sistema ima vlastiti set API-ja. Staff ne može koristiti User API za autentifikaciju, niti obrnuto. Ovo je namjerno i predstavlja prvu liniju odbrane.
 
 * * *
-
-<a id="32-neregistrovani-korisnici-visitors"></a>
-
 ## 3.2 Neregistrovani korisnici (Visitors)
-
-<a id="o-čemu-se-radi"></a>
-
 ### O čemu se radi?
 
 Visitor nije pohranjen u bazi podataka — to je konceptualna uloga koja opisuje neautentificirane posjetioce platforme. Važno je razumjeti ovu grupu jer može činiti značajan dio ukupnog prometa, posebno kod korisnika koji istražuju sadržaj prije nego se odluče registrovati.
 
 Za razliku od registrovanih korisnika, visitors nemaju profil, ne mogu kreirati sadržaj i ne prolaze kroz trust sistem. Međutim, platforma im omogućava smislenu interakciju sa javnim sadržajem.
-
-<a id="šta-visitor-može-i-ne-može"></a>
-
 ### Šta visitor može i ne može
 
 | Može ✅ | Ne može ❌ |
@@ -94,9 +70,6 @@ Za razliku od registrovanih korisnika, visitors nemaju profil, ne mogu kreirati 
 | Vidjeti detalje listinga | Kupovati kredite ili promocije |
 | Podijeliti listing (share link) | Prijaviti neprikladan sadržaj |
 | Lajkati listinge | Pristupiti historiji lajkova |
-
-<a id="lajkovanje-bez-registracije"></a>
-
 ### Lajkovanje bez registracije
 
 Visitors mogu lajkati listinge, ali na jednostavniji način nego registrovani korisnici:
@@ -108,13 +81,7 @@ Visitors mogu lajkati listinge, ali na jednostavniji način nego registrovani ko
 **📌 Praktična napomena:** API endpoints za javni sadržaj moraju raditi bez autentifikacije. Visitor lajkovi doprinose popularnosti listinga, ali bez pohrane ličnih podataka — u skladu sa GDPR zahtjevima.
 
 * * *
-
-<a id="33-user-entitet"></a>
-
 ## 3.3 User entitet
-
-<a id="šta-je-user"></a>
-
 ### Šta je User?
 
 User predstavlja fizičko ili pravno lice koje koristi CityInfo platformu — bilo da pregledava događaje, kreira vlastite listinge ili kupuje promocije. Svaki User pripada tačno jednom tenantu (gradu) i ima definisan Trust Tier koji određuje kako se njegov sadržaj moderira.
@@ -123,9 +90,6 @@ Dva su ključna koncepta za razumijevanje User entiteta:
 
 - **Trust Tier** — određuje da li sadržaj ide na pre-moderaciju ili se objavljuje odmah
 - **Access status** — kontroliše može li se korisnik uopšte prijaviti na platformu
-
-<a id="atributi"></a>
-
 ### Atributi
 
 Lista atributa nije konačna i može se proširivati prema potrebama.
@@ -155,9 +119,6 @@ Lista atributa nije konačna i može se proširivati prema potrebama.
 | blockedReason | Enum | Razlog blokiranja | Ne  | Obavezno ako je blocked |
 | blockedDetails | Object/JSON | Dodatni detalji uz razlog blokiranja | Ne  | Obavezno kada je blockedReason = OTHER |
 | blockedUntil | DateTime | Do kada traje blokada | Ne  | NULL = trajna |
-
-<a id="isverifiedpublisher-flag"></a>
-
 ### isVerifiedPublisher flag
 
 Korisnici na Tier 3 (Established) mogu dobiti `isVerifiedPublisher = true` flag koji znači da su potvrđeni izdavači. Kada je ovaj flag aktivan, svi listinzi tog korisnika automatski dobijaju `verificationStatus = verified` — bez potrebe za uploadom dokumenata po svakom listingu.
@@ -167,13 +128,7 @@ Ovo rješava problem samplinga: na Tier 3 moderacija funkcioniše sa samplingom,
 Flag postavlja moderator sa `can_manage_trust_tier` permisijom. Dokument nije obavezan — moderator koristi vlastitu procjenu (npr. vlasnik restorana sa verifikovanim Place-om koji organizuje evente ne treba ponovo dokazivati legitimitet). Flag se automatski uklanja ako korisnik bude degradiran ispod Tier 3.
 
 Više o verifikaciji po tier-u u [05 - Moderacija, sekcija 5.6.3](../project-specs/05-moderacija.md).
-
-<a id="statusi"></a>
-
 ### Statusi
-
-<a id="accountstatus-životni-ciklus-računa"></a>
-
 #### accountStatus — životni ciklus računa
 
 | Status | Šta znači | Kada se koristi |
@@ -181,9 +136,6 @@ Više o verifikaciji po tier-u u [05 - Moderacija, sekcija 5.6.3](../project-spe
 | **active** | Račun je aktivan i funkcionalan | Normalno stanje |
 | **inactive** | Korisnik je privremeno deaktivirao račun | Korisnik sam "pauzira" nalog |
 | **deleted** | Soft delete, čuva se 30 dana pa se trajno briše | Korisnik želi brisanje (GDPR) |
-
-<a id="accessstatus-kontrola-pristupa"></a>
-
 #### accessStatus — kontrola pristupa
 
 | Status | Šta znači | Ko postavlja |
@@ -192,9 +144,6 @@ Više o verifikaciji po tier-u u [05 - Moderacija, sekcija 5.6.3](../project-spe
 | **blocked** | Blokiran pristup zbog kršenja pravila | Moderator ili sistem |
 
 Blokiran korisnik **ne može se prijaviti** bez obzira na accountStatus. Pri blokiranju je obavezno unijeti razlog (blockedReason).
-
-<a id="ortogonalnost-statusa"></a>
-
 ### Ortogonalnost statusa
 
 Jedan od ključnih koncepata za razumijevanje User entiteta je da statusi kontrolišu **potpuno različite aspekte** i mogu se kombinovati nezavisno:
@@ -217,21 +166,12 @@ Ovo znači da su moguće razne kombinacije koje na prvi pogled djeluju neobično
 **📌 Praktična napomena:** Pri provjeri pristupa, uvijek treba provjeriti **oba** statusa — accountStatus I accessStatus. Korisnik sa `accountStatus=active` i `accessStatus=blocked` ne smije moći pristupiti platformi.
 
 * * *
-
-<a id="34-trust-tier-sistem"></a>
-
 ## 3.4 Trust Tier sistem
-
-<a id="o-čemu-se-radi"></a>
-
 ### O čemu se radi?
 
 Trust Tier je mehanizam koji automatski prilagođava nivo moderacije prema ponašanju korisnika. Umjesto binarnog pristupa "vjerujemo / ne vjerujemo", sistem prepoznaje da korisnici grade povjerenje kroz konzistentno kvalitetan sadržaj.
 
 Novi korisnici počinju na **Tier 1 (Standard)** — njihov sadržaj ide na pre-moderaciju. Nakon što pokažu da prave kvalitetan sadržaj, automatski napreduju na **Tier 2 (Trusted)** i njihove objave se odmah prikazuju. Ako prekrše pravila, mogu biti degradirani ili čak zaključani na **Tier 0 (Restricted)**.
-
-<a id="pet-nivoa-povjerenja"></a>
-
 ### Pet nivoa povjerenja
 
 | Tier | Naziv | Moderacija | Sampling | Kako se dostiže |
@@ -249,9 +189,6 @@ Novi korisnici počinju na **Tier 1 (Standard)** — njihov sadržaj ide na pre-
 - **Trusted (2):** Korisnici koji su dokazali da prave kvalitetan sadržaj. Njihov sadržaj ide live odmah, a moderator ga pregleda naknadno. Sav sadržaj se i dalje pregleda (100%).
 - **Established (3):** Korisnici sa dugom istorijom kvalitetnog sadržaja. Post-moderacija sa samplingom — moderator pregleda samo dio njihovog sadržaja. Ostatak prolazi automatski.
 - **Verified Partner (4):** Ugovorni partneri platforme (kino kompleksi, kulturni centri, gradske institucije). Najniži sampling. Postavlja se ručno od strane moderatora sa `can_manage_trust_tier` permisijom, nakon uspostavljanja poslovnog odnosa. Ovo je osjetljiva akcija jer direktno mijenja moderacijski workflow za korisnika.
-
-<a id="kako-trust-tier-utiče-na-workflow"></a>
-
 ### Kako Trust Tier utiče na workflow
 
 | Trust Tier | Pri objavi sadržaja | Efekat |
@@ -260,9 +197,6 @@ Novi korisnici počinju na **Tier 1 (Standard)** — njihov sadržaj ide na pre-
 | **2, 3, 4** | Post-moderacija | Sadržaj odmah postaje vidljiv, pregled naknadno |
 
 **Ograničenje za pre-moderaciju:** Korisnici na Tier 0 i 1 mogu imati maksimalno `TIER_PRE_MOD_MAX_PENDING` objava koje čekaju pregled istovremeno. Moraju sačekati odluku prije slanja novog sadržaja.
-
-<a id="napredovanje-kroz-tier-ove"></a>
-
 ### Napredovanje kroz tier-ove
 
 Napredovanje je automatsko za nivoe 1→2 i 2→3. Sistem provjerava uslove nakon svake moderatorske odluke. Sva tri uslova moraju biti ispunjena **istovremeno** da bi napredovanje bilo okidano — procenat sam za sebe nije dovoljan jer bi korisnik sa jednom odobrenom objavom matematički imao 100% uspješnost.
@@ -279,17 +213,11 @@ Napredovanje je automatsko za nivoe 1→2 i 2→3. Sistem provjerava uslove nako
 Preporučene vrijednosti su polazna tačka — treba ih tune-ovati na osnovu stvarnih podataka nakon launcha. Sve vrijednosti su konfiguracijski parametri koji se mogu mijenjati bez izmjene koda.
 
 **Zašto starost računa?** Sprječava gaming — kreiranje novog naloga, brzo objavljivanje minimalnog broja listinga i automatsko napredovanje. Korisnik mora biti prisutan na platformi određeni period da bi stekao viši nivo povjerenja.
-
-<a id="efekt-odbijenih-objava-na-napredovanje"></a>
-
 ### Efekt odbijenih objava na napredovanje
 
 Odbijen listing ne mijenja Trust Tier direktno za Tier 1 korisnika (nema kuda pasti osim na Restricted, što je rezervisano za ozbiljna kršenja). Međutim, **spušta procenat uspješnosti i time blokira ili odgađa napredovanje prema Tier 2**.
 
 Primjer: korisnik sa 4 approved i 1 rejected ima uspješnost 80% (4/5). Uz `TIER1_MIN_SUCCESS_RATE = 80%`, tačno je na granici — mora skupiti još jednu odobrenu objavu da procenat ostane iznad praga. Nema resetovanja brojača niti posebnih kazni — matematika sama reguliše napredovanje.
-
-<a id="efekt-changes_requested-na-napredovanje"></a>
-
 ### Efekt `changes_requested` na napredovanje
 
 `changes_requested` je kvalitativno drugačiji signal od `rejected` — moderator ne odbija sadržaj, nego poziva korisnika na saradnju i ispravku. Penalizovati korisnika koji aktivno popravlja sadržaj bilo bi kontraproduktivno, pa `changes_requested` sam po sebi **ne utiče na Trust Tier ni na procenat uspješnosti**.
@@ -304,9 +232,6 @@ Ono što se broji je isključivo **finalna odluka** po listingu — bez obzira k
 | `changes_requested` → korisnik ne reaguje, listing ostaje u draftu | Ništa — nema finalne odluke, ne broji se |
 
 **📌 Praktična napomena:** Ovakav pristup potiče zdravu interakciju između korisnika i moderatora. Korisnik koji dobije povratnu informaciju i ispravi sadržaj ne smije biti u goroj poziciji od onoga koji je odmah pogodio — važno je samo da sadržaj na kraju bude kvalitetan.
-
-<a id="degradacija"></a>
-
 ### Degradacija
 
 Korisnik može pasti za tier ako moderacija otkrije problematičan sadržaj. Degradacija može biti **automatska** (sistem detektuje jasno definisan prag) ili **ručna** (moderator procjenjuje situaciju).
@@ -332,9 +257,6 @@ Situacije koje zahtijevaju ljudsku procjenu. Ručna degradacija na Tier 0 (Restr
 | 1 rejected (bilo koji tier) | Upozorenje, tier se ne mijenja — ali procenat pada i može blokirati napredovanje | Standardna |
 | Problem u samplingu (Tier 3) | Moderator odlučuje o padu sa Established na Trusted (Tier 2) | Standardna |
 | Ozbiljno kršenje (hate speech, spam, ilegalni sadržaj) | Moderator postavlja direktno na Restricted (Tier 0), bez međufaza | `can_manage_trust_tier` |
-
-<a id="dijagram-prelaza"></a>
-
 ### Dijagram prelaza
 
 Mermaid diagram syntax - use it for diagram generation
@@ -358,21 +280,12 @@ stateDiagram-v2
 **📌 Praktična napomena:** Trust Tier je odvojen od access statusa. Korisnik može biti na Tier 2 (Trusted) ali blocked (npr. ima dobar sadržaj ali je vrijeđao u porukama), ili na Tier 0 (Restricted) ali allowed (može se prijaviti, ali svaki sadržaj ide na pregled). Detalji o moderacijskom workflow-u degradacije u [05 - Moderacija, sekcija 5.1.3](../project-specs/05-moderacija.md).
 
 * * *
-
-<a id="35-staff-entitet"></a>
-
 ## 3.5 Staff entitet
-
-<a id="šta-je-staff"></a>
-
 ### Šta je Staff?
 
 Staff predstavlja zaposlenika koji radi na održavanju i upravljanju CityInfo platformom. To mogu biti moderatori koji pregledaju sadržaj, operatori koji upravljaju poslovnim aspektima ili lokalni administratori koji konfigurišu postavke za svoj grad.
 
 Ključna razlika od User entiteta: Staff pristupa kroz **odvojeni admin panel** sa strožim sigurnosnim mjerama, uključujući obaveznu dvofaktorsku autentifikaciju i kraće sesije.
-
-<a id="zašto-isactive-boolean-umjesto-accountstatus-enum"></a>
-
 ### Zašto isActive (Boolean) umjesto accountStatus (Enum)?
 
 Za razliku od User entiteta koji koristi `accountStatus` enum sa tri stanja, Staff koristi jednostavan `isActive` boolean. Ovo nije slučajnost:
@@ -385,9 +298,6 @@ Za razliku od User entiteta koji koristi `accountStatus` enum sa tri stanja, Sta
 | Potreba za detaljima | Zašto neaktivan? | Aktivan ili nije — dovoljno |
 
 Ako je potrebno pratiti **zašto** je Staff deaktiviran, koriste se polja `terminatedAt` i notes, a ne dodatna enum stanja. Ovo održava model jednostavnim za tipične operacije (aktivacija/deaktivacija) dok i dalje omogućava audit trail.
-
-<a id="atributi"></a>
-
 ### Atributi
 
 Lista atributa nije konačna i može se proširivati.
@@ -413,9 +323,6 @@ Lista atributa nije konačna i može se proširivati.
 | hiredAt | DateTime | Datum zaposlenja | Da  |     |
 | createdAt | DateTime | Kreiranje naloga | Da  |     |
 | createdBy | String | Ko je kreirao nalog | Da  |     |
-
-<a id="moderatorske-permisije"></a>
-
 ### Moderatorske permisije
 
 Svi moderatori dijele iste bazne ovlasti za svakodnevni rad (approve, reject, request changes, blokiranje korisnika). Za osjetljive akcije koje imaju veći uticaj na korisnike ili strukturu sadržaja, postoje granularne permisije koje se čuvaju u `permissions` polju.
@@ -430,13 +337,7 @@ Ovo nije hijerarhija — moderator sa dodatnim permisijama nema "viši rang" od 
 > ⚠️ **Napomena o local\_admin:** Staff sa ulogom `local_admin` ima šire sistemske ovlasti i može izvršavati sve akcije koje pokrivaju `can_manage_trust_tier` i `can_manage_tags` bez potrebe za eksplicitnim permisijama u `permissions` polju. Permisije su relevantne samo za Staff sa ulogom `moderator`.
 
 Detalji o moderatorskim akcijama i permisijama opisani su u [05 - Moderacija, sekcija 5.4](../project-specs/05-moderacija.md).
-
-<a id="uloge-i-ovlasti"></a>
-
 ### Uloge i ovlasti
-
-<a id="pregled-uloga"></a>
-
 #### Pregled uloga
 
 | Uloga | Šta radi | Tipični zadaci |
@@ -444,9 +345,6 @@ Detalji o moderatorskim akcijama i permisijama opisani su u [05 - Moderacija, se
 | **moderator** | Pregleda i odobrava sadržaj | Moderacija listinga, komunikacija s korisnicima, upravljanje Trust Tier-om, upravljanje tagovima (sa permisijom) |
 | **operator** | Upravlja poslovnim aspektima | Cijene, promocije, izvještaji, komunikacija sa oglašivačima, dodjela moderatorskih permisija |
 | **local\_admin** | Administrira jedan ili više tenanta | Kategorije, tagovi, postavke, kreiranje moderatora |
-
-<a id="matrica-ovlasti"></a>
-
 #### Matrica ovlasti
 
 | Funkcionalnost | moderator | operator | local\_admin |
@@ -475,21 +373,12 @@ Detalji o moderatorskim akcijama i permisijama opisani su u [05 - Moderacija, se
 **📌 Praktična napomena:** Staff može pristupiti **samo tenantima navedenim u tenantAccess**. Čak i local\_admin za Sarajevo ne može vidjeti podatke iz Banja Luke — osim ako mu nije eksplicitno dodijeljen pristup.
 
 * * *
-
-<a id="36-globaladmin-entitet"></a>
-
 ## 3.6 GlobalAdmin entitet
-
-<a id="šta-je-globaladmin"></a>
-
 ### Šta je GlobalAdmin?
 
 GlobalAdmin je sistemski administrator sa maksimalnim ovlastima koji upravlja CityInfo infrastrukturom. Ova uloga je rezervisana isključivo za tehničko osoblje CityInfo kompanije — tipično samo 2-5 osoba.
 
 Ključno ograničenje: GlobalAdmin **nikada ne pristupa direktno tenant podacima**. Može kreirati nove gradove, postaviti prvog local\_admin-a i konfigurirati infrastrukturu, ali ne može npr. odobriti listing ili blokirati korisnika. To je namjerno — separation of concerns.
-
-<a id="atributi"></a>
-
 ### Atributi
 
 Lista atributa nije konačna.
@@ -512,9 +401,6 @@ Lista atributa nije konačna.
 | passwordChangedAt | DateTime | Zadnja promjena lozinke | Da  | Rotacija svakih 60 dana |
 | createdAt | DateTime | Kreiranje naloga | Da  |     |
 | createdBy | String | Ko je kreirao | Ne  | NULL za prvog admina |
-
-<a id="ekskluzivne-ovlasti"></a>
-
 ### Ekskluzivne ovlasti
 
 | Ovlast | Šta znači | Nivo rizika |
@@ -525,9 +411,6 @@ Lista atributa nije konačna.
 | Master API pristup | Programski pristup master bazi | Kritičan |
 | Backup i restore | Sistem-wide backup operacije | Kritičan |
 | Security monitoring | Pristup svim audit logovima | Visok |
-
-<a id="ograničenja"></a>
-
 ### Ograničenja
 
 GlobalAdmin **ne može**:
@@ -540,13 +423,7 @@ GlobalAdmin **ne može**:
 **📌 Praktična napomena:** Ako GlobalAdmin treba pogledati specifičan problem sa listingom u Sarajevu, mora zatražiti od local\_admin-a da mu dostavi relevantne informacije. Ovo štiti od "single point of failure" scenarija.
 
 * * *
-
-<a id="37-sigurnost-i-pristup"></a>
-
 ## 3.7 Sigurnost i pristup
-
-<a id="autentifikacija-po-sistemima"></a>
-
 ### Autentifikacija po sistemima
 
 Svaki od tri sistema ima vlastite sigurnosne zahtjeve prilagođene riziku i načinu korištenja.
@@ -558,9 +435,6 @@ Svaki od tri sistema ima vlastite sigurnosne zahtjeve prilagođene riziku i nač
 | **Session timeout** | 30 dana | 8 sati neaktivnosti | 4 sata neaktivnosti |
 | **Lockout** | 10 pokušaja → 15 min | 5 pokušaja → 30 min | 3 pokušaja → 1 sat |
 | **IP restrikcije** | Ne  | Opciono | Preporučeno (whitelist) |
-
-<a id="blokiranje-korisnika"></a>
-
 ### Blokiranje korisnika
 
 Kada se User blokira (accessStatus = blocked), sistem zahtijeva unos razloga i opcionalnih detalja. Razlog se bira iz predefinisanog skupa vrijednosti:
@@ -575,9 +449,6 @@ Kada se User blokira (accessStatus = blocked), sistem zahtijeva unos razloga i o
 | **OTHER** | Ostalo — obavezno popuniti `blockedDetails` |
 
 Uz razlog se opciono unose i `blockedDetails` (slobodan tekst ili strukturirani podaci za interno praćenje) te `blockedUntil` (do kada traje blokada — ako je NULL, blokada je trajna).
-
-<a id="efekt-blokiranja-na-sadržaj-korisnika"></a>
-
 ### Efekt blokiranja na sadržaj korisnika
 
 Ponašanje pri blokiranju razlikuje se za **ručno blokiranje** (moderator) i **instant blokiranje** (sistem).
@@ -596,9 +467,6 @@ Moderator bira opciju na osnovu procjene — ako je blokada zbog neprimjerenih p
 Sistem automatski blokira korisnika u slučajevima koji zahtijevaju hitnu reakciju (hate speech, nasilje, spam, malicious sadržaj). Kod instant blokiranja, **default ponašanje je sakrivanje sadržaja** — svi javno vidljivi listinzi automatski prelaze u `hidden_by_system`. Instant block kreira stavku "Instant Block Review" u moderacijskom queue-u, gdje moderator može potvrditi blokadu ili revertovati ako je bila false positive.
 
 > **📌 Praktična napomena:** Pri ručnom blokiranju, sakriveni listinzi (`hidden_by_system`) se automatski reaktiviraju pri odblokiranju. Ako moderator želi **trajno** ukloniti sadržaj (npr. u slučaju prevare ili ilegalnog sadržaja), to je zasebna akcija — moderator može listinge prebaciti u `removed` sa odgovarajućim `removedReason` prije ili nakon blokiranja. Detalji o `listingStatus` vrijednostima i `removedReason` opisani su u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
-
-<a id="session-politike"></a>
-
 ### Session politike
 
 | Sistem | Trajanje | Concurrent sessions | Logout opcije |
@@ -606,9 +474,6 @@ Sistem automatski blokira korisnika u slučajevima koji zahtijevaju hitnu reakci
 | **User** | 30 dana refresh | Neograničeno | Pojedinačni ili svi uređaji |
 | **Staff** | 8h idle timeout | 1 aktivan session | Automatski pri novoj prijavi |
 | **GlobalAdmin** | 4h idle timeout | 1 aktivan session | Obavezan logout pri kraju rada |
-
-<a id="audit-logging"></a>
-
 ### Audit logging
 
 Sve akcije se loguju, ali sa različitim nivoom detalja i retencijom:
@@ -622,19 +487,10 @@ Sve akcije se loguju, ali sa različitim nivoom detalja i retencijom:
 **📌 Praktična napomena:** Staff audit log uključuje "before/after" vrijednosti za sve izmjene. Ako moderator promijeni Trust Tier korisnika, log pokazuje prethodnu i novu vrijednost, vrijeme, IP adresu i razlog (ako je unesen).
 
 * * *
-
-<a id="38-api-endpoints"></a>
-
 ## 3.8 API Endpoints
 
 Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikazane su samo putanje i osnovni opisi — detaljna dokumentacija sa request/response shemama nalazi se u API specifikaciji.
-
-<a id="user-sistem"></a>
-
 ### User sistem
-
-<a id="autentifikacija"></a>
-
 #### Autentifikacija
 
 | Metoda | Putanja | Opis |
@@ -649,9 +505,6 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 | POST | `/auth/reset-password` | Postavljanje nove lozinke |
 | POST | `/auth/2fa/setup` | Postavljanje 2FA |
 | POST | `/auth/2fa/verify` | Verifikacija 2FA koda |
-
-<a id="profil"></a>
-
 #### Profil
 
 | Metoda | Putanja | Opis |
@@ -661,9 +514,6 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 | DELETE | `/users/me` | Brisanje računa (soft delete) |
 | GET | `/users/me/listings` | Listinzi trenutnog korisnika |
 | GET | `/users/me/transactions` | Historija transakcija |
-
-<a id="wallet"></a>
-
 #### Wallet
 
 | Metoda | Putanja | Opis |
@@ -671,13 +521,7 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 | GET | `/wallet/balance` | Trenutni balans kredita |
 | POST | `/wallet/purchase` | Kupovina kredita |
 | GET | `/wallet/transactions` | Historija wallet transakcija |
-
-<a id="staff-sistem"></a>
-
 ### Staff sistem
-
-<a id="autentifikacija"></a>
-
 #### Autentifikacija
 
 | Metoda | Putanja | Opis |
@@ -685,9 +529,6 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 | POST | `/staff/auth/login` | Prijava (email + password + 2FA) |
 | POST | `/staff/auth/logout` | Odjava |
 | POST | `/staff/auth/change-password` | Promjena lozinke |
-
-<a id="upravljanje-korisnicima"></a>
-
 #### Upravljanje korisnicima
 
 | Metoda | Putanja | Opis |
@@ -698,9 +539,6 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 | PATCH | `/staff/users/{userId}/access-status` | Blokiranje/odblokiranje (uključuje opciju za sadržaj) |
 | PATCH | `/staff/users/{userId}/verified-publisher` | Postavi/ukloni `isVerifiedPublisher` flag (zahtijeva `can_manage_trust_tier`) |
 | GET | `/staff/users/{userId}/audit-log` | Audit log korisnika |
-
-<a id="moderacija"></a>
-
 #### Moderacija
 
 | Metoda | Putanja | Opis |
@@ -709,9 +547,6 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 | POST | `/staff/moderation/{listingId}/approve` | Odobrenje listinga |
 | POST | `/staff/moderation/{listingId}/reject` | Odbijanje listinga |
 | POST | `/staff/moderation/{listingId}/request-changes` | Vraćanje na doradu sa povratnom informacijom |
-
-<a id="globaladmin-sistem"></a>
-
 ### GlobalAdmin sistem
 
 | Metoda | Putanja | Opis |
@@ -728,9 +563,6 @@ Ova sekcija daje pregled ključnih endpoint-a za upravljanje korisnicima. Prikaz
 **📌 Praktična napomena:** Ovi endpoint-i su grupisani po logičkim cjelinama, ali u implementaciji mogu biti organizovani drugačije. Verzioniranje API-ja (npr. `/v1/auth/login`) nije prikazano radi jednostavnosti.
 
 * * *
-
-<a id="sažetak"></a>
-
 ## Sažetak
 
 Tri korisnička sistema CityInfo platforme — User, Staff i GlobalAdmin — dizajnirana su sa jasnom separacijom odgovornosti:
@@ -744,9 +576,6 @@ Tri korisnička sistema CityInfo platforme — User, Staff i GlobalAdmin — diz
 Ova arhitektura omogućava platformi da skalira — od jednog grada sa stotinu korisnika do desetina gradova sa stotinama hiljada korisnika — uz održavanje sigurnosti i operativne efikasnosti.
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis |

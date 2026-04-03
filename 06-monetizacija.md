@@ -5,9 +5,6 @@
 > **Status:** Završeno ✅
 
 * * *
-
-<a id="pregled-poglavlja"></a>
-
 ## Pregled poglavlja
 
 CityInfo koristi **freemium model** sa tri glavna prihoda: promocije listinga, display oglašavanje i franšizno poslovanje. Filozofija je jednostavna — korisnici kupuju kredite unaprijed, a zatim ih troše na usluge bez ponovnog prolaska kroz payment proces. Ovaj pristup smanjuje friction pri svakoj akciji i pomaže konverziji.
@@ -24,13 +21,7 @@ Monetizacija je dizajnirana da bude fer prema malim organizatorima (pristupačne
 | **6.6 API Endpoints** | Lista endpointa za monetizaciju | Dev |
 
 * * *
-
-<a id="61-kreditni-sistem"></a>
-
 ## 6.1 Kreditni sistem
-
-<a id="611-koncept-i-filozofija"></a>
-
 ### 6.1.1 Koncept i filozofija
 
 Kreditni sistem omogućava **prepaid model** gdje korisnici jednom kupe kredite, a zatim ih koriste za različite usluge na platformi. Umjesto da korisnik prolazi kroz payment formu svaki put kad želi nešto promovirati, jednostavno potroši kredite koje već ima na računu.
@@ -38,9 +29,6 @@ Kreditni sistem omogućava **prepaid model** gdje korisnici jednom kupe kredite,
 Ovaj pristup donosi nekoliko ključnih prednosti: brža aktivacija usluga (instant umjesto čekanja payment processinga), bolja kontrola troškova (korisnik vidi tačno koliko ima i troši), te psihološki "lock-in" efekat koji povećava retention — krediti na računu su razlog za povratak.
 
 **Praktična napomena:** Platforma koristi jedinstvenu valutu (krediti) umjesto realnih novčanih iznosa za interne operacije. Konverzija u lokalnu valutu se dešava samo pri kupovini paketa.
-
-<a id="612-wallet-koncept"></a>
-
 ### 6.1.2 Wallet koncept
 
 Svaki korisnik ima virtualni novčanik (wallet) koji prati trenutno stanje kredita. Wallet se automatski kreira pri registraciji sa početnim stanjem od 0 kredita. Sva trošenja i dopune se evidentiraju kroz transakcijski log koji omogućava potpunu transparentnost.
@@ -52,9 +40,6 @@ Svaki korisnik ima virtualni novčanik (wallet) koji prati trenutno stanje kredi
 | **Valuta** | Krediti (interna jedinica) |
 | **Vidljivost** | Uvijek prikazano u header-u aplikacije |
 | **Historija** | Kompletna historija transakcija dostupna korisniku |
-
-<a id="613-creditpackage-entitet"></a>
-
 ### 6.1.3 CreditPackage entitet
 
 Paketi kredita definišu šta korisnici mogu kupiti. Svaki tenant može imati prilagođene pakete, ali tipično se koristi standardni set sa progresivnim popustima za veće količine.
@@ -75,9 +60,6 @@ Paketi kredita definišu šta korisnici mogu kupiti. Svaki tenant može imati pr
 | createdAt | DateTime | Datum kreiranja | ✅   | —   |
 
 > 📝 **Napomena:** Lista atributa nije konačna i može se proširivati prema potrebama proizvoda.
-
-<a id="standardni-paketi-primjer"></a>
-
 #### Standardni paketi (primjer)
 
 | Paket | Krediti | Cijena (BAM) | Popust | Po kreditu |
@@ -88,9 +70,6 @@ Paketi kredita definišu šta korisnici mogu kupiti. Svaki tenant može imati pr
 | Business | 5000 | 350 | 30% | 0.07 |
 
 **Praktična napomena:** Progresivni popusti su dizajnirani da ohrabre veće kupovine. "Best value" badge se tipično stavlja na srednji paket koji ima najbolji omjer cijene i popusta.
-
-<a id="614-credittransaction-entitet"></a>
-
 ### 6.1.4 CreditTransaction entitet
 
 Svaka promjena stanja wallet-a evidentira se kroz transakciju. Ovo omogućava potpunu reviziju troškova i zarade, kao i rješavanje eventualnih sporova sa korisnicima.
@@ -109,9 +88,6 @@ Svaka promjena stanja wallet-a evidentira se kroz transakciju. Ovo omogućava po
 | createdAt | DateTime | Vrijeme transakcije | ✅   | —   |
 
 > 📝 **Napomena:** Lista atributa nije konačna i može se proširivati prema potrebama proizvoda.
-
-<a id="tipovi-transakcija"></a>
-
 #### Tipovi transakcija
 
 | Tip | Opis | Amount |
@@ -123,9 +99,6 @@ Svaka promjena stanja wallet-a evidentira se kroz transakciju. Ovo omogućava po
 | **admin\_credit** | Admin dodaje kredite |     |
 | **admin\_debit** | Admin oduzima kredite |     |
 | **reward** | Nagrada (loyalty, bonus) |     |
-
-<a id="615-paymenthistory-entitet"></a>
-
 ### 6.1.5 PaymentHistory entitet
 
 Zapis o stvarnim finansijskim transakcijama (kupovinama paketa kredita). Odvojen je od CreditTransaction jer prati različite informacije — PaymentHistory se bavi novcem, CreditTransaction se bavi kreditima.
@@ -144,9 +117,6 @@ Zapis o stvarnim finansijskim transakcijama (kupovinama paketa kredita). Odvojen
 | createdAt | DateTime | Vrijeme inicijacije | ✅   | —   |
 
 > 📝 **Napomena:** Lista atributa nije konačna i može se proširivati prema potrebama proizvoda.
-
-<a id="616-workflow-kupovine-kredita"></a>
-
 ### 6.1.6 Workflow kupovine kredita
 
 ```
@@ -163,9 +133,6 @@ flowchart TD
 ```
 
 > 📝 **Napomena:** Backend validira dostupnost i status paketa prije procesiranja, ali u normalnom toku korisnik vidi samo aktivne pakete pa ova provjera rijetko pada. Cijeli proces od PaymentHistory do wallet update-a je atomska transakcija — ili se sve desi, ili se ništa ne desi.
-
-<a id="617-ključna-poslovna-pravila"></a>
-
 ### 6.1.7 Ključna poslovna pravila
 
 | Pravilo | Opis | Prioritet |
@@ -176,21 +143,12 @@ flowchart TD
 | **Promocije pri blokiranju** | Ako korisnik bude blokiran, aktivne promocije se otkazuju bez povrata | Visok |
 
 * * *
-
-<a id="62-promocije-listinga"></a>
-
 ## 6.2 Promocije listinga
-
-<a id="621-koncept-i-svrha"></a>
-
 ### 6.2.1 Koncept i svrha
 
 Promocije omogućavaju listing-ima bolju vidljivost kroz plaćeno isticanje. Postoje dva osnovna tipa — Standard i Premium — sa različitim nivoima vidljivosti i cijenom. Dodatno, Premium promocije mogu uključiti opciju prikaza na naslovnoj stranici.
 
 Ključna razlika: Standard promocije se **miješaju** sa običnim listinzima (samo su vizuelno istaknute), dok Premium promocije imaju **garantovanu poziciju na vrhu** liste u svojoj kategoriji.
-
-<a id="622-promo-entitet"></a>
-
 ### 6.2.2 Promo entitet
 
 | Naziv | Tip | Opis | Obavezno | Napomena |
@@ -213,9 +171,6 @@ Ključna razlika: Standard promocije se **miješaju** sa običnim listinzima (sa
 | createdAt | DateTime | Vrijeme kreiranja | ✅   | —   |
 
 > 📝 **Napomena:** Lista atributa nije konačna. Troškovi promocije se prate kroz CreditTransaction entitet sa odgovarajućim referenceType i referenceId.
-
-<a id="status-promocije"></a>
-
 #### Status promocije
 
 | Status | Opis |
@@ -226,9 +181,6 @@ Ključna razlika: Standard promocije se **miješaju** sa običnim listinzima (sa
 | **cancelled** | Otkazana (npr. listing uklonjen/`removed`, korisnik blokiran — `hidden_by_system`) |
 
 > 📝 **Napomena za V1:** Promocije se aktiviraju instant pri kreiranju (prepaid model). Scheduled promotions (zakazivanje unaprijed) može se dodati u budućim verzijama.
-
-<a id="623-standard-vs-premium-promocija"></a>
-
 ### 6.2.3 Standard vs Premium promocija
 
 Izbor između Standard i Premium promocije zavisi od budžeta i cilja. Standard je pristupačniji i pogodan za kontinuiranu prisutnost, dok Premium garantuje maksimalnu vidljivost za važne objave.
@@ -241,9 +193,6 @@ Izbor između Standard i Premium promocije zavisi od budžeta i cilja. Standard 
 | **Vizuelni highlight** | Blagi (border, pozadina) | Jak + "Premium" badge | Jak + "Premium" + "Featured" badge |
 | **Homepage prioritet** | ❌   | ❌   | ✅ Apsolutni prioritet |
 | **Statistike** | Osnovne (views, clicks) | Detaljne + demographics | Detaljne + homepage stats |
-
-<a id="kako-izgleda-sortiranje-u-praksi"></a>
-
 #### Kako izgleda sortiranje u praksi
 
 **U kategoriji:**
@@ -279,24 +228,15 @@ Regular Event D
 ```
 
 **Praktična napomena:** Standard promocije su dobar izbor za kontinuiranu prisutnost uz manji budžet. Premium + Homepage je rezervisan za najvažnije objave gdje je kritično da ih vidi što više ljudi. AutoRenew ima posebnu vrijednost za Premium promocije jer osvježavanjem `sortDate` utječe na poziciju i unutar premium sekcije.
-
-<a id="624-osvježavanje-pozicije-refresh-i-autorenew"></a>
-
 ### 6.2.4 Osvježavanje pozicije (Refresh i AutoRenew)
 
 Osvježavanje `sortDate` je mehanizam koji listing "podiže" na višu poziciju kao da je tek objavljen. Postoje dva načina: besplatni ručni refresh i plaćeni automatski refresh (AutoRenew) kroz promociju.
-
-<a id="ručni-refresh-besplatno-svi-korisnici"></a>
-
 #### Ručni refresh (besplatno, svi korisnici)
 
 - Dostupan jednom u 24 sata
 - Samo za aktivne listinge
 - Korisnik klikne "Osvježi poziciju" → sortDate = NOW()
 - Listing ima polje `lastManualRefreshAt` koje prati kad je korisnik zadnji put ručno osvježio poziciju — koristi se za provjeru 24h cooldown-a
-
-<a id="autorenew-kroz-promociju-plaćeno"></a>
-
 #### AutoRenew kroz promociju (plaćeno)
 
 AutoRenew automatski osvježava `sortDate` na odabranom intervalu. Ovo je **plaćena automatizacija** istog mehanizma koji korisnici mogu koristiti ručno, ali bez 24h ograničenja — plaćeni AutoRenew može osvježavati poziciju do 8× dnevno (3h interval).
@@ -310,15 +250,9 @@ AutoRenew automatski osvježava `sortDate` na odabranom intervalu. Ovo je **pla�
 > ⚠️ **Draft napomena — pricing AutoRenew-a:** Način obračuna cijene za AutoRenew opciju (množitelji bazne cijene, fiksni dodaci, ili drugi model) **još nije konačno definisan**. Vrijednosti navedene u sekciji 6.5 su ilustrativni placeholderi i biće finalizirane prije MVP-a. Princip ostaje: češći interval = veća cijena.
 
 **Praktična napomena:** AutoRenew ima smisla za promocije duže od par dana. Za jednodnevnu promociju, ručni refresh je obično dovoljan. Korisnik koji ima aktivnu promociju sa AutoRenew može i dalje ručno refreshati (ako želi dodatno osvježavanje), ali to rijetko ima smisla.
-
-<a id="625-pauziranje-i-nastavak-promocije"></a>
-
 ### 6.2.5 Pauziranje i nastavak promocije
 
 Korisnik može privremeno pauzirati aktivnu promociju. Ovo je korisno kad korisnik želi "sačuvati" preostale dane — npr. restoran zatvoren za renovaciju, ili organizator želi sačekati bolji termin.
-
-<a id="šta-se-dešava-pri-pauziranju"></a>
-
 #### Šta se dešava pri pauziranju
 
 Kada korisnik pauzira promociju:
@@ -329,9 +263,6 @@ Kada korisnik pauzira promociju:
 - **Listing gubi promotivni status** u sortiranju — tretira se kao običan listing dok je promocija pauzirana
 - **endDate se zamrzava** — sistem bilježi preostale dane (`remainingDays`) i ne troši ih dok je promocija pauzirana
 - **Krediti se ne vraćaju** — promocija je prepaid, pauza ne generira refund
-
-<a id="šta-se-dešava-pri-nastavku"></a>
-
 #### Šta se dešava pri nastavku
 
 Kada korisnik nastavi (resume) pauziranu promociju:
@@ -341,9 +272,6 @@ Kada korisnik nastavi (resume) pauziranu promociju:
 - **AutoRenew se reaktivira** (ako je bio enabled) — `nextAutoRenewAt` se postavlja na osnovu intervala
 - **sortDate se osvježava** na NOW() — listing se efektivno vraća na vrh kao da je tek promoviran
 - `pausedAt` i `remainingDays` se čiste
-
-<a id="ograničenja"></a>
-
 #### Ograničenja
 
 | Pravilo | Opis |
@@ -354,9 +282,6 @@ Kada korisnik nastavi (resume) pauziranu promociju:
 | **Jedna pauza za vrijeme trajanja** | Bez ograničenja broja pauza — korisnik može pauzirati i nastaviti proizvoljan broj puta |
 
 > **💡 Praktična napomena:** Pauza je korisna funkcija za korisnike koji su kupili višednevnu promociju ali ne mogu iskoristiti sve dane zaredom. Bez nje, korisnik gubi plaćene dane — što dovodi do frustracije i smanjene spremnosti za buduće kupovine.
-
-<a id="626-workflow-promocija"></a>
-
 ### 6.2.6 Workflow promocija
 
 ```
@@ -379,9 +304,6 @@ flowchart TD
     P -->|Da| N
     P -->|Ne| O
 ```
-
-<a id="627-ključna-poslovna-pravila"></a>
-
 ### 6.2.7 Ključna poslovna pravila
 
 | Pravilo | Opis | Prioritet |
@@ -399,13 +321,7 @@ flowchart TD
 | **Resume osvježava sortDate** | Pri nastavku, sortDate se osvježava na NOW() | Srednji |
 
 * * *
-
-<a id="63-display-oglašavanje"></a>
-
 ## 6.3 Display oglašavanje
-
-<a id="631-mvp-pristup"></a>
-
 ### 6.3.1 MVP pristup
 
 Display oglašavanje u MVP-u koristi **maksimalno pojednostavljen model**: Staff ručno postavlja banner oglase kroz admin panel, a sistem ih prikazuje na predefinisanim pozicijama. Nema self-service-a za oglašivače, nema CPC biddinga, nema targetinga po kategorijama, i nema fraud detectiona.
@@ -413,9 +329,6 @@ Display oglašavanje u MVP-u koristi **maksimalno pojednostavljen model**: Staff
 Razlog za ovaj pristup: u ranoj fazi platforma nema dovoljno traffica ni oglašivača da opravda kompleksan ad-serving sistem. Ručno postavljanje daje potpunu kontrolu timu i dovoljan je za prvih 5–10 oglašivača koji se očekuju u prvim mjesecima.
 
 **Praktična napomena:** Display oglašavanje će vjerovatno biti primarni izvor prihoda u ranoj fazi — dok korisnici još ne vide dovoljno traffica da investiraju u promocije listinga, lokalni biznisi su spremni platiti banner ako im se pokaže posjećenost. Jednostavnost ovog modela omogućava brz go-to-market.
-
-<a id="632-displayad-entitet"></a>
-
 ### 6.3.2 DisplayAd entitet
 
 Svaki banner oglas je jednostavan zapis koji Staff kreira i održava. Nema kampanja, biddinga ni složene logike — samo slika, link, zona i vremenski okvir.
@@ -438,9 +351,6 @@ Svaki banner oglas je jednostavan zapis koji Staff kreira i održava. Nema kampa
 | createdAt | DateTime | Vrijeme kreiranja | ✅   | —   |
 
 > 📝 **Napomena:** Lista atributa nije konačna i može se proširivati prema potrebama proizvoda.
-
-<a id="633-reklamne-zone"></a>
-
 ### 6.3.3 Reklamne zone
 
 Platforma ima predefinisane pozicije za prikazivanje oglasa. Za MVP koristimo smanjeni set zona — dovoljno za pokrivanje ključnih pozicija bez prevelike kompleksnosti.
@@ -453,9 +363,6 @@ Platforma ima predefinisane pozicije za prikazivanje oglasa. Za MVP koristimo sm
 | Z-004 | Mobile Banner | Mobile vrh ili dno | 320×50 | Mobile Banner |
 
 **Praktična napomena:** Zone su konfigurisane po tenantu i mogu se dodavati ili mijenjati bez promjene koda. In-Feed (Z-003) je najvrednija pozicija jer se pojavljuje direktno među sadržajem.
-
-<a id="634-logika-prikaza"></a>
-
 ### 6.3.4 Logika prikaza
 
 Prikaz oglasa u MVP-u je namjerno jednostavan:
@@ -466,9 +373,6 @@ Prikaz oglasa u MVP-u je namjerno jednostavan:
 4. Ako za zonu nema aktivnog oglasa, ne prikazuj ništa (zona je prazna)
 
 **Praktična napomena:** Ovaj pristup ne zahtijeva nikakav scoring, bidding ni fraud detection. Staff ima potpunu kontrolu — ako neki oglas treba biti istaknutiji, jednostavno mu postavi niži `sortOrder`.
-
-<a id="635-ključna-poslovna-pravila"></a>
-
 ### 6.3.5 Ključna poslovna pravila
 
 | Pravilo | Opis | Prioritet |
@@ -477,9 +381,6 @@ Prikaz oglasa u MVP-u je namjerno jednostavan:
 | **Impressions i clicks se broje** | Osnovne metrike se prate automatski za izvještavanje prema oglašivačima | Visok |
 | **Datumski okvir** | Oglas se prikazuje samo unutar definisanog perioda (ako je definisan) | Srednji |
 | **Prazna zona je OK** | Ako nema oglasa za zonu, zona se ne prikazuje — nema placeholder sadržaja | Srednji |
-
-<a id="636-napredni-display-ads-planirano-za-fazu-2"></a>
-
 ### 6.3.6 Napredni Display Ads — planirano za Fazu 2
 
 Kada broj oglašivača i kampanja preraste kapacitet ručnog upravljanja (okvirno 10+ istovremenih kampanja), planirano je proširenje na napredni sistem koji uključuje:
@@ -494,13 +395,7 @@ Kada broj oglašivača i kampanja preraste kapacitet ručnog upravljanja (okvirn
 > 📝 **Napomena:** Detaljan dizajn naprednog sistema je dokumentiran i biće osnova za Fazu 2 kada se aktivira okidač (vidi MVP SCOPE dokument).
 
 * * *
-
-<a id="64-franšizno-poslovanje"></a>
-
 ## 6.4 Franšizno poslovanje
-
-<a id="641-pregled-i-potencijal"></a>
-
 ### 6.4.1 Pregled i potencijal
 
 Franšizno poslovanje omogućava licenciranje CityInfo platforme partnerima koji žele pokrenuti lokalnu verziju u svom gradu ili regionu. Ovo je potencijalno **najveći revenue stream** jer nema geografskih ograničenja — tržište je internacionalno.
@@ -508,9 +403,6 @@ Franšizno poslovanje omogućava licenciranje CityInfo platforme partnerima koji
 Dok promocije i display oglašavanje generišu prihod unutar pojedinačnih tenanta, franšiza monetizira samu platformu kao proizvod. Svaki novi partner znači novi tenant, novu bazu korisnika, i kontinuirani revenue share.
 
 **Praktična napomena:** Za razliku od operativnih prihoda (promocije, oglasi) koji rastu linearno sa aktivnošću korisnika, franšiza ima potencijal eksponencijalnog rasta kroz mrežu partnera.
-
-<a id="642-poslovni-model"></a>
-
 ### 6.4.2 Poslovni model
 
 Franšiza koristi kombinaciju jednokratne naknade i revenue share modela:
@@ -527,9 +419,6 @@ Franšiza koristi kombinaciju jednokratne naknade i revenue share modela:
 - Nivo podrške i prilagođavanja
 
 > 📝 **Napomena:** Navedene cijene su ilustrativne. Stvarne cijene se definišu kroz pregovore i zavise od specifičnosti svakog partnerstva.
-
-<a id="643-šta-franšiza-uključuje"></a>
-
 ### 6.4.3 Šta franšiza uključuje
 
 | Komponenta | Opis |
@@ -545,9 +434,6 @@ Franšiza koristi kombinaciju jednokratne naknade i revenue share modela:
 - Marketing materijale (partner je odgovoran za lokalnu promociju)
 - Garanciju uspjeha (partner preuzima poslovni rizik)
 - Ekskluzivni development (custom features se dodatno naplaćuju)
-
-<a id="644-profil-idealnog-partnera"></a>
-
 ### 6.4.4 Profil idealnog partnera
 
 Franšiza je otvorena za različite profile partnera, uz ispunjavanje osnovnih kriterija:
@@ -565,9 +451,6 @@ Franšiza je otvorena za različite profile partnera, uz ispunjavanje osnovnih k
 - Razumijevanje lokalnog tržišta
 - Kapacitet za moderaciju i korisničku podršku
 - Dugoročna vizija i commitment
-
-<a id="645-proces-partnerstva"></a>
-
 ### 6.4.5 Proces partnerstva
 
 ```
@@ -585,9 +468,6 @@ flowchart TD
 ```
 
 **Praktična napomena:** Cijeli proces od inicijalnog kontakta do go-live tipično traje 4-8 sedmica, zavisno od kompleksnosti prilagođavanja i spremnosti partnera.
-
-<a id="646-revenue-share-mehanizam"></a>
-
 ### 6.4.6 Revenue share mehanizam
 
 Revenue share se obračunava mjesečno na osnovu svih prihoda koje tenant generiše:
@@ -607,21 +487,12 @@ Revenue share se obračunava mjesečno na osnovu svih prihoda koje tenant generi
 > 📝 **Napomena za V1:** Inicijalno se oslanjamo na povjerenje i transparentnost partnera. Automatizovani revenue tracking može se implementirati u budućim verzijama.
 
 * * *
-
-<a id="65-pricing-strategija"></a>
-
 ## 6.5 Pricing strategija
-
-<a id="651-pregled"></a>
-
 ### 6.5.1 Pregled
 
 CityInfo koristi value-based pricing koji balansira dostupnost za male organizatore sa profitabilnošću za platformu. Ključni principi su jednostavnost (jasne cijene), skalabilnost (od malih do velikih), i lokalnost (prilagođeno kupovnoj moći).
 
 Cijene nisu "zakovane" — očekuje se da će se prilagođavati kroz A/B testiranje i feedback tržišta. Dokumentirane vrijednosti su početne smjernice.
-
-<a id="652-kredit-paketi"></a>
-
 ### 6.5.2 Kredit paketi
 
 | Paket | Krediti | Cijena (BAM) | Popust | Po kreditu | Target |
@@ -631,9 +502,6 @@ Cijene nisu "zakovane" — očekuje se da će se prilagođavati kroz A/B testira
 | Premium | 1000 | 80  | 20% | 0.08 | Aktivni organizatori |
 | Business | 5000 | 350 | 30% | 0.07 | Profesionalci |
 | Enterprise | 10000 | 600 | 40% | 0.06 | Velike organizacije |
-
-<a id="653-promocijski-paketi-u-kreditima"></a>
-
 ### 6.5.3 Promocijski paketi (u kreditima)
 
 > ⚠️ **Draft napomena:** Cijene AutoRenew opcije u ovoj tabeli su **ilustrativni placeholderi**. Konačan model obračuna (množitelji, fiksni dodaci, ili drugi pristup) biće definisan prije MVP-a. Bazne cijene promocija (bez AutoRenew) su stabilnije ali također podložne promjeni.
@@ -646,9 +514,6 @@ Cijene nisu "zakovane" — očekuje se da će se prilagođavati kroz A/B testira
 | 30 dana | 600 kr | 1200 kr | 1800 kr |
 
 > 📝 **AutoRenew dodaci:** Cijene za AutoRenew opciju (24h/8h/3h intervali) biće dodane u ovu tabelu kada se finalizira pricing model. Princip: češći interval = veća cijena.
-
-<a id="654-prilagođavanje-po-tenantu"></a>
-
 ### 6.5.4 Prilagođavanje po tenantu
 
 Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
@@ -659,9 +524,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | **Konkurencija** | 0.8-1.2× | Više konkurenata = niže cijene |
 | **Veličina tržišta** | 0.7-1.3× | Veći grad = veće cijene |
 | **Sezonalnost** | 0.8-1.5× | Turistička sezona = veće |
-
-<a id="655-roi-primjeri"></a>
-
 ### 6.5.5 ROI primjeri
 
 **Za organizatore događaja (koncert sa 200 mjesta):**
@@ -677,9 +539,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 - ROI: ~25×
 
 **Praktična napomena:** Ovi primjeri su optimistični i služe za prodajne materijale. Stvarni ROI varira značajno zavisno od kvalitete sadržaja i atraktivnosti ponude.
-
-<a id="656-pricing-evolucija"></a>
-
 ### 6.5.6 Pricing evolucija
 
 | Faza | Period | Fokus |
@@ -689,13 +548,7 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | **Maturity** | 18+ mjeseci | Stabilne cijene, premium tiers, value-added services |
 
 * * *
-
-<a id="66-api-endpoints"></a>
-
 ## 6.6 API Endpoints
-
-<a id="661-wallet-operacije"></a>
-
 ### 6.6.1 Wallet operacije
 
 | Metoda | Putanja | Opis |
@@ -703,9 +556,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | GET | `/api/wallet` | Dohvati trenutno stanje wallet-a |
 | GET | `/api/wallet/transactions` | Lista transakcija (paginirano) |
 | GET | `/api/wallet/transactions/{id}` | Detalji pojedinačne transakcije |
-
-<a id="662-kredit-paketi"></a>
-
 ### 6.6.2 Kredit paketi
 
 | Metoda | Putanja | Opis |
@@ -713,9 +563,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | GET | `/api/credit-packages` | Lista dostupnih paketa |
 | GET | `/api/credit-packages/{id}` | Detalji paketa |
 | POST | `/api/credit-packages/{id}/purchase` | Kupovina paketa |
-
-<a id="663-promocije"></a>
-
 ### 6.6.3 Promocije
 
 | Metoda | Putanja | Opis |
@@ -727,9 +574,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | POST | `/api/promotions/{id}/resume` | Nastavak promocije |
 | DELETE | `/api/promotions/{id}` | Otkazivanje promocije |
 | GET | `/api/promotions/pricing` | Dohvati cijene promocija |
-
-<a id="664-display-oglašavanje-staff-admin"></a>
-
 ### 6.6.4 Display oglašavanje (Staff admin)
 
 | Metoda | Putanja | Opis |
@@ -742,9 +586,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | GET | `/api/admin/display-ads/{id}/stats` | Statistika oglasa (impressions, clicks) |
 | GET | `/api/ad-zones` | Lista dostupnih zona |
 | GET | `/api/ads/zone/{zoneId}` | Dohvati oglas za prikaz u zoni (javni endpoint) |
-
-<a id="665-admin-operacije"></a>
-
 ### 6.6.5 Admin operacije
 
 | Metoda | Putanja | Opis |
@@ -755,9 +596,6 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 | GET | `/api/admin/promotions` | Sve promocije (admin view) |
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis |
