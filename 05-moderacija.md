@@ -5,17 +5,11 @@
 > **Datum:** 3.4.2026
 
 * * *
-
-<a id="pregled-poglavlja"></a>
-
 ## Pregled poglavlja
 
 Moderacija je srce sistema kvaliteta na CityInfo platformi. Ovdje se ne radi o cenzuri, već o osiguranju da korisnici dobijaju tačan, koristan i primjeren sadržaj. Moderatori su profesionalni zaposlenici platforme — ne volonteri, ne algoritmi koji samostalno odlučuju.
 
 Ovo poglavlje objašnjava kako moderacija funkcioniše, ko ima koje ovlasti, i kako AI pomaže (ali ne zamjenjuje) ljudske odluke. Također pokriva komunikaciju sa korisnicima jer način na koji pričamo sa ljudima direktno utiče na kvalitet zajednice.
-
-<a id="sekcije-u-ovom-poglavlju"></a>
-
 ### Sekcije u ovom poglavlju
 
 | Sekcija | Opis | Ciljna publika |
@@ -27,9 +21,6 @@ Ovo poglavlje objašnjava kako moderacija funkcioniše, ko ima koje ovlasti, i k
 | **5.5 Komunikacija sa korisnicima** | Template poruke, ton | Ops |
 | **5.6 Verifikacija vlasništva** | Dokumenti, workflow, verifikacija po tier-u | Ops + Dev |
 | **5.7 API Endpoints** | Lista endpointa za moderaciju | Dev |
-
-<a id="povezani-dokumenti"></a>
-
 ### Povezani dokumenti
 
 - [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — Trust Tier sistem, parametri napredovanja
@@ -37,17 +28,11 @@ Ovo poglavlje objašnjava kako moderacija funkcioniše, ko ima koje ovlasti, i k
 - [07 - Komunikacija](../project-specs/07-komunikacija.md) — Message sistem
 
 * * *
-
-<a id="51-filozofija-moderacije"></a>
-
 ## 5.1 Filozofija moderacije
 
 Moderacija na CityInfo-u nije gatekeeping — to je osiguranje kvaliteta. Cilj nije blokirati sadržaj, već pomoći korisnicima da ga učine boljim. Kada nekome kažemo "potrebne su izmjene", to nije kazna već prilika da njihov sadržaj zasija.
 
 Sistem balansira potrebu za brzinom (korisnici ne žele čekati) sa potrebom za kvalitetom (platforma mora ostati korisna). Zato korisnici višeg trust tiera objavljuju odmah pa se pregledaju naknadno, dok novi korisnici čekaju odobrenje — ali nikad predugo.
-
-<a id="511-ključni-principi"></a>
-
 ### 5.1.1 Ključni principi
 
 | Princip | Šta to znači u praksi |
@@ -59,9 +44,6 @@ Sistem balansira potrebu za brzinom (korisnici ne žele čekati) sa potrebom za 
 | **Transparentnost** | Korisnik uvijek zna zašto je nešto odbačeno ili vraćeno na izmjenu. |
 | **Pozitivna komunikacija** | "Primijetili smo…" je bolje od "Morate…". Ton gradi zajednicu. |
 | **Kulturna osjetljivost** | Sarajevo nije Berlin — lokalni kontekst je bitan. |
-
-<a id="512-moderacijski-ciklus"></a>
-
 ### 5.1.2 Moderacijski ciklus
 
 ```
@@ -76,15 +58,9 @@ EDUKACIJA → PREVENCIJA → INTERVENCIJA → EVALUACIJA
 - **Evaluacija**: Pratimo patterne, učimo, poboljšavamo proces
 
 > 💡 **Praktična napomena:** Filozofija nije samo "lijepe riječi" — ovi principi se reflektuju u svakom template-u, svakoj odluci, svakom UX elementu. Moderatori prolaze trening upravo na ovim principima.
-
-<a id="513-trust-tier-sistem"></a>
-
 ### 5.1.3 Trust Tier sistem
 
 CityInfo koristi sistem nivoa povjerenja (Trust Tier) koji određuje kako se sadržaj korisnika moderira. Umjesto binarnog pristupa "vjerujemo / ne vjerujemo", sistem prepoznaje da korisnici grade povjerenje kroz konzistentno kvalitetan sadržaj. Detaljna specifikacija Trust Tier sistema — uključujući sve konfiguracijske parametre — nalazi se u [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md). Ovdje je prikazan sažetak relevantan za moderacijski workflow.
-
-<a id="trust-tier-nivoi"></a>
-
 #### Trust Tier nivoi
 
 | Tier | Naziv | Moderacija | Sampling | Kako se dostiže |
@@ -104,9 +80,6 @@ CityInfo koristi sistem nivoa povjerenja (Trust Tier) koji određuje kako se sad
 - **Trusted (2)**: Korisnici koji su dokazali da prave kvalitetan sadržaj. Njihov sadržaj ide live odmah, a moderator ga pregleda naknadno. Sav sadržaj se i dalje pregleda (100%).
 - **Established (3)**: Korisnici sa dugom istorijom kvalitetnog sadržaja. Post-moderacija sa samplingom — moderator pregleda samo dio njihovog sadržaja. Ostatak prolazi automatski.
 - **Verified Partner (4)**: Ugovorni partneri platforme (kino kompleksi, kulturni centri, gradske institucije). Najniži sampling. Postavlja se ručno od strane moderatora sa `can_manage_trust_tier` permisijom, nakon uspostavljanja poslovnog odnosa. Ovo je osjetljiva akcija jer direktno mijenja moderacijski workflow za korisnika.
-
-<a id="sampling"></a>
-
 #### Sampling
 
 Sampling znači da se ne pregleda svaki sadržaj, već nasumični uzorak. Ovo značajno smanjuje opterećenje moderatora za provjerene korisnike, dok i dalje održava kontrolu kvaliteta.
@@ -116,9 +89,6 @@ Ako se u pregledanom uzorku pronađe problem:
 - Sadržaj se označava/skriva kao i obično
 - Korisnik može biti degradiran za tier
 - Sistem može privremeno povećati sampling procenat za tog korisnika
-
-<a id="napredovanje"></a>
-
 #### Napredovanje
 
 Napredovanje kroz tier-ove je automatsko za nivoe 1→2 i 2→3. Sistem provjerava uslove nakon svake moderatorske odluke. Sva tri uslova moraju biti ispunjena **istovremeno** — procenat sam za sebe nije dovoljan jer bi korisnik sa jednom odobrenom objavom matematički imao 100% uspješnost.
@@ -135,9 +105,6 @@ Napredovanje kroz tier-ove je automatsko za nivoe 1→2 i 2→3. Sistem provjera
 Preporučene vrijednosti su polazna tačka — treba ih tune-ovati na osnovu stvarnih podataka nakon launcha. Sve vrijednosti su konfiguracijski parametri koji se mogu mijenjati bez izmjene koda.
 
 > 💡 **Praktična napomena:** Parametri su podložni promjeni na osnovu iskustva. Početne vrijednosti su konzervativne — bolje je početi strože pa olabaviti nego obrnuto.
-
-<a id="efekt-changes_requested-na-napredovanje"></a>
-
 #### Efekt `changes_requested` na napredovanje
 
 `changes_requested` je kvalitativno drugačiji signal od `rejected` — moderator ne odbija sadržaj, nego poziva korisnika na saradnju i ispravku. Penalizovati korisnika koji aktivno popravlja sadržaj bilo bi kontraproduktivno, pa `changes_requested` sam po sebi **ne utiče na Trust Tier ni na procenat uspješnosti**.
@@ -150,9 +117,6 @@ Ono što se broji je isključivo **finalna odluka** po listingu — bez obzira k
 | `changes_requested` → korisnik popravlja → listing prelazi u `removed (removedReason: rejected)` | 1 rejected |
 | Više iteracija `changes_requested` → na kraju listing prelazi u `published` | 1 approved — broj iteracija nije relevantan |
 | `changes_requested` → korisnik ne reaguje, listing ostaje u tom statusu | Ništa — nema finalne odluke, ne broji se |
-
-<a id="degradacija"></a>
-
 #### Degradacija
 
 Korisnik može pasti za tier ako moderacija otkrije problematičan sadržaj. Degradacija može biti **automatska** (sistem detektuje jasno definisan prag) ili **ručna** (moderator procjenjuje situaciju). Pragovi za automatsku degradaciju su konfiguracijski parametri.
@@ -178,9 +142,6 @@ Situacije koje zahtijevaju ljudsku procjenu — moderator odlučuje da li je deg
 | Ozbiljno kršenje (hate speech, spam, ilegalni sadržaj) | Moderator postavlja direktno na Restricted (Tier 0), bez međufaza | `can_manage_trust_tier` |
 
 > 💡 **Praktična napomena:** Automatska degradacija postoji da bi se sistem mogao zaštititi i izvan radnog vremena, ali uvijek podliježe ljudskom pregledu. Moderator koji pregleda auto-degradaciju može je revertovati ako procijeni da je bila nepravedna — npr. ako su rejected odluke bile sporne ili je korisnik već popravio probleme.
-
-<a id="pre-moderacija-vs-post-moderacija"></a>
-
 #### Pre-moderacija vs Post-moderacija
 
 Tier direktno određuje koji tip moderacije se primjenjuje:
@@ -214,15 +175,9 @@ Tier direktno određuje koji tip moderacije se primjenjuje:
 ```
 
 * * *
-
-<a id="52-moderacijski-workflow"></a>
-
 ## 5.2 Moderacijski workflow
 
 Moderation queue je centralno mjesto gdje moderatori vide sve što čeka pregled. Nije to obična lista — sadržaj je prioritiziran tako da najhitnije stvari budu na vrhu, a moderatori mogu efikasno raditi bez da stalno donose odluke "šta sljedeće".
-
-<a id="521-queue-struktura"></a>
-
 ### 5.2.1 Queue struktura
 
 Queue se dijeli u četiri zone prema prioritetu:
@@ -246,9 +201,6 @@ Za svaki item u queue-u, moderator vidi:
 - AI hints (ako postoje)
 - Istorija korisnika (prethodni sadržaji, trust tier)
 - Quick actions (Approve, Request Changes, Reject)
-
-<a id="522-prioritizacija"></a>
-
 ### 5.2.2 Prioritizacija
 
 Prioritet se računa automatski na osnovu nekoliko faktora. Logika je različita za pre-moderaciju i post-moderaciju.
@@ -274,9 +226,6 @@ Sadržaj je već live, pa je manje hitan. Viši tier = niži prioritet jer sampl
 | **Vrijeme od objave** | 10% | Stariji sadržaj ima veći prioritet |
 
 > 💡 **Praktična napomena:** Formule nisu fiksirane — ako se pokaže da ne rade dobro, mogu se prilagoditi. Bitno je pratiti metriku "vrijeme do prve odluke" po kategorijama.
-
-<a id="523-odluke-moderatora"></a>
-
 ### 5.2.3 Odluke moderatora
 
 Svaka moderatorska odluka vodi listing u određeni `listingStatus`. Postoje tri osnovne odluke, a svaka ima svoje implikacije.
@@ -304,9 +253,6 @@ flowchart LR
 ```
 
 Moderator može takođe **sakriti** listing (`hidden_by_moderator`) ili ga **trajno ukloniti** (`removed`) u slučajevima koji zahtijevaju hitnu ili konačnu akciju. Ove akcije su opisane detaljnije u sekciji 5.4.
-
-<a id="524-sla-vrijeme-odgovora"></a>
-
 ### 5.2.4 SLA vrijeme odgovora
 
 SLA (Service Level Agreement) definiše maksimalno vrijeme od trenutka kada listing uđe u moderacijski queue do trenutka kada moderator donese prvu odluku. Ciljevi su različiti za pre-moderaciju i post-moderaciju.
@@ -328,9 +274,6 @@ SLA (Service Level Agreement) definiše maksimalno vrijeme od trenutka kada list
 | **Tier 4** (Verified Partner) | < 8 sati | `TIER4_SAMPLING_PERCENT` | Minimalni pregled |
 
 > 💡 **Praktična napomena:** SLA za pre-moderaciju je stroži jer korisnik čeka da mu sadržaj postane vidljiv. Post-moderacija je manje hitna jer je sadržaj već live, ali i dalje treba biti završena u razumnom roku. Target vrijeme se mjeri kao 95. percentil — znači da 95% sadržaja mora biti pregledano unutar navedenog vremena.
-
-<a id="525-moderacija-editovanog-sadržaja"></a>
-
 ### 5.2.5 Moderacija editovanog sadržaja
 
 Kada korisnik edituje aktivan listing, ponašanje zavisi od Trust Tier-a vlasnika i direktno utiče na `listingStatus`:
@@ -342,15 +285,9 @@ Kada korisnik edituje aktivan listing, ponašanje zavisi od Trust Tier-a vlasnik
 > 💡 **Praktična napomena:** Ovo je važno za konzistentnost moderacije — korisnik na Tier 1 ne smije moći zaobići kontrolu kvaliteta izmjenom sadržaja nakon inicijalnog odobrenja. Istovremeno, Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Kompletna tabela tranzicija opisana je u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md).
 
 * * *
-
-<a id="53-ai-screening"></a>
-
 ## 5.3 AI Screening
 
 AI screening nije zamjena za ljudsku moderaciju — to je pomoćni alat koji ubrzava proces i hvata očigledne probleme. AI ne donosi finalne odluke (osim u ekstremnim slučajevima), ali značajno pomaže prioritizirati queue i usmjeriti pažnju moderatora.
-
-<a id="531-kako-ai-screening-funkcioniše"></a>
-
 ### 5.3.1 Kako AI screening funkcioniše
 
 Kada korisnik submituje sadržaj, sistem pokreće brzi AI scan (max 3 sekunde). AI analizira tekst i slike, dodjeljuje score za različite kategorije problema, i na osnovu toga određuje prioritet u queue-u.
@@ -365,9 +302,6 @@ flowchart TD
     E --> G[Određuje prioritet]
     G --> H[Ulazi u queue]
 ```
-
-<a id="532-ai-scoring-komponente"></a>
-
 ### 5.3.2 AI scoring komponente
 
 AI računa nekoliko nezavisnih score-ova, svaki za drugu kategoriju problema. Ovi rezultati se čuvaju kao metadata i služe moderatorima kao "hint".
@@ -380,9 +314,6 @@ AI računa nekoliko nezavisnih score-ova, svaki za drugu kategoriju problema. Ov
 | **Spam patterns** | 0.0 - 1.0 | 0.8 | Ponavljanje, SEO spam, mass posting |
 | **Contact info** | 0.0 - 1.0 | 0.9 | Telefoni/emaili u opisu (trebaju biti u posebnim poljima) |
 | **Duplicate** | 0.0 - 1.0 | 0.85 | Sličnost sa postojećim sadržajem |
-
-<a id="533-ai-risk-level"></a>
-
 ### 5.3.3 AI Risk Level
 
 Na osnovu pojedinačnih score-ova, AI računa ukupni risk level koji određuje prioritet u queue-u.
@@ -393,9 +324,6 @@ Na osnovu pojedinačnih score-ova, AI računa ukupni risk level koji određuje p
 | **MEDIUM** | Bilo koji score 0.3 - 0.7 | Povišen |
 | **HIGH** | Bilo koji score > 0.7 | Visok |
 | **CRITICAL** | Više od 2 score > 0.7 | Urgent + obavezan pregled moderatora sa `can_manage_trust_tier` |
-
-<a id="534-ai-blocking-logic"></a>
-
 ### 5.3.4 AI Blocking Logic
 
 U ekstremnim slučajevima, AI može blokirati publikaciju sadržaja bez obzira na trust tier korisnika. Kada AI blokira listing, on prelazi u `hidden_by_system` — ovo je sigurnosna mjera za situacije kada je AI "veoma siguran" da je sadržaj problematičan.
@@ -418,9 +346,6 @@ Kada AI blokira sadržaj:
 2. Listing nije vidljiv javno, bez obzira na trust tier
 3. Ulazi u Urgent queue za hitni pregled
 4. Moderator mora ručno pregledati i odlučiti: odobrava (→ `published`) ili odbija (→ `removed`, `removedReason: rejected`) ili uklanja (→ `removed`, drugi `removedReason`)
-
-<a id="535-kako-moderator-vidi-ai-rezultate"></a>
-
 ### 5.3.5 Kako moderator vidi AI rezultate
 
 AI rezultati se prikazuju kao "hints" u moderatorskom interfejsu — korisni, ali ne obavezujući.
@@ -442,9 +367,6 @@ AI rezultati se prikazuju kao "hints" u moderatorskom interfejsu — korisni, al
 │ [Approve] [Request Changes] [Reject]            │
 └─────────────────────────────────────────────────┘
 ```
-
-<a id="536-komunikacija-pri-ai-blokadi"></a>
-
 ### 5.3.6 Komunikacija pri AI blokadi
 
 Korisnici dobijaju različite poruke ovisno o trust tieru — korisnici višeg tiera zaslužuju transparentnije objašnjenje.
@@ -460,15 +382,9 @@ Korisnici dobijaju različite poruke ovisno o trust tieru — korisnici višeg t
 > 💡 **Praktična napomena:** AI je alat, ne sudija. Moderatori mogu i trebaju override-ati AI sugestije kada imaju dobar razlog. Međutim, listing u `hidden_by_system` zahtijeva eksplicitnu moderatorsku odluku — ne može se automatski vratiti u prethodni status.
 
 * * *
-
-<a id="54-moderatorske-akcije"></a>
-
 ## 5.4 Moderatorske akcije
 
 Moderatori na CityInfo-u imaju jasno definirane ovlasti. Sistem koristi ravnu strukturu za svakodnevne operacije — svi moderatori imaju iste bazne moći za odobravanje, odbijanje i traženje izmjena. Za osjetljive akcije koje imaju veći uticaj na korisnike ili strukturu sadržaja, postoje granularne permisije koje Operator dodjeljuje odabranim moderatorima.
-
-<a id="541-moderatorske-permisije"></a>
-
 ### 5.4.1 Moderatorske permisije
 
 Svi moderatori dijele iste bazne ovlasti za svakodnevni rad. Dodatne permisije pokrivaju osjetljive akcije koje zahtijevaju veći nivo odgovornosti.
@@ -482,9 +398,6 @@ Svi moderatori dijele iste bazne ovlasti za svakodnevni rad. Dodatne permisije p
 > 💡 **Praktična napomena:** Ovo nije hijerarhija — moderator sa dodatnim permisijama nema "viši rang" od ostalih. To je jednostavno pristup akcijama koje zahtijevaju dodatno povjerenje. U praksi, to će biti moderatori sa više iskustva koji su pokazali dobar sud u donošenju odluka.
 
 > ⚠️ **Napomena o local\_admin:** Staff sa ulogom `local_admin` ima šire sistemske ovlasti i može izvršavati sve akcije koje pokrivaju `can_manage_trust_tier` i `can_manage_tags` bez potrebe za dodatnim permisijama. Permisije su relevantne samo za Staff sa ulogom `moderator`. Detalji o matrici ovlasti po ulogama u [03 - Korisnici i pristup, sekcija 3.5](../project-specs/03-korisnici-i-pristup.md).
-
-<a id="542-šta-moderator-može"></a>
-
 ### 5.4.2 Šta moderator MOŽE
 
 ✅ **Sadržaj:**
@@ -518,9 +431,6 @@ Svi moderatori dijele iste bazne ovlasti za svakodnevni rad. Dodatne permisije p
 
 - Slati poruke autorima sadržaja
 - Override odluke drugog moderatora (uz logging)
-
-<a id="543-šta-moderator-ne-može"></a>
-
 ### 5.4.3 Šta moderator NE MOŽE
 
 ❌ Mijenjati sadržaj direktno (tekst, slike)  
@@ -529,15 +439,9 @@ Svi moderatori dijele iste bazne ovlasti za svakodnevni rad. Dodatne permisije p
 ❌ Pristupati finansijskim podacima  
 ❌ Ignorisati `hidden_by_system` status bez pregleda  
 ❌ Upravljati kategorijama (ekskluzivna ovlast local\_admin-a)
-
-<a id="544-blokiranje-korisnika"></a>
-
 ### 5.4.4 Blokiranje korisnika
 
 Moderatori mogu blokirati korisnike koji predstavljaju prijetnju kvalitetu platforme. Blokiranje je ozbiljna mjera i koristi se samo kada je potrebno. Ponašanje se razlikuje za ručno blokiranje (moderator) i instant blokiranje (sistem).
-
-<a id="ručno-blokiranje-moderator"></a>
-
 #### Ručno blokiranje (moderator)
 
 Moderator blokira korisnika na osnovu vlastite procjene ili nakon što sistem predloži blokadu.
@@ -555,9 +459,6 @@ Pri ručnom blokiranju, moderator bira šta se dešava sa listinzima korisnika:
 - **Opcija 2 — Listinzi se sakrivaju:** Svi aktivni listinzi prelaze u `hidden_by_system`. Pri odblokiranju, ovi listinzi se automatski vraćaju u `published`.
 
 Moderator bira opciju na osnovu procjene — ako je blokada zbog neprimjerenih poruka ali je sadržaj kvalitetan, listinzi tipično ostaju vidljivi. Ako je blokada zbog lažnog sadržaja ili prevare, moderator sakriva sve.
-
-<a id="instant-blokiranje-sistem"></a>
-
 #### Instant blokiranje (sistem)
 
 Sistem automatski blokira korisnika u slučajevima koji zahtijevaju hitnu reakciju — hate speech, nasilje, spam, malicious sadržaj. Kod instant blokiranja, **default ponašanje je sakrivanje sadržaja** jer je razlog blokiranja dovoljno ozbiljan da opravdava uklanjanje svih listinga.
@@ -585,15 +486,9 @@ Instant block kreira stavku "Instant Block Review" u moderacijskom queue-u. Mode
 Detalji o `hidden_by_system` statusu i blokiranju korisnika opisani su u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md).
 
 * * *
-
-<a id="55-komunikacija-sa-korisnicima"></a>
-
 ## 5.5 Komunikacija sa korisnicima
 
 Način na koji pričamo sa korisnicima direktno utiče na to kako percipiraju platformu. CityInfo koristi template poruke za konzistentnost, ali uvijek sa ljudskim dodirom. Poruke su na primarnom jeziku tenanta i imaju prijateljski ali profesionalan ton.
-
-<a id="551-principi-komunikacije"></a>
-
 ### 5.5.1 Principi komunikacije
 
 | Princip | Objašnjenje |
@@ -602,9 +497,6 @@ Način na koji pričamo sa korisnicima direktno utiče na to kako percipiraju pl
 | **Konkretnost** | Kažemo tačno šta treba popraviti, ne općenito |
 | **Akcija** | Svaka poruka ima jasan sljedeći korak |
 | **Empatija** | Razumijemo da je korisnik uložio trud |
-
-<a id="552-ton-komunikacije"></a>
-
 ### 5.5.2 Ton komunikacije
 
 ✅ **Dobro:**
@@ -620,13 +512,7 @@ Način na koji pričamo sa korisnicima direktno utiče na to kako percipiraju pl
 - "Zabranjeno je…"
 - "Pogrešno ste…"
 - "Vaš sadržaj je loš…"
-
-<a id="553-template-biblioteka"></a>
-
 ### 5.5.3 Template biblioteka
-
-<a id="template-1-nedostaju-osnovne-informacije"></a>
-
 #### Template 1: Nedostaju osnovne informacije
 
 ```
@@ -645,9 +531,6 @@ Kada završite sa izmjenama, kliknite "Pošalji ponovo".
 
 Hvala na razumijevanju!
 ```
-
-<a id="template-2-kvalitet-fotografija"></a>
-
 #### Template 2: Kvalitet fotografija
 
 ```
@@ -664,9 +547,6 @@ Preporučujemo:
 
 Radujemo se vašem poboljšanom sadržaju!
 ```
-
-<a id="template-3-kontakt-informacije-u-opisu"></a>
-
 #### Template 3: Kontakt informacije u opisu
 
 ```
@@ -686,9 +566,6 @@ na standardnom mjestu.
 
 Hvala!
 ```
-
-<a id="template-4-duplikat-sadržaja"></a>
-
 #### Template 4: Duplikat sadržaja
 
 ```
@@ -705,9 +582,6 @@ u odgovoru.
 
 Hvala na razumijevanju!
 ```
-
-<a id="template-5-odbacivanje-kršenje-pravila"></a>
-
 #### Template 5: Odbacivanje — kršenje pravila
 
 ```
@@ -727,9 +601,6 @@ Ako imate pitanja, slobodno nas kontaktirajte.
 S poštovanjem,
 Moderatorski tim
 ```
-
-<a id="template-6-odobravanje-sa-savjetom"></a>
-
 #### Template 6: Odobravanje sa savjetom
 
 ```
@@ -747,17 +618,11 @@ Hvala što činite našu platformu boljom!
 > 💡 **Praktična napomena:** Template-i su polazna tačka, ne konačni tekst. Moderatori mogu i trebaju personalizirati poruke, posebno kada situacija zahtijeva više konteksta. Međutim, ton i struktura ostaju konzistentni.
 
 * * *
-
-<a id="56-verifikacija-vlasništva"></a>
-
 ## 5.6 Verifikacija vlasništva
 
 Korisnici mogu uploadovati dokumente koji dokazuju njihovo pravo upravljanja sadržajem — bilo da je riječ o događaju koji organizuju ili mjestu koje vode. Verifikacija nije obavezna za objavu, ali donosi značajne prednosti i pomaže u izgradnji povjerenja na platformi.
 
 Mehanizam verifikacije se razlikuje po Trust Tier-u — od verifikacije pojedinačnih listinga za nove korisnike, preko flaga na nivou korisnika za provjerene izdavače, do potpuno automatskog statusa za ugovorne partnere.
-
-<a id="561-zašto-verifikacija"></a>
-
 ### 5.6.1 Zašto verifikacija?
 
 | Problem | Kako verifikacija pomaže |
@@ -765,9 +630,6 @@ Mehanizam verifikacije se razlikuje po Trust Tier-u — od verifikacije pojedina
 | **Lažne objave** | Dokument dokazuje da osoba ima pravo objaviti sadržaj |
 | **Kvalitet podataka** | Verifikovani sadržaji obično imaju tačnije informacije |
 | **Povjerenje korisnika** | Posjetitelji više vjeruju verifikovanim mjestima |
-
-<a id="562-verification-status-listinga"></a>
-
 ### 5.6.2 Verification status listinga
 
 Svaki listing ima `verificationStatus` koji označava da li je vlasništvo nad sadržajem potvrđeno.
@@ -777,9 +639,6 @@ Svaki listing ima `verificationStatus` koji označava da li je vlasništvo nad s
 | `unverified` | Vlasništvo nije potvrđeno | Bez oznake |
 | `pending` | Dokumentacija čeka pregled moderatora | "U procesu verifikacije" |
 | `verified` | Vlasništvo potvrđeno | ✓ Potvrđen vlasnik (badge) |
-
-<a id="principi-vizuelnog-označavanja"></a>
-
 #### Principi vizuelnog označavanja
 
 Verification badge treba dizajnirati pažljivo jer ima uticaj na percepciju svih korisnika:
@@ -790,9 +649,6 @@ Verification badge treba dizajnirati pažljivo jer ima uticaj na percepciju svih
 - **Odsustvo badge-a nije negativan signal:** Ne prikazujemo "Nepotvrđeno" za listinge bez verifikacije — jednostavno ne prikazujemo ništa. Mnogi legitimni biznisi nemaju vremena ili resursa za verifikaciju i ne treba ih za to penalizovati.
 
 > 💡 **Praktična napomena:** Za Places, verifikacioni status ima veću težinu jer predstavljaju stalne poslovne subjekte. Badge motiviše vlasnike da prođu verifikaciju, ali ne smije stvarati percepciju da su neverifikovani listinzi "manje legitimni". Vizualni detalji implementacije opisani su u [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md).
-
-<a id="563-verifikacija-po-trust-tier-u"></a>
-
 ### 5.6.3 Verifikacija po Trust Tier-u
 
 Mehanizam verifikacije se razlikuje po Trust Tier-u korisnika. Ovo odražava činjenicu da korisnici višeg tiera već imaju uspostavljen odnos povjerenja sa platformom.
@@ -802,17 +658,11 @@ Mehanizam verifikacije se razlikuje po Trust Tier-u korisnika. Ovo odražava či
 | **0–2** | Na nivou listinga — moderator odlučuje per listing | Listing | Poslovna odluka moderatora |
 | **3 (Established)** | Na nivou korisnika — `isVerifiedPublisher` flag | Korisnik | Poslovna odluka moderatora |
 | **4 (Verified Partner)** | Automatska — ugovorni odnos | Korisnik | Nije potreban |
-
-<a id="tier-02-verifikacija-po-listingu"></a>
-
 #### Tier 0–2: Verifikacija po listingu
 
 Moderator može postaviti `verificationStatus = verified` na pojedinačnom listingu. Dokument **nije obavezan** — moderator koristi vlastitu procjenu. Dokaz vlasništva može biti predočen na razne načine: uploadovan dokument, telefonski razgovor, email, lični kontakt, ili drugi kanal van sistema.
 
 Ako korisnik uploada dokument, moderator ga pregleda kao dio standardne moderacije listinga. Ali i bez dokumenta, moderator može odobriti verified status ako ima dovoljno osnova za to.
-
-<a id="tier-3-established-isverifiedpublisher-flag"></a>
-
 #### Tier 3 (Established): `isVerifiedPublisher` flag
 
 Za korisnike na Tier 3, moderacija funkcioniše sa samplingom — ne pregleda se svaki listing. Verifikacija na nivou pojedinačnog listinga tokom moderacije bi bila nekonzistentna jer listinzi koji ne uđu u sampling uzorak nikad ne bi imali priliku za verified status.
@@ -824,15 +674,9 @@ Zato za Tier 3 postoji `isVerifiedPublisher` flag na nivou korisnika. Kada moder
 - Flag se može ukloniti, što uklanja badge sa budućih objava (ali ne dira postojeće)
 
 Moderator odlučuje da li će tražiti dokument ili ne — to je poslovna odluka. Primjer: vlasnik restorana koji već ima verifikovan Place i organizuje evente u svom prostoru može dobiti `isVerifiedPublisher` bez dodatnog dokumenta za svaki event. U drugim situacijama, moderator može zatražiti dokument ako smatra da je potrebno.
-
-<a id="tier-4-verified-partner-automatska-verifikacija"></a>
-
 #### Tier 4 (Verified Partner): Automatska verifikacija
 
 Ugovorni odnos već uključuje potvrdu identiteta i prava na sadržaj. Svi listinzi Verified Partner-a automatski dobijaju `verificationStatus = verified` bez ikakvih dodatnih koraka.
-
-<a id="564-prihvatljivi-dokumenti"></a>
-
 ### 5.6.4 Prihvatljivi dokumenti
 
 Upload dokumenta je opcija za sve korisnike, ali nikad obavezan uslov za verified status. Dokumenti pomažu moderatoru u donošenju odluke, ali moderator može koristiti i druge izvore informacija.
@@ -861,9 +705,6 @@ Upload dokumenta je opcija za sve korisnike, ali nikad obavezan uslov za verifie
 | Maksimalna veličina | 10 MB po dokumentu |
 | Maksimalan broj | 3 dokumenta po listingu |
 | Virus scan | Obavezan prije čuvanja |
-
-<a id="565-workflow-verifikacije"></a>
-
 ### 5.6.5 Workflow verifikacije
 
 ```
@@ -884,9 +725,6 @@ flowchart TD
     K --> O[Korisnik dobija notifikaciju]
     O --> P[Rok za dostavu dokumenta]
 ```
-
-<a id="566-verifikacija-kao-dio-moderacije-listinga"></a>
-
 ### 5.6.6 Verifikacija kao dio moderacije listinga
 
 Verifikacija nije odvojen proces — to je dio standardne moderacije listinga. Kada moderator pregleda listing:
@@ -905,9 +743,6 @@ Verifikacija nije odvojen proces — to je dio standardne moderacije listinga. K
 | Approve (→ `published`) | Nema osnova za verifikaciju | `unverified` |
 | Approve (→ `published`) | Dokument nevalidan/nedovoljan | `unverified` + feedback korisniku |
 | Reject (→ `removed`, `removedReason: rejected`) | Bilo koji | Nije relevantno (listing odbijen) |
-
-<a id="567-listingdocument-entitet"></a>
-
 ### 5.6.7 ListingDocument entitet
 
 Kompletna specifikacija ListingDocument entiteta — uključujući atribute, svrhe dokumenata (`purpose`), upload ograničenja i virus scanning workflow — definisana je u [04 - Sadržaj, sekcija 4.7](../project-specs/04-sadrzaj.md). Poglavlje 04 je jedini izvor istine (SSoT) za ovaj entitet.
@@ -921,17 +756,11 @@ Ovdje je relevantan sažetak za moderacijski kontekst:
 - Dokumenti stariji od 2 godine od zatvaranja listinga mogu biti obrisani radi GDPR usklađenosti
 
 * * *
-
-<a id="57-api-endpoints"></a>
-
 ## 5.7 API Endpoints
 
 Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su grupisani po funkcionalnosti i opisani na konceptualnom nivou.
 
 > ⚠️ **Napomena:** Ovo nije kompletna API specifikacija. Za detalje o autentifikaciji, autorizaciji, error handling-u i primjerima poziva, pogledati odvojenu API dokumentaciju.
-
-<a id="571-queue-operacije"></a>
-
 ### 5.7.1 Queue operacije
 
 | Metoda | Putanja | Opis |
@@ -941,9 +770,6 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
 | `GET` | `/api/moderation/queue/{itemId}` | Detalji jedne stavke u queue-u |
 | `POST` | `/api/moderation/queue/{itemId}/claim` | Preuzmi stavku za moderaciju (lock) |
 | `POST` | `/api/moderation/queue/{itemId}/release` | Oslobodi stavku (unlock) |
-
-<a id="572-odluke-moderatora"></a>
-
 ### 5.7.2 Odluke moderatora
 
 | Metoda | Putanja | Opis |
@@ -967,9 +793,6 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
   removedReason: Enum (obavezno za remove — "spam", "inappropriate", "duplicate")
 }
 ```
-
-<a id="573-ai-screening"></a>
-
 ### 5.7.3 AI Screening
 
 | Metoda | Putanja | Opis |
@@ -977,9 +800,6 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
 | `GET` | `/api/moderation/listings/{id}/ai-screening` | Dohvati AI rezultate za listing |
 | `POST` | `/api/moderation/listings/{id}/ai-screening/rescan` | Ponovo pokreni AI scan |
 | `POST` | `/api/moderation/listings/{id}/ai-override` | Override — moderator odobrava listing iz `hidden_by_system` |
-
-<a id="574-korisničke-akcije"></a>
-
 ### 5.7.4 Korisničke akcije
 
 | Metoda | Putanja | Opis |
@@ -988,18 +808,12 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
 | `POST` | `/api/moderation/users/{id}/trust-tier` | Promijeni trust tier (zahtijeva `can_manage_trust_tier` za Tier 0 i 4) |
 | `POST` | `/api/moderation/users/{id}/block` | Blokiraj korisnika (uključuje opciju za sadržaj — `hidden_by_system` ili ostavi vidljivo) |
 | `POST` | `/api/moderation/users/{id}/verified-publisher` | Postavi/ukloni `isVerifiedPublisher` flag (zahtijeva `can_manage_trust_tier`) |
-
-<a id="575-sistemske-review-stavke"></a>
-
 ### 5.7.5 Sistemske review stavke
 
 | Metoda | Putanja | Opis |
 | --- | --- | --- |
 | `POST` | `/api/moderation/reviews/{id}/confirm` | Potvrdi automatsku degradaciju ili instant block |
 | `POST` | `/api/moderation/reviews/{id}/revert` | Revertuj automatsku degradaciju ili instant block |
-
-<a id="576-statistike-i-reporting"></a>
-
 ### 5.7.6 Statistike i reporting
 
 | Metoda | Putanja | Opis |
@@ -1007,17 +821,11 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
 | `GET` | `/api/moderation/stats/overview` | Pregled statistike moderacije |
 | `GET` | `/api/moderation/stats/moderator/{id}` | Statistika po moderatoru |
 | `GET` | `/api/moderation/stats/patterns` | Prepoznati obrasci (česti razlozi, problematični korisnici) |
-
-<a id="577-verifikacija"></a>
-
 ### 5.7.7 Verifikacija
 
 Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Traženje dokumentacije koristi isti `/request-changes` endpoint kao i bilo koji drugi zahtjev za izmjenama. API endpointi za dokumente listinga definisani su u [04 - Sadržaj, sekcija 4.10](../project-specs/04-sadrzaj.md).
 
 * * *
-
-<a id="poslovna-pravila"></a>
-
 ## Poslovna pravila
 
 | Pravilo | Opis | Prioritet |
@@ -1055,9 +863,6 @@ Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Tra
 | **BR-MOD-31** | Upravljanje tagovima zahtijeva `can_manage_tags` permisiju za moderatore; local\_admin ima inherentnu ovlast | Srednji |
 
 * * *
-
-<a id="metrike-i-kpi"></a>
-
 ## Metrike i KPI
 
 | Metrika | Target | Mjerenje |
@@ -1076,19 +881,10 @@ Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Tra
 > 💡 **Praktična napomena:** Metrike se prate sedmično i mjesečno. Ako konzistentno promašujemo targete, to je signal za review procesa ili povećanje kapaciteta — ne za spuštanje standarda. Nova metrika "Auto-Degradation Revert Rate" prati preciznost automatskog sistema — ako je revert rate visok, pragovi su preoštri.
 
 * * *
-
-<a id="napomene-za-implementaciju"></a>
-
 ## Napomene za implementaciju
-
-<a id="trust-tier-model"></a>
-
 ### Trust Tier model
 
 Korisnik ima `trustTier` atribut sa vrijednostima 0–4. Napredovanje je automatsko za nivoe 1→2 i 2→3, bazirano na parametrima definisanim u [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md). Sva tri uslova (min approved, min success rate, min starost računa) moraju biti ispunjena istovremeno.
-
-<a id="moderatorske-permisije"></a>
-
 ### Moderatorske permisije
 
 Moderator entitet u Staff sistemu ima `permissions` polje (lista) koje može sadržavati:
@@ -1097,9 +893,6 @@ Moderator entitet u Staff sistemu ima `permissions` polje (lista) koje može sad
 - `can_manage_tags` — omogućava kreiranje, editovanje, deaktivaciju, brisanje i spajanje tagova (EventTags i PlaceTags)
 
 Permisije dodjeljuje Staff sa ulogom Operator. Lista permisija se može proširivati prema potrebama sistema. Staff sa ulogom `local_admin` ima inherentno sve ove ovlasti bez potrebe za eksplicitnim permisijama.
-
-<a id="isverifiedpublisher-flag"></a>
-
 ### isVerifiedPublisher flag
 
 Korisnik na Tier 3 može imati `isVerifiedPublisher = true`. Ovaj flag:
@@ -1108,9 +901,6 @@ Korisnik na Tier 3 može imati `isVerifiedPublisher = true`. Ovaj flag:
 - Retroaktivno ažurira postojeće aktivne listinge pri postavljanju flaga
 - Može biti uklonjen od strane moderatora sa `can_manage_trust_tier` permisijom
 - Automatski se uklanja ako korisnik bude degradiran ispod Tier 3
-
-<a id="statusni-model-listingstatus"></a>
-
 ### Statusni model — `listingStatus`
 
 Moderacija koristi jedinstveni `listingStatus` enum na Listing entitetu. Kompletna specifikacija sa svim tranzicijama opisana je u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). Statusi relevantni za moderacijski kontekst:
@@ -1125,9 +915,6 @@ Moderacija koristi jedinstveni `listingStatus` enum na Listing entitetu. Komplet
 - `removed` — trajno uklonjeno sa `removedReason` (uključujući `rejected` kao jedan od razloga), terminalni status
 
 > ⚠️ **Napomena:** Stari `moderationStatus` atribut (`none`, `pending_review`, `changes_requested`, `approved`, `rejected`) više ne postoji. Sve moderacijske tranzicije su integrisane u `listingStatus`. Za kompletnu tabelu tranzicija i Mermaid dijagram vidjeti Ch.04, sekcija 4.8.
-
-<a id="ai-rezultati-storage"></a>
-
 ### AI rezultati storage
 
 AI rezultati se čuvaju u zasebnoj tabeli/kolekciji sa sljedećim konceptualnim atributima:
@@ -1145,9 +932,6 @@ AI rezultati se čuvaju u zasebnoj tabeli/kolekciji sa sljedećim konceptualnim 
 | version | String | Verzija AI modela | Da  |
 
 > ⚠️ **Napomena:** Lista atributa nije konačna i može se proširivati prema potrebama sistema.
-
-<a id="cache-sloj"></a>
-
 ### Cache sloj
 
 Za performanse u moderatorskom interfejsu, AI rezultati se keširaju:
@@ -1157,9 +941,6 @@ Za performanse u moderatorskom interfejsu, AI rezultati se keširaju:
 - Key pattern: `ai_scan:{listingId}:latest`
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis |

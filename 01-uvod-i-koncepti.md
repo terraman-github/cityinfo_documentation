@@ -5,29 +5,17 @@
 > **Status:** Završeno ✅
 
 * * *
-
-<a id="o-čemu-je-riječ"></a>
-
 ## O čemu je riječ?
 
 Ovaj dokument predstavlja ulaznu tačku u CityInfo dokumentaciju. Sadržaj je strukturiran tako da pruži brzi pregled sistema — od vizije i poslovnog modela koji objašnjavaju *zašto* platforma postoji, preko arhitekture koja pokazuje *kako* je organizovana, do ključnih koncepata koji čine jezgro svega. Na kraju se nalaze praktični vodiči za različite uloge i persone koje pomažu u razumijevanju korisnika.
 
 * * *
-
-<a id="11-vizija-i-poslovni-model"></a>
-
 ## 1.1 Vizija i poslovni model
-
-<a id="šta-je-cityinfo"></a>
-
 ### Šta je CityInfo?
 
 CityInfo je platforma za otkrivanje i promociju lokalnih događaja i mjesta. Zamišljena je kao centralno mjesto gdje građani i posjetioci jednog grada mogu pronaći sve što se dešava oko njih — od koncerata i izložbi do novih restorana, frizerskih salona, kulturnih institucija i turističkih atrakcija. Za organizatore i vlasnike biznisa, CityInfo predstavlja način da dođu do publike bez velikih marketinških budžeta.
 
 Platforma je dizajnirana kao **multi-tenant sistem**, što znači da svaki grad (Sarajevo, Zagreb, Ljubljana, Beograd...) ima svoju zasebnu instancu sa prilagođenim sadržajem, ali dijeli istu tehnološku osnovu. Sistem je **dvojezičan** — svaki tenant podržava primarni i sekundarni jezik, što omogućava lokalizaciju za različita tržišta i bolju dostupnost turistima. Ovakav pristup omogućava brzo širenje na nove gradove i države bez reinventiranja točka.
-
-<a id="problem-koji-rješavamo"></a>
-
 ### Problem koji rješavamo
 
 | Problem | Kako ga rješavamo |
@@ -38,9 +26,6 @@ Platforma je dizajnirana kao **multi-tenant sistem**, što znači da svaki grad 
 | Mali organizatori nemaju budžet za promociju | Freemium model — besplatno objavljivanje, plaćana promocija |
 | Vlasnici biznisa teško mjere ROI tradicionalnog oglašavanja | Mjerljive promocije sa statistikama pregleda |
 | Korisnici ne znaju šta se dešava u njihovom komšiluku | Personalizovane preporuke i lokacijski filteri |
-
-<a id="vrijednosna-propozicija"></a>
-
 ### Vrijednosna propozicija
 
 **Za korisnike (posjetioce i turiste):**
@@ -62,9 +47,6 @@ Platforma je dizajnirana kao **multi-tenant sistem**, što znači da svaki grad 
 - Besplatan profil sa osnovnim informacijama
 - Povezivanje sa događajima koji se održavaju na lokaciji — dodatna vidljivost bez troška
 - Premium opcije za isticanje u pretragama
-
-<a id="poslovni-model"></a>
-
 ### Poslovni model
 
 CityInfo koristi **freemium model** sa tri izvora prihoda:
@@ -80,13 +62,7 @@ CityInfo koristi **freemium model** sa tri izvora prihoda:
 > **💡 Praktična napomena:** Cijene kredita i promocija mogu varirati po gradovima (tenantima) ovisno o kupovnoj moći i konkurenciji. Ovo nije hardkodirano — lokalni administratori imaju fleksibilnost prilagodbe.
 
 * * *
-
-<a id="12-arhitektura-sistema"></a>
-
 ## 1.2 Arhitektura sistema
-
-<a id="multi-tenant-pristup"></a>
-
 ### Multi-tenant pristup
 
 CityInfo je od temelja dizajniran kao multi-tenant sistem. Svaki grad je zaseban "tenant" sa vlastitom bazom podataka i konfiguracijom, ali svi dijele isti kod i infrastrukturu. Dodavanje novog grada ne zahtijeva novi deployment — samo konfiguraciju novog tenanta.
@@ -101,9 +77,6 @@ CityInfo Platforma
 │   └── Vlastita baza, korisnici, sadržaj
 └── ... (novi gradovi se dodaju bez promjene koda)
 ```
-
-<a id="tri-korisničke-zone"></a>
-
 ### Tri korisničke zone
 
 Jedna od ključnih arhitektonskih odluka je **potpuna separacija tri tipa korisnika** u zasebne sisteme. Ovo nije samo organizaciona podjela — to su tri različite baze podataka, tri različita login sistema, i tri različite pristupne tačke.
@@ -119,9 +92,6 @@ Jedna od ključnih arhitektonskih odluka je **potpuna separacija tri tipa korisn
 - **Sigurnost:** Kompromitovanje User sistema ne ugrožava Staff ili GlobalAdmin
 - **Skalabilnost:** User sistem može imati hiljade korisnika bez uticaja na admin performanse
 - **Compliance:** Jasna separacija olakšava GDPR i audit zahtjeve
-
-<a id="dijagram-arhitekture"></a>
-
 ### Dijagram arhitekture
 
 ```
@@ -148,15 +118,9 @@ Jedna od ključnih arhitektonskih odluka je **potpuna separacija tri tipa korisn
 > **💡 Praktična napomena:** Rad na User-facing funkcionalnostima ne podrazumijeva direktan pristup Staff ili GlobalAdmin sistemima. Svaki sistem ima svoje API-je i ne postoji "prečica" između njih — to je namjerno.
 
 * * *
-
-<a id="13-ključni-koncepti"></a>
-
 ## 1.3 Ključni koncepti
 
 Prije ulaska u ostatak dokumentacije, bitno je razumjeti nekoliko centralnih koncepata koji se provlače kroz cijeli sistem.
-
-<a id="listing-zajednički-entitet"></a>
-
 ### Listing — zajednički entitet
 
 **Listing** je apstraktni pojam koji obuhvata sve što korisnici mogu kreirati i objaviti na platformi. Trenutno postoje dva tipa listinga:
@@ -169,9 +133,6 @@ Prije ulaska u ostatak dokumentacije, bitno je razumjeti nekoliko centralnih kon
 Oba tipa dijele zajedničke karakteristike (naziv, opis, slike, kategorija, vlasnik), ali imaju i svoje specifičnosti. Event ima datum početka i kraja, dok Place ima radno vrijeme i adresu. Sistem je dvojezičan — svaki listing može imati naziv i opis na primarnom i sekundarnom jeziku tenanta.
 
 > **Zašto "Listing"?** Ovaj zajednički koncept olakšava rad sa sadržajem — promocije, moderacija, pretraga i prikaz funkcionišu isto za Events i Places. Ako se u budućnosti doda novi tip (npr. "Job" za oglase za posao), većina sistema će raditi bez izmjena.
-
-<a id="event-vs-place-ključne-razlike"></a>
-
 ### Event vs Place — ključne razlike
 
 | Aspekt | Event | Place |
@@ -189,9 +150,6 @@ Oba tipa dijele zajedničke karakteristike (naziv, opis, slike, kategorija, vlas
 **Dva režima u korisničkom sučelju:**
 
 Ova separacija se direktno odražava i na korisničko iskustvo — platforma tretira događaje i mjesta kao **dva odvojena svijeta**. Korisnik u svakom trenutku radi u jednom od dva režima ("Događaji" ili "Mjesta"), a sučelje jasno stavlja do znanja koji je aktivan. Naslovna stranica po defaultu prikazuje događaje jer su oni vremenski osjetljivi. Više o ovome u dokumentu [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md).
-
-<a id="kategorije-i-tagovi"></a>
-
 ### Kategorije i tagovi
 
 Svaki listing pripada **jednoj primarnoj kategoriji** i može imati do `MAX_SECONDARY_CATEGORIES` **sekundarnih kategorija** (parametar — preporučena početna vrijednost: 10). Ovaj sistem omogućava fleksibilno pronalaženje sadržaja iz različitih uglova.
@@ -204,9 +162,6 @@ Svaki listing pripada **jednoj primarnoj kategoriji** i može imati do `MAX_SECO
 Pored kategorija, postoje i **tagovi** — fleksibilniji način opisivanja karakteristika listinga. Korisnik može odabrati do `MAX_TAGS_PER_LISTING` tagova (parametar — preporučena početna vrijednost: 2), npr. "parking", "wifi", "besplatno", "za-djecu".
 
 > **💡 Praktična napomena:** Eventi i Places imaju potpuno odvojene sisteme kategorija i tagova jer su semantički različiti — tag "parking" ima smisla za restoran, ali ne za koncert. Ova separacija se odražava i u korisničkom sučelju: prebacivanje između režima "Događaji" i "Mjesta" resetuje aktivne filtere jer kategorije i tagovi nisu međusobno kompatibilni.
-
-<a id="trust-tier-sistem"></a>
-
 ### Trust Tier sistem
 
 Trust Tier je mehanizam koji automatski prilagođava nivo moderacije prema ponašanju korisnika. Umjesto binarnog "vjerujemo / ne vjerujemo", sistem prepoznaje da korisnici grade povjerenje kroz konzistentno kvalitetan sadržaj.
@@ -228,9 +183,6 @@ Trust Tier je mehanizam koji automatski prilagođava nivo moderacije prema pona�
 Napredovanje kroz tier-ove je automatsko za nivoe 1→2 i 2→3, bazirano na broju uspješno odobrenih objava. Degradacija se dešava ako korisnik ima odbijene sadržaje.
 
 > **💡 Praktična napomena:** Trust Tier direktno određuje koliko brzo korisnikov sadržaj postaje vidljiv. Za nove korisnike, fokus je na brzoj moderaciji kako ne bi čekali predugo.
-
-<a id="visitors-neregistrovani-korisnici"></a>
-
 ### Visitors (neregistrovani korisnici)
 
 Pored registrovanih korisnika, platforma podržava i **visitors** — neautentificirane posjetioce koji mogu pregledati javni sadržaj bez kreiranja računa. Visitors mogu:
@@ -241,9 +193,6 @@ Pored registrovanih korisnika, platforma podržava i **visitors** — neautentif
 - Dijeliti linkove
 
 Visitors **ne mogu** kreirati sadržaj, spremati favorite na profil, slati poruke, niti prijaviti neprikladan sadržaj. Ovo omogućava platformi da bude korisna i za casual posjetioce koji samo žele vidjeti šta se dešava u gradu.
-
-<a id="promocije-i-monetizacija"></a>
-
 ### Promocije i monetizacija
 
 Svaki listing može biti besplatno objavljen, ali za veću vidljivost korisnici mogu kupiti promociju. Postoje tri nivoa:
@@ -279,9 +228,6 @@ Sortiranje promocija funkcioniše različito na **naslovnoj stranici** i **unuta
 AutoRenew se plaća kao dodatak na baznu cijenu promocije (konačan pricing model još nije finaliziran).
 
 **Ručno osvježavanje:** Svi korisnici mogu besplatno osvježiti poziciju svog listinga jednom u 24 sata, bez obzira na promocije.
-
-<a id="moderacijski-pristup"></a>
-
 ### Moderacijski pristup
 
 CityInfo koristi hibridni pristup moderaciji koji kombinuje automatske provjere i ljudski pregled:
@@ -300,15 +246,9 @@ Moderatori mogu donijeti tri odluke:
 > **💡 Praktična napomena:** Moderacijski workflow nije statičan — pravila i pragovi se prilagođavaju kako platforma bude rasla. SLA za pre-moderaciju je 2 sata, za post-moderaciju 8 sati.
 
 * * *
-
-<a id="14-brzi-start-po-ulogama"></a>
-
 ## 1.4 Brzi start po ulogama
 
 Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći vodiči pokazuju gdje početi.
-
-<a id="za-developere"></a>
-
 ### 👨‍💻 Za developere
 
 **Frontend development:**
@@ -327,27 +267,18 @@ Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći
 
 1. [05 - Moderacija](../project-specs/05-moderacija.md) — workflow i queue logika
 2. [03 - Korisnici i pristup, sekcija Staff](../project-specs/03-korisnici-i-pristup.md) — uloge i ovlasti
-
-<a id="za-moderatore"></a>
-
 ### 🛡️ Za moderatore
 
 1. **Obavezno:** [05 - Moderacija](../project-specs/05-moderacija.md) — glavni priručnik
 2. [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — kako trust utiče na workflow
 3. [07 - Komunikacija](../project-specs/07-komunikacija.md) — komunikacija sa korisnicima
 4. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — Lejla (moderator persona) i putovanje 5
-
-<a id="za-product-managere"></a>
-
 ### 📊 Za product managere
 
 1. Ovaj dokument (1.1 i 1.5) — big picture
 2. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — detaljne persone, korisnička putovanja i mapiranje na journey milestones
 3. [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md) — user flows
 4. [06 - Monetizacija](../project-specs/06-monetizacija.md) — pricing i business model
-
-<a id="za-operatore"></a>
-
 ### ⚙️ Za operatore
 
 1. [06 - Monetizacija](../project-specs/06-monetizacija.md) — financijski tokovi
@@ -358,17 +289,11 @@ Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći
 > **💡 Praktična napomena:** Dokumentacija je živi organizam. Ako nešto nedostaje ili nije jasno, preporuka je otvoriti issue u repo-u ili direktno kontaktirati vlasnika dokumenta.
 
 * * *
-
-<a id="15-persone-i-korisničke-priče"></a>
-
 ## 1.5 Persone i korisnička putovanja
 
 > **📄 Detaljna verzija:** Kompletne persone sa ciljevima, frustracijama, "aha" momentima, i detaljnim korisničkim putovanjima (uključujući Staff persone — moderator i operator) dostupne su u zasebnom dokumentu: [**Persone i korisnička putovanja**](../project-specs/persone-i-korisnicka-putovanja.md). Taj dokument također sadrži mapiranje putovanja na journey milestones (J-01 do J-09) iz development plana.
 
 Da bi se bolje razumjelo za koga se gradi platforma, definisano je šest reprezentativnih persona — četiri korisničke i dvije staff persone. Ovdje je sažeti pregled; za detalje pogledajte linkani dokument.
-
-<a id="korisničke-persone"></a>
-
 ### Korisničke persone
 
 | Persona | Uloga | Ključna potreba | Journey fokus |
@@ -377,18 +302,12 @@ Da bi se bolje razumjelo za koga se gradi platforma, definisano je šest repreze
 | 🎤 **Marko** (35) | Organizator događaja | Doći do publike bez velikog budžeta, pratiti efekte | J-02 Kreiranje, J-06 Monetizacija |
 | 🍽️ **Ana** (42) | Vlasnica restorana | Jednostavan profil, biti pronađena, verified badge | J-02 Kreiranje, J-07 Verifikacija |
 | 🧳 **Thomas** (45) | Turist iz Njemačke | Sadržaj na engleskom, filter po blizini, brzo | J-04 Otkrivanje |
-
-<a id="staff-persone"></a>
-
 ### Staff persone
 
 | Persona | Uloga | Ključna potreba | Journey fokus |
 | --- | --- | --- | --- |
 | 🛡️ **Lejla** (26) | Content moderator | Efikasan queue, konzistentne odluke, brze akcije | J-03 Moderacija |
 | ⚙️ **Damir** (38) | Operations manager | Dashboard, parametri, analitika, minimalne manuelne intervencije | J-08 Operacije, J-09 Automatizacija |
-
-<a id="ključni-user-journey-i"></a>
-
 ### Ključni user journey-i
 
 Na osnovu persona, identificirano je šest ključnih putovanja kroz sistem:
@@ -405,9 +324,6 @@ Na osnovu persona, identificirano je šest ključnih putovanja kroz sistem:
 > **💡 Praktična napomena:** Persone i journey-i nisu statični. Kako platforma bude rasla i kako se bude prikupljalo više podataka o stvarnom ponašanju korisnika, ovi profili će se ažurirati. Ako se primijeti da se stvarni korisnici ponašaju drugačije od opisanih persona, to je vrijedna informacija za Product tim.
 
 * * *
-
-<a id="šta-dalje"></a>
-
 ## Šta dalje?
 
 Nakon čitanja ovog dokumenta, postoji solidna osnova za razumijevanje CityInfo platforme. Ovisno o ulozi, preporučeni su sljedeći koraci:
@@ -417,9 +333,6 @@ Nakon čitanja ovog dokumenta, postoji solidna osnova za razumijevanje CityInfo 
 - **Detaljni user flows:** [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md)
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis promjene |

@@ -5,9 +5,6 @@
 > **Status:** Draft — čeka review tima
 
 * * *
-
-<a id="o-čemu-je-riječ"></a>
-
 ## O čemu je riječ?
 
 Ovaj dokument definiše **opseg prve verzije (MVP)** CityInfo platforme — šta ulazi u lansiranje, šta je uključeno ali u jednostavnijem obliku, i šta svjesno ostavljamo za kasnije faze. Cilj MVP-a nije "napraviti sve", nego dokazati da platforma donosi vrijednost korisnicima i organizatorima u jednom gradu prije nego se širi i nadograđuje.
@@ -17,15 +14,9 @@ Odluke su donesene na osnovu analize kompletne dokumentacije (sekcije 01–08) s
 **MVP u jednoj rečenici:** Korisnik može kreirati Event ili Place sa slikama i dvojezičnim sadržajem, kategorizirati ga, poslati na moderaciju (uz AI screening i automatsko Trust napredovanje), i promovirati ga kroz Standard, Premium ili Premium+Homepage promociju sa AutoRenew opcijom koristeći prepaid kredite — u jednom gradu, sa email/in-app notifikacijama i ručno upravljanim display oglašavanjem.
 
 * * *
-
-<a id="mvp-core-ulazi-u-prvu-verziju"></a>
-
 ## MVP core — ulazi u prvu verziju
 
 Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na kritičnom putu za barem jedan ključni user journey (objavljivanje sadržaja, otkrivanje sadržaja, ili moderacija).
-
-<a id="sadržaj-i-organizacija"></a>
-
 ### Sadržaj i organizacija
 
 | Funkcionalnost | Šta uključuje | Referenca |
@@ -43,9 +34,6 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 **Praktična napomena:** ListingDocument je u MVP-u jer štiti integritet platforme. Bez mogućnosti da moderator zatraži dokaz vlasništva, nemamo mehanizam za sprječavanje lažnih listinga — a jedan lažni profil restorana sa pogrešnim informacijama može narušiti povjerenje korisnika i samih biznisa u platformu. Virus scanning za uploadovane dokumente koristi vanjski servis i ne zahtijeva značajan custom razvoj.
 
 **Praktična napomena:** Dvojezičnost je od starta jer su polja za sekundarni jezik jednostavno opciona polja na postojećim entitetima — ne opterećuju UI niti zahtijevaju posebnu logiku osim prikaza na osnovu jezičke preferencije. Turisti su jedna od ključnih persona (Thomas), a platforma je od početka zamišljena kao dvojezična.
-
-<a id="korisnici-i-pristup"></a>
-
 ### Korisnici i pristup
 
 | Funkcionalnost | Šta uključuje | Referenca |
@@ -56,9 +44,6 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | **Staff panel** | Interfejs za moderatore: pregled queue-a, donošenje odluka, upravljanje korisnicima, kategorijama i tagovima. | 03 - Korisnici (3.5) |
 
 **Praktična napomena:** Trust Tier sa automatskim napredovanjem/degradacijom mora biti u MVP-u jer bez toga moderatori moraju ručno pratiti i mijenjati tier za svakog korisnika — što je neodrživo čim platforma dobije i nekoliko desetina aktivnih korisnika. Automatski mehanizam (napredovanje nakon X odobrenih objava, degradacija nakon odbijenih) je jednostavan za implementaciju, a drastično smanjuje operativno opterećenje.
-
-<a id="korisnički-doživljaj"></a>
-
 ### Korisnički doživljaj
 
 | Funkcionalnost | Šta uključuje | Referenca |
@@ -67,9 +52,6 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | **Naslovna stranica** | Dvije grupe sadržaja na naslovnoj: Premium+Homepage (prioritet), svi ostali. Unutar kategorija: Premium sekcija na vrhu, Standard+obični ispod. Default na Events režim. | 02 - Korisnički doživljaj (2.1) |
 | **Listing prikaz** | Kartice u listama, detail stranica, galerija slika. | 02 - Korisnički doživljaj (2.3) |
 | **Responsive UI** | Mobile-first dizajn, prilagođen za touch i desktop. | 02 - Korisnički doživljaj (2.5) |
-
-<a id="moderacija"></a>
-
 ### Moderacija
 
 | Funkcionalnost | Šta uključuje | Referenca |
@@ -79,9 +61,6 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | **Message sistem** | Jedan thread po listingu. Moderator započinje komunikaciju. Statusi: idle, waiting\_owner, waiting\_moderator. Tekstualne poruke + reference na ListingDocument. | 07 - Komunikacija (7.1) |
 
 **Praktična napomena:** AI screening ulazi u MVP u punom obliku jer se oslanja na vanjske servise (cloud API pozivi) — vlastiti razvoj je minimalan, a zaštita od neprimjerenog sadržaja je kritična za reputaciju platforme od prvog dana. Trošak po pozivu je nizak i predvidljiv.
-
-<a id="monetizacija"></a>
-
 ### Monetizacija
 
 | Funkcionalnost | Šta uključuje | Referenca |
@@ -94,18 +73,12 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 **Praktična napomena:** AutoRenew je prirodni dio promotivnog sistema — bez njega, korisnici koji kupe Premium promociju na 7+ dana moraju se ručno vraćati da osvježe poziciju, što je loše korisničko iskustvo i smanjuje vrijednost plaćene promocije. Implementacijski je to jedan background job koji periodično ažurira `sortDate`.
 
 **Praktična napomena:** Display Advertising je u MVP-u jer će u ranoj fazi biti primarni izvor prihoda — dok korisnici još ne vide dovoljno traffica da investiraju u promocije listinga, lokalni biznisi su spremni platiti banner ako im se pokaže posjećenost. MVP verzija koristi ručno postavljanje oglasa od strane Staffa, što daje potpunu kontrolu timu i zahtijeva minimalan razvoj. Napredni sistem (Advertiser profili, kampanje, CPC bidding, targeting, fraud detection) je planiran za Fazu 2 kada broj oglašivača preraste kapacitet ručnog upravljanja.
-
-<a id="komunikacija"></a>
-
 ### Komunikacija
 
 | Funkcionalnost | Šta uključuje | Referenca |
 | --- | --- | --- |
 | **Email notifikacije** | Transakcijske (listing odobren/odbijen/changes\_requested), moderacijske (nova poruka od moderatora), promotivne (promocija ističe). | 07 - Komunikacija (7.2) |
 | **In-app notifikacije** | Badge sa brojem nepročitanih, lista notifikacija, označavanje kao pročitano. | 07 - Komunikacija (7.2) |
-
-<a id="infrastruktura"></a>
-
 ### Infrastruktura
 
 | Funkcionalnost | Šta uključuje | Referenca |
@@ -114,15 +87,9 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | **Background jobs** | Automatski expiry evenata, soft delete cleanup, AutoRenew boost, auto-close threadova. | 08 - Infrastruktura (8.3) |
 
 * * *
-
-<a id="šta-je-na-čekanju-planirane-funkcionalnosti-za-post-mvp-faze"></a>
-
 ## Šta je na čekanju — planirane funkcionalnosti za post-MVP faze
 
 Ove funkcionalnosti su dokumentirane i specifikacijski promišljene, ali svjesno ih ostavljamo za buduće iteracije. Razlozi variraju — neke zahtijevaju obim korisnika koji MVP još nema, neke su skupe za razvoj uz nisku početnu vrijednost, a neke su optimizacije koje imaju smisla tek na većem obimu.
-
-<a id="faza-2-nadogradnja-nakon-lansiranja"></a>
-
 ### Faza 2 — nadogradnja nakon lansiranja
 
 Ovo su funkcionalnosti koje očekujemo da će trebati relativno brzo nakon lansiranja — bilo kroz korisnički feedback ili kroz poslovne prilike.
@@ -142,9 +109,6 @@ Ovo su funkcionalnosti koje očekujemo da će trebati relativno brzo nakon lansi
 > Ove funkcionalnosti su svrstane u Fazu 2 jer se ne isplati graditi tenant infrastrukturu za jedan grad — ali **mogu postati prioritet ranije od očekivanog** ako se pojavi konkretan partner ili tržišna prilika za drugi grad. U tom slučaju, bolje je uložiti u multi-tenant infrastrukturu odmah nego klonirati sistem i duplirati troškove održavanja. Odluka zavisi od timinga: ako se drugi grad pojavi u prvih 6 mjeseci, multi-tenant se gradi kao dio Faze 2. Ako se pojavi tek nakon 12+ mjeseci, može se raditi i kao dio Faze 3 sa više iskustva i stabilnijim codebase-om.
 > 
 > **Preporuka:** Čak i dok MVP radi sa jednim tenantom, korisno je u kodu izbjegavati hardkodiranje tenant-specifičnih vrijednosti (URL-ovi, valuta, nazivi) i umjesto toga koristiti konfiguracijske parametre. Ovo ne košta gotovo ništa u razvoju, a drastično olakšava kasniju tranziciju na multi-tenant arhitekturu.
-
-<a id="faza-3-skaliranje"></a>
-
 ### Faza 3 — skaliranje
 
 Ove funkcionalnosti imaju smisla kad platforma ima stabilan operativni model i značajan obim.
@@ -155,9 +119,6 @@ Ove funkcionalnosti imaju smisla kad platforma ima stabilan operativni model i z
 | **Support ticket sistem** | `SupportTicket` entitet, 4 nivoa eskalacije (L1–L4), SLA tracking, satisfaction rating, canned responses. | Kad support tim naraste na 3+ ljudi i email inbox postane neodrživ. | 07 - Komunikacija (7.3) |
 | **SLA tracking i metrike** | `firstResponseAt`, compliance rate, eskalacijski triggeri (50%/80%/100%). | Kad postoji support ticket sistem i kad je obim dovoljno velik da zahtijeva automatizovano praćenje. | 07 - Komunikacija (7.3.7) |
 | **Satisfaction rating** | Ocjena korisničke podrške (1–5 zvjezdica) po zatvaranju ticketa. | Kad postoji support ticket sistem. | 07 - Komunikacija (7.3.3) |
-
-<a id="backlog-korisno-ali-nema-vremenski-pritisak"></a>
-
 ### Backlog — korisno, ali nema vremenski pritisak
 
 | Funkcionalnost | Zašto čeka | Referenca |
@@ -169,9 +130,6 @@ Ove funkcionalnosti imaju smisla kad platforma ima stabilan operativni model i z
 | **Tag spajanje** | Mogućnost spajanja sličnih tagova ("wifi" i "wi-fi") sa automatskom migracijom listinga. | 04 - Sadržaj (4.5) |
 
 * * *
-
-<a id="šta-mvp-ne-pokriva-a-dokumentacija-opisuje"></a>
-
 ## Šta MVP NE pokriva (a dokumentacija opisuje)
 
 Radi kompletnosti, ovo su stavke koje su u dokumentaciji ali nisu ni u MVP-u ni u "na čekanju" listama — jer su ili previše granularne za ovaj nivo planiranja, ili su operativne prakse koje se definišu kroz korištenje:
@@ -183,9 +141,6 @@ Radi kompletnosti, ovo su stavke koje su u dokumentaciji ali nisu ni u MVP-u ni 
 - **Dijagram arhitekture** (1.2) — referenca, ne deliverable
 
 * * *
-
-<a id="kako-čitati-ovaj-dokument"></a>
-
 ## Kako čitati ovaj dokument
 
 Svaka funkcionalnost u "na čekanju" sekciji ima **okidač za uključivanje** — konkretan uvjet koji signalizira da je došlo vrijeme za implementaciju. Ovo nije "jednog dana ćemo", nego "kad se desi X, onda gradimo Y". Okidači nisu isključivi — ako se više njih aktivira istovremeno, prioritizacija se radi na osnovu poslovnog impakta i razvojnog troška.
@@ -195,9 +150,6 @@ Faze nisu strogo sekvencijalne. Multi-tenant funkcionalnosti su nominalno u Fazi
 Dokument je živ i ažuriraće se kako MVP bude napredovao.
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis |

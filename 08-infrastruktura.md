@@ -5,21 +5,12 @@
 > **Status:** Završeno ✅
 
 * * *
-
-<a id="o-čemu-je-riječ"></a>
-
 ## O čemu je riječ?
 
 Ovaj dokument opisuje tehničku infrastrukturu koja omogućava rad CityInfo platforme. Fokus je na konceptima i principima koji su bitni za razumijevanje sistema, a ne na implementacijskim detaljima koji su ionako podložni čestim promjenama. Ako radiš na backendu ili ops poslovima, ovdje ćeš naći pregled ključnih komponenti — od multi-tenant arhitekture i izolacije podataka, preko audit sistema i automatskih procesa, do eksternih integracija koje platforma koristi.
 
 * * *
-
-<a id="81-multi-tenant-arhitektura"></a>
-
 ## 8.1 Multi-tenant arhitektura
-
-<a id="šta-je-tenant-i-zašto-nam-treba"></a>
-
 ### Šta je tenant i zašto nam treba?
 
 CityInfo je od samog početka dizajniran kao multi-tenant sistem. Svaki grad (Sarajevo, Zagreb, Ljubljana…) predstavlja zaseban "tenant" — logički i fizički odvojen prostor sa svojim korisnicima, sadržajem i konfiguracijom. Ovakav pristup omogućava da jedan deployment aplikacije služi više gradova, bez potrebe za zasebnim instancama za svaki grad. Dodavanje novog grada je stvar konfiguracije, ne novog deploya.
@@ -38,9 +29,6 @@ CityInfo Platforma
 **Praktična napomena:** Cijene kredita, promocija, pa čak i neka pravila moderacije mogu varirati po tenantima. Ovo nije hardkodirano — lokalni administratori imaju fleksibilnost prilagodbe svog tržišta.
 
 * * *
-
-<a id="811-database-izolacija"></a>
-
 ### 8.1.1 Database izolacija
 
 Jedna od ključnih arhitektonskih odluka je potpuna separacija baza podataka. Sistem koristi dvije vrste baza:
@@ -79,9 +67,6 @@ Ovakva separacija znači da:
 **Praktična napomena:** GlobalAdmin nikada ne pristupa direktno tenant bazama za čitanje korisničkih podataka. Sva komunikacija ide kroz definirane API-je, što održava jasnu separaciju odgovornosti.
 
 * * *
-
-<a id="812-tenant-registry"></a>
-
 ### 8.1.2 Tenant Registry
 
 TenantRegistry je centralna tabela u master bazi koja drži informacije o svim aktivnim gradovima. Ovo je "izvor istine" za sve što se tiče konfiguracije tenanta.
@@ -105,9 +90,6 @@ TenantRegistry je centralna tabela u master bazi koja drži informacije o svim a
 **Praktična napomena:** Kad se kreira novi tenant, GlobalAdmin koristi wizard koji automatski postavlja bazu, inicijalne kategorije, default cijene i prvog local\_admin-a.
 
 * * *
-
-<a id="813-cross-tenant-operacije"></a>
-
 ### 8.1.3 Cross-tenant operacije
 
 Iako su tenanti izolovani, postoje situacije kada je potrebna komunikacija ili agregacija podataka:
@@ -123,21 +105,12 @@ Iako su tenanti izolovani, postoje situacije kada je potrebna komunikacija ili a
 **Važno:** Ne postoji mehanizam za "dijeljenje" sadržaja između tenanta. Event kreiran u Sarajevu ne može se prikazati u Zagrebu. Ovo je namjerna odluka radi jednostavnosti i jasne separacije.
 
 * * *
-
-<a id="82-audit-i-logging"></a>
-
 ## 8.2 Audit i logging
-
-<a id="zašto-logujemo-sve"></a>
-
 ### Zašto logujemo sve?
 
 Audit sistem je kičma operativne sigurnosti platforme. Bez njega, ne bismo mogli odgovoriti na pitanja poput "ko je blokirao ovog korisnika?" ili "kada je promijenjena cijena promocije?". Osim operativnih potreba, audit logovi su i pravni zahtjev — GDPR i lokalni zakoni traže da možemo rekonstruisati istoriju pristupa podacima.
 
 * * *
-
-<a id="821-šta-se-loguje-po-sistemima"></a>
-
 ### 8.2.1 Šta se loguje po sistemima
 
 CityInfo koristi tri nivoa logovanja, prilagođena tipu korisnika i osjetljivosti akcija:
@@ -157,9 +130,6 @@ Razlog za različite retention periode je praktičan:
 **Praktična napomena:** Audit logovi se automatski anonimiziraju nakon isteka retention perioda — IP adrese i lični podaci se uklanjaju, ali statistički podaci ostaju za analizu.
 
 * * *
-
-<a id="822-struktura-audit-loga"></a>
-
 ### 8.2.2 Struktura audit loga
 
 Svaki audit zapis ima konzistentnu strukturu koja omogućava lako pretraživanje i analizu:
@@ -190,9 +160,6 @@ metadata: { reason: "SPAM_CONTENT", duration: "7d" }
 ```
 
 * * *
-
-<a id="823-compliance-zahtjevi"></a>
-
 ### 8.2.3 Compliance zahtjevi
 
 Audit sistem je dizajniran da zadovolji više regulatornih okvira:
@@ -206,21 +173,12 @@ Audit sistem je dizajniran da zadovolji više regulatornih okvira:
 **Praktična napomena:** Kad korisnik zatraži GDPR export, sistem automatski generiše paket svih podataka vezanih za tog korisnika, uključujući audit logove (sa redaktovanim podacima trećih strana).
 
 * * *
-
-<a id="83-background-procesi"></a>
-
 ## 8.3 Background procesi
-
-<a id="zašto-automatizacija"></a>
-
 ### Zašto automatizacija?
 
 Platforma se oslanja na niz automatskih procesa koji održavaju sistem zdravim, čiste zastarjele podatke i osiguravaju konzistentnost. Bez ovih jobova, moderatori bi morali ručno pratiti istekle promocije, a baza bi rasla neograničeno.
 
 * * *
-
-<a id="831-scheduled-jobovi"></a>
-
 ### 8.3.1 Scheduled jobovi
 
 Ovo su regularni procesi koji se izvršavaju po rasporedu:
@@ -243,9 +201,6 @@ Ovo su regularni procesi koji se izvršavaju po rasporedu:
 **Praktična napomena:** Jobovi se mogu manualno pokrenuti kroz admin panel u slučaju potrebe (npr. ako se desila greška i treba ponovo procesirati).
 
 * * *
-
-<a id="832-event-driven-procesi"></a>
-
 ### 8.3.2 Event-driven procesi
 
 Pored scheduled jobova, postoje i procesi koji se pokreću kao reakcija na događaje u sistemu:
@@ -264,9 +219,6 @@ Pored scheduled jobova, postoje i procesi koji se pokreću kao reakcija na doga�
 **Praktična napomena:** Event-driven arhitektura omogućava loose coupling — komponente ne moraju znati jedna za drugu, samo "reaguju" na događaje.
 
 * * *
-
-<a id="833-monitoring-jobova"></a>
-
 ### 8.3.3 Monitoring jobova
 
 Svaki job ima svoj health status koji se može pratiti:
@@ -281,21 +233,12 @@ Svaki job ima svoj health status koji se može pratiti:
 **Praktična napomena:** Dashboard prikazuje agregiran health svih jobova. Ako bilo koji job uđe u Failed stanje, ops tim dobija alert.
 
 * * *
-
-<a id="84-eksterne-integracije"></a>
-
 ## 8.4 Eksterne integracije
-
-<a id="princip-best-of-breed"></a>
-
 ### Princip "best of breed"
 
 CityInfo ne pokušava reinventirati točak. Za funkcionalnosti koje nisu core business (plaćanja, email, storage…), koristimo provjerene eksterne servise. Ovo ubrzava development i smanjuje održavanje, a arhitektura je dizajnirana da servisi budu zamjenjivi ako se ukaže potreba.
 
 * * *
-
-<a id="841-payment-gateway"></a>
-
 ### 8.4.1 Payment gateway
 
 Monetizacija (kupovina kredita) prolazi kroz eksterni payment gateway.
@@ -308,9 +251,6 @@ Monetizacija (kupovina kredita) prolazi kroz eksterni payment gateway.
 | **Sigurnost** | PCI DSS compliant, tokenizirani podaci |
 
 **Praktična napomena:** Gateway je zamjenjiv — sistem je dizajniran da može raditi sa različitim providerima. Konkretni provider može varirati po tržištima.
-
-<a id="842-email-servis"></a>
-
 ### 8.4.2 Email servis
 
 Platforma šalje značajan broj email-ova — od verifikacija i notifikacija do digest sumarizacija.
@@ -321,39 +261,21 @@ Platforma šalje značajan broj email-ova — od verifikacija i notifikacija do 
 | **Notifikacijski** | Akcija na platformi | "Vaš sadržaj je odobren" |
 | **Digest** | Scheduled job | Sedmični pregled aktivnosti |
 | **Marketing** | Manualno/kampanja | Novi features, promocije |
-
-<a id="843-push-notification-servis"></a>
-
 ### 8.4.3 Push notification servis
 
 Za mobilne korisnike, platforma podržava push notifikacije (Faza 2).
-
-<a id="844-storage-servis"></a>
-
 ### 8.4.4 Storage servis
 
 Slike i dokumenti se čuvaju u eksternom cloud storage servisu sa CDN-om za brzo učitavanje.
-
-<a id="845-ai-content-screening"></a>
-
 ### 8.4.5 AI Content Screening
 
 Slike koje korisnici uploaduju prolaze kroz automatsku provjeru sadržaja putem eksternih AI servisa. Detalji o scoring komponentama i blocking logici u [05 - Moderacija, sekcija 5.3](../project-specs/05-moderacija.md).
-
-<a id="846-virus-scanning"></a>
-
 ### 8.4.6 Virus Scanning
 
 Dokumenti koji se uploaduju prolaze kroz virus scan. Detalji o workflow-u u [04 - Sadržaj, sekcija 4.7](../project-specs/04-sadrzaj.md).
 
 * * *
-
-<a id="85-technology-stack-pregled"></a>
-
 ## 8.5 Technology Stack (pregled)
-
-<a id="odlučeni-stack"></a>
-
 ### Odlučeni stack
 
 CityInfo koristi jasno definisan technology stack koji balansira performanse, ecosystem i dostupnost developera na lokalnom tržištu. Izbor je finaliziran i ovdje je konceptualni pregled. Za operativne detalje (konkretne verzije, environment varijable, deployment procedure), pogledaj odvojene ops dokumente.
@@ -376,9 +298,6 @@ CityInfo koristi jasno definisan technology stack koji balansira performanse, ec
 | **GlobalAdmin** | [master.cityinfo.ba](http://master.cityinfo.ba) | SvelteKit + TailwindCSS + Flowbite (MVP može biti minimalan) |
 
 > **💡 Praktična napomena:** Svi frontend sistemi koriste isti stack i dijele komponentnu biblioteku, ali su zasebne SvelteKit aplikacije sa odvojenim routingom, autentifikacijom i API pozivima. Ovo odražava arhitekturu tri korisničke zone iz [01 - Uvod, sekcija 1.2](../project-specs/01-uvod-i-koncepti.md).
-
-<a id="cache-i-pretraga"></a>
-
 ### Cache i pretraga
 
 | Komponenta | Status | Namjena |
@@ -387,15 +306,9 @@ CityInfo koristi jasno definisan technology stack koji balansira performanse, ec
 | **Search engine** | Opciono, po potrebi | Full-text pretraga ako SQL Server FTS ne bude dovoljan |
 
 **Praktična napomena:** Cache nije "must have" za prvi release, ali značajno poboljšava performanse kad korisnika bude više. Dizajniraj API tako da se cache može dodati kasnije bez promjene interface-a.
-
-<a id="cloud-infrastruktura"></a>
-
 ### Cloud infrastruktura
 
 Platforma je dizajnirana za cloud deployment. Konkretni cloud provider nije vezan — arhitektura koristi standardne interface-e gdje god je moguće.
-
-<a id="devops"></a>
-
 ### DevOps
 
 | Kategorija | Pristup |
@@ -405,9 +318,6 @@ Platforma je dizajnirana za cloud deployment. Konkretni cloud provider nije veza
 | **Monitoring** | Centralizovane metrike, alerting, dashboards |
 | **Logging** | Centralizovani logging za agregaciju i debug |
 | **Error tracking** | Real-time error reporting |
-
-<a id="reference-za-operativne-detalje"></a>
-
 ### Reference za operativne detalje
 
 Za konkretne verzije, konfiguracije i deployment procedure, pogledaj:
@@ -420,15 +330,9 @@ Za konkretne verzije, konfiguracije i deployment procedure, pogledaj:
 | `RUNBOOK.md` | Operativne procedure za incidente |
 
 * * *
-
-<a id="86-api-endpoints"></a>
-
 ## 8.6 API Endpoints
 
 Infrastrukturne operacije su dostupne kroz nekoliko API endpoint-a. Većina je rezervisana za GlobalAdmin sistem, dok su neki dostupni i Staff korisnicima.
-
-<a id="tenant-management"></a>
-
 ### Tenant Management
 
 | Metoda | Endpoint | Opis |
@@ -439,9 +343,6 @@ Infrastrukturne operacije su dostupne kroz nekoliko API endpoint-a. Većina je r
 | `PUT` | `/api/master/tenants/{id}` | Ažuriranje konfiguracije |
 | `POST` | `/api/master/tenants/{id}/activate` | Aktivacija tenanta |
 | `POST` | `/api/master/tenants/{id}/deactivate` | Deaktivacija (maintenance) |
-
-<a id="audit-logs"></a>
-
 ### Audit Logs
 
 | Metoda | Endpoint | Opis |
@@ -450,9 +351,6 @@ Infrastrukturne operacije su dostupne kroz nekoliko API endpoint-a. Većina je r
 | `GET` | `/api/audit/logs/{id}` | Detalji log zapisa |
 | `GET` | `/api/audit/user/{userId}` | Svi logovi za korisnika |
 | `POST` | `/api/audit/export` | Export za GDPR zahtjeve |
-
-<a id="background-jobs"></a>
-
 ### Background Jobs
 
 | Metoda | Endpoint | Opis |
@@ -460,9 +358,6 @@ Infrastrukturne operacije su dostupne kroz nekoliko API endpoint-a. Većina je r
 | `GET` | `/api/jobs/status` | Status svih jobova |
 | `POST` | `/api/jobs/{jobName}/trigger` | Manualno pokretanje |
 | `GET` | `/api/jobs/{jobName}/history` | Istorija izvršavanja |
-
-<a id="health-monitoring"></a>
-
 ### Health & Monitoring
 
 | Metoda | Endpoint | Opis |
@@ -472,9 +367,6 @@ Infrastrukturne operacije su dostupne kroz nekoliko API endpoint-a. Većina je r
 | `GET` | `/api/metrics` | Prometheus-compatible metrike |
 
 * * *
-
-<a id="zaključak"></a>
-
 ## Zaključak
 
 Infrastruktura CityInfo platforme je dizajnirana sa nekoliko ključnih principa na umu:
@@ -488,9 +380,6 @@ Infrastruktura CityInfo platforme je dizajnirana sa nekoliko ključnih principa 
 Ovaj dokument daje konceptualni pregled. Za implementacijske detalje, pogledaj relevantne tehničke specifikacije ili se obrati DevOps timu.
 
 * * *
-
-<a id="changelog"></a>
-
 ## Changelog
 
 | Verzija | Datum | Opis |
