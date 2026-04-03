@@ -240,7 +240,7 @@ Pored registrovanih korisnika, platforma podržava i **visitors** — neautentif
 - Lajkati sadržaj (bez historije)
 - Dijeliti linkove
 
-Visitors **ne mogu** kreirati sadržaj, spremati favorite na profil, niti slati poruke. Ovo omogućava platformi da bude korisna i za casual posjetioce koji samo žele vidjeti šta se dešava u gradu.
+Visitors **ne mogu** kreirati sadržaj, spremati favorite na profil, slati poruke, niti prijaviti neprikladan sadržaj. Ovo omogućava platformi da bude korisna i za casual posjetioce koji samo žele vidjeti šta se dešava u gradu.
 
 <a id="promocije-i-monetizacija"></a>
 
@@ -361,7 +361,7 @@ Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći
 
 <a id="15-persone-i-korisničke-priče"></a>
 
-## 1.5 Persone i korisničke priče
+## 1.5 Persone i korisnička putovanja
 
 > **📄 Detaljna verzija:** Kompletne persone sa ciljevima, frustracijama, "aha" momentima, i detaljnim korisničkim putovanjima (uključujući Staff persone — moderator i operator) dostupne su u zasebnom dokumentu: [**Persone i korisnička putovanja**](../project-specs/persone-i-korisnicka-putovanja.md). Taj dokument također sadrži mapiranje putovanja na journey milestones (J-01 do J-09) iz development plana.
 

@@ -240,7 +240,7 @@ Novi korisnici počinju na **Tier 1 (Standard)** — njihov sadržaj ide na pre-
 | **1** | Standard | Pre-moderacija | 100% | Default za nove korisnike |
 | **2** | Trusted | Post-moderacija | 100% | Automatski (konfigurisani pragovi) |
 | **3** | Established | Post-moderacija | Konfigurisano | Automatski (konfigurisani pragovi) |
-| **4** | Verified Partner | Post-moderacija | Minimalno | Ručno — moderator sa `can_manage_trust_tier` permisijom |
+| **4** | Verified Partner | Post-moderacija | Konfigurisano (`TIER4_SAMPLING_PERCENT`, preporučeno 20%) | Ručno — moderator sa `can_manage_trust_tier` permisijom |
 
 **Objašnjenje nivoa:**
 
@@ -587,15 +587,15 @@ Ponašanje pri blokiranju razlikuje se za **ručno blokiranje** (moderator) i **
 Pri ručnom blokiranju, moderator bira šta se dešava sa listinzima korisnika:
 
 - **Opcija 1 — Listinzi ostaju vidljivi (default):** Aktivni listinzi ostaju javno vidljivi, ali korisnik ne može kreirati nove niti editovati postojeće dok je blokiran. Aktivne promocije se otkazuju bez povrata kredita.
-- **Opcija 2 — Listinzi se uklanjaju:** Svi javno vidljivi listinzi prelaze u `removed` sa `removedReason = owner_blocked`. Ovo je **terminalna akcija** — listinzi se ne mogu automatski reaktivirati pri odblokiranju. Aktivne promocije se otkazuju bez povrata kredita.
+- **Opcija 2 — Listinzi se sakrivaju:** Svi javno vidljivi listinzi prelaze u `hidden_by_system`. Pri odblokiranju korisnika, ovi listinzi se automatski vraćaju u `published`. Aktivne promocije se otkazuju bez povrata kredita.
 
-Moderator bira opciju na osnovu procjene — ako je blokada zbog neprimjerenih poruka ali je sadržaj kvalitetan, listinzi tipično ostaju vidljivi. Ako je blokada zbog lažnog sadržaja ili prevare, moderator uklanja sve.
+Moderator bira opciju na osnovu procjene — ako je blokada zbog neprimjerenih poruka ali je sadržaj kvalitetan, listinzi tipično ostaju vidljivi. Ako je blokada zbog lažnog sadržaja ili prevare, moderator sakriva sve.
 
 **Instant blokiranje (sistem):**
 
-Sistem automatski blokira korisnika u slučajevima koji zahtijevaju hitnu reakciju (hate speech, nasilje, spam, malicious sadržaj). Kod instant blokiranja, **default ponašanje je uklanjanje sadržaja** — svi javno vidljivi listinzi automatski prelaze u `removed` sa `removedReason = owner_blocked`. Instant block kreira stavku "Instant Block Review" u moderacijskom queue-u, gdje moderator može potvrditi blokadu ili revertovati ako je bila false positive.
+Sistem automatski blokira korisnika u slučajevima koji zahtijevaju hitnu reakciju (hate speech, nasilje, spam, malicious sadržaj). Kod instant blokiranja, **default ponašanje je sakrivanje sadržaja** — svi javno vidljivi listinzi automatski prelaze u `hidden_by_system`. Instant block kreira stavku "Instant Block Review" u moderacijskom queue-u, gdje moderator može potvrditi blokadu ili revertovati ako je bila false positive.
 
-> **📌 Praktična napomena:** `removed` je terminalni status — listinzi koji su uklonjeni zbog blokiranja vlasnika ne mogu se automatski reaktivirati pri odblokiranju. Ako se korisnik odblokira i želi ponovo objaviti sadržaj, moderator može pomoći kreiranjem novih listinga ili, u opravdanim slučajevima, ručnom intervencijom na nivou baze. Ova odluka je namjerna: `removed` osigurava konzistentnost jer listinzi koji su bili uklonjeni sa platforme ne bi trebali tiho "oživjeti" bez eksplicitne ljudske odluke. Detalji o `listingStatus` vrijednostima i `removedReason` opisani su u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
+> **📌 Praktična napomena:** Pri ručnom blokiranju, sakriveni listinzi (`hidden_by_system`) se automatski reaktiviraju pri odblokiranju. Ako moderator želi **trajno** ukloniti sadržaj (npr. u slučaju prevare ili ilegalnog sadržaja), to je zasebna akcija — moderator može listinge prebaciti u `removed` sa odgovarajućim `removedReason` prije ili nakon blokiranja. Detalji o `listingStatus` vrijednostima i `removedReason` opisani su u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
 
 <a id="session-politike"></a>
 

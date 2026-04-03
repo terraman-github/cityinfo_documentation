@@ -80,7 +80,7 @@ između dva sistema.
 
 - Bosanski (ijekavica) za naslove, opise, kontekst i acceptance criteria.
 - Tehnički termini ostaju na engleskom kad je to prirodnije:
-  `lifecycleStatus`, `sortDate`, `Trust Tier`, `endpoint` — ne prevodi ih
+  `listingStatus`, `sortDate`, `Trust Tier`, `endpoint` — ne prevodi ih
   na silu.
 - Jira labele i identifikatori (epic key, story key) su na engleskom.
 

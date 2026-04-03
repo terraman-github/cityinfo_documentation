@@ -497,10 +497,15 @@ Korisnik kreira → Šalje na objavu → Odmah vidljivo → Moderator može nakn
 ### Praćenje statusa objave
 
 - **Draft** — još nije poslano na objavu
-- **Čeka pregled** — poslano, čeka moderatora
-- **Potrebne izmjene** — moderator je ostavio komentare
-- **Aktivno** — javno vidljivo
-- **Odbijeno** — nije prošlo moderaciju (sa razlogom)
+- **Čeka pregled** — poslano, čeka moderatora (`in_review`)
+- **Potrebne izmjene** — moderator je ostavio komentare (`changes_requested`)
+- **Objavljeno** — javno vidljivo (`published`)
+- **Objavljeno — čeka pregled** — vidljivo, moderator pregleda naknadno (`published_under_review`)
+- **Objavljeno — potrebne izmjene** — vidljivo, moderator traži blagu izmjenu (`published_needs_changes`)
+- **Skriveno** — privremeno sakriveno od strane vlasnika, moderatora ili sistema (`hidden_by_owner`, `hidden_by_moderator`, `hidden_by_system`)
+- **Otkazano** — vlasnik otkazao event, vidljivo sa badge-om "Otkazano" (`canceled`, samo Event)
+- **Završeno** — event je prošao, vidljivo kao historijski zapis (`expired`, samo Event)
+- **Odbijeno** — nije prošlo moderaciju, sa razlogom (`rejected`)
 
 * * *
 

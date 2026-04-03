@@ -391,7 +391,7 @@ flowchart TD
 | **No refund policy** | Promocije su non-refundable nakon aktivacije | Visok |
 | **Jedna aktivna po listingu** | Listing može imati samo jednu aktivnu promociju | Visok |
 | **Homepage samo za Premium** | Opcija "Prikaži na naslovnoj" dostupna samo za Premium | Visok |
-| **Vezano za listing status** | Ako listing izgubi javnu vidljivost (uklonjen, istekao, sakriven ili odbijen), promocija automatski prestaje bez refunda | Visok |
+| **Vezano za listing status** | Ako listing izgubi javnu vidljivost (uklonjen, istekao, sakriven ili odbijen), promocija automatski prestaje bez refunda. **Izuzetak:** pri prelasku u `canceled`, promocija se **pauzira** (ne prestaje) — detalji u Ch.04, sekcija 4.8. | Visok |
 | **Ručni refresh cooldown** | Korisnik može ručno osvježiti poziciju jednom u 24h (besplatno) | Srednji |
 | **AutoRenew zaobilazi cooldown** | Plaćeni AutoRenew nije ograničen 24h cooldown-om | Srednji |
 | **Pauza zamrzava dane** | Pri pauziranju, preostali dani se čuvaju i troše se tek nakon nastavka | Visok |
