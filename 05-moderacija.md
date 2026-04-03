@@ -1,8 +1,8 @@
 # 05 - MODERACIJA
 
-> **Verzija:** 2.0  
+> **Verzija:** 2.1  
 > **Status:** Završeno ✅  
-> **Datum:** 1.4.2026
+> **Datum:** 3.4.2026
 
 * * *
 
@@ -147,7 +147,7 @@ Ono što se broji je isključivo **finalna odluka** po listingu — bez obzira k
 | Scenarij | Šta se broji |
 | --- | --- |
 | `changes_requested` → korisnik popravlja → listing prelazi u `published` | 1 approved |
-| `changes_requested` → korisnik popravlja → listing prelazi u `rejected` | 1 rejected |
+| `changes_requested` → korisnik popravlja → listing prelazi u `removed (removedReason: rejected)` | 1 rejected |
 | Više iteracija `changes_requested` → na kraju listing prelazi u `published` | 1 approved — broj iteracija nije relevantan |
 | `changes_requested` → korisnik ne reaguje, listing ostaje u tom statusu | Ništa — nema finalne odluke, ne broji se |
 
@@ -285,7 +285,7 @@ Svaka moderatorska odluka vodi listing u određeni `listingStatus`. Postoje tri 
 | --- | --- | --- | --- |
 | **Approve** | `published` | Listing postaje vidljiv (ili ostaje vidljiv ako je bio u post-mod toku) | Sadržaj zadovoljava standarde |
 | **Request Changes** | `changes_requested` (pre-mod tok) ili `published_needs_changes` (post-mod tok) | Korisnik dobija poruku šta treba popraviti | Sadržaj ima potencijal, treba doradu |
-| **Reject** | `rejected` | Listing se trajno zatvara — terminalni status | Ozbiljno kršenje pravila, nepopravljivi problemi |
+| **Reject** | `removed` (`removedReason: rejected`) | Listing se trajno zatvara — terminalni status | Ozbiljno kršenje pravila, nepopravljivi problemi |
 
 **Razlika između pre-mod i post-mod toka pri "Request Changes":**
 
@@ -298,7 +298,7 @@ flowchart LR
     B -->|Approve| C[published → vidljivo]
     B -->|Request Changes pre-mod| D[changes_requested → nevidljivo, korisnik popravlja]
     B -->|Request Changes post-mod| D2[published_needs_changes → vidljivo, korisnik popravlja]
-    B -->|Reject| E[rejected → terminalno zatvoreno]
+    B -->|Reject| E[removed (rejected) → terminalno zatvoreno]
     D -->|Korisnik resubmituje| A
     D2 -->|Korisnik submita popravku| A
 ```
@@ -417,7 +417,7 @@ Kada AI blokira sadržaj:
 1. Listing prelazi u `hidden_by_system`
 2. Listing nije vidljiv javno, bez obzira na trust tier
 3. Ulazi u Urgent queue za hitni pregled
-4. Moderator mora ručno pregledati i odlučiti: odobrava (→ `published`) ili odbija (→ `rejected`) ili uklanja (→ `removed`)
+4. Moderator mora ručno pregledati i odlučiti: odobrava (→ `published`) ili odbija (→ `removed`, `removedReason: rejected`) ili uklanja (→ `removed`, drugi `removedReason`)
 
 <a id="535-kako-moderator-vidi-ai-rezultate"></a>
 
@@ -491,7 +491,7 @@ Svi moderatori dijele iste bazne ovlasti za svakodnevni rad. Dodatne permisije p
 
 - Odobriti listing (→ `published`)
 - Zatražiti izmjene (→ `changes_requested` ili `published_needs_changes`, zavisno od toka)
-- Odbaciti listing (→ `rejected`)
+- Odbaciti listing (→ `removed`, `removedReason: rejected`)
 - Sakriti listing (→ `hidden_by_moderator`)
 - Trajno ukloniti listing (→ `removed` sa odgovarajućim `removedReason`)
 - Override AI sugestije (osim `hidden_by_system` bez ručnog pregleda)
@@ -904,7 +904,7 @@ Verifikacija nije odvojen proces — to je dio standardne moderacije listinga. K
 | Approve (→ `published`) | Moderator ima drugog osnova (poznaje biznis, email potvrda, itd.) | `verified` |
 | Approve (→ `published`) | Nema osnova za verifikaciju | `unverified` |
 | Approve (→ `published`) | Dokument nevalidan/nedovoljan | `unverified` + feedback korisniku |
-| Reject (→ `rejected`) | Bilo koji | Nije relevantno (listing odbijen) |
+| Reject (→ `removed`, `removedReason: rejected`) | Bilo koji | Nije relevantno (listing odbijen) |
 
 <a id="567-listingdocument-entitet"></a>
 
@@ -950,7 +950,7 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
 | --- | --- | --- |
 | `POST` | `/api/moderation/listings/{id}/approve` | Odobri listing (→ `published`) |
 | `POST` | `/api/moderation/listings/{id}/request-changes` | Vrati na doradu (→ `changes_requested` ili `published_needs_changes`) |
-| `POST` | `/api/moderation/listings/{id}/reject` | Odbaci listing (→ `rejected`) |
+| `POST` | `/api/moderation/listings/{id}/reject` | Odbaci listing (→ `removed`, `removedReason: rejected`) |
 | `POST` | `/api/moderation/listings/{id}/hide` | Sakrij listing (→ `hidden_by_moderator`) |
 | `POST` | `/api/moderation/listings/{id}/remove` | Trajno ukloni listing (→ `removed` sa `removedReason`) |
 | `POST` | `/api/moderation/listings/{id}/override` | Promijeni prethodnu odluku |
@@ -1035,7 +1035,7 @@ Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Tra
 | **BR-MOD-11** | Blokiranje korisnika zahtijeva dokumentovan razlog i izbor opcije za sadržaj | Visok |
 | **BR-MOD-12** | Priloženi dokument mora biti pregledan kao dio moderacije listinga | Srednji |
 | **BR-MOD-13** | Ako dokument nije dovoljan za verified status, korisniku se daje feedback | Srednji |
-| **BR-MOD-14** | Ako korisnik ne odgovori na `changes_requested` u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (preporučena početna vrijednost: 7), listing automatski prelazi u `rejected`. Sistem šalje reminder notifikaciju `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (preporučena početna vrijednost: 2 dana prije). Detalji u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). | Srednji |
+| **BR-MOD-14** | Ako korisnik ne odgovori na `changes_requested` u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (preporučena početna vrijednost: 7), listing automatski prelazi u `removed` (`removedReason: rejected`). Sistem šalje reminder notifikaciju `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (preporučena početna vrijednost: 2 dana prije). Detalji u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). | Srednji |
 | **BR-MOD-15** | Dokumenti se automatski skeniraju na viruse prije čuvanja | Kritičan |
 | **BR-MOD-16** | Trust tier napredovanje (1→2, 2→3) zahtijeva ispunjenje sva tri uslova istovremeno (min approved, min success rate, min starost računa) | Srednji |
 | **BR-MOD-17** | Verified Partner (Tier 4) se postavlja isključivo ručno od moderatora sa `can_manage_trust_tier` permisijom | Visok |
@@ -1120,10 +1120,9 @@ Moderacija koristi jedinstveni `listingStatus` enum na Listing entitetu. Komplet
 - `published` — listing odobren i vidljiv
 - `published_under_review` — listing vidljiv ali čeka naknadni pregled (post-mod tok za Tier 2+)
 - `published_needs_changes` — listing vidljiv, moderator traži blagu izmjenu
-- `hidden_by_moderator` — moderator sakrio listing, čeka popravku + resubmit
+- `hidden_by_moderator` — moderator sakrio listing bez zahtjeva prema vlasniku (npr. hitna intervencija); listing čeka moderatorsku odluku ili eksplicitnu akciju
 - `hidden_by_system` — AI blokada ili korisnik blokiran; zahtijeva eksplicitnu moderatorsku odluku
-- `rejected` — finalno odbijeno, terminalni status
-- `removed` — trajno uklonjeno sa `removedReason`, terminalni status
+- `removed` — trajno uklonjeno sa `removedReason` (uključujući `rejected` kao jedan od razloga), terminalni status
 
 > ⚠️ **Napomena:** Stari `moderationStatus` atribut (`none`, `pending_review`, `changes_requested`, `approved`, `rejected`) više ne postoji. Sve moderacijske tranzicije su integrisane u `listingStatus`. Za kompletnu tabelu tranzicija i Mermaid dijagram vidjeti Ch.04, sekcija 4.8.
 
@@ -1165,7 +1164,8 @@ Za performanse u moderatorskom interfejsu, AI rezultati se keširaju:
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
-| 2.0 | 1.4.2026 | **Migracija na jednostatus model.** Sve reference na stari dvostatus model (`moderationStatus` + `lifecycleStatus` + `closedReason`) zamijenjene novim `listingStatus` enum-om sa 13 vrijednosti. Ključne promjene: sekcija 5.1.3 (pre/post-mod opisi ažurirani sa `in_review`/`published_under_review`), sekcija 5.2.3 (moderatorske odluke mapiraju na `listingStatus` tranzicije), sekcija 5.2.5 (edit tok sa novim statusima), sekcija 5.3.1/5.3.4 (AI blocking → `hidden_by_system`), sekcija 5.4 (moderatorske akcije uključuju `hidden_by_moderator` i `removed`; blokiranje korisnika koristi `hidden_by_system` umjesto `OWNER_BLOCKED` closedReason), sekcija 5.7 (novi endpointi `/hide` i `/remove`), BR-MOD-09/14/21/22/23 ažurirani sa novim statusima, napomene za implementaciju potpuno revidirane. |
+| 2.1 | 3.4.2026 | **Optimizacija 13→12 statusa.** `rejected` uklonjen kao zaseban `listingStatus`, dodan kao `removedReason`. Pojašnjena `hidden_by_moderator` semantika (bez zahtjeva prema vlasniku). BR-MOD pravila ažurirana. |
+| 2.0 | 1.4.2026 | **Migracija na jednostatus model.** Sve reference na stari dvostatus model (`moderationStatus` + `lifecycleStatus` + `closedReason`) zamijenjene novim `listingStatus` enum-om sa 12 vrijednosti. Ključne promjene: sekcija 5.1.3 (pre/post-mod opisi ažurirani sa `in_review`/`published_under_review`), sekcija 5.2.3 (moderatorske odluke mapiraju na `listingStatus` tranzicije), sekcija 5.2.5 (edit tok sa novim statusima), sekcija 5.3.1/5.3.4 (AI blocking → `hidden_by_system`), sekcija 5.4 (moderatorske akcije uključuju `hidden_by_moderator` i `removed`; blokiranje korisnika koristi `hidden_by_system` umjesto `OWNER_BLOCKED` closedReason), sekcija 5.7 (novi endpointi `/hide` i `/remove`), BR-MOD-09/14/21/22/23 ažurirani sa novim statusima, napomene za implementaciju potpuno revidirane. |
 | 1.7 | 29.3.2026 | Dodana permisija `can_manage_tags` u sekciju 5.4.1 (tabela permisija) i 5.4.2 (šta moderator može). Sekcija 5.4.3 proširena — upravljanje kategorijama eksplicitno navedeno kao ograničenje. Napomena o local\_admin ažurirana da uključi obje permisije. BR-MOD-31 dodan. Implementacijske napomene ažurirane sa `can_manage_tags`. |
 | 1.6 | 28.3.2026 | Status → Završeno. |
 | 1.5 | Mart 2026 | BR-MOD-14 ažuriran sa eksplicitnim parametrima (`CHANGES_REQUESTED_TIMEOUT_DAYS`, `CHANGES_REQUESTED_REMINDER_DAYS`) i referencom na Ch.04. Sekcija 5.7.7 referenca ispravljena na 4.10. Povezani dokumenti ažurirani sa referencama na renumerisane sekcije Ch.04. |

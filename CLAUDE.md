@@ -37,7 +37,7 @@ space `98463`) u zasebne markdown fajlove.
 
 | Fajl | Page ID | Opis |
 |------|---------|------|
-| `novi-listing-statusni-model-specifikacija.md` | `253526019` | 13 statusa, tabela tranzicija, scenariji |
+| `novi-listing-statusni-model-specifikacija.md` | `253526019` | 12 statusa, tabela tranzicija, scenariji |
 | `mvp-scope-opseg-prve-verzije.md` | `242188289` | Šta ulazi u MVP, šta u Phase 2/3 |
 | `cityinfo-epics-stories-instructions.md` | — | Format za pisanje epica i storija |
 
@@ -49,15 +49,19 @@ space `98463`) u zasebne markdown fajlove.
 Zajednički entitet za **Event** (vremenski ograničen) i **Place** (stalan).
 
 ### Listing statusni model (jednostatus, od 1.4.2026)
-- **`listingStatus`** — 13 vrijednosti: `draft`, `in_review`, `changes_requested`,
+- **`listingStatus`** — 12 vrijednosti: `draft`, `in_review`, `changes_requested`,
   `published`, `published_under_review`, `published_needs_changes`, `hidden_by_owner`,
-  `hidden_by_moderator`, `hidden_by_system`, `rejected`, `expired`, `canceled`, `removed`
+  `hidden_by_moderator`, `hidden_by_system`, `expired`, `canceled`, `removed`
 - **`removedReason`** — samo kad je status `removed`
 - **`isPublic`** — kalkulisano polje (nikad se ne upisuje direktno)
 - **`wasEverActive`** — jednom true, uvijek true
 
 > ⚠️ Stari termini `lifecycleStatus`, `moderationStatus`, `closedReason` su
 > zamijenjeni. Ako ih nađeš u dokumentaciji — to je greška koju treba prijaviti.
+>
+> ⚠️ `rejected` više nije zaseban `listingStatus` — sada je `removedReason` vrijednost.
+> `user_delete` je preimenovan u `account_deleted`. `owner_blocked` je uklonjen
+> (blokiranje koristi `hidden_by_system`).
 
 ### Trust Tier (0–4)
 Restricted → Standard → Trusted → Established → Verified Partner.

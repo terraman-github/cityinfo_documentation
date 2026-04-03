@@ -1,8 +1,8 @@
 # 07 - KOMUNIKACIJA
 
-> **Verzija:** 1.4  
+> **Verzija:** 1.5  
 > **Status:** Završeno ✅  
-> **Datum:** 28.3.2026
+> **Datum:** 3.4.2026
 
 * * *
 
@@ -60,7 +60,7 @@ Message sistem se aktivira u nekoliko tipičnih scenarija vezanih za moderacijsk
 | **Pojašnjenja** | Nejasan opis događaja | Korisnik pojasni, sadržaj ostaje ili se doradi |
 | **Napomene uz odobrenje** | Listing odobren, ali treba pažnja | Korisnik informisan, bez akcije |
 
-**Praktična napomena:** Message sistem je usko vezan za moderacijski workflow opisan u dokumentu 05 - Moderacija. Moderator koristi ovaj sistem kada listing zahtijeva komunikaciju prije donošenja odluke (`approved`, `changes_requested`, ili `rejected`).
+**Praktična napomena:** Message sistem je usko vezan za moderacijski workflow opisan u dokumentu 05 - Moderacija. Moderator koristi ovaj sistem kada listing zahtijeva komunikaciju prije donošenja odluke (`approved`, `changes_requested`, ili `removed (rejected)`).
 
 <a id="713-jedan-thread-po-listingu"></a>
 
@@ -278,7 +278,7 @@ Email notifikacije koriste predefinisane template-e koji osiguravaju konzistenta
 
 Tipične kategorije template-a:
 
-- **Transakcijski** — Potvrde akcija, promjene statusa (`approved`, `rejected`, `changes_requested`)
+- **Transakcijski** — Potvrde akcija, promjene statusa (`approved`, `removed (rejected)`, `changes_requested`)
 - **Moderacijski** — Komunikacija vezana za sadržaj, verifikacija
 - **Promotivni** — Informacije o promocijama i ponudama
 - **Sistemski** — Tehnička obavještenja, sigurnosne informacije
@@ -565,6 +565,7 @@ Komunikacijski sistemi su dizajnirani da budu dovoljno fleksibilni za različite
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
+| 1.5 | 3.4.2026 | **Optimizacija 13→12 statusa.** Reference ažurirane prema novom modelu. |
 | 1.4 | 28.3.2026 | Status → Završeno. |
 | 1.3 | Mart 2026 | Dodan Notification entitet (7.2.3) sa atributima i tipovima notifikacija. Sekcija 7.1.7 skraćena (SSoT referenca na Ch.04). Referenca na dokument API ispravljena na 4.10. Sekcije renumerisane. |
 | 1.2 | Mart 2026 | ListingDocument uklonjen (SSoT u poglavlju 04). Support sistem označen kao Faza 3. Notification preferences označene kao Faza 2. |

@@ -1,7 +1,7 @@
 # MVP SCOPE — Opseg prve verzije
 
-> **Verzija:** 1.4  
-> **Datum:** 1.4.2026  
+> **Verzija:** 1.5  
+> **Datum:** 3.4.2026  
 > **Status:** Draft — čeka review tima
 
 * * *
@@ -33,7 +33,7 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 | **Listing CRUD** | Kreiranje, uređivanje, brisanje Events i Places sa upload slika (featured + galerija do 5). Bazična validacija formata i veličine. | 04 - Sadržaj (4.1–4.3) |
 | **Dvojezičnost** | Svaki listing podržava primarni i sekundarni jezik — `nameAlt`, `descriptionAlt`, `excerptAlt`. Logika prikaza na osnovu korisničkih postavki ili jezičke preferencije. | 01 - Uvod (1.1), 04 - Sadržaj (4.1) |
 | **Kategorije i tagovi** | Odvojeni sistemi za Event i Place kategorije. Primarna + do 10 sekundarnih kategorija. Do 2 taga po listingu. Admin upravljanje kategorijama i tagovima. | 04 - Sadržaj (4.4–4.5) |
-| **Listing status i vidljivost** | Jednostatus model sa 13 eksplicitnih `listingStatus` vrijednosti (`draft`, `in_review`, `published`, `hidden_by_owner`, `removed`, itd.). `isPublic` derivacija iz statusa. `removedReason` za trajno uklanjanje. `wasEverActive` kontrola brisanja. | 04 - Sadržaj (4.8) |
+| **Listing status i vidljivost** | Jednostatus model sa 12 eksplicitnih `listingStatus` vrijednosti (`draft`, `in_review`, `published`, `hidden_by_owner`, `removed`, itd.). `isPublic` derivacija iz statusa. `removedReason` za trajno uklanjanje. `wasEverActive` kontrola brisanja. | 04 - Sadržaj (4.8) |
 | **Event hijerarhija** | Parent/child veza za festivale i višednevne događaje (max 2 nivoa). Samo vlasnik parent-a kreira child evente. | 04 - Sadržaj (4.2) |
 | **ListingDocument** | Upload dokumenata za verifikaciju vlasništva/prava upravljanja. Moderator može zatražiti i pregledati dokument. Ograničeni formati (PDF, JPG, PNG) i veličina. Automatski virus scanning putem vanjskog servisa. | 04 - Sadržaj (4.7) |
 | **sortDate mehanizam** | Centralno polje za sortiranje. Besplatni ručni refresh jednom u 24h za sve korisnike. | 04 - Sadržaj (4.1), 06 - Monetizacija (6.2) |
@@ -74,7 +74,7 @@ Ovo su funkcionalnosti bez kojih platforma ne funkcioniše. Svaka od njih je na 
 
 | Funkcionalnost | Šta uključuje | Referenca |
 | --- | --- | --- |
-| **Moderacijski workflow** | Queue sa prioritizacijom. Tri odluke: approve, changes\_requested, rejected. SLA smjernice (2h pre, 8h post). | 05 - Moderacija (5.2) |
+| **Moderacijski workflow** | Queue sa prioritizacijom. Tri odluke: approve, changes\_requested, removed (rejected). SLA smjernice (2h pre, 8h post). | 05 - Moderacija (5.2) |
 | **AI screening** | Automatska provjera slika i teksta putem vanjskih servisa. Detekcija adult contenta, nasilja, offensive texta. Automatsko blokiranje uploada koji ne prođe screening. Konfigurisani thresholds sa `aiBlockingFlag`. | 05 - Moderacija (5.3) |
 | **Message sistem** | Jedan thread po listingu. Moderator započinje komunikaciju. Statusi: idle, waiting\_owner, waiting\_moderator. Tekstualne poruke + reference na ListingDocument. | 07 - Komunikacija (7.1) |
 
@@ -202,6 +202,7 @@ Dokument je živ i ažuriraće se kako MVP bude napredovao.
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
+| 1.5 | 3.4.2026 | **Optimizacija 13→12 statusa.** Reference ažurirane prema novom modelu. |
 | 1.4 | 1.4.2026 | **Migracija na jednostatus model:** Red "Lifecycle i vidljivost" ažuriran na "Listing status i vidljivost" sa novom terminologijom — 13 `listingStatus` vrijednosti umjesto starog `draft → waiting → active → closed` flow-a. `closedReason` zamijenjen sa `removedReason`. Dodani `wasEverActive` i `isPublic` derivacija. |
 | 1.0 | Mart 2026 | Inicijalna verzija na osnovu analize sekcija 01–08 |
 | 1.1 | Mart 2026 | Vraćeno u MVP: AutoRenew, napredni AI screening, automatsko Trust napredovanje, virus scanning, dvojezičnost. Smanjena "na čekanju" lista. |

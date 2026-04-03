@@ -15,7 +15,7 @@
 
 ## 1\. Uvod
 
-CityInfo prelazi na **jednostatus model** koji opisuje kompletan životni ciklus listinga kroz jedan enum `listingStatus` sa 13 eksplicitnih vrijednosti. Novi model eliminiše nevalidne kombinacije starih statusa, pojednostavljuje `isPublic` derivaciju i omogućava čist state machine pattern.
+CityInfo prelazi na **jednostatus model** koji opisuje kompletan životni ciklus listinga kroz jedan enum `listingStatus` sa 12 eksplicitnih vrijednosti. Novi model eliminiše nevalidne kombinacije starih statusa, pojednostavljuje `isPublic` derivaciju i omogućava čist state machine pattern.
 
 Tri komplementarna polja dopunjuju `listingStatus`:
 
@@ -42,9 +42,8 @@ Tri komplementarna polja dopunjuju `listingStatus`:
 | `published_under_review` | Vidljiv, ali čeka naknadni pregled (post-mod tok) | ✅   | Ne  |
 | `published_needs_changes` | Vidljiv, moderator traži blagu izmjenu | ✅   | Ne  |
 | `hidden_by_owner` | Korisnik privremeno sakrio, može sam vratiti | ❌   | Ne  |
-| `hidden_by_moderator` | Moderator sakrio, čeka popravku + pregled | ❌   | Ne  |
+| `hidden_by_moderator` | Moderator sakrio radi istrage/odluke — bez zahtjeva prema vlasniku | ❌   | Ne  |
 | `hidden_by_system` | AI blokada ili korisnik blokiran; zahtijeva moderatorski pregled | ❌   | Ne  |
-| `rejected` | Finalno odbijeno — listing ne može biti objavljen | ❌   | ✅   |
 | `expired` | Event je prošao; ostaje vidljiv kao historijski zapis | ✅   | ✅   |
 | `canceled` | Vlasnik otkazao event; vidljiv sa ograničenjima (vidi ispod) | ✅\* | Ne\*\* |
 | `removed` | Trajno uklonjeno; ne može se vratiti | ❌   | ✅   |
@@ -104,19 +103,17 @@ Korisnik je privremeno sakrio listing. Razlozi mogu biti različiti: event je ot
 
 #### `hidden_by_moderator`
 
-Moderator je sakrio listing jer krši pravila ili sadržaj treba korekciju. Listing nije vidljiv posjetiocima. Korisnik dobija notifikaciju sa objašnjenjem. Nakon što korisnik izvrši tražene izmjene i resubmituje, listing prelazi u `in_review` za moderatorsku potvrdu.
+Moderator je sakrio listing radi istrage ili samostalne provjere — **bez zahtjeva prema vlasniku**. Listing nije vidljiv posjetiocima. Moderator istražuje sam i sam donosi odluku. Iz `hidden_by_moderator`, moderator može:
+
+- Vratiti u `published` (lažna uzbuna)
+- Prebaciti u `changes_requested` ili `published_needs_changes` (utvrđen problem, traži popravku od vlasnika)
+- Prebaciti u `removed` (spam, inappropriate, rejected, duplicate)
 
 <a id="hidden_by_system"></a>
 
 #### `hidden_by_system`
 
 Automatski sakrivanje — dešava se u dva scenarija: (1) AI screening je detektovao problematičan sadržaj i blokirao listing, ili (2) korisnik je blokiran i sav njegov sadržaj je automatski skriven. U oba slučaja, listing zahtijeva eksplicitnu moderatorsku akciju — ne može se automatski vratiti.
-
-<a id="rejected"></a>
-
-#### `rejected`
-
-Moderator je finalno odbio listing. Ovo je terminalni status — listing ne može biti reaktiviran niti objavljen. Korisnik može kreirati novi listing, ali ovaj je zatvoren. Rejection je praćen moderatorskim komentarom koji korisnik dobija putem notifikacije.
 
 <a id="expired"></a>
 
@@ -163,11 +160,11 @@ Enum polje — postoji samo kad je `listingStatus = removed`. Opisuje razlog tra
 
 | Vrijednost | Opis | Inicijator |
 | --- | --- | --- |
+| `rejected` | Moderator odbio listing — finalno odbijanje | Moderator |
 | `spam` | Sadržaj identifikovan kao spam | Moderator / AI |
 | `inappropriate` | Krši pravila zajednice | Moderator |
 | `duplicate` | Duplikat postojećeg listinga | Moderator |
-| `user_delete` | Korisnik obrisao vlastiti listing (samo ako `wasEverActive = false`) | Korisnik |
-| `owner_blocked` | Korisnik blokiran — sav sadržaj uklonjen | Sistem (automatski) |
+| `account_deleted` | Account vlasnika je obrisan | Sistem (automatski) |
 | `abandoned` | *(Phase 2)* Draft bez izmjena 30+ dana | Sistem (automatski) |
 
 <a id="ispublic"></a>
@@ -196,7 +193,7 @@ Boolean — postaje `true` čim listing prvi put uđe u bilo koji `isPublic = tr
 
 **Uticaj na brisanje:**
 
-- `wasEverActive = false` → korisnik može trajno obrisati listing (`removed` sa `user_delete`)
+- `wasEverActive = false` → korisnik može trajno obrisati listing (`removed` sa `account_deleted`)
 - `wasEverActive = true` → korisnik ne može "obrisati" listing u klasičnom smislu; može ga samo sakriti (`hidden_by_owner`) ili zatvoriti moderatorskim putem
 
 Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili dijeljeni — brisanje bi narušilo korisničko iskustvo osoba koje su interagovale sa listingom.
@@ -215,14 +212,14 @@ Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili
 | --- | --- | --- | --- |
 | `draft` | Korisnik submita (Tier 0–1) | `in_review` | Korisnik |
 | `draft` | Korisnik submita (Tier 2+) | `published_under_review` | Korisnik |
-| `draft` | Korisnik briše (`wasEverActive = false`) | `removed` (`user_delete`) | Korisnik |
+| `draft` | Korisnik briše (`wasEverActive = false`) | `removed` (`account_deleted`) | Korisnik |
 | `in_review` | Moderator odobrava | `published` | Moderator |
 | `in_review` | Moderator traži izmjene | `changes_requested` | Moderator |
-| `in_review` | Moderator finalno odbija | `rejected` | Moderator |
+| `in_review` | Moderator finalno odbija | `removed` (`removedReason: rejected`) | Moderator |
 | `in_review` | AI screening blokira | `hidden_by_system` | Sistem |
 | `in_review` | Korisnik povlači submission | `draft` | Korisnik |
 | `changes_requested` | Korisnik resubmituje | `in_review` | Korisnik |
-| `changes_requested` | Korisnik briše (`wasEverActive = false`) | `removed` (`user_delete`) | Korisnik |
+| `changes_requested` | Korisnik briše (`wasEverActive = false`) | `removed` (`account_deleted`) | Korisnik |
 | `published` | Korisnik sakriva | `hidden_by_owner` | Korisnik |
 | `published` | Korisnik uređuje (Tier 0–1) | `in_review` | Korisnik |
 | `published` | Korisnik uređuje (Tier 2+) | `published_under_review` | Korisnik |
@@ -234,7 +231,7 @@ Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili
 | `published_under_review` | Moderator odobrava | `published` | Moderator |
 | `published_under_review` | Moderator traži manje izmjene | `published_needs_changes` | Moderator |
 | `published_under_review` | Moderator sakriva | `hidden_by_moderator` | Moderator |
-| `published_under_review` | Moderator finalno odbija | `rejected` | Moderator |
+| `published_under_review` | Moderator finalno odbija | `removed` (`removedReason: rejected`) | Moderator |
 | `published_under_review` | Korisnik sakriva | `hidden_by_owner` | Korisnik |
 | `published_under_review` | Korisnik otkazuje event | `canceled` | Korisnik |
 | `published_under_review` | `endDateTime` prošao | `expired` | Sistem |
@@ -244,16 +241,16 @@ Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili
 | `hidden_by_owner` | Korisnik prikazuje | `published` | Korisnik |
 | `hidden_by_owner` | Moderator sakriva (eskalacija) | `hidden_by_moderator` | Moderator |
 | `hidden_by_owner` | Moderator trajno uklanja | `removed` | Moderator |
-| `hidden_by_moderator` | Korisnik resubmituje (nakon popravke) | `in_review` | Korisnik |
-| `hidden_by_moderator` | Moderator vraća (bez zahtijeva za izmjenom) | `published` | Moderator |
+| `hidden_by_moderator` | Moderator vraća (lažna uzbuna) | `published` | Moderator |
+| `hidden_by_moderator` | Moderator traži popravku (utvrđen problem) | `changes_requested` | Moderator |
+| `hidden_by_moderator` | Moderator traži popravku (listing bio published) | `published_needs_changes` | Moderator |
 | `hidden_by_moderator` | Moderator trajno uklanja | `removed` | Moderator |
 | `hidden_by_system` | Moderator odobrava (lažni alarm) | `published` | Moderator |
-| `hidden_by_system` | Moderator finalno odbija | `rejected` | Moderator |
+| `hidden_by_system` | Moderator finalno odbija | `removed` (`removedReason: rejected`) | Moderator |
 | `hidden_by_system` | Moderator trajno uklanja | `removed` | Moderator |
 | `canceled` | Korisnik reaktivira (`endDateTime > NOW()`) | `published` | Korisnik |
 | `canceled` | `endDateTime` prošao | `expired` | Sistem |
 | `canceled` | Moderator trajno uklanja | `removed` | Moderator |
-| `rejected` | *(terminalni status)* | —   | —   |
 | `expired` | *(terminalni status)* | —   | —   |
 | `removed` | *(terminalni status)* | —   | —   |
 
@@ -265,7 +262,6 @@ Sljedeće tranzicije su **eksplicitno zabranjene** — sistem ih ne smije dopust
 
 | Od → Do | Razlog zabrane |
 | --- | --- |
-| `rejected` → bilo koji status | Terminalni status; korisnik mora kreirati novi listing |
 | `expired` → bilo koji status | Terminalni status za prošle evente |
 | `removed` → bilo koji status | Terminalni status; nema povratka |
 | Bilo koji → `expired` (manualnom akcijom) | Expired je isključivo automatska sistemska tranzicija |
@@ -300,7 +296,7 @@ Jednom kad postane `true`, **nikada se ne vraća na** `false` — čak ni ako li
 
 | `wasEverActive` | Korisnička akcija brisanja | Rezultat |
 | --- | --- | --- |
-| `false` | Korisnik klikne "Obriši" | `removed` sa `user_delete` — instant, bez potvrde moderatora |
+| `false` | Korisnik klikne "Obriši" | `removed` sa `account_deleted` — instant, bez potvrde moderatora |
 | `true` | Korisnik klikne "Obriši" | Akcija nije dostupna — korisnik može samo sakriti ili zatvoriti listing |
 
 Moderator uvijek može izvršiti `removed` akciju, bez obzira na `wasEverActive`.
@@ -329,17 +325,10 @@ Moderator uvijek može izvršiti `removed` akciju, bez obzira na `wasEverActive`
 - Primjer: isti event prijavljen dva puta od strane istog ili različitih korisnika
 - Moderator označava koji listing se briše, a koji ostaje
 
-`user_delete`
+`account_deleted`
 
-- Inicira: korisnik
-- Uslov: `wasEverActive = false` — listing nikad nije bio vidljiv javnosti
-- Instant akcija — nije potrebno moderatorsko odobrenje
-- Korisnik ne dobija notifikaciju (sam inicira)
-
-`owner_blocked`
-
-- Inicira: sistem automatski pri blokiranju korisnika
-- Svi listinzi blokiranog korisnika dobijaju `removed` sa ovim razlogom
+- Inicira: sistem automatski pri brisanju korisničkog accounta
+- Svi listinzi obrisanog accounta dobijaju `removed` sa ovim razlogom
 - Instant primjena; sadržaj se uklanja bez dodatne moderatorske akcije
 
 `abandoned` *(Phase 2)*
@@ -364,7 +353,7 @@ stateDiagram-v2
 
     in_review --> published : Moderator odobrava
     in_review --> changes_requested : Moderator traži izmjene
-    in_review --> rejected : Moderator odbija
+    in_review --> removed : Moderator odbija (rejected)
     in_review --> hidden_by_system : AI blokira
     in_review --> draft : Korisnik povlači
 
@@ -383,7 +372,7 @@ stateDiagram-v2
     published_under_review --> published : Moderator odobrava
     published_under_review --> published_needs_changes : Moderator traži izmjenu
     published_under_review --> hidden_by_moderator : Moderator sakriva
-    published_under_review --> rejected : Moderator odbija
+    published_under_review --> removed : Moderator odbija (rejected)
     published_under_review --> hidden_by_owner : Korisnik sakriva
     published_under_review --> canceled : Korisnik otkazuje
     published_under_review --> expired : endDateTime prošao
@@ -396,19 +385,19 @@ stateDiagram-v2
     hidden_by_owner --> hidden_by_moderator : Moderator eskalira
     hidden_by_owner --> removed : Moderator uklanja
 
-    hidden_by_moderator --> in_review : Korisnik resubmituje
-    hidden_by_moderator --> published : Moderator vraća
+    hidden_by_moderator --> published : Moderator vraća (lažna uzbuna)
+    hidden_by_moderator --> changes_requested : Moderator traži popravku
+    hidden_by_moderator --> published_needs_changes : Moderator traži popravku (published)
     hidden_by_moderator --> removed : Moderator uklanja
 
     hidden_by_system --> published : Moderator odobrava
-    hidden_by_system --> rejected : Moderator odbija
+    hidden_by_system --> removed : Moderator odbija (rejected)
     hidden_by_system --> removed : Moderator uklanja
 
     canceled --> published : Reaktivacija (endDateTime > NOW)
     canceled --> expired : endDateTime prošao
     canceled --> removed : Moderator uklanja
 
-    rejected --> [*]
     expired --> [*]
     removed --> [*]
 ```
@@ -453,7 +442,7 @@ Marko submita listing za festival, ali moderator Lejla primijeti da nedostaje ad
 
 ### Scenarij 6: Odbijanje
 
-Korisnik submita listing koji je potpuni spam — ponavljajuća reklama bez relevantnog sadržaja. Moderator pregleda i finalno odbija: `rejected`. Korisnik prima notifikaciju s objašnjenjem. Listing ostaje trajno odbijen; korisnik može kreirati novi, ispravan listing.
+Korisnik submita listing koji je potpuni spam — ponavljajuća reklama bez relevantnog sadržaja. Moderator pregleda i finalno odbija: `removed` (`removedReason: rejected`). Korisnik prima notifikaciju s objašnjenjem. Listing ostaje trajno uklonjen; korisnik može kreirati novi, ispravan listing.
 
 <a id="scenarij-7-moderator-sakriva-vidljivi-listing"></a>
 
@@ -465,13 +454,13 @@ Anonimna prijava upućuje na problem sa objavljenim listingom. Moderator Lejla p
 
 ### Scenarij 8: AI blokada i moderatorski pregled
 
-AI screening skenira novi listing i detektuje potencijalni spam pattern. Listing automatski prelazi u `hidden_by_system` bez obzira na Tier korisnika. Listing se pojavljuje u moderatorskom redu sa oznakom "AI blokada". Lejla pregleda, zaključuje da je lažni alarm, klikne "Odobri" → `published`. Ako bi zaključila da je spam opravdan → `rejected` ili `removed`.
+AI screening skenira novi listing i detektuje potencijalni spam pattern. Listing automatski prelazi u `hidden_by_system` bez obzira na Tier korisnika. Listing se pojavljuje u moderatorskom redu sa oznakom "AI blokada". Lejla pregleda, zaključuje da je lažni alarm, klikne "Odobri" → `published`. Ako bi zaključila da je spam opravdan → `removed` (`removedReason: rejected`).
 
 <a id="scenarij-9-korisnik-blokiran-instant-uklanjanje-sadržaja"></a>
 
 ### Scenarij 9: Korisnik blokiran — instant uklanjanje sadržaja
 
-Damir (ops manager) prima prijavu o zloupotrebi. Blokira korisnika na admin panelu. Sistem automatski prolazi kroz sve listinze blokiranog korisnika i svakog prebacuje u `removed` sa `removedReason = owner_blocked`. Ako su listinzi bili vidljivi, odmah nestaju sa platforme.
+Damir (ops manager) prima prijavu o zloupotrebi. Blokira korisnika na admin panelu. Sistem automatski prolazi kroz sve listinze blokiranog korisnika i svakog prebacuje u `hidden_by_system`. Ako su listinzi bili vidljivi, odmah nestaju sa platforme. Pri odblokiranju korisnika, listinzi se automatski vraćaju u prethodni status.
 
 <a id="scenarij-10-event-otkazan-i-reaktiviran"></a>
 
@@ -489,7 +478,7 @@ Jazz večer je uspješno održan. Dan nakon `endDateTime`, sistem automatski pre
 
 ### Scenarij 12: Korisnik briše draft (koji nikad nije bio živ)
 
-Marko je počeo kreirati listing ali se predomislio. Listing je u statusu `draft`, `wasEverActive = false`. Klikne "Obriši" — sistem trenutno prebacuje listing u `removed` sa `user_delete`. Listing nestaje iz Markovog profila. Nema potrebe za moderatorskim odobrenjem jer listing nikad nije bio javno vidljiv.
+Marko je počeo kreirati listing ali se predomislio. Listing je u statusu `draft`, `wasEverActive = false`. Klikne "Obriši" — sistem trenutno prebacuje listing u `removed` sa `account_deleted`. Listing nestaje iz Markovog profila. Nema potrebe za moderatorskim odobrenjem jer listing nikad nije bio javno vidljiv.
 
 * * *
 
@@ -509,7 +498,6 @@ published_needs_changes → PublishedNeedsChanges
 hidden_by_owner         → HiddenByOwner
 hidden_by_moderator     → HiddenByModerator
 hidden_by_system        → HiddenBySystem
-rejected                → Rejected
 expired                 → Expired
 canceled                → Canceled
 removed                 → Removed
@@ -532,3 +520,12 @@ Novi model u potpunosti zamjenjuje sljedeće:
 | `closedReason` | `listingStatus` (semantika stanja) + `removedReason` (razlog uklanjanja) |
 
 Stara polja se ne smiju koristiti ni u jednom dijelu sistema nakon migracije.
+
+---
+
+## Changelog
+
+| Verzija | Datum | Opis |
+| --- | --- | --- |
+| 1.0 | 1.4.2026 | Inicijalna verzija — 13 statusa |
+| 1.1 | 3.4.2026 | **Optimizacija 13→12 statusa.** `rejected` uklonjen kao zaseban status, dodan kao `removedReason`. `user_delete` preimenovan u `account_deleted`. `owner_blocked` uklonjen (blokiranje koristi `hidden_by_system`). Pojašnjena `hidden_by_moderator` semantika. Dodana `canceled` pravila. |
