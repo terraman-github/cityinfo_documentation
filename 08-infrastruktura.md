@@ -1,7 +1,7 @@
 # 08 - INFRASTRUKTURA
 
-> **Verzija:** 2.3  
-> **Datum:** 1.4.2026  
+> **Verzija:** 2.4  
+> **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
 
 * * *
@@ -231,7 +231,7 @@ Ovo su regularni procesi koji se izvršavaju po rasporedu:
 | **PendingSubmissionReminder** | Dnevno, 9:00 | Šalje reminder za sadržaj na čekanju >24h | Srednja |
 | **PromotionExpiryHandler** | Svakih 5 min | Deaktivira istekle promocije, ističe pauzirane preko `PROMO_MAX_PAUSE_DAYS` | Visoka |
 | **AutoRenewProcessor** | Svakih 5 min | Osvježava `sortDate` za listinge sa aktivnim AutoRenew-om čiji `nextAutoRenewAt` je prošao. Ažurira `nextAutoRenewAt` za sljedeći ciklus i inkrementira `autoRenewsCompleted`. | Visoka |
-| **ChangesRequestedTimeoutChecker** | Dnevno, 10:00 | Provjerava listinge u `changes_requested` statusu. Šalje reminder na `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka. Nakon `CHANGES_REQUESTED_TIMEOUT_DAYS` dana bez odgovora, listing automatski prelazi u `rejected` status. | Srednja |
+| **ChangesRequestedTimeoutChecker** | Dnevno, 10:00 | Provjerava listinge u `changes_requested` statusu. Šalje reminder na `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka. Nakon `CHANGES_REQUESTED_TIMEOUT_DAYS` dana bez odgovora, listing automatski prelazi u `removed` (`removedReason: rejected`) status. | Srednja |
 | **CreditExpiryProcessor** | Dnevno, 00:00 | Procesira istekle kredite (ako je konfigurisano) | Srednja |
 | **TrustScoreRecalculator** | Sedmično | Recalculates trust scores bazirano na aktivnosti | Niska |
 | **AuditLogArchiver** | Dnevno, 02:00 | Arhivira stare audit logove | Srednja |
@@ -254,12 +254,12 @@ Pored scheduled jobova, postoje i procesi koji se pokreću kao reakcija na doga�
 | --- | --- | --- |
 | Novi listing submission | AI Content Screening | Slika se provjerava, listing ide u queue |
 | Listing approved | Notification sender | Korisnik dobija email/in-app notifikaciju |
-| User blocked | Session invalidator + Content remover + Promo canceller | Sve aktivne sesije se terminiraju. Ako je odabrana opcija uklanjanja sadržaja, svi javno vidljivi listinzi prelaze u `removed` sa `removedReason = owner_blocked`. Aktivne promocije se otkazuju. |
+| User blocked | Session invalidator + Content hider + Promo canceller | Sve aktivne sesije se terminiraju. Ako je odabrana opcija skrivanja sadržaja, svi javno vidljivi listinzi prelaze u `hidden_by_system`. Aktivne promocije se otkazuju. |
 | Payment callback | Credit processor | Krediti se dodaju na wallet |
 | Trust level change | Permission updater + Notification sender | Ažuriraju se dozvole korisnika, korisnik se obavještava |
 | Promotion paused/resumed | AutoRenew controller | Suspenduje ili reaktivira AutoRenew za tu promociju |
 
-> **📌 Praktična napomena:** U starom modelu postojao je "User unblocked → Listing reactivator" proces koji je automatski reaktivirao listinge pri odblokiranju. U novom jednostatus modelu, `removed` je terminalni status pa automatska reaktivacija nije moguća. Ako se korisnik odblokira, moderator donosi odluku o sadržaju na osnovu konkretne situacije.
+> **📌 Praktična napomena:** U starom modelu postojao je "User unblocked → Listing reactivator" proces koji je automatski reaktivirao listinge pri odblokiranju. U novom jednostatus modelu, blokiranje korisnika koristi `hidden_by_system` (reverzibilno), ali automatska reaktivacija pri odblokiranju nije podržana — moderator donosi odluku o sadržaju na osnovu konkretne situacije.
 
 **Praktična napomena:** Event-driven arhitektura omogućava loose coupling — komponente ne moraju znati jedna za drugu, samo "reaguju" na događaje.
 
@@ -495,6 +495,7 @@ Ovaj dokument daje konceptualni pregled. Za implementacijske detalje, pogledaj r
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
+| 2.4 | 3.4.2026 | **Optimizacija 13→12 statusa.** Reference ažurirane prema novom modelu. |
 | 2.3 | 1.4.2026 | **MIGRACIJA — jednostatus model.** `ExpiredListingArchiver` preimenovan u `ExpiredEventProcessor` (samo eventi imaju automatski expired prelaz). `ChangesRequestedTimeoutChecker` ažuriran (listing prelazi u `rejected`, ne "zatvara se"). Event-driven "User blocked" ažuriran sa `removed` + `removedReason = owner_blocked`. Uklonjen "User unblocked → Listing reactivator" (jer je `removed` terminalan). Dodana napomena o moderatorskoj odluci pri odblokiranju. |
 | 2.2 | 28.3.2026 | Status → Završeno. |
 | 2.1 | Mart 2026 | Sekcija 8.5 konkretizirana — .NET 8 / MS SQL / Svelte 5 stack umjesto generičkog opisa. Dodani AutoRenewProcessor i ChangesRequestedTimeoutChecker u scheduled jobove (8.3.1). Event-driven procesi prošireni (User unblocked, Promotion paused/resumed). Sekcije 8.4.2-8.4.6 skraćene sa referencama na SSoT poglavlja. |

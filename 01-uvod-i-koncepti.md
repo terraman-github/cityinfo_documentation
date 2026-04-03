@@ -1,7 +1,7 @@
 # 01 - UVOD I KONCEPTI
 
-> **Verzija:** 3.3  
-> **Datum:** 28.3.2026  
+> **Verzija:** 3.4  
+> **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
 
 * * *
@@ -424,10 +424,11 @@ Nakon čitanja ovog dokumenta, postoji solidna osnova za razumijevanje CityInfo 
 
 | Verzija | Datum | Opis promjene |
 | --- | --- | --- |
+| 3.4 | 3.4.2026 | **Optimizacija 13→12 statusa.** Reference ažurirane prema novom modelu. |
 | 3.3 | 28.3.2026 | Status → Završeno. Korigirano sortiranje promocija — eksplicitno opisana razlika između homepage-a (2 grupe) i kategorija (3 grupe). Sekundarne kategorije parametrizirane (`MAX_SECONDARY_CATEGORIES`). Tagovi parametrizirani (`MAX_TAGS_PER_LISTING`). AutoRenew pricing referenca ažurirana. |
 | 3.2 | Mart 2026 | Sekcija 1.5 prerađena: skraćeni pregled persona sa linkovima na detaljni dokument "Persone i korisnička putovanja". Dodane Staff persone (Lejla, Damir). Sekcija 1.4 ažurirana sa linkovima na novi dokument. |
 
 * * *
 
-*Posljednje ažuriranje: 28.3.2026*  
+*Posljednje ažuriranje: 3.4.2026*  
 *Vlasnik dokumenta: CityInfo tim*

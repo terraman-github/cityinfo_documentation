@@ -1,7 +1,7 @@
 # 02 - KORISNIČKO ISKUSTVO
 
-> **Verzija:** 3.5  
-> **Datum:** 1.4.2026  
+> **Verzija:** 3.6  
+> **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
 
 * * *
@@ -505,7 +505,7 @@ Korisnik kreira → Šalje na objavu → Odmah vidljivo → Moderator može nakn
 - **Skriveno** — privremeno sakriveno od strane vlasnika, moderatora ili sistema (`hidden_by_owner`, `hidden_by_moderator`, `hidden_by_system`)
 - **Otkazano** — vlasnik otkazao event, vidljivo sa badge-om "Otkazano" (`canceled`, samo Event)
 - **Završeno** — event je prošao, vidljivo kao historijski zapis (`expired`, samo Event)
-- **Odbijeno** — nije prošlo moderaciju, sa razlogom (`rejected`)
+- **Odbijeno** — nije prošlo moderaciju, sa razlogom (`removed (rejected)`)
 
 * * *
 
@@ -563,6 +563,7 @@ Korisnik može vidjeti kako promocija utiče na vidljivost:
 
 | Verzija | Datum | Opis promjene |
 | --- | --- | --- |
+| 3.6 | 3.4.2026 | **Optimizacija 13→12 statusa.** Reference ažurirane prema novom modelu. |
 | 3.5 | 1.4.2026 | **MIGRACIJA — jednostatus model.** Sekcija 2.4: `waiting → active` terminologija zamijenjena sa `published` status terminologijom. |
 | 3.4 | 28.3.2026 | Status → Završeno. AutoRenew množitelji uklonjeni iz tabele — pricing je draft/placeholder (referenca na Ch.06). Tagovi parametrizirani (`MAX_TAGS_PER_LISTING`). Related content logika definisana (2.3). Broken linkovi u "Šta dalje" sekciji popravljeni. Verifikacioni badge terminologija usklađena ("Potvrđen vlasnik"). Referenca na Ch.04 za Appreciation/Favorite entitete dodana u 2.6. |
 | 3.3 | 26.3.2026 | 2.6: Visitor zaštita ažurirana — digitalni otisak preglednika (browser fingerprint) |

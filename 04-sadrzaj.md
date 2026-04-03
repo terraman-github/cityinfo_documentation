@@ -1,7 +1,7 @@
 # 04 - SADRŽAJ
 
-> **Verzija:** 2.1  
-> **Datum:** 1.4.2026  
+> **Verzija:** 2.2  
+> **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
 
 * * *
@@ -117,7 +117,7 @@ CityInfo koristi **jednostatus model** sa jednim poljem `listingStatus` koje obu
 
 | Atribut | Tip | Opis | Obavezno | Napomena |
 | --- | --- | --- | --- | --- |
-| listingStatus | Enum | Kompletan status listinga | ✅   | 13 vrijednosti — vidi sekciju 4.8 |
+| listingStatus | Enum | Kompletan status listinga | ✅   | 12 vrijednosti — vidi sekciju 4.8 |
 | removedReason | Enum | Razlog trajnog uklanjanja | ❌   | Samo kad je listingStatus = `removed` |
 | verificationStatus | Enum | Status verifikacije vlasništva | ✅   | unverified, pending, verified |
 | isPublic | Boolean | Da li je vidljiv javnosti | ✅   | Kalkulisano polje — automatski se održava |
@@ -240,10 +240,10 @@ Mogućnost brisanja ovisi o tome da li je event ikad bio javno vidljiv (`wasEver
 
 | Uslov | Šta se dešava |
 | --- | --- |
-| `wasEverActive = false` (draft, in\_review, changes\_requested) | Korisnik može obrisati → prelazi u `removed` sa `removedReason = user_delete` |
+| `wasEverActive = false` (draft, in\_review, changes\_requested) | Korisnik može obrisati → prelazi u `removed` sa `removedReason = account_deleted` |
 | `wasEverActive = true` | Direktno brisanje nije dostupno; korisnik može otkazati event (`canceled`) ili ga sakriti (`hidden_by_owner`) |
 
-**Brisanje parent eventa:** Kad vlasnik briše parent event (a `wasEverActive = false`), svi child eventi prolaze istu logiku — oni sa `wasEverActive = false` prelaze u `removed` sa `user_delete`. Child eventi koji su ikad bili aktivni ne mogu biti obrisani — korisnik ih mora otkazati ili sakriti.
+**Brisanje parent eventa:** Kad vlasnik briše parent event (a `wasEverActive = false`), svi child eventi prolaze istu logiku — oni sa `wasEverActive = false` prelaze u `removed` sa `account_deleted`. Child eventi koji su ikad bili aktivni ne mogu biti obrisani — korisnik ih mora otkazati ili sakriti.
 
 **Napomena:** Eventi koji su ikad bili javno vidljivi (`wasEverActive = true`) ne brišu se trajno — zadržavaju se radi integriteta podataka (statistike, historija, favoriti). Korisnik ih više ne vidi u svom profilu, ali sistem čuva zapis.
 
@@ -305,7 +305,7 @@ Brisanje mjesta je kontrolisano zbog povezanih događaja:
 
 1. **Ima evente u aktivnim statusima** (`published`, `published_under_review`, `published_needs_changes`)? → Brisanje blokirano. Poruka: "Prvo otkažite ili sakrijte aktivne događaje."
 2. **Nema aktivnih evenata:**
-  - Ako je Place `wasEverActive = false`: prelazi u `removed` sa `removedReason = user_delete`
+  - Ako je Place `wasEverActive = false`: prelazi u `removed` sa `removedReason = account_deleted`
   - Ako je Place `wasEverActive = true`: direktno brisanje nije dostupno — vlasnik može koristiti `hidden_by_owner` ili zatražiti od moderatora trajno uklanjanje
   - Prošli eventi (`expired`) zadržavaju snapshot lokacije
 
@@ -838,7 +838,7 @@ Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako po
 
 ### Novi statusni model
 
-CityInfo koristi **jednostatus model** koji opisuje kompletan životni ciklus listinga kroz jedno polje `listingStatus` sa 13 eksplicitnih vrijednosti. Ovaj model zamjenjuje stari dvostatus pristup (lifecycleStatus + moderationStatus + closedReason) koji je generisao nevalidne kombinacije statusa i kompleksnu kalkulacijsku logiku.
+CityInfo koristi **jednostatus model** koji opisuje kompletan životni ciklus listinga kroz jedno polje `listingStatus` sa 12 eksplicitnih vrijednosti. Ovaj model zamjenjuje stari dvostatus pristup (lifecycleStatus + moderationStatus + closedReason) koji je generisao nevalidne kombinacije statusa i kompleksnu kalkulacijsku logiku.
 
 Ideja je jednostavna: svako stanje u kojem se listing može naći ima svoju eksplicitnu vrijednost — nema skrivene logike koja se izvodi iz kombinacije dva polja. Dijagram tranzicija i narativni scenariji dostupni su u [Novi listing statusni model — specifikacija](../project-specs/migracija-listing-statusni-model-jedan-status/novi-listing-statusni-model-specifikacija.md).
 
@@ -855,9 +855,8 @@ Ideja je jednostavna: svako stanje u kojem se listing može naći ima svoju eksp
 | `published_under_review` | Vidljiv, čeka naknadni pregled (post-mod tok) | ✅   | Ne  |
 | `published_needs_changes` | Vidljiv, moderator traži blagu izmjenu | ✅   | Ne  |
 | `hidden_by_owner` | Korisnik privremeno sakrio, može sam vratiti | ❌   | Ne  |
-| `hidden_by_moderator` | Moderator sakrio, čeka popravku + pregled | ❌   | Ne  |
+| `hidden_by_moderator` | Moderator sakrio bez zahtjeva prema vlasniku (moderator istražuje sam) | ❌   | Ne  |
 | `hidden_by_system` | AI blokada ili korisnik blokiran; zahtijeva moderatorski pregled | ❌   | Ne  |
-| `rejected` | Finalno odbijeno — ne može biti objavljeno | ❌   | ✅   |
 | `expired` | Event prošao; ostaje vidljiv kao historijski zapis | ✅   | ✅   |
 | `canceled` | Vlasnik otkazao event; vidljiv sa ograničenjima (vidi ispod) | ✅\* | Ne\*\* |
 | `removed` | Trajno uklonjeno; ne može se vratiti | ❌   | ✅   |
@@ -905,7 +904,7 @@ Svi ostali statusi rezultuju u `isPublic = false`.
 
 Praktična implikacija je na **mogućnost brisanja**:
 
-- `wasEverActive = false` → korisnik može trajno obrisati listing (`removed` sa `user_delete`)
+- `wasEverActive = false` → korisnik može trajno obrisati listing (`removed` sa `account_deleted`)
 - `wasEverActive = true` → direktno brisanje nije dostupno; korisnik može sakriti ili otkazati (za evente)
 
 Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili dijeljeni — "brisanje" bi narušilo korisničko iskustvo osoba koje su interagovale sa sadržajem.
@@ -924,7 +923,7 @@ stateDiagram-v2
 
     in_review --> published : Moderator odobrava
     in_review --> changes_requested : Moderator traži izmjene
-    in_review --> rejected : Moderator odbija
+    in_review --> removed : Moderator odbija (removedReason: rejected)
     in_review --> hidden_by_system : AI blokira
     in_review --> draft : Korisnik povlači
 
@@ -943,7 +942,7 @@ stateDiagram-v2
     published_under_review --> published : Moderator odobrava
     published_under_review --> published_needs_changes : Moderator traži izmjenu
     published_under_review --> hidden_by_moderator : Moderator sakriva
-    published_under_review --> rejected : Moderator odbija
+    published_under_review --> removed : Moderator odbija (removedReason: rejected)
     published_under_review --> hidden_by_owner : Korisnik sakriva
     published_under_review --> canceled : Korisnik otkazuje
     published_under_review --> expired : endDateTime prošao
@@ -961,14 +960,13 @@ stateDiagram-v2
     hidden_by_moderator --> removed : Moderator uklanja
 
     hidden_by_system --> published : Moderator odobrava
-    hidden_by_system --> rejected : Moderator odbija
+    hidden_by_system --> removed : Moderator odbija (removedReason: rejected)
     hidden_by_system --> removed : Moderator uklanja
 
     canceled --> published : Reaktivacija (endDateTime > NOW)
     canceled --> expired : endDateTime prošao
     canceled --> removed : Moderator uklanja
 
-    rejected --> [*]
     expired --> [*]
     removed --> [*]
 ```
@@ -1025,7 +1023,7 @@ Kada se korisnik blokira (vidi [03 - Korisnici i pristup, sekcija 3.7](../projec
 
 **Instant blokiranje (sistem):** Kod automatskog blokiranja (hate speech, spam, malicious sadržaj), **default je sakrivanje sadržaja** — svi aktivni listinzi automatski prelaze u `hidden_by_system`. Moderator pri pregledu može reaktivirati sadržaj.
 
-**Trajno blokiranje (owner\_blocked):** Ako se korisnik trajno blokira sa uklanjanjem sadržaja, svi listinzi prelaze u `removed` sa `removedReason = owner_blocked`.
+**Trajno blokiranje:** Ako se korisnik trajno blokira sa uklanjanjem sadržaja, svi aktivni listinzi prelaze u `hidden_by_system`. Moderator pri pregledu odlučuje o daljem statusu svakog listinga.
 
 Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
 
@@ -1033,7 +1031,7 @@ Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekci
 
 ### Timeout za changes\_requested
 
-Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ograničeno vrijeme za odgovor. Ako ne reaguje u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (parametar — preporučena početna vrijednost: 7 dana), listing automatski prelazi u `rejected`.
+Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ograničeno vrijeme za odgovor. Ako ne reaguje u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (parametar — preporučena početna vrijednost: 7 dana), listing automatski prelazi u `removed` (removedReason: `rejected`).
 
 Sistem šalje reminder notifikaciju korisniku na `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (parametar — preporučena početna vrijednost: 2 dana prije isteka, tj. 5. dan).
 
@@ -1290,6 +1288,7 @@ Nakon razumijevanja strukture sadržaja, preporučeni sljedeći koraci:
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
+| 2.2 | 3.4.2026 | **Optimizacija 13→12 statusa.** `rejected` uklonjen kao zaseban `listingStatus`, dodan kao `removedReason`. `user_delete` → `account_deleted`. `owner_blocked` uklonjen (blokiranje → `hidden_by_system`). Pojašnjena `hidden_by_moderator` semantika. |
 | 2.1 | 1.4.2026 | Migracija na jednostatus model: sekcija 4.1 — zamijenjena tabela "Status i vidljivost" (lifecycleStatus + moderationStatus + closedReason → listingStatus + removedReason). Sekcija 4.2 — ažurirana tabela brisanja (wasEverActive logika) i automatski procesi (expired tranzicija). Sekcija 4.3 — ažurirano brisanje Place-a (status reference). Sekcija 4.8 — kompletna zamjena: novi statusni model sa 13 stanja, isPublic formula, wasEverActive, Mermaid dijagram, tok po Trust Tier-u, blokiranje korisnika. Sekcija 4.10 — dodani withdraw endpointi za Event i Place. |
 | 2.0 | 30.3.2026 | Sekcija 4.4: Liste kategorija mjesta i događaja preformatovane u tabele po sektoru za bolju preglednost. |
 | 1.9 | 30.3.2026 | Sekcija 4.4: Uvedena trostruka organizacija Sektor → Kategorija → Tagovi. Dodate kompletne liste kategorija mjesta (16 sektora) i kategorija događaja (11 sektora). Dodan alias/sinonim mehanizam za pretragu. Atributi kategorije prošireni sa `sectorSlug`, `sectorName`, `sectorNameAlt`. API endpoints prošireni za aliase. Primjer kategorizacije ažuriran (BauMax → Penny Shop sa sektorima). Sekcija 4.1: `primaryCategoryData` snapshot proširen sa `sectorName`. |

@@ -1,7 +1,7 @@
 # 06 - MONETIZACIJA
 
-> **Verzija:** 1.4  
-> **Datum:** 1.4.2026  
+> **Verzija:** 1.5  
+> **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
 
 * * *
@@ -223,7 +223,7 @@ Ključna razlika: Standard promocije se **miješaju** sa običnim listinzima (sa
 | **active** | Trenutno aktivna — listing je promoviran |
 | **paused** | Privremeno pauzirana — efekat promocije je zamrznut |
 | **expired** | Istekla — endDate je prošao |
-| **cancelled** | Otkazana (npr. listing uklonjen, korisnik blokiran) |
+| **cancelled** | Otkazana (npr. listing uklonjen/`removed`, korisnik blokiran — `hidden_by_system`) |
 
 > 📝 **Napomena za V1:** Promocije se aktiviraju instant pri kreiranju (prepaid model). Scheduled promotions (zakazivanje unaprijed) može se dodati u budućim verzijama.
 
@@ -391,7 +391,7 @@ flowchart TD
 | **No refund policy** | Promocije su non-refundable nakon aktivacije | Visok |
 | **Jedna aktivna po listingu** | Listing može imati samo jednu aktivnu promociju | Visok |
 | **Homepage samo za Premium** | Opcija "Prikaži na naslovnoj" dostupna samo za Premium | Visok |
-| **Vezano za listing status** | Ako listing izgubi javnu vidljivost (uklonjen, istekao, sakriven ili odbijen), promocija automatski prestaje bez refunda. **Izuzetak:** pri prelasku u `canceled`, promocija se **pauzira** (ne prestaje) — detalji u Ch.04, sekcija 4.8. | Visok |
+| **Vezano za listing status** | Ako listing izgubi javnu vidljivost (uklonjen, istekao ili sakriven — uključujući `removed` sa bilo kojim `removedReason`, npr. `rejected`), promocija automatski prestaje bez refunda. **Izuzetak:** pri prelasku u `canceled`, promocija se **pauzira** (ne prestaje) — pri ponovnoj aktivaciji (`published`), promocija se automatski nastavlja sa preostalim danima. Detalji u Ch.04, sekcija 4.8. | Visok |
 | **Ručni refresh cooldown** | Korisnik može ručno osvježiti poziciju jednom u 24h (besplatno) | Srednji |
 | **AutoRenew zaobilazi cooldown** | Plaćeni AutoRenew nije ograničen 24h cooldown-om | Srednji |
 | **Pauza zamrzava dane** | Pri pauziranju, preostali dani se čuvaju i troše se tek nakon nastavka | Visok |
@@ -762,6 +762,7 @@ Cijene se mogu prilagođavati po gradu/regionu na osnovu nekoliko faktora:
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
+| 1.5 | 3.4.2026 | **Optimizacija 13→12 statusa.** Reference ažurirane prema novom modelu (12 statusa). |
 | 1.4 | 1.4.2026 | **MIGRACIJA — jednostatus model.** Sekcija 6.2.7: `lifecycleStatus = active` → `listingStatus: published, published_under_review ili published_needs_changes`. "Vezano za lifecycle" → "Vezano za listing status" sa opisom gubitka javne vidljivosti. Status promocije `cancelled` opis ažuriran ("listing uklonjen" umjesto "listing obrisan"). |
 | 1.3 | 28.3.2026 | Status → Završeno. |
 | 1.0 | Mart 2026 | Inicijalna verzija |

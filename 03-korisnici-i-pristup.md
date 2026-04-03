@@ -1,7 +1,7 @@
 # 03 - KORISNICI I PRISTUP
 
-> **Verzija:** 2.0  
-> **Datum:** 1.4.2026  
+> **Verzija:** 2.1  
+> **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
 
 * * *
@@ -299,7 +299,7 @@ Ono što se broji je isključivo **finalna odluka** po listingu — bez obzira k
 | Scenarij | Šta se broji |
 | --- | --- |
 | `changes_requested` → korisnik popravlja → `approved` | 1 approved |
-| `changes_requested` → korisnik popravlja → `rejected` | 1 rejected |
+| `changes_requested` → korisnik popravlja → `removed (removedReason: rejected)` | 1 rejected |
 | Više iteracija `changes_requested` → na kraju `approved` | 1 approved — broj iteracija nije relevantan |
 | `changes_requested` → korisnik ne reaguje, listing ostaje u draftu | Ništa — nema finalne odluke, ne broji se |
 
@@ -751,13 +751,14 @@ Ova arhitektura omogućava platformi da skalira — od jednog grada sa stotinu k
 
 | Verzija | Datum | Opis |
 | --- | --- | --- |
+| 2.1 | 3.4.2026 | **Optimizacija 13→12 statusa.** `rejected` uklonjen kao zaseban `listingStatus`, dodan kao `removedReason`. Blokiranje pojašnjeno — koristi `hidden_by_system`. |
 | 2.0 | 1.4.2026 | **MIGRACIJA — jednostatus model.** Sekcija 3.7 "Efekt blokiranja na sadržaj korisnika" ažurirana: `closed` sa `closedReason = OWNER_BLOCKED` → `removed` sa `removedReason = owner_blocked`. Uklonjena referenca na `MOD_HIDE`. Automatska reaktivacija pri odblokiranju zamijenjena objašnjenjem da je `removed` terminalan status. Reference na Ch.04 ažurirane (`listingStatus` umjesto `closedReason`). |
 | 1.9 | 29.3.2026 | Dodana permisija `can_manage_tags` za moderatore (kreiranje, editovanje, deaktivacija, brisanje, spajanje tagova). Matrica ovlasti proširena sa redom "Upravljanje tagovima". Upravljanje kategorijama ostaje ekskluzivno za local\_admin. Napomena o local\_admin inherentnim ovlastima ažurirana da uključi obje permisije. |
 | 1.8 | 28.3.2026 | Status → Završeno. Dodana praktična napomena o revert mogućnosti za auto-degradaciju. Napomena o local\_admin inherentnim ovlastima u matrici i permisijama. Dodan `blockedDetails`, `isVerifiedPublisher`. Parametrizirano Trust Tier napredovanje. Ispravljen dijagram arhitekture (Staff u tenant bazi). OWNER\_BLOCKED i opcija za sadržaj pri blokiranju. |
 
 * * *
 
-*Posljednje ažuriranje: 1.4.2026*  
+*Posljednje ažuriranje: 3.4.2026*  
 *Vlasnik dokumenta: CityInfo tim*
 
 ‌
