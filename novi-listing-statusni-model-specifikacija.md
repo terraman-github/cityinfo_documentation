@@ -32,11 +32,11 @@ Tri komplementarna polja dopunjuju `listingStatus`:
 | `hidden_by_moderator` | Moderator sakrio radi istrage/odluke — bez zahtjeva prema vlasniku | ❌   | Ne  |
 | `hidden_by_system` | AI blokada ili korisnik blokiran; zahtijeva moderatorski pregled | ❌   | Ne  |
 | `expired` | Event je prošao; ostaje vidljiv kao historijski zapis | ✅   | ✅   |
-| `canceled` | Vlasnik otkazao event; vidljiv sa ograničenjima (vidi ispod) | ✅\* | Ne\*\* |
+| `canceled` | Vlasnik otkazao event; vidljiv sa ograničenjima dok `endDateTime` nije prošao | ✅\* | ✅\*\* |
 | `removed` | Trajno uklonjeno; ne može se vratiti | ❌   | ✅   |
 
-\* `canceled` je `isPublic = true` ali sa ograničenom vidljivošću.  
-\*\* `canceled` je reverzibilan ako `endDateTime > NOW()`.
+\* `canceled` ima `isPublic = true` **samo dok `endDateTime > NOW()`** (jedini status sa vremenskom komponentom u derivaciji). Vidljivost je dodatno ograničena (vidi sekciju 2 — opis statusa `canceled`).  
+\*\* `canceled` je terminalni status — nema automatske tranzicije u `expired`. Reverzibilan je samo dok `endDateTime > NOW()` (vlasnik može reaktivirati u `published`).
 
 * * *
 ### Detaljni opisi
@@ -80,12 +80,13 @@ Vlasnik je otkazao event. Listing je vidljiv sa badge-om "Otkazano" i sljedećim
 
 **Vidljivost:**
 
-- `isPublic = true` — dostupan putem direktnog linka, pretrage i favorita
+- `isPublic = true` **samo dok `endDateTime > NOW()`** — dostupan putem direktnog linka, pretrage i favorita
 - Prikazuje se sa badge-om "Otkazano"
 - **Isključen iz:** naslovne stranice, feed-ova, promoted listi i "nadolazeći događaji" sekcija
 - **Uključen u:** pretragu (sa badge-om), direktan link, korisnikov profil, favoriti
+- Kad `endDateTime` prođe, `isPublic` automatski postaje `false` — listing ostaje u `canceled` statusu zauvijek, ali nije više javno vidljiv. Otkazan event koji se nije održao nema historijsku vrijednost (za razliku od `expired` eventa koji se stvarno održao).
 
-**Reverzibilnost:** Ako `endDateTime > NOW()`, vlasnik može reaktivirati event → `published`. Kad `endDateTime` prođe, automatska tranzicija u `expired`.
+**Reverzibilnost:** Ako `endDateTime > NOW()`, vlasnik može reaktivirati event → `published`. Kad `endDateTime` prođe, listing ostaje `canceled` (terminalni status, **bez automatske tranzicije u `expired`**) — samo `isPublic` se gasi.
 
 **Promocije:** Aktivne promocije se pauziraju pri prelasku u `canceled`. Promotivni timer se pauzira (ne troši se plaćeni period). Ako vlasnik reaktivira event i promotivni period nije istekao, promocija se automatski nastavlja.
 
@@ -117,12 +118,14 @@ isPublic = listingStatus IN (
   'published',
   'published_under_review',
   'published_needs_changes',
-  'expired',
-  'canceled'
+  'expired'
 )
+OR (listingStatus = 'canceled' AND endDateTime > NOW())
 ```
 
 Svi ostali statusi rezultuju u `isPublic = false`.
+
+> ⚠️ **`canceled` je jedini status sa vremenskom komponentom u `isPublic` derivaciji.** Otkazan event koji se nije održao nema javnu vrijednost — za razliku od `expired` eventa koji se stvarno održao i ima historijski značaj. `canceled` listing ostaje u `canceled` statusu zauvijek; mijenja se samo vidljivost (preko `endDateTime`). Nema automatske tranzicije `canceled → expired`.
 ### `wasEverActive`
 
 Boolean — postaje `true` čim listing prvi put uđe u bilo koji `isPublic = true` status. Nikad se ne vraća na `false`.
@@ -179,8 +182,8 @@ Razlog: listinzi koji su bili vidljivi mogli su biti favorisani, komentirani ili
 | `hidden_by_system` | Moderator finalno odbija | `removed` (`removedReason: rejected`) | Moderator |
 | `hidden_by_system` | Moderator trajno uklanja | `removed` | Moderator |
 | `canceled` | Korisnik reaktivira (`endDateTime > NOW()`) | `published` | Korisnik |
-| `canceled` | `endDateTime` prošao | `expired` | Sistem |
 | `canceled` | Moderator trajno uklanja | `removed` | Moderator |
+| `canceled` | *(terminalni status kad `endDateTime` prođe — `isPublic` se gasi, bez tranzicije statusa)* | —   | —   |
 | `expired` | *(terminalni status)* | —   | —   |
 | `removed` | *(terminalni status)* | —   | —   |
 ### Zabrane i nevažeće tranzicije
@@ -194,6 +197,7 @@ Sljedeće tranzicije su **eksplicitno zabranjene** — sistem ih ne smije dopust
 | Bilo koji → `expired` (manualnom akcijom) | Expired je isključivo automatska sistemska tranzicija |
 | `hidden_by_system` → direktno korisniku | Korisnik ne može samovoljno izaći iz system block-a |
 | `canceled` → `published` (kad `endDateTime < NOW()`) | Ne može reaktivirati event koji je prošao |
+| `canceled` → `expired` (automatska) | `canceled` je terminalni status; otkazan event nema historijsku vrijednost — kad `endDateTime` prođe gasi se samo `isPublic`, status ostaje `canceled` |
 | Tranzicija na `canceled` za Place listing | `canceled` važi samo za Event |
 | Direktan upis `isPublic` | `isPublic` je kalkulisano; direktan upis je zabranjen |
 
@@ -307,7 +311,6 @@ stateDiagram-v2
     hidden_by_system --> removed : Moderator uklanja
 
     canceled --> published : Reaktivacija (endDateTime > NOW)
-    canceled --> expired : endDateTime prošao
     canceled --> removed : Moderator uklanja
 
     expired --> [*]

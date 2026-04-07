@@ -76,7 +76,7 @@ Pojasniti/dodati ako još ne postoji:
 
 **Reaktivacija:**
 - Reverzibilan samo ako `endDateTime > NOW()`
-- Kad datum prođe → automatski prelazi u `expired`
+- Kad datum prođe → ostaje `canceled` (terminalni status), `isPublic` se gasi (nema tranzicije u `expired`)
 
 ### Promjena 5: Blokiranje korisnika
 
@@ -107,7 +107,7 @@ Za referencu pri obradi. Ovo je finalni model koji svi fajlovi trebaju reflektov
 | `hidden_by_moderator` | Moderator sakrio, istražuje/odlučuje | ❌ | Ne |
 | `hidden_by_system` | AI blokada ili korisnik blokiran | ❌ | Ne |
 | `expired` | Event prošao (vidljiv kao historija) | ✅ | ✅ |
-| `canceled` | Vlasnik otkazao event (vidljiv sa badge-om) | ✅* | Ne** |
+| `canceled` | Vlasnik otkazao event (vidljiv sa badge-om dok `endDateTime > NOW()`) | ✅* | ✅** |
 | `removed` | Trajno uklonjeno (razlog u removedReason) | ❌ | ✅ |
 
 ## `removedReason` ENUM (FINALNI — 5 VRIJEDNOSTI)
@@ -124,7 +124,8 @@ Za referencu pri obradi. Ovo je finalni model koji svi fajlovi trebaju reflektov
 
 ```
 isPublic = listingStatus IN ('published', 'published_under_review', 
-                              'published_needs_changes', 'expired', 'canceled')
+                              'published_needs_changes', 'expired')
+           OR (listingStatus = 'canceled' AND endDateTime > NOW())
 ```
 
 ---
