@@ -1,8 +1,7 @@
 # Novi listing statusni model — specifikacija
-# Novi listing statusni model — specifikacija
 
-> **Verzija:** 1.0  
-> **Datum:** 1.4.2026  
+> **Verzija:** 1.1  
+> **Datum:** 3.4.2026  
 > **Status:** Draft za review  
 > **Kontekst:** Dio migracije sa dvostatus modela (lifecycleStatus + moderationStatus + closedReason) na jednostatus model.
 
