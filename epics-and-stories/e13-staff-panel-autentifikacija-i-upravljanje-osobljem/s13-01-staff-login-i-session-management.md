@@ -1,3 +1,12 @@
+---
+id: S13-01
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S13-01 — Staff login i session management
 
 **Naslov:** Staff login i session management

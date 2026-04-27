@@ -1,3 +1,12 @@
+---
+id: E06
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-08]
+personas: [Marko, Lejla, Emir, Amra]
+story_count: 5
+---
+
 # E06 — Trust Tier sistem
 
 **Naslov:** Trust Tier sistem

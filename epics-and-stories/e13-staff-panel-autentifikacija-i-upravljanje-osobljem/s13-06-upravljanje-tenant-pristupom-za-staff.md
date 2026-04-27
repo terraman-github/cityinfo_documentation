@@ -1,3 +1,12 @@
+---
+id: S13-06
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S13-06 — Upravljanje tenant pristupom za Staff
 
 **Naslov:** Upravljanje tenant pristupom za Staff

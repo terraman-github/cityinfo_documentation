@@ -1,3 +1,12 @@
+---
+id: S03a-01
+parent_epic: E03a
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: infra
+---
+
 # S03a-01 — Category entiteti i relaciona tabela
 
 **Naslov:** Category entiteti i relaciona tabela

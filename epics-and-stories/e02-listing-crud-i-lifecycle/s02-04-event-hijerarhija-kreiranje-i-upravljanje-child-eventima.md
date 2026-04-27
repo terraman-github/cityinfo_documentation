@@ -1,3 +1,12 @@
+---
+id: S02-04
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-04 — Event hijerarhija — kreiranje i upravljanje child eventima
 
 <a id="s02-04-event-hijerarhija-kreiranje-i-upravljanje-child-eventima"></a>

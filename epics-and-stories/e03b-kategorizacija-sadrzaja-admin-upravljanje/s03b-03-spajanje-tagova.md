@@ -1,3 +1,12 @@
+---
+id: S03b-03
+parent_epic: E03b
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S03b-03 — Spajanje tagova
 
 **Naslov:** Spajanje tagova

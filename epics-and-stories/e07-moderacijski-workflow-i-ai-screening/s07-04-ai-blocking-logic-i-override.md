@@ -1,3 +1,12 @@
+---
+id: S07-04
+parent_epic: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: fullstack
+---
+
 # S07-04 — AI blocking logic i override
 
 **Naslov:** AI blocking logic i override

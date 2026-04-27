@@ -1,3 +1,12 @@
+---
+id: S14-01
+parent_epic: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: infra
+---
+
 # S14-01 — Postavljanje repozitorija i razvojnog okruženja
 
 **Naslov:** Postavljanje repozitorija i razvojnog okruženja

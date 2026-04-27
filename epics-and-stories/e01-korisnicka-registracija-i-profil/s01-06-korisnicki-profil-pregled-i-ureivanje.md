@@ -1,3 +1,12 @@
+---
+id: S01-06
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-06 — Korisnički profil — pregled i uređivanje
 
 **Naslov:** Korisnički profil — pregled i uređivanje

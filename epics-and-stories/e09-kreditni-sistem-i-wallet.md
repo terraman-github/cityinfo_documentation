@@ -1,3 +1,12 @@
+---
+id: E09
+linear_id: ""
+phase: MVP
+journey_milestones: [J-09]
+personas: [Marko, Ana]
+story_count: 4
+---
+
 # E09 — Kreditni sistem i wallet
 
 **Naslov:** Kreditni sistem i wallet

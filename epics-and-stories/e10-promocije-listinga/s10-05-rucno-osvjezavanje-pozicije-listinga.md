@@ -1,3 +1,12 @@
+---
+id: S10-05
+parent_epic: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: fullstack
+---
+
 # S10-05 — Ručno osvježavanje pozicije listinga
 
 **Naslov:** Ručno osvježavanje pozicije listinga

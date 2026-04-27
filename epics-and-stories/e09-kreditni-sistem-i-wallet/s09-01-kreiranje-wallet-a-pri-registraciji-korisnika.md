@@ -1,3 +1,12 @@
+---
+id: S09-01
+parent_epic: E09
+linear_id: ""
+phase: MVP
+journey_milestones: [J-09]
+type: fullstack
+---
+
 # S09-01 — Kreiranje wallet-a pri registraciji korisnika
 
 **Naslov:** Kreiranje wallet-a pri registraciji korisnika

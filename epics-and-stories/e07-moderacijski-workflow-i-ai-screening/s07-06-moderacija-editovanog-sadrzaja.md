@@ -1,3 +1,12 @@
+---
+id: S07-06
+parent_epic: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: fullstack
+---
+
 # S07-06 — Moderacija editovanog sadržaja
 
 **Naslov:** Moderacija editovanog sadržaja

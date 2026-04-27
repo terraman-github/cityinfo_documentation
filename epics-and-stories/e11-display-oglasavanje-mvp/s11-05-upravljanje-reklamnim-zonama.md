@@ -1,3 +1,12 @@
+---
+id: S11-05
+parent_epic: E11
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S11-05 — Upravljanje reklamnim zonama
 
 **Naslov:** Upravljanje reklamnim zonama

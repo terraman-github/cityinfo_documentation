@@ -1,3 +1,12 @@
+---
+id: S01-08
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-08 — Dvofaktorska autentifikacija (2FA) za korisnike
 
 **Naslov:** Dvofaktorska autentifikacija (2FA) za korisnike

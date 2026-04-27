@@ -1,3 +1,12 @@
+---
+id: S04-07
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: frontend-only
+---
+
 # S04-07 — Responsive dizajn i mobile-first layout
 
 **Naslov:** Responsive dizajn i mobile-first layout

@@ -1,3 +1,12 @@
+---
+id: S13-07
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: frontend-only
+---
+
 # S13-07 — Staff panel shell i navigacija
 
 **Naslov:** Staff panel shell i navigacija

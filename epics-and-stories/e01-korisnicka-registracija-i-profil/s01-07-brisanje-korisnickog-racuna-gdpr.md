@@ -1,3 +1,12 @@
+---
+id: S01-07
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-07 — Brisanje korisničkog računa (GDPR)
 
 **Naslov:** Brisanje korisničkog računa (GDPR)

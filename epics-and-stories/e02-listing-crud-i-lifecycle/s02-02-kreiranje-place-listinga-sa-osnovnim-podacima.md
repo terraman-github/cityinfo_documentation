@@ -1,3 +1,12 @@
+---
+id: S02-02
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-02 — Kreiranje Place listinga sa osnovnim podacima
 
 <a id="s02-02-kreiranje-place-listinga-sa-osnovnim-podacima"></a>

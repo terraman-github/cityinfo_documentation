@@ -1,3 +1,12 @@
+---
+id: E11
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+personas: [Lejla, Damir]
+story_count: 5
+---
+
 # E11 — Display oglašavanje (MVP)
 
 **Naslov:** Display oglašavanje (MVP)

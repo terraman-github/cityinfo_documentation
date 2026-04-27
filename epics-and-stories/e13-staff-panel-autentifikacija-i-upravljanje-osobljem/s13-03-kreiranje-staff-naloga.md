@@ -1,3 +1,12 @@
+---
+id: S13-03
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S13-03 — Kreiranje Staff naloga
 
 **Naslov:** Kreiranje Staff naloga

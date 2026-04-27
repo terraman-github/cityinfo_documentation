@@ -1,3 +1,12 @@
+---
+id: S02-08
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-08 — Editovanje, brisanje i sakrivanje listinga
 
 <a id="s02-08-editovanje-brisanje-i-sakrivanje-listinga"></a>

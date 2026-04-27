@@ -1,3 +1,12 @@
+---
+id: S08-02
+parent_epic: E08
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-07]
+type: fullstack
+---
+
 # S08-02 — Slanje poruke moderatora vlasniku listinga
 
 **Naslov:** Slanje poruke moderatora vlasniku listinga

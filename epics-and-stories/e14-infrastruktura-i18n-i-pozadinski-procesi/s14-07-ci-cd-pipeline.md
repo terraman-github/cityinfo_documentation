@@ -1,3 +1,12 @@
+---
+id: S14-07
+parent_epic: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: infra
+---
+
 # S14-07 — CI/CD pipeline
 
 **Naslov:** CI/CD pipeline

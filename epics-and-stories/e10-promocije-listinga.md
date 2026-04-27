@@ -1,3 +1,12 @@
+---
+id: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+personas: [Marko, Ana]
+story_count: 6
+---
+
 # E10 — Promocije listinga
 
 **Naslov:** Promocije listinga

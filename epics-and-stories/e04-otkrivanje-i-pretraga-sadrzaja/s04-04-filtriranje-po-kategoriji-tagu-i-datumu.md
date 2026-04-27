@@ -1,3 +1,12 @@
+---
+id: S04-04
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: fullstack
+---
+
 # S04-04 — Filtriranje po kategoriji, tagu i datumu
 
 **Naslov:** Filtriranje po kategoriji, tagu i datumu

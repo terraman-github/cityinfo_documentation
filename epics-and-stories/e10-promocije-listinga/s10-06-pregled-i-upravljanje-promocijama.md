@@ -1,3 +1,12 @@
+---
+id: S10-06
+parent_epic: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: fullstack
+---
+
 # S10-06 — Pregled i upravljanje promocijama
 
 **Naslov:** Pregled i upravljanje promocijama

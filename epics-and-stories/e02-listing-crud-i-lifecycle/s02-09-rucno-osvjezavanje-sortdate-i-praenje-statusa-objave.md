@@ -1,3 +1,12 @@
+---
+id: S02-09
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-09 — Ručno osvježavanje sortDate i praćenje statusa objave
 
 <a id="s02-09-ručno-osvježavanje-sortdate-i-praćenje-statusa-objave"></a>

@@ -1,3 +1,12 @@
+---
+id: S05-04
+parent_epic: E05
+linear_id: ""
+phase: MVP
+journey_milestones: [J-05]
+type: fullstack
+---
+
 # S05-04 — Favoriti (Saved listings)
 
 **Naslov:** Favoriti (Saved listings)

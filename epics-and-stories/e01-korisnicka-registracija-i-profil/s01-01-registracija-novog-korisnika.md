@@ -1,3 +1,12 @@
+---
+id: S01-01
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-01 — Registracija novog korisnika
 
 **Naslov:** Registracija novog korisnika

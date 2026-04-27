@@ -1,3 +1,12 @@
+---
+id: S02-07
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-03]
+type: fullstack
+---
+
 # S02-07 — Objava listinga i statusne tranzicije
 
 <a id="s02-07-objava-listinga-i-statusne-tranzicije"></a>

@@ -1,3 +1,12 @@
+---
+id: S02-06
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-07]
+type: fullstack
+---
+
 # S02-06 — Upload i upravljanje dokumentima listinga
 
 <a id="s02-06-upload-i-upravljanje-dokumentima-listinga"></a>

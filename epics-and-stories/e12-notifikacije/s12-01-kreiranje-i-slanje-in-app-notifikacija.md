@@ -1,3 +1,12 @@
+---
+id: S12-01
+parent_epic: E12
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-03, J-05, J-06]
+type: backend-only
+---
+
 # S12-01 — Kreiranje i slanje in-app notifikacija
 
 **Naslov:** Kreiranje i slanje in-app notifikacija

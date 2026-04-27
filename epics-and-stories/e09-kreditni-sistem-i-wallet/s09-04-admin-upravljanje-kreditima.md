@@ -1,3 +1,12 @@
+---
+id: S09-04
+parent_epic: E09
+linear_id: ""
+phase: MVP
+journey_milestones: [J-09]
+type: fullstack
+---
+
 # S09-04 — Admin upravljanje kreditima
 
 **Naslov:** Admin upravljanje kreditima

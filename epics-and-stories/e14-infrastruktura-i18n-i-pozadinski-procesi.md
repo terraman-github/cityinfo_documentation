@@ -1,3 +1,12 @@
+---
+id: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+personas: [Svi]
+story_count: 7
+---
+
 # E14 — Infrastruktura, i18n i pozadinski procesi
 
 **Naslov:** Infrastruktura, i18n i pozadinski procesi

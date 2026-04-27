@@ -1,3 +1,12 @@
+---
+id: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+personas: [Marko, Ana, Thomas, Lejla]
+story_count: 8
+---
+
 # E01 — Korisnička registracija i profil
 
 **Naslov:** Korisnička registracija i profil

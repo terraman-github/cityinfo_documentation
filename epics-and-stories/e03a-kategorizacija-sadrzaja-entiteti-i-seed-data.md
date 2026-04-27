@@ -1,3 +1,12 @@
+---
+id: E03a
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-04]
+personas: [Marko, Ana, Thomas]
+story_count: 5
+---
+
 # E03a — Kategorizacija sadržaja — entiteti i seed data
 
 **Naslov:** Kategorizacija sadržaja — entiteti i seed data

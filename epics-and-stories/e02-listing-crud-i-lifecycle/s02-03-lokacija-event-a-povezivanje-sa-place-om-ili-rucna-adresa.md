@@ -1,3 +1,12 @@
+---
+id: S02-03
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-03 — Lokacija Event-a — povezivanje sa Place-om ili ručna adresa
 
 <a id="s02-03-lokacija-event-a-povezivanje-sa-place-om-ili-ručna-adresa"></a>

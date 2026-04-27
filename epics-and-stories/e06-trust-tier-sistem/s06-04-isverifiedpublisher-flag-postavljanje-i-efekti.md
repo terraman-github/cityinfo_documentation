@@ -1,3 +1,12 @@
+---
+id: S06-04
+parent_epic: E06
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-07]
+type: fullstack
+---
+
 # S06-04 — isVerifiedPublisher flag — postavljanje i efekti
 
 **Naslov:** isVerifiedPublisher flag — postavljanje i efekti

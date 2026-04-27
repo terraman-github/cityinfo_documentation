@@ -1,3 +1,12 @@
+---
+id: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+personas: [Emir, Amra, Marko]
+story_count: 6
+---
+
 # E07 — Moderacijski workflow i AI screening
 
 **Naslov:** Moderacijski workflow i AI screening

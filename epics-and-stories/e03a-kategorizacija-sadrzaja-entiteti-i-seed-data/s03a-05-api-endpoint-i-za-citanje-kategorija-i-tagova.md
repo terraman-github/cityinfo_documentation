@@ -1,3 +1,12 @@
+---
+id: S03a-05
+parent_epic: E03a
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-04]
+type: backend-only
+---
+
 # S03a-05 — API endpoint-i za čitanje kategorija i tagova
 
 **Naslov:** API endpoint-i za čitanje kategorija i tagova

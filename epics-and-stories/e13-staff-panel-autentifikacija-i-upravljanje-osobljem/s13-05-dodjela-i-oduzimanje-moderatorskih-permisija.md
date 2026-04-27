@@ -1,3 +1,12 @@
+---
+id: S13-05
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S13-05 — Dodjela i oduzimanje moderatorskih permisija
 
 **Naslov:** Dodjela i oduzimanje moderatorskih permisija

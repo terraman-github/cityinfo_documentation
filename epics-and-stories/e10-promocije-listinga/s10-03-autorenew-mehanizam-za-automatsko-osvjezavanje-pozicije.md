@@ -1,3 +1,12 @@
+---
+id: S10-03
+parent_epic: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: backend-only
+---
+
 # S10-03 — AutoRenew mehanizam za automatsko osvježavanje pozicije
 
 **Naslov:** AutoRenew mehanizam za automatsko osvježavanje pozicije

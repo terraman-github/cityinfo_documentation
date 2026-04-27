@@ -1,3 +1,12 @@
+---
+id: S06-02
+parent_epic: E06
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-08]
+type: backend-only
+---
+
 # S06-02 — Automatska degradacija na Restricted (Tier 0)
 
 **Naslov:** Automatska degradacija na Restricted (Tier 0)

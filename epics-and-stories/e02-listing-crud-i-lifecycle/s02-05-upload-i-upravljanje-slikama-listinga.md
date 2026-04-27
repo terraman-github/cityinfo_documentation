@@ -1,3 +1,12 @@
+---
+id: S02-05
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-05 — Upload i upravljanje slikama listinga
 
 <a id="s02-05-upload-i-upravljanje-slikama-listinga"></a>

@@ -1,3 +1,12 @@
+---
+id: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+personas: [Milica, Thomas, Ana]
+story_count: 7
+---
+
 # E04 — Otkrivanje i pretraga sadržaja
 
 **Naslov:** Otkrivanje i pretraga sadržaja

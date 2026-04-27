@@ -1,3 +1,12 @@
+---
+id: S01-04
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-04 — Login, logout i session management
 
 **Naslov:** Login, logout i session management

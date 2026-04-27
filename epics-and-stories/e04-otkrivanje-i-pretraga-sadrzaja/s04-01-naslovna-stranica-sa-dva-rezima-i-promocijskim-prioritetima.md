@@ -1,3 +1,12 @@
+---
+id: S04-01
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: fullstack
+---
+
 # S04-01 — Naslovna stranica sa dva režima i promocijskim prioritetima
 
 **Naslov:** Naslovna stranica sa dva režima i promocijskim prioritetima
