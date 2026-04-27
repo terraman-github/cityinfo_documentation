@@ -26,19 +26,19 @@ story_count: 4
 
 **Scope — šta NE ulazi:**
 
-- Trošenje kredita na promocije (E10 — Promocije listinga)
-- Display oglašavanje (E11)
+- Trošenje kredita na promocije ([E10](e10-promocije-listinga.md) — Promocije listinga)
+- Display oglašavanje ([E11](e11-display-oglasavanje-mvp.md))
 - Pricing prilagođavanje po tenantu (Backlog)
 - A/B testiranje cijena (Backlog)
 - Loyalty program i nagrade (post-MVP)
 
 **Persone:** Marko (organizator događaja), Ana (vlasnica biznisa)
 
-**Journey milestones:** J-09 (Wallet i plaćanje)
+**Journey milestones:** **J-09** (Wallet i plaćanje)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.06, sekcije 6.1.1–6.1.7
+**Dokumentacijska referenca:** **Ch.06**, sekcije 6.1.1–6.1.7
 
 **Tehničke napomene:**
 
@@ -58,7 +58,7 @@ story_count: 4
 
 | #   | Naslov | Phase | Journey |
 | --- | --- | --- | --- |
-| S09-01 | Kreiranje wallet-a pri registraciji korisnika | MVP | J-09 |
-| S09-02 | Prikaz kredit paketa i kupovina kredita | MVP | J-09 |
-| S09-03 | Prikaz wallet stanja i historije transakcija | MVP | J-09 |
-| S09-04 | Admin upravljanje kreditima | MVP | J-09 |
+| [S09-01](e09-kreditni-sistem-i-wallet/s09-01-kreiranje-wallet-a-pri-registraciji-korisnika.md) | Kreiranje wallet-a pri registraciji korisnika | MVP | **J-09** |
+| [S09-02](e09-kreditni-sistem-i-wallet/s09-02-prikaz-kredit-paketa-i-kupovina-kredita.md) | Prikaz kredit paketa i kupovina kredita | MVP | **J-09** |
+| [S09-03](e09-kreditni-sistem-i-wallet/s09-03-prikaz-wallet-stanja-i-historije-transakcija.md) | Prikaz wallet stanja i historije transakcija | MVP | **J-09** |
+| [S09-04](e09-kreditni-sistem-i-wallet/s09-04-admin-upravljanje-kreditima.md) | Admin upravljanje kreditima | MVP | **J-09** |

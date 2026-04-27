@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-02, J-03
+**Journey milestones:** **J-02**, **J-03**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim biti obaviješten kad moderator donese odluku o mom listingu,  
 kako bih mogao reagovati na vrijeme — bilo da je listing odobren, treba doradu, ili je odbijen.
 
-**Kontekst:** Listing lifecycle prolazi kroz moderacijski workflow (Ch.05) gdje moderator donosi jednu od tri odluke: approved, changes\_requested, rejected. Svaka od ovih odluka triggeruje notifikaciju vlasniku (in-app + email). Dodatno, ako je listing u statusu changes\_requested i korisnik nije reagovao, sistem šalje podsjetnik (changes\_timeout\_reminder). Notifikacije su prilagođene Trust Tier nivou — Ch.07, sekcija 7.2.6.
+**Kontekst:** Listing lifecycle prolazi kroz moderacijski workflow (**Ch.05**) gdje moderator donosi jednu od tri odluke: approved, changes\_requested, rejected. Svaka od ovih odluka triggeruje notifikaciju vlasniku (in-app + email). Dodatno, ako je listing u statusu changes\_requested i korisnik nije reagovao, sistem šalje podsjetnik (changes\_timeout\_reminder). Notifikacije su prilagođene Trust Tier nivou — **Ch.07, sekcija 7.2**.6.
 
 **Acceptance criteria:**
 
@@ -32,7 +32,7 @@ kako bih mogao reagovati na vrijeme — bilo da je listing odobren, treba doradu
 - [ ] Kad listing čeka izmjene duže od konfigurabilnog perioda → sistem šalje changes\_timeout\_reminder notifikaciju
 - [ ] Tier 0-1 korisnici primaju notifikaciju o čekanju na pregled kad listing uđe u moderacijski queue
 - [ ] Tier 2+ korisnici primaju notifikaciju samo kad moderator naknadno pronađe problem (post-moderacija)
-- [ ] Notifikacija za novu poruku od moderatora (new\_message) se šalje kad moderator pošalje poruku kroz Message sistem (Ch.07, sekcija 7.1)
+- [ ] Notifikacija za novu poruku od moderatora (new\_message) se šalje kad moderator pošalje poruku kroz Message sistem (**Ch.07, sekcija 7.1**)
 - [ ] Sve notifikacije sadrže referenceType='listing' i referenceId=listingId za navigaciju
 
 **Backend Scope:**
@@ -41,15 +41,15 @@ kako bih mogao reagovati na vrijeme — bilo da je listing odobren, treba doradu
 - Integracija sa MessageService — pri slanju poruke od moderatora, kreira new\_message notifikaciju
 - Trust Tier aware logika: provjera korisnikovog Trust Tier-a za određivanje tipova notifikacija
 - Background job za changes\_timeout\_reminder — periodična provjera listinga u changes\_requested statusu
-- Side effects: kreira Notification zapise, triggeruje email slanje (S12-03)
+- Side effects: kreira Notification zapise, triggeruje email slanje ([S12-03](s12-03-slanje-email-notifikacija.md))
 
 **Frontend Scope:** —  
-*(Ovo je backend-only storija za integraciju notifikacija sa listing lifecycle-om. Frontend prikaz notifikacija je u S12-02.)*
+*(Ovo je backend-only storija za integraciju notifikacija sa listing lifecycle-om. Frontend prikaz notifikacija je u [S12-02](s12-02-prikaz-notifikacija-i-badge-neprocitanih.md).)*
 
 **Tehničke napomene:**
 
 - Trust Tier aware notifikacije ne zahtijevaju složenu logiku — jednostavna provjera korisnikovog tier-a pri kreiranju notifikacije
-- changes\_timeout\_reminder se može realizirati kroz postojeći background job infrastrukturu (E14)
+- changes\_timeout\_reminder se može realizirati kroz postojeći background job infrastrukturu ([E14](../e14-infrastruktura-i18n-i-pozadinski-procesi.md))
 - Razmotriti konfigurabilni period za timeout reminder (npr. 5 dana od changes\_requested)
 
 **Testovi (MVP):**

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-05
+**Journey milestones:** **J-05**
 
 **User story:**  
 Kao posjetilac (registrovan ili visitor),  
 želim podijeliti zanimljiv listing sa prijateljima,  
 kako bih im preporučio mjesto ili događaj bez potrebe da im objašnjavam detalje.
 
-**Kontekst:** Dijeljenje ne zahtijeva autentifikaciju — dostupno je svima. Mehanizam koristi native share API preglednika gdje je dostupan (tipično mobilni), a copy-to-clipboard kao fallback (tipično desktop). Dijeljeni URL vodi na javnu detail stranicu. Open Graph meta tagovi su definirani u S05-02. Detalji u Ch.04, sekcija 4.9.
+**Kontekst:** Dijeljenje ne zahtijeva autentifikaciju — dostupno je svima. Mehanizam koristi native share API preglednika gdje je dostupan (tipično mobilni), a copy-to-clipboard kao fallback (tipično desktop). Dijeljeni URL vodi na javnu detail stranicu. Open Graph meta tagovi su definirani u [S05-02](s05-02-detaljna-stranica-listinga.md). Detalji u **Ch.04, sekcija 4.9**.
 
 **Acceptance criteria:**
 
@@ -37,7 +37,7 @@ kako bih im preporučio mjesto ili događaj bez potrebe da im objašnjavam detal
 **Backend Scope:**
 
 - `GET /listings/{id}/share` — vraća {url, title, description, imageUrl} za share mehanizam
-- Open Graph meta tagovi se renderaju server-side na detail stranici (pokriveno u S05-02)
+- Open Graph meta tagovi se renderaju server-side na detail stranici (pokriveno u [S05-02](s05-02-detaljna-stranica-listinga.md))
 
 **Frontend Scope:**
 

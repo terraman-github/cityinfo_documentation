@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-01
+**Journey milestones:** **J-01**
 
 **User story:**  
 Kao korisnik koji želi napustiti platformu,  
 želim obrisati svoj račun i sve vezane podatke,  
 kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.
 
-**Kontekst:** Korisnik pristupa opciji brisanja kroz profil. Brisanje postavlja `accountStatus = deleted` i pokreće 30-dnevni countdown. Tokom tog perioda, korisnik se ne može prijaviti, ali podaci postoje u bazi. Nakon 30 dana, background job trajno briše podatke. Detalji o accountStatus → Ch.03, sekcija 3.3. Endpoint: `DELETE /users/me` (Ch.03, sekcija 3.8).
+**Kontekst:** Korisnik pristupa opciji brisanja kroz profil. Brisanje postavlja `accountStatus = deleted` i pokreće 30-dnevni countdown. Tokom tog perioda, korisnik se ne može prijaviti, ali podaci postoje u bazi. Nakon 30 dana, background job trajno briše podatke. Detalji o accountStatus → **Ch.03, sekcija 3.3**. Endpoint: `DELETE /users/me` (**Ch.03, sekcija 3.8**).
 
 **Acceptance criteria:**
 
@@ -32,7 +32,7 @@ kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.
 - [ ] Korisnik se odmah odjavljuje sa svih uređaja
 - [ ] Korisnik se ne može prijaviti dok je `accountStatus = deleted`
 - [ ] Aktivni listinzi korisnika prelaze u `closed` sa odgovarajućim razlogom
-- [ ] Aktivne promocije se otkazuju (povrat kredita — politika se definira u E10)
+- [ ] Aktivne promocije se otkazuju (povrat kredita — politika se definira u [E10](../e10-promocije-listinga.md))
 - [ ] Korisnik može reaktivirati račun unutar 30 dana (npr. putem support kontakta ili posebnog linka)
 - [ ] Nakon 30 dana, background job trajno briše korisničke podatke iz baze
 - [ ] Trajno brisanje uključuje lične podatke — anonimizacija umjesto kompletnog brisanja gdje je potrebno za integritet podataka (npr. transakcije)
@@ -41,7 +41,7 @@ kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.
 
 - `DELETE /users/me` — prima {password} za potvrdu, postavlja `accountStatus = deleted` i `deletedAt = now()`
 - Validacija: provjera lozinke za potvrdu identiteta
-- Side effects: invalidacija svih sesija korisnika; zatvaranje aktivnih listinga (`closed` sa odgovarajućim razlogom); otkazivanje aktivnih promocija; background job za trajno brisanje nakon 30 dana (dio E14 infrastrukture)
+- Side effects: invalidacija svih sesija korisnika; zatvaranje aktivnih listinga (`closed` sa odgovarajućim razlogom); otkazivanje aktivnih promocija; background job za trajno brisanje nakon 30 dana (dio [E14](../e14-infrastruktura-i18n-i-pozadinski-procesi.md) infrastrukture)
 
 **Frontend Scope:**
 
@@ -50,8 +50,8 @@ kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.
 
 **Tehničke napomene:**
 
-- Background job za cleanup je dio E14 infrastrukture (soft delete cleanup).
-- Razlika između `inactive` (korisnik pauzira) i `deleted` (korisnik briše) — Ch.03, sekcija 3.3.
+- Background job za cleanup je dio [E14](../e14-infrastruktura-i18n-i-pozadinski-procesi.md) infrastrukture (soft delete cleanup).
+- Razlika između `inactive` (korisnik pauzira) i `deleted` (korisnik briše) — **Ch.03, sekcija 3.3**.
 
 **Testovi (MVP):**
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-04
+**Journey milestones:** **J-04**
 
 **User story:**  
 Kao posjetilac (visitor ili registrovan korisnik),  
 želim vidjeti relevantne listinge čim otvorim platformu,  
 kako bih brzo saznao šta se dešava u gradu ili gdje otići.
 
-**Kontekst:** Korisnik otvara [cityinfo.ba](http://cityinfo.ba). Naslovna po defaultu prikazuje Events režim jer su događaji vremenski osjetljivi. Korisnik može prebaciti na Places režim kroz vidljivu navigaciju. Sadržaj je podijeljen u dvije grupe prema Ch.02, sekcija 2.1 — Grupa 1 su Premium+Homepage promocije (apsolutni prioritet), Grupa 2 su svi ostali listinzi sortirani po sortDate. Featured sekcije (npr. "Ovaj vikend") su za MVP hardkodirane.
+**Kontekst:** Korisnik otvara [cityinfo.ba](http://cityinfo.ba). Naslovna po defaultu prikazuje Events režim jer su događaji vremenski osjetljivi. Korisnik može prebaciti na Places režim kroz vidljivu navigaciju. Sadržaj je podijeljen u dvije grupe prema **Ch.02, sekcija 2.1** — Grupa 1 su Premium+Homepage promocije (apsolutni prioritet), Grupa 2 su svi ostali listinzi sortirani po sortDate. Featured sekcije (npr. "Ovaj vikend") su za MVP hardkodirane.
 
 **Acceptance criteria:**
 
@@ -48,14 +48,14 @@ kako bih brzo saznao šta se dešava u gradu ili gdje otići.
 **Frontend Scope:**
 
 - UI: Naslovna sa header-om, search bar-om, lokacijskim indikatorom, tab navigacijom (Events/Places)
-- UI: Grid/lista kartica — svaka kartica prikazuje elemente prema Ch.02, sekcija 2.3 (slika, naziv, excerpt, kategorija, datum, itd.)
+- UI: Grid/lista kartica — svaka kartica prikazuje elemente prema **Ch.02, sekcija 2.3** (slika, naziv, excerpt, kategorija, datum, itd.)
 - UI: Featured sekcija — horizontalni carousel ili grid za tematski kurirane listinge
 - UX: Smooth prebacivanje između režima bez reload-a cijele stranice
 - UX: Skeleton loading za kartice dok se podaci učitavaju
 
 **Tehničke napomene:**
 
-- Bez E10 (Promocije), sortiranje se radi samo po sortDate — promocijski prioriteti se dodaju kad E10 bude implementiran.
+- Bez [E10](../e10-promocije-listinga.md) (Promocije), sortiranje se radi samo po sortDate — promocijski prioriteti se dodaju kad [E10](../e10-promocije-listinga.md) bude implementiran.
 - Featured sekcije za MVP mogu biti hardkodirane query-ji (npr. "eventi sa startDateTime u naredna 3 dana").
 
 **Testovi (MVP):**

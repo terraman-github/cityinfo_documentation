@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim besplatno osvježiti poziciju svog listinga jednom dnevno,  
 kako bi moj listing bio vidljiviji bez troškova.
 
-**Kontekst:** Korisnik pristupa opciji refresh-a kroz "Moji listinzi" pregled ili listing detail stranicu. Klikom na "Osvježi poziciju", `sortDate` se ažurira na NOW() i listing se pojavljuje više u rezultatima. Cooldown je 24 sata — korisnik ne može osvježiti ponovo dok ne prođe 24h od zadnjeg ručnog refresh-a. Listing ima polje `lastManualRefreshAt` koje prati kad je korisnik zadnji put ručno osvježio. Detalji → Ch.06, sekcija 6.2.4.
+**Kontekst:** Korisnik pristupa opciji refresh-a kroz "Moji listinzi" pregled ili listing detail stranicu. Klikom na "Osvježi poziciju", `sortDate` se ažurira na NOW() i listing se pojavljuje više u rezultatima. Cooldown je 24 sata — korisnik ne može osvježiti ponovo dok ne prođe 24h od zadnjeg ručnog refresh-a. Listing ima polje `lastManualRefreshAt` koje prati kad je korisnik zadnji put ručno osvježio. Detalji → **Ch.06, sekcija 6.2**.4.
 
 **Acceptance criteria:**
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao operator,  
 želim dodijeliti ili oduzeti specifične permisije moderatorima,  
 kako bih mogao kontrolisati ko ima pristup osjetljivim akcijama poput promjene Trust Tier-a ili upravljanja tagovima.
 
-**Kontekst:** Permisije se čuvaju u `permissions` polju Staff entiteta kao lista stringova. Trenutno postoje dvije permisije: `can_manage_trust_tier` i `can_manage_tags`. Operator i local\_admin mogu dodijeljivati permisije moderatorima. Local\_admin ima inherentno sve permisije bez potrebe za eksplicitnim dodavanjem. Detalji → Ch.03, sekcija 3.5 (moderatorske permisije) i Ch.05, sekcija 5.4.1.
+**Kontekst:** Permisije se čuvaju u `permissions` polju Staff entiteta kao lista stringova. Trenutno postoje dvije permisije: `can_manage_trust_tier` i `can_manage_tags`. Operator i local\_admin mogu dodijeljivati permisije moderatorima. Local\_admin ima inherentno sve permisije bez potrebe za eksplicitnim dodavanjem. Detalji → **Ch.03, sekcija 3.5** (moderatorske permisije) i **Ch.05, sekcija 5.4**.1.
 
 **Acceptance criteria:**
 
@@ -51,7 +51,7 @@ kako bih mogao kontrolisati ko ima pristup osjetljivim akcijama poput promjene T
 
 - Lista permisija se može proširivati — dizajnirati UI fleksibilno, ne hardcode-ovati samo dvije permisije
 - Permisije ne zahtijevaju re-login — provjeravaju se pri svakom API pozivu, ne pri izdavanju tokena
-- Ovo ne pokriva šta permisije omogućavaju (to je dio E06/E07) — samo dodjelu i oduzimanje
+- Ovo ne pokriva šta permisije omogućavaju (to je dio [E06](../e06-trust-tier-sistem.md)/[E07](../e07-moderacijski-workflow-i-ai-screening.md)) — samo dodjelu i oduzimanje
 
 **Testovi (MVP):**
 

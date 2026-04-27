@@ -19,14 +19,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-02
+**Journey milestones:** **J-02**
 
 **User story:**  
 Kao organizator festivala,  
 želim kreirati pod-događaje (koncerte, radionice) unutar svog festivala,  
 kako bi svaki program imao vlastiti listing sa detaljima i opcijom za zasebnu promociju.
 
-**Kontekst:** Korisnik ima kreiran parent Event (S02-01). Parent/child hijerarhija je ograničena na dva nivoa — child ne može imati vlastite child-ove. Samo vlasnik parent-a može kreirati child evente. Detalji o hijerarhiji → Ch.04, sekcija 4.2 (Hijerarhija događaja).
+**Kontekst:** Korisnik ima kreiran parent Event ([S02-01](s02-01-kreiranje-event-listinga-sa-osnovnim-podacima.md)). Parent/child hijerarhija je ograničena na dva nivoa — child ne može imati vlastite child-ove. Samo vlasnik parent-a može kreirati child evente. Detalji o hijerarhiji → **Ch.04, sekcija 4.2** (Hijerarhija događaja).
 
 **Acceptance criteria:**
 

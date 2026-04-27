@@ -15,8 +15,8 @@ story_count: 5
 
 **Scope — šta ulazi:**
 
-- Category entitet (EventCategory + PlaceCategory) sa svim atributima iz Ch.04, sekcija 4.4
-- Tag entiteti (EventTags + PlaceTags) sa atributima iz Ch.04, sekcija 4.5
+- Category entitet (EventCategory + PlaceCategory) sa svim atributima iz **Ch.04, sekcija 4.4**
+- Tag entiteti (EventTags + PlaceTags) sa atributima iz **Ch.04, sekcija 4.5**
 - Relaciona tabela za listing-kategorija vezu (ListingCategories sa `isPrimary` flagom)
 - Seed data: svih 16 sektora za mjesta i 11 sektora za događaje sa kompletnim listama kategorija
 - Seed data: inicijalni set tagova za evente i mjesta
@@ -26,23 +26,23 @@ story_count: 5
 
 **Scope — šta NE ulazi:**
 
-- Admin UI za upravljanje kategorijama i tagovima — dolazi u E03b (Sprint 5–6)
-- Admin CRUD API za kategorije (POST/PUT/DELETE) — dolazi u E03b
-- Spajanje tagova (merge) — dolazi u E03b
-- Fulltext pretraga po aliasima — dolazi u E04 (Pretraga)
+- Admin UI za upravljanje kategorijama i tagovima — dolazi u [E03b](e03b-kategorizacija-sadrzaja-admin-upravljanje.md) (Sprint 5–6)
+- Admin CRUD API za kategorije (POST/PUT/DELETE) — dolazi u [E03b](e03b-kategorizacija-sadrzaja-admin-upravljanje.md)
+- Spajanje tagova (merge) — dolazi u [E03b](e03b-kategorizacija-sadrzaja-admin-upravljanje.md)
+- Fulltext pretraga po aliasima — dolazi u [E04](e04-otkrivanje-i-pretraga-sadrzaja.md) (Pretraga)
 
 **Persone:** Marko (organizator), Ana (vlasnica biznisa), Thomas (turist) — indirektno, jer ovdje se postavljaju kategorije koje će oni koristiti
 
-**Journey milestones:** J-02, J-04
+**Journey milestones:** **J-02**, **J-04**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.04, sekcije 4.4–4.5 (kategorije i tagovi)
+**Dokumentacijska referenca:** **Ch.04**, sekcije 4.4–4.5 (kategorije i tagovi)
 
 **Tehničke napomene:**
 
-- Ovo je preduslov za E02 (Listing CRUD) — listing forma ne može funkcionisati bez kategorija u bazi.
-- Sektor nije zaseban entitet — `sectorSlug` i `sectorName` su denormalizovani atributi na kategoriji (Ch.04, 4.4).
+- Ovo je preduslov za [E02](e02-listing-crud-i-lifecycle.md) (Listing CRUD) — listing forma ne može funkcionisati bez kategorija u bazi.
+- Sektor nije zaseban entitet — `sectorSlug` i `sectorName` su denormalizovani atributi na kategoriji (**Ch.04**, 4.4).
 - EventCategory i PlaceCategory su odvojene tabele. EventTags i PlaceTags su odvojene tabele. Ne miješati.
 - Slug kategorije je immutable — jednom kreiran, ne može se mijenjati.
 - Seed data se piše kao zaseban korak (ne dio migracije) da bi se mogao ponovno pokrenuti ili ažurirati bez rollback-a schema-e.
@@ -57,8 +57,8 @@ story_count: 5
 
 | ID  | Naslov | Phase | Sprint |
 | --- | --- | --- | --- |
-| S03a-01 | Category entiteti i relaciona tabela | MVP | 0   |
-| S03a-02 | Tag entiteti | MVP | 0   |
-| S03a-03 | Seed data — kategorije za Sarajevo | MVP | 0   |
-| S03a-04 | Seed data — tagovi i aliasi | MVP | 0   |
-| S03a-05 | API endpoint-i za čitanje kategorija i tagova | MVP | 0   |
+| [S03a-01](e03a-kategorizacija-sadrzaja-entiteti-i-seed-data/s03a-01-category-entiteti-i-relaciona-tabela.md) | Category entiteti i relaciona tabela | MVP | 0   |
+| [S03a-02](e03a-kategorizacija-sadrzaja-entiteti-i-seed-data/s03a-02-tag-entiteti.md) | Tag entiteti | MVP | 0   |
+| [S03a-03](e03a-kategorizacija-sadrzaja-entiteti-i-seed-data/s03a-03-seed-data-kategorije-za-sarajevo.md) | Seed data — kategorije za Sarajevo | MVP | 0   |
+| [S03a-04](e03a-kategorizacija-sadrzaja-entiteti-i-seed-data/s03a-04-seed-data-tagovi-i-aliasi.md) | Seed data — tagovi i aliasi | MVP | 0   |
+| [S03a-05](e03a-kategorizacija-sadrzaja-entiteti-i-seed-data/s03a-05-api-endpoint-i-za-citanje-kategorija-i-tagova.md) | API endpoint-i za čitanje kategorija i tagova | MVP | 0   |

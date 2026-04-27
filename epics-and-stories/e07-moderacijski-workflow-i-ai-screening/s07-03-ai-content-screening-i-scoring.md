@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao sistem,  
 želim automatski skenirati svaki submitovani sadržaj i dodijeliti mu score rizika po kategorijama,  
 kako bi moderatori vidjeli potencijalne probleme odmah i mogli efikasnije prioritizirati svoj rad.
 
-**Kontekst:** AI screening se pokreće automatski pri svakom submitovanju listinga. Proces mora biti brz (max 3 sekunde) da ne blokira korisnikov flow. AI analizira tekst (naslov, opis) i slike, dodjeljuje score (0.0–1.0) za svaku kategoriju, i na osnovu toga računa ukupni risk level (LOW/MEDIUM/HIGH/CRITICAL). Rezultati se prikazuju moderatoru kao "hints" — korisni ali ne obavezujući. Detalji → Ch.05, sekcije 5.3.1–5.3.3.
+**Kontekst:** AI screening se pokreće automatski pri svakom submitovanju listinga. Proces mora biti brz (max 3 sekunde) da ne blokira korisnikov flow. AI analizira tekst (naslov, opis) i slike, dodjeljuje score (0.0–1.0) za svaku kategoriju, i na osnovu toga računa ukupni risk level (LOW/MEDIUM/HIGH/CRITICAL). Rezultati se prikazuju moderatoru kao "hints" — korisni ali ne obavezujući. Detalji → **Ch.05**, sekcije 5.3.1–5.3.3.
 
 **Acceptance criteria:**
 

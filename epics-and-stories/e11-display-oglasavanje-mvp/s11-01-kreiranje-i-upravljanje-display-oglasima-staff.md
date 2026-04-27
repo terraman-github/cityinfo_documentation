@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao Staff korisnik,  
 želim kreirati i upravljati banner oglasima kroz admin panel,  
 kako bih mogao brzo postaviti oglase za lokalne oglašivače bez potrebe za složenim kampanjama.
 
-**Kontekst:** Display oglašavanje u MVP-u koristi maksimalno jednostavan model — Staff ručno postavlja oglase, nema self-service portala za oglašivače. Staff pristupa admin panelu ([admin.cityinfo.ba](http://admin.cityinfo.ba)), odabire sekciju za display oglase i kreira nove ili uređuje postojeće. Svaki oglas je vezan za konkretnu zonu (header, sidebar, in-feed, mobile). Detalji o DisplayAd entitetu → Ch.06, sekcija 6.3.2.
+**Kontekst:** Display oglašavanje u MVP-u koristi maksimalno jednostavan model — Staff ručno postavlja oglase, nema self-service portala za oglašivače. Staff pristupa admin panelu ([admin.cityinfo.ba](http://admin.cityinfo.ba)), odabire sekciju za display oglase i kreira nove ili uređuje postojeće. Svaki oglas je vezan za konkretnu zonu (header, sidebar, in-feed, mobile). Detalji o DisplayAd entitetu → **Ch.06, sekcija 6.3**.2.
 
 **Acceptance criteria:**
 
@@ -53,9 +53,9 @@ kako bih mogao brzo postaviti oglase za lokalne oglašivače bez potrebe za slo�
 
 **Tehničke napomene:**
 
-- DisplayAd entitet je tenant-specifičan — Ch.06, sekcija 6.3.2
-- Zone su predefinisane i konfigurisane po tenantu — lista zona se dohvata sa servera (S11-05)
-- Impressions i clicks se samo prikazuju u listi — logika brojanja je u zasebnoj storiji (S11-03)
+- DisplayAd entitet je tenant-specifičan — **Ch.06, sekcija 6.3**.2
+- Zone su predefinisane i konfigurisane po tenantu — lista zona se dohvata sa servera ([S11-05](s11-05-upravljanje-reklamnim-zonama.md))
+- Impressions i clicks se samo prikazuju u listi — logika brojanja je u zasebnoj storiji ([S11-03](s11-03-praenje-impressions-i-clicks.md))
 
 **Testovi (MVP):**
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-01
+**Journey milestones:** **J-01**
 
 **User story:**  
 Kao posjetilac CityInfo platforme,  
 želim kreirati korisnički račun unosom osnovnih podataka,  
 kako bih mogao pristupiti funkcionalnostima koje zahtijevaju registraciju.
 
-**Kontekst:** Korisnik dolazi na platformu prvi put. Može pregledati javni sadržaj kao visitor, ali kad želi kreirati listing, sačuvati favorite ili koristiti naprednije funkcije — mora se registrovati. Registracijska forma traži minimalne podatke; telefon se verificira naknadno (S01-03), a email odmah nakon registracije (S01-02). Detalji o User entitetu → Ch.03, sekcija 3.3. Onboarding flow → Ch.02, sekcija 2.7.
+**Kontekst:** Korisnik dolazi na platformu prvi put. Može pregledati javni sadržaj kao visitor, ali kad želi kreirati listing, sačuvati favorite ili koristiti naprednije funkcije — mora se registrovati. Registracijska forma traži minimalne podatke; telefon se verificira naknadno ([S01-03](s01-03-verifikacija-telefona-sms.md)), a email odmah nakon registracije ([S01-02](s01-02-email-verifikacija.md)). Detalji o User entitetu → **Ch.03, sekcija 3.3**. Onboarding flow → **Ch.02, sekcija 2.7**.
 
 **Acceptance criteria:**
 
@@ -34,14 +34,14 @@ kako bih mogao pristupiti funkcionalnostima koje zahtijevaju registraciju.
 - [ ] `gdprConsentAt` se bilježi u momentu prihvatanja
 - [ ] Novi korisnik dobija default vrijednosti: `accountStatus = active`, `accessStatus = allowed`, `trustTier = 1`, `walletBalance = 0.00`, `isVerifiedPublisher = false`, `emailVerified = false`, `phoneVerified = false`
 - [ ] `locale` i `timezone` se postavljaju na tenant default vrijednosti
-- [ ] Nakon uspješne registracije, sistem šalje verifikacioni email (veza sa S01-02)
+- [ ] Nakon uspješne registracije, sistem šalje verifikacioni email (veza sa [S01-02](s01-02-email-verifikacija.md))
 - [ ] Validacijske greške se prikazuju inline uz relevantna polja
 
 **Backend Scope:**
 
 - `POST /auth/register` — prima {email, username, fullName, password, gdprConsent}, vraća {userId, accessToken, refreshToken}
 - Validacija: email unikatnost, username unikatnost, password policy (minimalna dužina, kompleksnost), gdprConsent = true
-- Side effects: kreira User entitet sa default vrijednostima, bilježi `gdprConsentAt`, triggeruje slanje verifikacionog emaila (S01-02)
+- Side effects: kreira User entitet sa default vrijednostima, bilježi `gdprConsentAt`, triggeruje slanje verifikacionog emaila ([S01-02](s01-02-email-verifikacija.md))
 - Lozinka se hashira prije pohranjivanja
 
 **Frontend Scope:**
@@ -53,7 +53,7 @@ kako bih mogao pristupiti funkcionalnostima koje zahtijevaju registraciju.
 **Tehničke napomene:**
 
 - `createdAt` se automatski popunjava.
-- Registracija kreira User entitet u tenant bazi (ne u master bazi) — Ch.03, sekcija 3.1.
+- Registracija kreira User entitet u tenant bazi (ne u master bazi) — **Ch.03, sekcija 3.1**.
 
 **Testovi (MVP):**
 

@@ -15,14 +15,14 @@ type: infra
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao developer,  
 želim imati konfigurisan repozitorij sa jasnom strukturom i uputama za lokalno pokretanje,  
 kako bih mogao klonirati projekat i početi raditi u roku od 30 minuta.
 
-**Kontekst:** Ovo je prva storija na projektu — nema prethodnih koraka. Repo treba sadržavati .NET 10 backend i SvelteKit frontend u istom repozitoriju (monorepo) ili u jasno odvojenim repozitorijima — zavisi od odluke tima. Stack je definisan u Ch.08, sekcija 8.5.
+**Kontekst:** Ovo je prva storija na projektu — nema prethodnih koraka. Repo treba sadržavati .NET 10 backend i SvelteKit frontend u istom repozitoriju (monorepo) ili u jasno odvojenim repozitorijima — zavisi od odluke tima. Stack je definisan u **Ch.08, sekcija 8.5**.
 
 **Acceptance criteria:**
 

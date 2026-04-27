@@ -15,21 +15,21 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao Staff korisnik,  
 želim da sistem automatski prati koliko puta je oglas prikazan i koliko puta je kliknut,  
 kako bih mogao izvijestiti oglašivače o performansama njihovih oglasa.
 
-**Kontekst:** Impressions se inkrementiraju svaki put kad se oglas prikaže korisniku (pri dohvatu iz API-ja za prikaz u zoni). Clicks se inkrementiraju pri kliku na oglas — frontend šalje zahtjev za registraciju klika prije redirecta na targetUrl. Ovo su osnovne metrike bez napredne analitike — dovoljan nivo za MVP izvještavanje. Detalji → Ch.06, sekcija 6.3.5.
+**Kontekst:** Impressions se inkrementiraju svaki put kad se oglas prikaže korisniku (pri dohvatu iz API-ja za prikaz u zoni). Clicks se inkrementiraju pri kliku na oglas — frontend šalje zahtjev za registraciju klika prije redirecta na targetUrl. Ovo su osnovne metrike bez napredne analitike — dovoljan nivo za MVP izvještavanje. Detalji → **Ch.06, sekcija 6.3**.5.
 
 **Acceptance criteria:**
 
 - [ ] Svaki put kad se oglas prikaže korisniku, impressions counter se inkrementira
 - [ ] Svaki put kad korisnik klikne na oglas, clicks counter se inkrementira
 - [ ] Klik registracija ne blokira redirect na targetUrl — korisnik ne osjeća kašnjenje
-- [ ] Impressions i clicks su vidljivi u Staff admin panelu (prikaz u S11-01, statistika u S11-04)
+- [ ] Impressions i clicks su vidljivi u Staff admin panelu (prikaz u [S11-01](s11-01-kreiranje-i-upravljanje-display-oglasima-staff.md), statistika u [S11-04](s11-04-pregled-statistike-display-oglasa-staff.md))
 - [ ] Counteri su konzistentni — ne gube se brojevi pri concurrent requestima
 
 **Backend Scope:**

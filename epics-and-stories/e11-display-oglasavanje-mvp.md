@@ -33,18 +33,18 @@ story_count: 5
 
 **Persone:** Lejla (moderator/staff), Damir (ops manager)
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.06, sekcija 6.3
+**Dokumentacijska referenca:** **Ch.06, sekcija 6.3**
 
 **Tehničke napomene:**
 
 - DisplayAd entitet i reklamne zone su tenant-specifični
 - Impressions/clicks se broje automatski — impressions pri renderovanju zone, clicks pri redirectu na targetUrl
 - Prazna zona (bez aktivnog oglasa) se ne prikazuje — nema placeholder sadržaja
-- Napredni Display Ads sistem je planiran za Fazu 2 kad broj oglašivača preraste kapacitet ručnog upravljanja — detalji u Ch.06, sekcija 6.3.6
+- Napredni Display Ads sistem je planiran za Fazu 2 kad broj oglašivača preraste kapacitet ručnog upravljanja — detalji u **Ch.06, sekcija 6.3**.6
 
 **Success metrika:** Staff može kreirati banner oglas, dodijeliti ga zoni, i vidjeti impressions/clicks statistiku — a korisnik vidi oglas na odgovarajućoj poziciji na stranici.
 
@@ -56,8 +56,8 @@ story_count: 5
 
 | #   | Storija | Phase | Journey |
 | --- | --- | --- | --- |
-| S11-01 | Kreiranje i upravljanje display oglasima (Staff) | MVP | J-08 |
-| S11-02 | Prikaz banner oglasa na javnom frontendu | MVP | J-08 |
-| S11-03 | Praćenje impressions i clicks | MVP | J-08 |
-| S11-04 | Pregled statistike display oglasa (Staff) | MVP | J-08 |
-| S11-05 | Upravljanje reklamnim zonama | MVP | J-08 |
+| [S11-01](e11-display-oglasavanje-mvp/s11-01-kreiranje-i-upravljanje-display-oglasima-staff.md) | Kreiranje i upravljanje display oglasima (Staff) | MVP | **J-08** |
+| [S11-02](e11-display-oglasavanje-mvp/s11-02-prikaz-banner-oglasa-na-javnom-frontendu.md) | Prikaz banner oglasa na javnom frontendu | MVP | **J-08** |
+| [S11-03](e11-display-oglasavanje-mvp/s11-03-praenje-impressions-i-clicks.md) | Praćenje impressions i clicks | MVP | **J-08** |
+| [S11-04](e11-display-oglasavanje-mvp/s11-04-pregled-statistike-display-oglasa-staff.md) | Pregled statistike display oglasa (Staff) | MVP | **J-08** |
+| [S11-05](e11-display-oglasavanje-mvp/s11-05-upravljanje-reklamnim-zonama.md) | Upravljanje reklamnim zonama | MVP | **J-08** |

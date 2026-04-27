@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-03, J-08
+**Journey milestones:** **J-03**, **J-08**
 
 **User story:**  
 Kao sistem,  
 želim automatski degradirati korisnika na Tier 0 kada dosegne prag odbijenih objava,  
 kako bi platforma bila zaštićena od korisnika koji ponavljano krše pravila, čak i kada moderatori nisu dostupni.
 
-**Kontekst:** Automatska degradacija se triggeruje kada korisnik ima `TIER_REJECTED_THRESHOLD` odbijenih objava unutar `TIER_REJECTED_WINDOW_DAYS` dana. Ovo važi za korisnike na bilo kojem tier-u (1–4). Svaka automatska degradacija kreira review stavku u moderacijskom queue-u — moderator mora potvrditi ili revertovati odluku. Detalji → Ch.03, sekcija 3.4 (Degradacija); Ch.05, sekcija 5.1.3.
+**Kontekst:** Automatska degradacija se triggeruje kada korisnik ima `TIER_REJECTED_THRESHOLD` odbijenih objava unutar `TIER_REJECTED_WINDOW_DAYS` dana. Ovo važi za korisnike na bilo kojem tier-u (1–4). Svaka automatska degradacija kreira review stavku u moderacijskom queue-u — moderator mora potvrditi ili revertovati odluku. Detalji → **Ch.03, sekcija 3.4** (Degradacija); **Ch.05, sekcija 5.1**.3.
 
 **Acceptance criteria:**
 
@@ -48,7 +48,7 @@ kako bi platforma bila zaštićena od korisnika koji ponavljano krše pravila, �
 **Tehničke napomene:**
 
 - Sliding window za rejected odluke: gledamo zadnjih N dana od trenutne odluke, ne kalendarski period.
-- Review stavka koristi isti queue mehanizam kao moderacija listinga, ali sa drugačijim tipom (`type: trust_tier_auto_degradation`). Queue infrastruktura se gradi u E07.
+- Review stavka koristi isti queue mehanizam kao moderacija listinga, ali sa drugačijim tipom (`type: trust_tier_auto_degradation`). Queue infrastruktura se gradi u [E07](../e07-moderacijski-workflow-i-ai-screening.md).
 - Audit log treba zabilježiti: automatsku degradaciju, ko je pregledao, i da li je potvrđena ili revertovana.
 
 **Testovi (MVP):**

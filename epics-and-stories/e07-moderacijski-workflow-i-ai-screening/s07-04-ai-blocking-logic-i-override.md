@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao sistem,  
 želim automatski blokirati publikaciju sadržaja kada AI detektuje ekstreman rizik,  
 kako bi platforma bila zaštićena od očigledno štetnog sadržaja čak i prije nego moderator stigne pogledati.
 
-**Kontekst:** AI blocking se aktivira kada score za kritičnu kategoriju (hate speech, adult, violence, illegal) premaši konfigurisani blocking threshold. Ovo je "sigurnosna mreža" — sadržaj se ne objavljuje, listing prelazi u `hidden_by_system` i ulazi u Urgent queue za hitni pregled. Važno: AI ne donosi finalnu odluku — moderator mora pregledati i eksplicitno odobriti ili odbaciti. Korisnici višeg tiera dobijaju transparentniju poruku nego novi korisnici. Detalji → Ch.05, sekcije 5.3.4–5.3.6.
+**Kontekst:** AI blocking se aktivira kada score za kritičnu kategoriju (hate speech, adult, violence, illegal) premaši konfigurisani blocking threshold. Ovo je "sigurnosna mreža" — sadržaj se ne objavljuje, listing prelazi u `hidden_by_system` i ulazi u Urgent queue za hitni pregled. Važno: AI ne donosi finalnu odluku — moderator mora pregledati i eksplicitno odobriti ili odbaciti. Korisnici višeg tiera dobijaju transparentniju poruku nego novi korisnici. Detalji → **Ch.05**, sekcije 5.3.4–5.3.6.
 
 **Acceptance criteria:**
 
@@ -57,7 +57,7 @@ kako bi platforma bila zaštićena od očigledno štetnog sadržaja čak i prije
 
 **Tehničke napomene:**
 
-- AI blocking je dio istog async screening procesa iz S07-03 — ne zahtijeva odvojeni poziv.
+- AI blocking je dio istog async screening procesa iz [S07-03](s07-03-ai-content-screening-i-scoring.md) — ne zahtijeva odvojeni poziv.
 - Blocking thresholds su namjerno visoki (0.90–0.98) da minimiziraju false positives. Bolje je propustiti nešto u queue na normalan pregled nego blokirati legitimni sadržaj.
 - CRITICAL risk level sa zahtjevom za `can_manage_trust_tier` je dodatna sigurnosna mjera — ne želi se da junior moderator sam odlučuje o potencijalno ilegalnom sadržaju.
 

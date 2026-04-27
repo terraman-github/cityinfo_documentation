@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao moderator,  
 želim vidjeti prioritiziranu listu sadržaja koji čeka moderaciju i preuzeti stavke za pregled,  
 kako bih efikasno radio bez da stalno odlučujem "šta sljedeće" i bez rizika da dva moderatora rade na istom sadržaju.
 
-**Kontekst:** Queue se dijeli u četiri zone prema prioritetu: Urgent (AI blocking flag), High Priority (score > 75), Normal Priority (score 40–75), Low Priority (score < 40). Pored sadržaja za moderaciju, u queue ulaze i sistemske stavke: Trust Tier Auto-Degradation Review i Instant Block Review. Prioritizacija koristi različite formule za pre-moderaciju i post-moderaciju. Detalji o prioritizaciji → Ch.05, sekcije 5.2.1–5.2.2.
+**Kontekst:** Queue se dijeli u četiri zone prema prioritetu: Urgent (AI blocking flag), High Priority (score > 75), Normal Priority (score 40–75), Low Priority (score < 40). Pored sadržaja za moderaciju, u queue ulaze i sistemske stavke: Trust Tier Auto-Degradation Review i Instant Block Review. Prioritizacija koristi različite formule za pre-moderaciju i post-moderaciju. Detalji o prioritizaciji → **Ch.05**, sekcije 5.2.1–5.2.2.
 
 **Acceptance criteria:**
 
@@ -46,7 +46,7 @@ kako bih efikasno radio bez da stalno odlučujem "šta sljedeće" i bez rizika d
 - `POST /api/moderation/queue/{itemId}/claim` — preuzimanje stavke (lock)
 - `POST /api/moderation/queue/{itemId}/release` — puštanje stavke (unlock)
 - Automatski release nakon timeout-a neaktivnosti (konfiguracijski parametar)
-- Prioritet score kalkulacija na osnovu formula iz Ch.05
+- Prioritet score kalkulacija na osnovu formula iz **Ch.05**
 
 **Frontend Scope:**
 
@@ -61,7 +61,7 @@ kako bih efikasno radio bez da stalno odlučujem "šta sljedeće" i bez rizika d
 
 - Queue treba podržavati real-time ili near-real-time update (novi sadržaj, promjene prioriteta). WebSocket ili polling — odluka na timu.
 - Claim mehanizam mora biti atomičan — dva moderatora ne smiju moći preuzeti istu stavku istovremeno.
-- Queue infrastruktura se koristi i za sistemske review stavke iz E06 — dizajn treba biti dovoljno generički.
+- Queue infrastruktura se koristi i za sistemske review stavke iz [E06](../e06-trust-tier-sistem.md) — dizajn treba biti dovoljno generički.
 
 **Testovi (MVP):**
 

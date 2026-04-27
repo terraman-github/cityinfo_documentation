@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao moderator sa `can_manage_tags` permisijom,  
 želim spojiti dva taga u jedan,  
 kako bih očistio duplikate i poboljšao konzistentnost kategorizacije bez ručnog ažuriranja svakog listinga.
 
-**Kontekst:** Moderator je primijetio da postoje dva taga sa sličnim značenjem (npr. "besplatno" i "free-entry" ili "za-djecu" i "porodicno"). Želi zadržati jedan (target) i prebaciti sve listinge sa drugog (source) na target. Detaljni proces spajanja opisan u Ch.04, sekcija 4.5 — uključuje zamjenu slug-ova na listinzima, čišćenje duplikata, i brisanje source taga.
+**Kontekst:** Moderator je primijetio da postoje dva taga sa sličnim značenjem (npr. "besplatno" i "free-entry" ili "za-djecu" i "porodicno"). Želi zadržati jedan (target) i prebaciti sve listinge sa drugog (source) na target. Detaljni proces spajanja opisan u **Ch.04, sekcija 4.5** — uključuje zamjenu slug-ova na listinzima, čišćenje duplikata, i brisanje source taga.
 
 **Acceptance criteria:**
 

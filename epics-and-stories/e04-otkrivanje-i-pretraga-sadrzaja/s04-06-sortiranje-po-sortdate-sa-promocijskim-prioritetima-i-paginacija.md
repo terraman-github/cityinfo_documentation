@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-04
+**Journey milestones:** **J-04**
 
 **User story:**  
 Kao posjetilac,  
 želim da mi se listinzi prikazuju u smislenom redoslijedu i da mogu pregledati sve rezultate,  
 kako bih vidio najrelevantnije sadržaje prvi, a zatim nastaviti listanje bez čekanja.
 
-**Kontekst:** Sortiranje je definirano u Ch.02, sekcija 2.4. `sortDate` je centralni mehanizam — svaki listing ima ovo polje koje se osvježava pri kreiranju, odobrenju, ručnom refresh-u (jednom u 24h), i AutoRenew promocijama. Promocijski status dodaje drugi sloj: Premium listinzi idu na vrh unutar kategorije, Premium+Homepage na vrh naslovne. Paginacija koristi lazy loading — inicijalni set rezultata se učitava, a dodatni po potrebi.
+**Kontekst:** Sortiranje je definirano u **Ch.02, sekcija 2.4**. `sortDate` je centralni mehanizam — svaki listing ima ovo polje koje se osvježava pri kreiranju, odobrenju, ručnom refresh-u (jednom u 24h), i AutoRenew promocijama. Promocijski status dodaje drugi sloj: Premium listinzi idu na vrh unutar kategorije, Premium+Homepage na vrh naslovne. Paginacija koristi lazy loading — inicijalni set rezultata se učitava, a dodatni po potrebi.
 
 **Acceptance criteria:**
 
@@ -35,7 +35,7 @@ kako bih vidio najrelevantnije sadržaje prvi, a zatim nastaviti listanje bez č
 - [ ] Paginacija koristi cursor-based pristup (ne offset) za konzistentnost kad se dodaju novi listinzi
 - [ ] Korisnik vidi indikator da se učitavaju dodatni rezultati (spinner na dnu)
 - [ ] Kad nema više rezultata, korisnik vidi poruku "Prikazani su svi rezultati"
-- [ ] Ručni refresh sortDate-a je pokrit u E02 — ovdje samo sortiranje po tom polju
+- [ ] Ručni refresh sortDate-a je pokrit u [E02](../e02-listing-crud-i-lifecycle.md) — ovdje samo sortiranje po tom polju
 
 **Backend Scope:**
 
@@ -55,14 +55,14 @@ kako bih vidio najrelevantnije sadržaje prvi, a zatim nastaviti listanje bez č
 **Tehničke napomene:**
 
 - Cursor-based paginacija je preferirana jer offset-based ima problem sa konzistentnošću kad se dodaju novi listinzi tokom browsanja.
-- Promocijski prioriteti se potpuno aktiviraju kad E10 (Promocije) bude implementiran — do tada, svi listinzi su u istoj grupi.
+- Promocijski prioriteti se potpuno aktiviraju kad [E10](../e10-promocije-listinga.md) (Promocije) bude implementiran — do tada, svi listinzi su u istoj grupi.
 
 **Testovi (MVP):**
 
 - [ ] Listinzi su sortirani po sortDate descending — listing sa novijim sortDate je iznad
 - [ ] Scroll do kraja — automatski se učitava sljedeći set rezultata
 - [ ] Kad nema više — prikazuje se "Prikazani su svi rezultati"
-- [ ] Premium+Homepage listing je iznad non-premium na naslovnoj (kad E10 bude aktivan)
-- [ ] Premium listing je iznad non-premium unutar kategorije (kad E10 bude aktivan)
+- [ ] Premium+Homepage listing je iznad non-premium na naslovnoj (kad [E10](../e10-promocije-listinga.md) bude aktivan)
+- [ ] Premium listing je iznad non-premium unutar kategorije (kad [E10](../e10-promocije-listinga.md) bude aktivan)
 
 **Wireframe referenca:** —

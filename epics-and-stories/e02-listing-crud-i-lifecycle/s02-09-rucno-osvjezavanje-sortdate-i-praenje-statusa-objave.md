@@ -19,14 +19,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-02
+**Journey milestones:** **J-02**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim moći osvježiti poziciju svog listinga u rezultatima i pratiti status svih svojih objava,  
 kako bih imao pregled i kontrolu nad vidljivošću svog sadržaja.
 
-**Kontekst:** `sortDate` je centralni mehanizam za pozicioniranje listinga u svim sortiranim prikazima (Ch.02, 2.4). Ručno osvježavanje postavlja `sortDate` na trenutno vrijeme — efektivno "bumpujući" listing na vrh. Dostupno svim korisnicima, jednom u 24 sata, besplatno. Korisničko iskustvo praćenja statusa → Ch.02, sekcija 2.8.
+**Kontekst:** `sortDate` je centralni mehanizam za pozicioniranje listinga u svim sortiranim prikazima (**Ch.02**, 2.4). Ručno osvježavanje postavlja `sortDate` na trenutno vrijeme — efektivno "bumpujući" listing na vrh. Dostupno svim korisnicima, jednom u 24 sata, besplatno. Korisničko iskustvo praćenja statusa → **Ch.02, sekcija 2.8**.
 
 **Acceptance criteria:**
 
@@ -65,7 +65,7 @@ kako bih imao pregled i kontrolu nad vidljivošću svog sadržaja.
 
 **Tehničke napomene:**
 
-- AutoRenew (automatsko osvježavanje) pripada E10 (promocije) — ova storija pokriva samo ručno, besplatno osvježavanje
+- AutoRenew (automatsko osvježavanje) pripada [E10](../e10-promocije-listinga.md) (promocije) — ova storija pokriva samo ručno, besplatno osvježavanje
 - Dashboard za praćenje statusa je osnovni — napredna statistika (views, klikovi) može doći u kasnijoj fazi
 
 **Testovi (MVP):**

@@ -15,19 +15,19 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-04
+**Journey milestones:** **J-04**
 
 **User story:**  
 Kao posjetilac,  
 želim postaviti svoju lokaciju i filtrirati sadržaj po udaljenosti,  
 kako bih pronašao mjesta i događaje koji su mi blizu.
 
-**Kontekst:** Lokacija nije obavezna za korištenje platforme, ali bez nje korisnik gubi filter po udaljenosti i prikaz distance na karticama. Sistem podržava GPS (browser geolokacija) i ručni unos (pretraga adrese/grada). Zona pokrivenosti tenanta je definisana kao centar + radijus. Detalji u Ch.02, sekcija 2.2 (lokacijski dijalog).
+**Kontekst:** Lokacija nije obavezna za korištenje platforme, ali bez nje korisnik gubi filter po udaljenosti i prikaz distance na karticama. Sistem podržava GPS (browser geolokacija) i ručni unos (pretraga adrese/grada). Zona pokrivenosti tenanta je definisana kao centar + radijus. Detalji u **Ch.02, sekcija 2.2** (lokacijski dijalog).
 
 **Acceptance criteria:**
 
 - [ ] Lokacijski indikator je uvijek vidljiv u headeru blizu search bara
-- [ ] Indikator prikazuje stanje prema tabeli iz Ch.02, sekcija 2.2: naziv lokacije + status (unutar zone, van područja, nepoznata)
+- [ ] Indikator prikazuje stanje prema tabeli iz **Ch.02, sekcija 2.2**: naziv lokacije + status (unutar zone, van područja, nepoznata)
 - [ ] Klik na indikator otvara lokacijski dijalog
 - [ ] Dijalog sadrži: "Koristi moju lokaciju" (GPS), polje za pretragu (autocomplete), interaktivnu mapu sa zonom pokrivenosti, "Ukloni lokaciju", "Primijeni"
 - [ ] "Koristi moju lokaciju" triggeruje browser geolocation API
@@ -51,7 +51,7 @@ kako bih pronašao mjesta i događaje koji su mi blizu.
 **Frontend Scope:**
 
 - UI: Lokacijski indikator u headeru sa dinamičnim tekstom
-- UI: Lokacijski dijalog (modal) sa svim elementima prema Ch.02
+- UI: Lokacijski dijalog (modal) sa svim elementima prema **Ch.02**
 - UI: Google Maps komponenta sa označenom zonom pokrivenosti
 - UI: Udaljenost na karticama listinga (npr. "1.2 km")
 - UI: Filter po udaljenosti (slider ili predefinisani radijusi: 1km, 5km, 10km, 25km)
