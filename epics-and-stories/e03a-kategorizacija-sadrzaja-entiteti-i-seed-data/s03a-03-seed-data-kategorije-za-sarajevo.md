@@ -4,7 +4,7 @@ parent_epic: E03a
 linear_id: ""
 phase: MVP
 journey_milestones: [J-02, J-04]
-type: infra
+type: backend-only
 ---
 
 # S03a-03 — Seed data — kategorije za Sarajevo

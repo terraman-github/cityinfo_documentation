@@ -112,7 +112,7 @@ kategorija i tagova.
 | E11 — Display Ads | `252706817` | 5 |
 | E12 — Notifikacije | `252575764` | 5 |
 
-**Ukupno: 15 epica, 92 storije.**
+**Ukupno: 15 epica, 89 storije.**
 
 ---
 
