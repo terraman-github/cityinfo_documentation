@@ -1,3 +1,12 @@
+---
+id: S01-02
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-02 — Email verifikacija
 
 **Naslov:** Email verifikacija

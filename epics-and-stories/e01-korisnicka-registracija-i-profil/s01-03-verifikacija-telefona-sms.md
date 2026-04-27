@@ -1,3 +1,12 @@
+---
+id: S01-03
+parent_epic: E01
+linear_id: ""
+phase: MVP
+journey_milestones: [J-01]
+type: fullstack
+---
+
 # S01-03 — Verifikacija telefona (SMS)
 
 **Naslov:** Verifikacija telefona (SMS)
