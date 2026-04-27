@@ -1,3 +1,12 @@
+---
+id: S06-01
+parent_epic: E06
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: backend-only
+---
+
 # S06-01 — Automatska evaluacija Trust Tier napredovanja
 
 **Naslov:** Automatska evaluacija Trust Tier napredovanja

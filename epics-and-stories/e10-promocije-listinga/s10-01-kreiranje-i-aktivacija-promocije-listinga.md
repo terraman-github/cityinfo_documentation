@@ -1,3 +1,12 @@
+---
+id: S10-01
+parent_epic: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: fullstack
+---
+
 # S10-01 — Kreiranje i aktivacija promocije listinga
 
 **Naslov:** Kreiranje i aktivacija promocije listinga

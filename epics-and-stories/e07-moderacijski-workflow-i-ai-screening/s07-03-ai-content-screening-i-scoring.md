@@ -1,3 +1,12 @@
+---
+id: S07-03
+parent_epic: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: fullstack
+---
+
 # S07-03 — AI content screening i scoring
 
 **Naslov:** AI content screening i scoring

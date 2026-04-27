@@ -1,3 +1,12 @@
+---
+id: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+personas: [Amra, Dino, lokalni admin]
+story_count: 7
+---
+
 # E13 — Staff panel, autentifikacija i upravljanje osobljem
 
 **Naslov:** Staff panel, autentifikacija i upravljanje osobljem

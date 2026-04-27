@@ -1,3 +1,12 @@
+---
+id: S04-05
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: fullstack
+---
+
 # S04-05 — Lokacijski dijalog i filter po udaljenosti
 
 **Naslov:** Lokacijski dijalog i filter po udaljenosti

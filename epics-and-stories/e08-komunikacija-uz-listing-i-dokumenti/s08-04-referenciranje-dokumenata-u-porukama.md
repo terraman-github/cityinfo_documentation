@@ -1,3 +1,12 @@
+---
+id: S08-04
+parent_epic: E08
+linear_id: ""
+phase: MVP
+journey_milestones: [J-07]
+type: fullstack
+---
+
 # S08-04 — Referenciranje dokumenata u porukama
 
 **Naslov:** Referenciranje dokumenata u porukama

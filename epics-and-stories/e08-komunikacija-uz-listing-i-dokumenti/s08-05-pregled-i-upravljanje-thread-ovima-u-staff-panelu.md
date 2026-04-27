@@ -1,3 +1,12 @@
+---
+id: S08-05
+parent_epic: E08
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: fullstack
+---
+
 # S08-05 — Pregled i upravljanje thread-ovima u Staff panelu
 
 **Naslov:** Pregled i upravljanje thread-ovima u Staff panelu

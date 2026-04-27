@@ -1,3 +1,12 @@
+---
+id: S14-03
+parent_epic: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: infra
+---
+
 # S14-03 — Inicijalni SvelteKit frontend projekat
 
 **Naslov:** Inicijalni SvelteKit frontend projekat

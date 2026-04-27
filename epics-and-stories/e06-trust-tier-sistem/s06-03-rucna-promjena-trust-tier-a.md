@@ -1,3 +1,12 @@
+---
+id: S06-03
+parent_epic: E06
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-08]
+type: fullstack
+---
+
 # S06-03 — Ručna promjena Trust Tier-a
 
 **Naslov:** Ručna promjena Trust Tier-a

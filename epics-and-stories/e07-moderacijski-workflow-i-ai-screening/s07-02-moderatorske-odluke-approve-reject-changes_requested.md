@@ -1,3 +1,12 @@
+---
+id: S07-02
+parent_epic: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: fullstack
+---
+
 # S07-02 — Moderatorske odluke (approve, reject, changes_requested)
 
 **Naslov:** Moderatorske odluke (approve, reject, changes\_requested)

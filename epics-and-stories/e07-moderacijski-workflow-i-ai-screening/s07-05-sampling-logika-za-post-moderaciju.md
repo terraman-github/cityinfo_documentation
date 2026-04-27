@@ -1,3 +1,12 @@
+---
+id: S07-05
+parent_epic: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: backend-only
+---
+
 # S07-05 — Sampling logika za post-moderaciju
 
 **Naslov:** Sampling logika za post-moderaciju

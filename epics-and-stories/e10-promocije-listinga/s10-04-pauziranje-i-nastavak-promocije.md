@@ -1,3 +1,12 @@
+---
+id: S10-04
+parent_epic: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: fullstack
+---
+
 # S10-04 — Pauziranje i nastavak promocije
 
 **Naslov:** Pauziranje i nastavak promocije

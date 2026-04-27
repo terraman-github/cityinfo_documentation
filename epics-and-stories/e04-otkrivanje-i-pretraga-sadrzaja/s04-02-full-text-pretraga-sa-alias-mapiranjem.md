@@ -1,3 +1,12 @@
+---
+id: S04-02
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: fullstack
+---
+
 # S04-02 — Full-text pretraga sa alias mapiranjem
 
 **Naslov:** Full-text pretraga sa alias mapiranjem

@@ -1,3 +1,12 @@
+---
+id: S11-04
+parent_epic: E11
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S11-04 — Pregled statistike display oglasa (Staff)
 
 **Naslov:** Pregled statistike display oglasa (Staff)

@@ -1,3 +1,12 @@
+---
+id: S14-06
+parent_epic: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: infra
+---
+
 # S14-06 — i18n framework i lokalizacija
 
 **Naslov:** i18n framework i lokalizacija

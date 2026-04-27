@@ -1,3 +1,12 @@
+---
+id: S09-02
+parent_epic: E09
+linear_id: ""
+phase: MVP
+journey_milestones: [J-09]
+type: fullstack
+---
+
 # S09-02 — Prikaz kredit paketa i kupovina kredita
 
 **Naslov:** Prikaz kredit paketa i kupovina kredita

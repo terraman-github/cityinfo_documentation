@@ -1,3 +1,12 @@
+---
+id: S04-03
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: fullstack
+---
+
 # S04-03 — Autosuggest pri pretrazi
 
 **Naslov:** Autosuggest pri pretrazi

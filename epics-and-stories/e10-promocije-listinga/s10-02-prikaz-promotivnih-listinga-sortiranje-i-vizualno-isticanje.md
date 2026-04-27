@@ -1,3 +1,12 @@
+---
+id: S10-02
+parent_epic: E10
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: fullstack
+---
+
 # S10-02 — Prikaz promotivnih listinga (sortiranje i vizualno isticanje)
 
 **Naslov:** Prikaz promotivnih listinga (sortiranje i vizualno isticanje)

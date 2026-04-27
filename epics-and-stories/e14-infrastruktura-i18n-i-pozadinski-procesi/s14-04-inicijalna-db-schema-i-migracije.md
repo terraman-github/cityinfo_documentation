@@ -1,3 +1,12 @@
+---
+id: S14-04
+parent_epic: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: infra
+---
+
 # S14-04 — Inicijalna DB schema i migracije
 
 **Naslov:** Inicijalna DB schema i migracije

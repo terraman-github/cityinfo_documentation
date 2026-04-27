@@ -1,3 +1,12 @@
+---
+id: S12-05
+parent_epic: E12
+linear_id: ""
+phase: MVP
+journey_milestones: [J-06]
+type: backend-only
+---
+
 # S12-05 — Notifikacije za promocije i Trust Tier
 
 **Naslov:** Notifikacije za promocije i Trust Tier

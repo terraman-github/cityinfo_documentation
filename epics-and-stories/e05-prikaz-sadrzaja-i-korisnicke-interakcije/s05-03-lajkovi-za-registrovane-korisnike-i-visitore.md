@@ -1,3 +1,12 @@
+---
+id: S05-03
+parent_epic: E05
+linear_id: ""
+phase: MVP
+journey_milestones: [J-05]
+type: fullstack
+---
+
 # S05-03 — Lajkovi za registrovane korisnike i visitore
 
 **Naslov:** Lajkovi za registrovane korisnike i visitore

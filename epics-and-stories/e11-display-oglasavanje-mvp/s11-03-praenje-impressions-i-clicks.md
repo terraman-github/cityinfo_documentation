@@ -1,3 +1,12 @@
+---
+id: S11-03
+parent_epic: E11
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S11-03 — Praćenje impressions i clicks
 
 **Naslov:** Praćenje impressions i clicks

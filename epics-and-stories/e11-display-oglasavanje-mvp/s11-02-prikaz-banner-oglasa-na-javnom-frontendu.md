@@ -1,3 +1,12 @@
+---
+id: S11-02
+parent_epic: E11
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S11-02 — Prikaz banner oglasa na javnom frontendu
 
 **Naslov:** Prikaz banner oglasa na javnom frontendu

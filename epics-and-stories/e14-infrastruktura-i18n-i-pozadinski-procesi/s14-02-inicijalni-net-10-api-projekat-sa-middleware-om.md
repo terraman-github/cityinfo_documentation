@@ -1,3 +1,12 @@
+---
+id: S14-02
+parent_epic: E14
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: infra
+---
+
 # S14-02 — Inicijalni .NET 10 API projekat sa middleware-om
 
 **Naslov:** Inicijalni .NET 10 API projekat sa middleware-om

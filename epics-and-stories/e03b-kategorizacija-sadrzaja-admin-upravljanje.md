@@ -1,3 +1,12 @@
+---
+id: E03b
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+personas: [Lejla, Damir]
+story_count: 4
+---
+
 # E03b — Kategorizacija sadržaja — admin upravljanje
 
 **Naslov:** Kategorizacija sadržaja — admin upravljanje

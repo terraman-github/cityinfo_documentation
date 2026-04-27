@@ -1,3 +1,12 @@
+---
+id: S05-06
+parent_epic: E05
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04, J-05]
+type: fullstack
+---
+
 # S05-06 — Related content na detail stranici
 
 **Naslov:** Related content na detail stranici

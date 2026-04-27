@@ -1,3 +1,12 @@
+---
+id: S08-01
+parent_epic: E08
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: backend-only
+---
+
 # S08-01 — Automatsko kreiranje message thread-a uz listing
 
 **Naslov:** Automatsko kreiranje message thread-a uz listing

@@ -1,3 +1,12 @@
+---
+id: S02-01
+parent_epic: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+type: fullstack
+---
+
 # S02-01 — Kreiranje Event listinga sa osnovnim podacima
 
 <a id="s02-01-kreiranje-event-listinga-sa-osnovnim-podacima"></a>

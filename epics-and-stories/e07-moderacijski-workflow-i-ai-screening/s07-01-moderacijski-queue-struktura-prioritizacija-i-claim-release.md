@@ -1,3 +1,12 @@
+---
+id: S07-01
+parent_epic: E07
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03]
+type: fullstack
+---
+
 # S07-01 — Moderacijski queue — struktura, prioritizacija i claim/release
 
 **Naslov:** Moderacijski queue — struktura, prioritizacija i claim/release

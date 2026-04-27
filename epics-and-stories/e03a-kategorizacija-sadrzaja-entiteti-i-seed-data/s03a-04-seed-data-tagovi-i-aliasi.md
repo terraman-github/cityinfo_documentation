@@ -1,3 +1,12 @@
+---
+id: S03a-04
+parent_epic: E03a
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-04]
+type: infra
+---
+
 # S03a-04 — Seed data — tagovi i aliasi
 
 **Naslov:** Seed data — tagovi i aliasi

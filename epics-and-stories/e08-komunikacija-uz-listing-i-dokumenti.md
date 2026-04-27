@@ -1,3 +1,12 @@
+---
+id: E08
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-07]
+personas: [Lejla, Marko, Ana]
+story_count: 5
+---
+
 # E08 — Komunikacija uz listing i dokumenti
 
 **Naslov:** Komunikacija uz listing i dokumenti

@@ -1,3 +1,12 @@
+---
+id: E02
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02]
+personas: [Marko, Ana, Kemal]
+story_count: 9
+---
+
 # E02 — Listing CRUD i lifecycle
 
 <a id="e02-listing-crud-i-lifecycle"></a>

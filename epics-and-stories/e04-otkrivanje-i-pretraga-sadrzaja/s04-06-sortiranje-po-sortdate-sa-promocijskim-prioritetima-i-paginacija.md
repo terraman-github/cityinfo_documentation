@@ -1,3 +1,12 @@
+---
+id: S04-06
+parent_epic: E04
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04]
+type: fullstack
+---
+
 # S04-06 — Sortiranje po sortDate sa promocijskim prioritetima i paginacija
 
 **Naslov:** Sortiranje po sortDate sa promocijskim prioritetima i paginacija

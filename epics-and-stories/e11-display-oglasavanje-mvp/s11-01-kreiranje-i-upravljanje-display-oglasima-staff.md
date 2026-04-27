@@ -1,3 +1,12 @@
+---
+id: S11-01
+parent_epic: E11
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S11-01 — Kreiranje i upravljanje display oglasima (Staff)
 
 **Naslov:** Kreiranje i upravljanje display oglasima (Staff)

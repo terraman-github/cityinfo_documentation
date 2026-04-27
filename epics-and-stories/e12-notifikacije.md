@@ -1,3 +1,12 @@
+---
+id: E12
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-03, J-05, J-06]
+personas: [Milica, Marko, Ana, Thomas]
+story_count: 5
+---
+
 # E12 — Notifikacije
 
 **Naslov:** Notifikacije

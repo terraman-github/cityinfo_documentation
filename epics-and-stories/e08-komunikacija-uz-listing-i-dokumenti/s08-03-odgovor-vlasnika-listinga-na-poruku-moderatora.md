@@ -1,3 +1,12 @@
+---
+id: S08-03
+parent_epic: E08
+linear_id: ""
+phase: MVP
+journey_milestones: [J-03, J-07]
+type: fullstack
+---
+
 # S08-03 — Odgovor vlasnika listinga na poruku moderatora
 
 **Naslov:** Odgovor vlasnika listinga na poruku moderatora

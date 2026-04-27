@@ -1,3 +1,12 @@
+---
+id: S13-04
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S13-04 — Pregled i upravljanje Staff nalozima
 
 **Naslov:** Pregled i upravljanje Staff nalozima

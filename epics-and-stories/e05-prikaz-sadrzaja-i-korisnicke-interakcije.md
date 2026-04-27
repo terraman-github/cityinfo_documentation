@@ -1,3 +1,12 @@
+---
+id: E05
+linear_id: ""
+phase: MVP
+journey_milestones: [J-04, J-05]
+personas: [Milica, Thomas, Ana]
+story_count: 6
+---
+
 # E05 — Prikaz sadržaja i korisničke interakcije
 
 **Naslov:** Prikaz sadržaja i korisničke interakcije

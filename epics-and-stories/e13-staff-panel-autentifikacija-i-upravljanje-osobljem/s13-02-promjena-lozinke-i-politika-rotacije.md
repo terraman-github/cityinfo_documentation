@@ -1,3 +1,12 @@
+---
+id: S13-02
+parent_epic: E13
+linear_id: ""
+phase: MVP
+journey_milestones: [J-08]
+type: fullstack
+---
+
 # S13-02 — Promjena lozinke i politika rotacije
 
 **Naslov:** Promjena lozinke i politika rotacije

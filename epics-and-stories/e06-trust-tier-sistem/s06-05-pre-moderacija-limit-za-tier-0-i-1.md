@@ -1,3 +1,12 @@
+---
+id: S06-05
+parent_epic: E06
+linear_id: ""
+phase: MVP
+journey_milestones: [J-02, J-03]
+type: fullstack
+---
+
 # S06-05 — Pre-moderacija limit za Tier 0 i 1
 
 **Naslov:** Pre-moderacija limit za Tier 0 i 1
