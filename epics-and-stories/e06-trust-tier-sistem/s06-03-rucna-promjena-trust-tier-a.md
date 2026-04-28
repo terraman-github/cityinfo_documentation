@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03, J-08
+**Journey milestones:** **J-03**, **J-08**
 
 **User story:**  
 Kao moderator,  
 želim ručno promijeniti Trust Tier korisnika,  
 kako bih mogao reagovati na situacije koje automatski sistem ne pokriva — od ozbiljnih kršenja do uspostavljanja poslovnih partnerstava.
 
-**Kontekst:** Ručna promjena tier-a pokriva scenarije koji zahtijevaju ljudsku procjenu: degradacija zbog ozbiljnog kršenja (hate speech, spam, ilegalni sadržaj) direktno na Tier 0, promjena sa Tier 3 na Tier 2 zbog problema u samplingu, ili postavljanje Tier 4 za ugovorne partnere. Akcije prema Tier 0 i Tier 4 zahtijevaju `can_manage_trust_tier` permisiju — ostale promjene (npr. Tier 3 → Tier 2) mogu izvršiti svi moderatori. Staff sa ulogom `local_admin` ima inherentnu ovlast za sve akcije. Detalji → Ch.03, sekcija 3.4 (Degradacija); Ch.05, sekcija 5.4.
+**Kontekst:** Ručna promjena tier-a pokriva scenarije koji zahtijevaju ljudsku procjenu: degradacija zbog ozbiljnog kršenja (hate speech, spam, ilegalni sadržaj) direktno na Tier 0, promjena sa Tier 3 na Tier 2 zbog problema u samplingu, ili postavljanje Tier 4 za ugovorne partnere. Akcije prema Tier 0 i Tier 4 zahtijevaju `can_manage_trust_tier` permisiju — ostale promjene (npr. Tier 3 → Tier 2) mogu izvršiti svi moderatori. Staff sa ulogom `local_admin` ima inherentnu ovlast za sve akcije. Detalji → **Ch.03, sekcija 3.4** (Degradacija); **Ch.05, sekcija 5.4**.
 
 **Acceptance criteria:**
 
@@ -42,7 +42,7 @@ kako bih mogao reagovati na situacije koje automatski sistem ne pokriva — od o
 - Validacija permisija: za Tier 0 i Tier 4 provjeriti `can_manage_trust_tier` ili `local_admin` ulogu
 - Update `trustTier` na User entitetu
 - Audit log entry sa before/after vrijednostima
-- Side effect: ako se korisnik degradira ispod Tier 3, automatski ukloniti `isVerifiedPublisher` flag (→ S06-04)
+- Side effect: ako se korisnik degradira ispod Tier 3, automatski ukloniti `isVerifiedPublisher` flag (→ [S06-04](s06-04-isverifiedpublisher-flag-postavljanje-i-efekti.md))
 
 **Frontend Scope:**
 
@@ -55,7 +55,7 @@ kako bih mogao reagovati na situacije koje automatski sistem ne pokriva — od o
 **Tehničke napomene:**
 
 - Ova storija pokriva i "izlaz iz Tier 0" — jedini način je ručna promjena moderatora sa `can_manage_trust_tier`.
-- Degradacija ispod Tier 3 mora triggerovati automatsko uklanjanje `isVerifiedPublisher` flaga. To je cross-cutting logika koja se referencira iz S06-04.
+- Degradacija ispod Tier 3 mora triggerovati automatsko uklanjanje `isVerifiedPublisher` flaga. To je cross-cutting logika koja se referencira iz [S06-04](s06-04-isverifiedpublisher-flag-postavljanje-i-efekti.md).
 
 **Testovi (MVP):**
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao posjetilac platforme,  
 želim vidjeti relevantne banner oglase na stranici,  
 kako bih mogao otkriti lokalne ponude i usluge.
 
-**Kontekst:** Oglasi se prikazuju na predefinisanim pozicijama (zonama) na javnom frontendu. Za svaku zonu, sistem dohvata aktivne oglase čiji datumski okvir uključuje danas, sortira ih po prioritetu (sortOrder), i prikazuje onaj sa najvećim prioritetom. Ako ima više oglasa za istu zonu, rotira ih pri svakom učitavanju (round-robin). Prazna zona se ne prikazuje. Detalji o logici prikaza → Ch.06, sekcija 6.3.4.
+**Kontekst:** Oglasi se prikazuju na predefinisanim pozicijama (zonama) na javnom frontendu. Za svaku zonu, sistem dohvata aktivne oglase čiji datumski okvir uključuje danas, sortira ih po prioritetu (sortOrder), i prikazuje onaj sa najvećim prioritetom. Ako ima više oglasa za istu zonu, rotira ih pri svakom učitavanju (round-robin). Prazna zona se ne prikazuje. Detalji o logici prikaza → **Ch.06, sekcija 6.3**.4.
 
 **Acceptance criteria:**
 
@@ -39,7 +39,7 @@ kako bih mogao otkriti lokalne ponude i usluge.
 
 - `GET /api/ads/zone/{zoneId}` — javni endpoint, vraća oglas za prikaz (adId, bannerUrl, targetUrl, zoneId); filtrira po isActive=true, datumskom okviru, i sortOrder
 - Logika: dohvati aktivne oglase za zonu, sortiraj po sortOrder, primijeni round-robin rotaciju
-- Side effects: inkrementira impressions za prikazani oglas (vidi S11-03)
+- Side effects: inkrementira impressions za prikazani oglas (vidi [S11-03](s11-03-praenje-impressions-i-clicks.md))
 
 **Frontend Scope:**
 
@@ -50,7 +50,7 @@ kako bih mogao otkriti lokalne ponude i usluge.
 **Tehničke napomene:**
 
 - Round-robin rotacija u MVP-u može biti jednostavna: backend vraća sljedeći oglas po redu iz liste aktivnih za tu zonu
-- Impression se broji pri svakom dohvatu oglasa za zonu — logika u S11-03
+- Impression se broji pri svakom dohvatu oglasa za zonu — logika u [S11-03](s11-03-praenje-impressions-i-clicks.md)
 - Zone se ne prikazuju ako API vrati prazan rezultat
 
 **Testovi (MVP):**

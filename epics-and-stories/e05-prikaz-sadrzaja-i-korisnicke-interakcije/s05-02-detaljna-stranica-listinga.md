@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-04, J-05
+**Journey milestones:** **J-04**, **J-05**
 
 **User story:**  
 Kao posjetilac,  
 želim vidjeti sve detalje listinga na jednoj stranici,  
 kako bih mogao donijeti odluku da li ću posjetiti to mjesto ili prisustvovati tom događaju.
 
-**Kontekst:** Korisnik je kliknuo na karticu iz liste rezultata, naslovne, ili related contenta. Detaljna stranica prikazuje sve dostupne informacije o listingu. Razlikuje se za Event i Place — Event ima datum/vrijeme i hijerarhiju child evenata, Place ima adresu i povezane evente vlasnika. Elementi stranice definirani u Ch.02, sekcija 2.3.
+**Kontekst:** Korisnik je kliknuo na karticu iz liste rezultata, naslovne, ili related contenta. Detaljna stranica prikazuje sve dostupne informacije o listingu. Razlikuje se za Event i Place — Event ima datum/vrijeme i hijerarhiju child evenata, Place ima adresu i povezane evente vlasnika. Elementi stranice definirani u **Ch.02, sekcija 2.3**.
 
 **Acceptance criteria:**
 
@@ -34,7 +34,7 @@ kako bih mogao donijeti odluku da li ću posjetiti to mjesto ili prisustvovati t
 - [ ] Verifikacioni badge "✓ Potvrđen vlasnik" (ako je verificiran)
 - [ ] Vanjski link (`listingUrl`) — otvara se u novom tabu
 - [ ] Broj lajkova (`totalAppreciations`)
-- [ ] CTA elementi: lajkaj, spremi u favorite, podijeli (pokriveno detaljnije u S05-03/04/05)
+- [ ] CTA elementi: lajkaj, spremi u favorite, podijeli (pokriveno detaljnije u [S05-03](s05-03-lajkovi-za-registrovane-korisnike-i-visitore.md)/04/05)
 - [ ] **Za Event:** startDateTime i endDateTime u lokalizovanom formatu; ako je parent event (`hasChildren = true`), prikazuje listu child evenata
 - [ ] **Za Event:** lokacija — ako je povezan sa Place-om, prikazuje ime mjesta kao link; ako je ručna adresa, prikazuje adresu sa mapom
 - [ ] **Za Place:** adresa sa interaktivnom Google mapom i navigacijskim linkom ("Navigiraj")

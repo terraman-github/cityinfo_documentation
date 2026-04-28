@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-09
+**Journey milestones:** **J-09**
 
 **User story:**  
 Kao admin/staff,  
 želim ručno dodati ili oduzeti kredite korisniku,  
 kako bih mogao rješavati izuzetne situacije (kompenzacije, korekcije grešaka, penalizacije) bez direktnog pristupa bazi.
 
-**Kontekst:** U operativnom radu će se pojaviti situacije koje zahtijevaju ručnu korekciju wallet stanja — npr. korisnik je imao tehnički problem pri kupovini pa mu se odobrava kompenzacija, ili je zloupotrijebio sistem pa se oduzimaju krediti. Admin pristupa korisničkom profilu u Staff panelu i koristi formu za dodavanje/oduzimanje kredita. Svaka operacija zahtijeva opis razloga. Detalji o admin operacijama → Ch.06, sekcija 6.1.4 (tipovi `admin_credit` i `admin_debit`).
+**Kontekst:** U operativnom radu će se pojaviti situacije koje zahtijevaju ručnu korekciju wallet stanja — npr. korisnik je imao tehnički problem pri kupovini pa mu se odobrava kompenzacija, ili je zloupotrijebio sistem pa se oduzimaju krediti. Admin pristupa korisničkom profilu u Staff panelu i koristi formu za dodavanje/oduzimanje kredita. Svaka operacija zahtijeva opis razloga. Detalji o admin operacijama → **Ch.06, sekcija 6.1**.4 (tipovi `admin_credit` i `admin_debit`).
 
 **Acceptance criteria:**
 
@@ -31,7 +31,7 @@ kako bih mogao rješavati izuzetne situacije (kompenzacije, korekcije grešaka, 
 - [ ] Oduzimanje ne može rezultirati negativnim wallet balansom — API vraća grešku ako pokušaj oduzimanja premašuje stanje
 - [ ] Svaka admin operacija zahtijeva `description` (razlog) — polje je obavezno
 - [ ] CreditTransaction sadrži `balanceBefore` i `balanceAfter` za audit
-- [ ] Korisnik vidi admin operacije u svojoj historiji transakcija (S09-03) sa oznakom tipa
+- [ ] Korisnik vidi admin operacije u svojoj historiji transakcija ([S09-03](s09-03-prikaz-wallet-stanja-i-historije-transakcija.md)) sa oznakom tipa
 - [ ] Operacija je vidljiva u admin pregledu korisnikovog wallet-a
 
 **Backend Scope:**

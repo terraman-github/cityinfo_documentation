@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao local\_admin,  
 želim upravljati kojim tenantima Staff članovi imaju pristup,  
 kako bih mogao kontrolisati da moderator iz Sarajeva ne vidi podatke iz Banja Luke — osim ako mu je to eksplicitno dodijeljeno.
 
-**Kontekst:** CityInfo je multi-tenant platforma — svaki grad ima svoju bazu. Staff vidi samo podatke tenanta kojima ima pristup (`tenantAccess` lista). Čak i local\_admin za jedan grad ne može vidjeti podatke drugog. Detalji → Ch.03, sekcija 3.5. U MVP-u postoji samo jedan tenant (Sarajevo), ali sistem mora biti spreman za multi-tenant scenarij.
+**Kontekst:** CityInfo je multi-tenant platforma — svaki grad ima svoju bazu. Staff vidi samo podatke tenanta kojima ima pristup (`tenantAccess` lista). Čak i local\_admin za jedan grad ne može vidjeti podatke drugog. Detalji → **Ch.03, sekcija 3.5**. U MVP-u postoji samo jedan tenant (Sarajevo), ali sistem mora biti spreman za multi-tenant scenarij.
 
 **Acceptance criteria:**
 
@@ -51,7 +51,7 @@ kako bih mogao kontrolisati da moderator iz Sarajeva ne vidi podatke iz Banja Lu
 
 - U MVP-u postoji samo Sarajevo tenant — ali UI i API moraju biti dizajnirani za multi-tenant od starta
 - Tenant pristup se provjerava na svakom API pozivu — nije cachiran u tokenu
-- Tenant switcher u shell-u (S13-07) koristi ovu listu za prikaz dostupnih tenanta
+- Tenant switcher u shell-u ([S13-07](s13-07-staff-panel-shell-i-navigacija.md)) koristi ovu listu za prikaz dostupnih tenanta
 
 **Testovi (MVP):**
 

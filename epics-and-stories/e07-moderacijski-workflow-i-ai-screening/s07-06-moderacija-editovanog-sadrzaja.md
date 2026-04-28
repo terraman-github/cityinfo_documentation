@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao sistem,  
 želim primijeniti odgovarajuću moderaciju kada korisnik edituje aktivan listing,  
 kako bi se spriječilo zaobilaženje kontrole kvaliteta kroz izmjenu sadržaja nakon inicijalnog odobrenja.
 
-**Kontekst:** Korisnik može editovati aktivan listing u bilo kojem trenutku. Bez ovog mehanizma, korisnik na Tier 1 bi mogao dobiti odobrenje za kvalitetan listing, pa ga zatim izmijeniti u potpuno neprikladan sadržaj koji bi bio vidljiv bez ponovnog pregleda. Ponašanje se razlikuje po tier-u da bi se balansirala sigurnost i korisničko iskustvo — Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Detalji → Ch.05, sekcija 5.2.5.
+**Kontekst:** Korisnik može editovati aktivan listing u bilo kojem trenutku. Bez ovog mehanizma, korisnik na Tier 1 bi mogao dobiti odobrenje za kvalitetan listing, pa ga zatim izmijeniti u potpuno neprikladan sadržaj koji bi bio vidljiv bez ponovnog pregleda. Ponašanje se razlikuje po tier-u da bi se balansirala sigurnost i korisničko iskustvo — Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Detalji → **Ch.05, sekcija 5.2**.5.
 
 **Acceptance criteria:**
 
@@ -30,7 +30,7 @@ kako bi se spriječilo zaobilaženje kontrole kvaliteta kroz izmjenu sadržaja n
 - [ ] Tier 0/1 — korisnik dobija poruku da će listing ponovo postati vidljiv nakon odobrenja
 - [ ] Tier 2+ — editovani listing ostaje vidljiv javno i prelazi u `listingStatus = published_under_review`
 - [ ] Tier 2+ — sistem kreira novu stavku u post-moderacijskom queue-u za naknadni pregled
-- [ ] Tier 2+ — sampling logika se primjenjuje kao za novo submitovani sadržaj (→ S07-05)
+- [ ] Tier 2+ — sampling logika se primjenjuje kao za novo submitovani sadržaj (→ [S07-05](s07-05-sampling-logika-za-post-moderaciju.md))
 - [ ] AI screening se pokreće ponovo na editovanom sadržaju (novi scan)
 - [ ] AI blocking važi i za editovani sadržaj — ako AI detektuje ekstreman rizik, listing prelazi u `hidden_by_system` bez obzira na tier
 - [ ] Edit se bilježi u audit log sa informacijom šta je promijenjeno
@@ -53,7 +53,7 @@ kako bi se spriječilo zaobilaženje kontrole kvaliteta kroz izmjenu sadržaja n
 
 - Diff prikaz promjena u moderatorskom queue-u je jako koristan ali nije kritičan za MVP — moderator može pregledati cijeli sadržaj. Ali ako je izvedivo, značajno ubrzava pregled.
 - AI re-screening treba analizirati cijeli sadržaj, ne samo izmijenjene dijelove — jer kontekst može promijeniti značenje.
-- Ova storija se nadovezuje na listing edit iz E02 — E02 definira mehaniku edita, E07 dodaje moderacijski sloj.
+- Ova storija se nadovezuje na listing edit iz [E02](../e02-listing-crud-i-lifecycle.md) — [E02](../e02-listing-crud-i-lifecycle.md) definira mehaniku edita, E07 dodaje moderacijski sloj.
 
 **Testovi (MVP):**
 

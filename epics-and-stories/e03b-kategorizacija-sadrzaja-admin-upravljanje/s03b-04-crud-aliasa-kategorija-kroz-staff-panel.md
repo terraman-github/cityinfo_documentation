@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao local\_admin,  
 želim upravljati aliasima kategorija kroz Staff panel,  
 kako bih mogao dodati lokalne sinonime i poboljšati uspješnost pretrage bez promjene strukture kategorija.
 
-**Kontekst:** Admin pristupa sekciji za upravljanje aliasima u Staff panelu. Inicijalni aliasi za Sarajevo su postavljeni u E03a. Aliasi su nevidljivi korisnicima — koriste se interno za mapiranje pretrage. Tabela aliasa je konfigurabilan parametar po tenantu — svaki grad može imati lokalne sinonime. Više o aliasima u Ch.04, sekcija 4.4.
+**Kontekst:** Admin pristupa sekciji za upravljanje aliasima u Staff panelu. Inicijalni aliasi za Sarajevo su postavljeni u [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md). Aliasi su nevidljivi korisnicima — koriste se interno za mapiranje pretrage. Tabela aliasa je konfigurabilan parametar po tenantu — svaki grad može imati lokalne sinonime. Više o aliasima u **Ch.04, sekcija 4.4**.
 
 **Acceptance criteria:**
 
@@ -51,7 +51,7 @@ kako bih mogao dodati lokalne sinonime i poboljšati uspješnost pretrage bez pr
 
 **Tehničke napomene:**
 
-- Aliasi se koriste pri pretrazi (E04) — ovdje se samo upravlja tabelom mapiranja.
+- Aliasi se koriste pri pretrazi ([E04](../e04-otkrivanje-i-pretraga-sadrzaja.md)) — ovdje se samo upravlja tabelom mapiranja.
 - Termin treba biti case-insensitive pri provjeri unikatnosti i pri pretrazi.
 
 **Testovi (MVP):**

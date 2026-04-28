@@ -19,14 +19,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-02
+**Journey milestones:** **J-02**
 
 **User story:**  
 Kao organizator događaja,  
 želim kreirati novi Event listing sa svim relevantnim informacijama,  
 kako bih mogao pripremiti sadržaj za objavu i privući posjetioce.
 
-**Kontekst:** Korisnik je ulogovan, ima verificiran telefon (preduslov iz E01), i pristupa formi za kreiranje Event-a kroz navigaciju ili floating action button. Listing se kreira u `listingStatus = draft` — objava je zasebna akcija (S02-07). Kategorije i tagovi moraju biti seedani (E03a). Detalji o zajedničkim Listing atributima → Ch.04, sekcija 4.1. Specifični Event atributi → Ch.04, sekcija 4.2. Dvojezična polja → Ch.04, napomena o dvojezičnosti u 4.1.
+**Kontekst:** Korisnik je ulogovan, ima verificiran telefon (preduslov iz [E01](../e01-korisnicka-registracija-i-profil.md)), i pristupa formi za kreiranje Event-a kroz navigaciju ili floating action button. Listing se kreira u `listingStatus = draft` — objava je zasebna akcija ([S02-07](s02-07-objava-listinga-i-statusne-tranzicije.md)). Kategorije i tagovi moraju biti seedani ([E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md)). Detalji o zajedničkim Listing atributima → **Ch.04, sekcija 4.1**. Specifični Event atributi → **Ch.04, sekcija 4.2**. Dvojezična polja → **Ch.04**, napomena o dvojezičnosti u 4.1.
 
 **Acceptance criteria:**
 
@@ -58,9 +58,9 @@ kako bih mogao pripremiti sadržaj za objavu i privući posjetioce.
 
 **Tehničke napomene:**
 
-- Lokacija Event-a je zasebna storija (S02-03) — ova forma ne uključuje lokacijske podatke
-- Slike i dokumenti su zasebne storije (S02-05, S02-06) — upload nije dio ove forme
-- Lista kategorija i tagova dolazi iz seed data (E03a)
+- Lokacija Event-a je zasebna storija ([S02-03](s02-03-lokacija-event-a-povezivanje-sa-place-om-ili-rucna-adresa.md)) — ova forma ne uključuje lokacijske podatke
+- Slike i dokumenti su zasebne storije ([S02-05](s02-05-upload-i-upravljanje-slikama-listinga.md), [S02-06](s02-06-upload-i-upravljanje-dokumentima-listinga.md)) — upload nije dio ove forme
+- Lista kategorija i tagova dolazi iz seed data ([E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md))
 
 **Testovi (MVP):**
 

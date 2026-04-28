@@ -19,14 +19,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-02, J-03
+**Journey milestones:** **J-02**, **J-03**
 
 **User story:**  
 Kao korisnik platforme,  
 želim objaviti svoj pripremljeni listing tako da postane vidljiv javnosti,  
 kako bi posjetioci mogli pronaći moj događaj ili mjesto.
 
-**Kontekst:** Korisnik je kreirao listing (S02-01 ili S02-02), dodao lokaciju (za Event — S02-03), i opciono uploadovao slike/dokumente. Sada klikće "Objavi". Dalji tok zavisi od Trust Tier-a korisnika — pre-moderacija (Tier 0–1: listing čeka odobrenje) ili post-moderacija (Tier 2+: listing odmah vidljiv uz naknadni pregled). `isPublic` se derivira iz `listingStatus` — nije zasebno polje koje se upisuje. Statusni dijagram → Ch.04, sekcija 4.8. Korisničko iskustvo objave → Ch.02, sekcija 2.8.
+**Kontekst:** Korisnik je kreirao listing ([S02-01](s02-01-kreiranje-event-listinga-sa-osnovnim-podacima.md) ili [S02-02](s02-02-kreiranje-place-listinga-sa-osnovnim-podacima.md)), dodao lokaciju (za Event — [S02-03](s02-03-lokacija-event-a-povezivanje-sa-place-om-ili-rucna-adresa.md)), i opciono uploadovao slike/dokumente. Sada klikće "Objavi". Dalji tok zavisi od Trust Tier-a korisnika — pre-moderacija (Tier 0–1: listing čeka odobrenje) ili post-moderacija (Tier 2+: listing odmah vidljiv uz naknadni pregled). `isPublic` se derivira iz `listingStatus` — nije zasebno polje koje se upisuje. Statusni dijagram → **Ch.04, sekcija 4.8**. Korisničko iskustvo objave → **Ch.02, sekcija 2.8**.
 
 **Acceptance criteria:**
 
@@ -57,14 +57,14 @@ kako bi posjetioci mogli pronaći moj događaj ili mjesto.
 
 **Frontend Scope:**
 
-- UI: "Objavi" dugme na draft stranici; "Povuci" dugme za listing u `in_review`; status indikator na profilu i listing stranici; poruke korisniku ovisno o scenariju (Ch.02, 2.8)
+- UI: "Objavi" dugme na draft stranici; "Povuci" dugme za listing u `in_review`; status indikator na profilu i listing stranici; poruke korisniku ovisno o scenariju (**Ch.02**, 2.8)
 - Klijentska validacija: provjera da su svi obavezni podaci popunjeni prije slanja submit zahtjeva
 - UX: nakon submita — poruka prilagođena scenariju (pre-mod vs post-mod); na profilu — lista listinga sa statusima; za `changes_requested` — vidljiv countdown do isteka sa linkom na komentare
 
 **Tehničke napomene:**
 
 - Trust Tier provjera se radi na backend-u — frontend ne odlučuje o pre/post moderaciji, samo prikazuje rezultat
-- Moderatorski dio workflow-a (approve, reject, changes\_requested akcije) pripada E07
+- Moderatorski dio workflow-a (approve, reject, changes\_requested akcije) pripada [E07](../e07-moderacijski-workflow-i-ai-screening.md)
 - Timeout background job treba biti idempotent i otporan na restarte
 - `CHANGES_REQUESTED_TIMEOUT_DAYS` i `CHANGES_REQUESTED_REMINDER_DAYS` su parametri iz konfiguracije (preporučene početne vrijednosti: 7 i 5 dana)
 - `listingStatus` je jedini status field — nema odvojenog `lifecycleStatus` ni `moderationStatus`

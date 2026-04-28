@@ -15,14 +15,14 @@ type: infra
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao developer,  
 želim imati funkcionalan SvelteKit frontend projekat sa TailwindCSS i Flowbite-om,  
 kako bih mogao početi graditi korisničke stranice i komponente.
 
-**Kontekst:** Frontend koristi Svelte 5 + SvelteKit sa TailwindCSS i Flowbite design systemom — Ch.08, sekcija 8.5. U MVP-u se gradi User app ([cityinfo.ba](http://cityinfo.ba)) i Staff panel ([admin.cityinfo.ba](http://admin.cityinfo.ba)) kao zasebne SvelteKit aplikacije. Ova storija pokriva samo User app — Staff panel dolazi u E13.
+**Kontekst:** Frontend koristi Svelte 5 + SvelteKit sa TailwindCSS i Flowbite design systemom — **Ch.08, sekcija 8.5**. U MVP-u se gradi User app ([cityinfo.ba](http://cityinfo.ba)) i Staff panel ([admin.cityinfo.ba](http://admin.cityinfo.ba)) kao zasebne SvelteKit aplikacije. Ova storija pokriva samo User app — Staff panel dolazi u [E13](../e13-staff-panel-autentifikacija-i-upravljanje-osobljem.md).
 
 **Acceptance criteria:**
 

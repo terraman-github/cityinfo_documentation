@@ -15,22 +15,22 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-02, J-04
+**Journey milestones:** **J-02**, **J-04**
 
 **User story:**  
 Kao developer,  
 želim imati inicijalne tagove i aliase u bazi,  
 kako bi korisnici mogli označiti specifičnosti listinga, a pretraga razumjela lokalne sinonime.
 
-**Kontekst:** Primjeri tagova su navedeni u Ch.04, sekcija 4.5 — EventTags (besplatno, za-djecu, online, radionica, festival, porodično) i PlaceTags (parking, wifi, pet-friendly, dostava, rezervacije, kartice). Aliasi su definisani u Ch.04, sekcija 4.4 — mapiranje alternativnih termina na kategorije (gym → Teretane i fitness, picerija → Restorani, itd.).
+**Kontekst:** Primjeri tagova su navedeni u **Ch.04, sekcija 4.5** — EventTags (besplatno, za-djecu, online, radionica, festival, porodično) i PlaceTags (parking, wifi, pet-friendly, dostava, rezervacije, kartice). Aliasi su definisani u **Ch.04, sekcija 4.4** — mapiranje alternativnih termina na kategorije (gym → Teretane i fitness, picerija → Restorani, itd.).
 
 **Acceptance criteria:**
 
-- [ ] EventTags seed: minimalno 6 tagova iz primjera u Ch.04 (besplatno, za-djecu, online, radionica, festival, porodično) sa ikonama i orderIndex-om
-- [ ] PlaceTags seed: minimalno 6 tagova iz primjera u Ch.04 (parking, wifi, pet-friendly, dostava, rezervacije, kartice) sa ikonama i orderIndex-om
+- [ ] EventTags seed: minimalno 6 tagova iz primjera u **Ch.04** (besplatno, za-djecu, online, radionica, festival, porodično) sa ikonama i orderIndex-om
+- [ ] PlaceTags seed: minimalno 6 tagova iz primjera u **Ch.04** (parking, wifi, pet-friendly, dostava, rezervacije, kartice) sa ikonama i orderIndex-om
 - [ ] `tagNameAlt` je popunjen engleskim prevodom gdje je očigledno
 - [ ] Alias tabela postoji sa strukturom: aliasId, alias (tekst), categoryId (referenca na kategoriju)
-- [ ] Inicijalni aliasi su popunjeni prema primjerima iz Ch.04, sekcija 4.4 (gym, picerija, diskoteka, birtija, shopping, doktor)
+- [ ] Inicijalni aliasi su popunjeni prema primjerima iz **Ch.04, sekcija 4.4** (gym, picerija, diskoteka, birtija, shopping, doktor)
 - [ ] Seed je idempotentna i odvojena od migracija
 - [ ] Aliasi su konfigurabili po tenantu (struktura podržava tenant-specifične aliase)
 

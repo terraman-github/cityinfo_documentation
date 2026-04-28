@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao sistem,  
 želim automatski kreirati ListingMessageThread pri kreiranju svakog listinga,  
 kako bi moderator imao spreman komunikacijski kanal kad god treba kontaktirati vlasnika.
 
-**Kontekst:** Kada korisnik kreira novi listing (Event ili Place), sistem pored samog listinga kreira i prazan message thread sa statusom `idle`. Thread živi koliko i listing — nema potrebe za ručnim otvaranjem ili zatvaranjem. Ovaj pristup osigurava da je komunikacijski kanal uvijek dostupan bez dodatne akcije. Detalji o thread modelu → Ch.07, sekcija 7.1.3.
+**Kontekst:** Kada korisnik kreira novi listing (Event ili Place), sistem pored samog listinga kreira i prazan message thread sa statusom `idle`. Thread živi koliko i listing — nema potrebe za ručnim otvaranjem ili zatvaranjem. Ovaj pristup osigurava da je komunikacijski kanal uvijek dostupan bez dodatne akcije. Detalji o thread modelu → **Ch.07, sekcija 7.1**.3.
 
 **Acceptance criteria:**
 
@@ -42,7 +42,7 @@ kako bi moderator imao spreman komunikacijski kanal kad god treba kontaktirati v
 **Tehničke napomene:**
 
 - Thread kreiranje je interni side effect listing kreiranja, ne eksplicitna korisnička akcija
-- Statusni model thread-a definisan u Ch.07, sekcija 7.1.3 — za ovu storiju relevantan je samo inicijalni status `idle`
+- Statusni model thread-a definisan u **Ch.07, sekcija 7.1**.3 — za ovu storiju relevantan je samo inicijalni status `idle`
 
 **Testovi (MVP):**
 

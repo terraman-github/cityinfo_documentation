@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-04
+**Journey milestones:** **J-04**
 
 **User story:**  
 Kao posjetilac,  
 želim pretražiti sadržaj unosom teksta u search bar,  
 kako bih brzo pronašao konkretne listinge, kategorije ili tagove bez ručnog prolaženja kroz liste.
 
-**Kontekst:** Korisnik je na naslovnoj ili stranici sa rezultatima i koristi search bar. Pretraga pretražuje samo sadržaj aktivnog režima (Events ili Places). Full-text pretraga pokriva polja: name, nameAlt, description, descriptionAlt. Alias tabela (iz E03a) proširuje pretraživo polje — termin "picerija" pronalazi kategoriju "Restorani". Detalji o pretrazi u Ch.02, sekcija 2.2.
+**Kontekst:** Korisnik je na naslovnoj ili stranici sa rezultatima i koristi search bar. Pretraga pretražuje samo sadržaj aktivnog režima (Events ili Places). Full-text pretraga pokriva polja: name, nameAlt, description, descriptionAlt. Alias tabela (iz [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md)) proširuje pretraživo polje — termin "picerija" pronalazi kategoriju "Restorani". Detalji o pretrazi u **Ch.02, sekcija 2.2**.
 
 **Acceptance criteria:**
 
@@ -49,7 +49,7 @@ kako bih brzo pronašao konkretne listinge, kategorije ili tagove bez ručnog pr
 - UI: Search bar u headeru, uvijek vidljiv
 - UI: Rezultati pretrage u istom grid/lista formatu kao naslovna
 - Klijentska validacija: minimum 2 karaktera za pokretanje pretrage
-- UX: Pretraga se pokreće pritiskom Enter ili klikom na search ikonu (ne automatski dok se kuca — to je autosuggest u S04-03)
+- UX: Pretraga se pokreće pritiskom Enter ili klikom na search ikonu (ne automatski dok se kuca — to je autosuggest u [S04-03](s04-03-autosuggest-pri-pretrazi.md))
 - UX: Loading indikator dok se rezultati učitavaju
 - UX: Aktivni search termin se prikazuje kao chip koji se može ukloniti
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao posjetilac platforme,  
 želim vidjeti istaknute listinge na naslovnoj i u kategorijama,  
 kako bih mogao otkriti najrelevantnije i najaktuelnije sadržaje.
 
-**Kontekst:** Kada korisnik pregledava naslovnu stranicu ili listu listinga u kategoriji, sistem prikazuje tri grupe sadržaja: Premium sekcija na vrhu (sortirani po sortDate), zatim Standard i obični izmiješani (također po sortDate). Na naslovnoj stranici, Premium+Homepage ima dodatni apsolutni prioritet. Svaki promotivni listing ima vizualno isticanje — badge, border, pozadina. Detalji o sortiranju → Ch.06, sekcija 6.2.3; naslovna → Ch.02, sekcija 2.1.
+**Kontekst:** Kada korisnik pregledava naslovnu stranicu ili listu listinga u kategoriji, sistem prikazuje tri grupe sadržaja: Premium sekcija na vrhu (sortirani po sortDate), zatim Standard i obični izmiješani (također po sortDate). Na naslovnoj stranici, Premium+Homepage ima dodatni apsolutni prioritet. Svaki promotivni listing ima vizualno isticanje — badge, border, pozadina. Detalji o sortiranju → **Ch.06, sekcija 6.2**.3; naslovna → **Ch.02, sekcija 2.1**.
 
 **Acceptance criteria:**
 
@@ -37,7 +37,7 @@ kako bih mogao otkriti najrelevantnije i najaktuelnije sadržaje.
 
 **Backend Scope:**
 
-- Postojeći listing query endpoint-i (iz E04) prošireni sa promotion-aware sortiranjem
+- Postojeći listing query endpoint-i (iz [E04](../e04-otkrivanje-i-pretraga-sadrzaja.md)) prošireni sa promotion-aware sortiranjem
 - Query vraća `promotionInfo` za svaki listing: `{ promoType, showOnHomepage, isActive }` ili `null` ako nema promocije
 - Sortiranje: Premium (`promoType: premium` + `status: active`) na vrh, zatim ostali po `sortDate`
 
@@ -52,7 +52,7 @@ kako bih mogao otkriti najrelevantnije i najaktuelnije sadržaje.
 
 - Sortiranje mora uzeti u obzir i promoType i sortDate — nije dovoljno sortirati samo po jednom
 - Premium sekcija ima fiksno mjesto (vrh) — ne paginirano zajedno sa običnim listinzima
-- Naslovnica ima specifičnu logiku za tri grupe — vidi Ch.02, sekcija 2.1
+- Naslovnica ima specifičnu logiku za tri grupe — vidi **Ch.02, sekcija 2.1**
 
 **Testovi (MVP):**
 

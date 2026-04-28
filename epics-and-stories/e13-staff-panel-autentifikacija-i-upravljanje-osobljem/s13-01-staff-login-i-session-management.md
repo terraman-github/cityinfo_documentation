@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao moderator,  
 želim se prijaviti na admin panel sa sigurnom autentifikacijom,  
 kako bih mogao pristupiti moderacijskim alatima bez rizika od neovlaštenog pristupa.
 
-**Kontekst:** Staff pristupa admin panelu na [admin.cityinfo.ba](http://admin.cityinfo.ba). Za razliku od User sistema, Staff autentifikacija zahtijeva obaveznu 2FA za sve naloge i ima strože session politike. Staff nalog mora biti `isActive = true` da bi login bio moguć. Detalji o sigurnosnim zahtjevima → Ch.03, sekcija 3.7. Staff entitet i atributi → Ch.03, sekcija 3.5.
+**Kontekst:** Staff pristupa admin panelu na [admin.cityinfo.ba](http://admin.cityinfo.ba). Za razliku od User sistema, Staff autentifikacija zahtijeva obaveznu 2FA za sve naloge i ima strože session politike. Staff nalog mora biti `isActive = true` da bi login bio moguć. Detalji o sigurnosnim zahtjevima → **Ch.03, sekcija 3.7**. Staff entitet i atributi → **Ch.03, sekcija 3.5**.
 
 **Acceptance criteria:**
 
@@ -52,7 +52,7 @@ kako bih mogao pristupiti moderacijskim alatima bez rizika od neovlaštenog pris
 
 **Tehničke napomene:**
 
-- Session politika (1 aktivan, 8h idle) je definisana u Ch.03, sekcija 3.7
+- Session politika (1 aktivan, 8h idle) je definisana u **Ch.03, sekcija 3.7**
 - Lockout parametri (5 pokušaja, 30 min) su konfiguracijski — mogu se mijenjati bez izmjene koda
 - Staff auth je potpuno odvojen od User auth — ne dijele tokene ni session store
 

@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao vlasnik listinga sa aktivnom promocijom,  
 želim biti obaviješten kad mi promocija ističe ili kad se promijeni moj Trust Tier status,  
 kako bih mogao pravovremeno obnoviti promociju ili razumjeti novi status na platformi.
 
-**Kontekst:** Promocije imaju definisan endDate nakon kojeg prestaju. Sistem treba obavijestiti korisnika unaprijed (npr. 1 dan prije isteka) da ima vremena za akciju — produženje ili novu promociju. Trust Tier promjene (napredovanje ili degradacija) značajno utiču na korisnikovo iskustvo (pre-moderacija vs post-moderacija), pa je bitno da korisnik razumije šta se promijenilo. Detalji o promocijama → Ch.06, sekcija 6.2; Trust Tier → Ch.03, sekcija 3.4; tipovi notifikacija → Ch.07, sekcija 7.2.3.
+**Kontekst:** Promocije imaju definisan endDate nakon kojeg prestaju. Sistem treba obavijestiti korisnika unaprijed (npr. 1 dan prije isteka) da ima vremena za akciju — produženje ili novu promociju. Trust Tier promjene (napredovanje ili degradacija) značajno utiču na korisnikovo iskustvo (pre-moderacija vs post-moderacija), pa je bitno da korisnik razumije šta se promijenilo. Detalji o promocijama → **Ch.06, sekcija 6.2**; Trust Tier → **Ch.03, sekcija 3.4**; tipovi notifikacija → **Ch.07, sekcija 7.2**.3.
 
 **Acceptance criteria:**
 
@@ -40,16 +40,16 @@ kako bih mogao pravovremeno obnoviti promociju ili razumjeti novi status na plat
 - Background job: periodična provjera promocija koje ističu u narednih 24h → kreira promotion\_expiring notifikaciju (jednom po promociji)
 - Integracija sa TrustTierService — pri promjeni tier-a, kreira trust\_tier\_changed notifikaciju
 - Integracija sa VerificationService — pri uspješnoj verifikaciji, kreira verification\_approved notifikaciju
-- Side effects: kreira Notification zapise, triggeruje email slanje (S12-03)
+- Side effects: kreira Notification zapise, triggeruje email slanje ([S12-03](s12-03-slanje-email-notifikacija.md))
 
 **Frontend Scope:** —  
-*(Backend-only storija. Frontend prikaz notifikacija je u S12-02.)*
+*(Backend-only storija. Frontend prikaz notifikacija je u [S12-02](s12-02-prikaz-notifikacija-i-badge-neprocitanih.md).)*
 
 **Tehničke napomene:**
 
 - promotion\_expiring se triggeruje background jobom koji provjerava promocije koje ističu u narednih 24h — job treba osigurati da se notifikacija šalje samo jednom (flag ili zapis)
 - Trust Tier promjena notifikacija treba sadržavati human-readable objašnjenje novog tier-a, ne samo broj
-- Verifikacija se odnosi na dokument review (ListingDocument workflow iz Ch.04, sekcija 4.7)
+- Verifikacija se odnosi na dokument review (ListingDocument workflow iz **Ch.04, sekcija 4.7**)
 
 **Testovi (MVP):**
 

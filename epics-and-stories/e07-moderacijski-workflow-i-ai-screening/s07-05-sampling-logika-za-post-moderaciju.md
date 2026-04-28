@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao sistem,  
 želim primjenjivati sampling logiku na post-moderaciju za korisnike višeg Trust Tier-a,  
 kako bi moderatori fokusirali vrijeme na novi i riskantniji sadržaj umjesto na rutinski pregled provjerenih korisnika.
 
-**Kontekst:** Post-moderacija znači da je sadržaj već vidljiv — moderator ga pregleda naknadno. Za Tier 2 sav sadržaj se pregleda (100%). Za Tier 3 i 4, sistem nasumično odabire uzorak na osnovu konfigurabilnih procenata. Neodabrani sadržaj automatski prelazi u `published` bez pregleda. Ako se u pregledanom uzorku pronađe problem, moderator može degradirati korisnika, privremeno povećati sampling, ili reagovati na drugi način. Detalji → Ch.05, sekcija 5.1.3 (Sampling).
+**Kontekst:** Post-moderacija znači da je sadržaj već vidljiv — moderator ga pregleda naknadno. Za Tier 2 sav sadržaj se pregleda (100%). Za Tier 3 i 4, sistem nasumično odabire uzorak na osnovu konfigurabilnih procenata. Neodabrani sadržaj automatski prelazi u `published` bez pregleda. Ako se u pregledanom uzorku pronađe problem, moderator može degradirati korisnika, privremeno povećati sampling, ili reagovati na drugi način. Detalji → **Ch.05, sekcija 5.1**.3 (Sampling).
 
 **Acceptance criteria:**
 
@@ -32,7 +32,7 @@ kako bi moderatori fokusirali vrijeme na novi i riskantniji sadržaj umjesto na 
 - [ ] `TIER3_SAMPLING_PERCENT` i `TIER4_SAMPLING_PERCENT` su konfiguracijski parametri
 - [ ] Sadržaj koji nije odabran za sampling automatski prelazi u `listingStatus = published`
 - [ ] Sampling odluka se donosi pri submitovanju — korisnik ne zna da li je njegov sadržaj odabran za pregled
-- [ ] Ako se u sampliranom sadržaju pronađe problem, moderator može degradirati korisnika (→ E06, S06-03)
+- [ ] Ako se u sampliranom sadržaju pronađe problem, moderator može degradirati korisnika (→ [E06](../e06-trust-tier-sistem.md), [S06-03](../e06-trust-tier-sistem/s06-03-rucna-promjena-trust-tier-a.md))
 - [ ] AI screening se i dalje pokreće za sav sadržaj (uključujući nesampliran) — AI blocking važi neovisno o samplingu
 - [ ] Statistika samplinga je dostupna moderatorima (koliko je pregledano, koliko problema pronađeno)
 

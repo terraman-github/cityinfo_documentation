@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao vlasnik listinga sa aktivnom promocijom,  
 želim da se moj listing automatski osvježava na odabranom intervalu,  
 kako bih zadržao visoku vidljivost bez da se ručno vraćam na platformu.
 
-**Kontekst:** Korisnik je kreirao promociju (S10-01) sa uključenim AutoRenew-om i odabranim intervalom. Background job periodično provjerava sve aktivne promocije sa `autoRenewEnabled: true` i ažurira `sortDate` za one čiji je `nextAutoRenewAt` prošao. Nakon svakog osvježavanja, `nextAutoRenewAt` se pomjera za interval unaprijed, a `autoRenewsCompleted` se inkrementira. Detalji o AutoRenew mehanizmu → Ch.06, sekcija 6.2.4.
+**Kontekst:** Korisnik je kreirao promociju ([S10-01](s10-01-kreiranje-i-aktivacija-promocije-listinga.md)) sa uključenim AutoRenew-om i odabranim intervalom. Background job periodično provjerava sve aktivne promocije sa `autoRenewEnabled: true` i ažurira `sortDate` za one čiji je `nextAutoRenewAt` prošao. Nakon svakog osvježavanja, `nextAutoRenewAt` se pomjera za interval unaprijed, a `autoRenewsCompleted` se inkrementira. Detalji o AutoRenew mehanizmu → **Ch.06, sekcija 6.2**.4.
 
 **Acceptance criteria:**
 
@@ -44,7 +44,7 @@ kako bih zadržao visoku vidljivost bez da se ručno vraćam na platformu.
 
 **Tehničke napomene:**
 
-- AutoRenew pricing model još nije finaliziran (vidi draft napomenu Ch.06, sekcija 6.2.4) — za MVP, implementirati mehanizam osvježavanja bez naplate po renewal-u; naplata se može dodati kad se pricing finalizira
+- AutoRenew pricing model još nije finaliziran (vidi draft napomenu **Ch.06, sekcija 6.2**.4) — za MVP, implementirati mehanizam osvježavanja bez naplate po renewal-u; naplata se može dodati kad se pricing finalizira
 - Background job treba biti idempotent — ako se pokrene dvaput, ne smije duplo osvježiti isti listing
 - AutoRenew zaobilazi 24h cooldown za besplatni ručni refresh — to su dva odvojena mehanizma
 

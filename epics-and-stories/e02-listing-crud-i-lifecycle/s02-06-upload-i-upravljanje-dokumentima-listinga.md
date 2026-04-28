@@ -19,14 +19,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-02, J-07
+**Journey milestones:** **J-02**, **J-07**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim priložiti dokumente uz svoj listing (npr. dokaz vlasništva ili dozvolu za događaj),  
 kako bih ubrzao proces moderacije i dobio verifikacioni badge.
 
-**Kontekst:** Korisnik ima kreiran listing u bilo kojem statusu osim terminalnih (`removed`, `rejected`, `expired`). Dokumenti se mogu uploadovati pri kreiranju ili naknadno. ListingDocument je SSoT za sve dokumente vezane za listing — Ch.04 (sekcija 4.7) je autoritativna referenca za ovaj entitet. Verifikacija vlasništva nije obavezna za objavu ali donosi prednosti (brža moderacija, badge). Detalji o verifikaciji → Ch.04, sekcija 4.7.
+**Kontekst:** Korisnik ima kreiran listing u bilo kojem statusu osim terminalnih (`removed`, `rejected`, `expired`). Dokumenti se mogu uploadovati pri kreiranju ili naknadno. ListingDocument je SSoT za sve dokumente vezane za listing — **Ch.04** (sekcija 4.7) je autoritativna referenca za ovaj entitet. Verifikacija vlasništva nije obavezna za objavu ali donosi prednosti (brža moderacija, badge). Detalji o verifikaciji → **Ch.04, sekcija 4.7**.
 
 **Acceptance criteria:**
 
@@ -60,8 +60,8 @@ kako bih ubrzao proces moderacije i dobio verifikacioni badge.
 **Tehničke napomene:**
 
 - Virus scanning je async — ne blokira upload response
-- Moderatorski pregled dokumenata (accepted/rejected) nije dio ove storije — to je E07 (moderacija)
-- `documentStatus` terminologija: `accepted`/`rejected`, ne `verified` — da se izbjegne zabuna sa `verificationStatus` na listingu (Ch.04, 4.7 napomena o terminologiji)
+- Moderatorski pregled dokumenata (accepted/rejected) nije dio ove storije — to je [E07](../e07-moderacijski-workflow-i-ai-screening.md) (moderacija)
+- `documentStatus` terminologija: `accepted`/`rejected`, ne `verified` — da se izbjegne zabuna sa `verificationStatus` na listingu (**Ch.04**, 4.7 napomena o terminologiji)
 
 **Testovi (MVP):**
 

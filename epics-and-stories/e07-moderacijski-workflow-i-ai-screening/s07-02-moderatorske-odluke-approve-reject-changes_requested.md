@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao moderator,  
 želim donijeti odluku o sadržaju (odobriti, odbaciti ili tražiti izmjene) i da sistem automatski primijeni sve posljedice te odluke,  
 kako bih mogao efikasno raditi bez ručnog praćenja statusnih tranzicija i Trust Tier kalkulacija.
 
-**Kontekst:** Moderator pregleda stavku iz queue-a i donosi jednu od tri odluke. Approve i reject su finalne odluke koje utiču na Trust Tier statistiku korisnika. Changes\_requested nije finalna — korisnik dobija povratnu informaciju i priliku da ispravi sadržaj. Svaka odluka osim approve zahtijeva obrazloženje. Nakon finalne odluke, sistem evaluira Trust Tier napredovanje (→ E06, S06-01) i auto-degradaciju (→ E06, S06-02). Detalji → Ch.05, sekcije 5.2.3–5.2.4.
+**Kontekst:** Moderator pregleda stavku iz queue-a i donosi jednu od tri odluke. Approve i reject su finalne odluke koje utiču na Trust Tier statistiku korisnika. Changes\_requested nije finalna — korisnik dobija povratnu informaciju i priliku da ispravi sadržaj. Svaka odluka osim approve zahtijeva obrazloženje. Nakon finalne odluke, sistem evaluira Trust Tier napredovanje (→ [E06](../e06-trust-tier-sistem.md), [S06-01](../e06-trust-tier-sistem/s06-01-automatska-evaluacija-trust-tier-napredovanja.md)) i auto-degradaciju (→ [E06](../e06-trust-tier-sistem.md), [S06-02](../e06-trust-tier-sistem/s06-02-automatska-degradacija-na-restricted-tier-0.md)). Detalji → **Ch.05**, sekcije 5.2.3–5.2.4.
 
 **Acceptance criteria:**
 
@@ -33,8 +33,8 @@ kako bih mogao efikasno raditi bez ručnog praćenja statusnih tranzicija i Trus
 - [ ] Moderator može koristiti template poruku (iz biblioteke) ili napisati custom tekst
 - [ ] Moderator može dodati internu napomenu (vidljivu samo staff-u, ne korisniku)
 - [ ] Uz approve, moderator može opciono postaviti `verificationStatus` (verified ili unverified)
-- [ ] Nakon approve ili reject, sistem poziva Trust Tier evaluaciju (E06 logika)
-- [ ] Nakon reject, sistem provjerava auto-degradaciju (E06 logika)
+- [ ] Nakon approve ili reject, sistem poziva Trust Tier evaluaciju ([E06](../e06-trust-tier-sistem.md) logika)
+- [ ] Nakon reject, sistem provjerava auto-degradaciju ([E06](../e06-trust-tier-sistem.md) logika)
 - [ ] `changes_requested` ne utiče na Trust Tier statistiku
 - [ ] Moderator može override-ati odluku drugog moderatora (uz logging)
 - [ ] Svaka odluka se bilježi u audit log sa: moderator ID, odluka, razlog, timestamp
@@ -59,7 +59,7 @@ kako bih mogao efikasno raditi bez ručnog praćenja statusnih tranzicija i Trus
 **Tehničke napomene:**
 
 - Override prethodne odluke je rijetka ali bitna operacija — treba biti logovana sa razlogom. UI ne treba olakšavati override (ne stavljati ga pored primarnih akcija).
-- Integration sa E06: moderacijska odluka je "trigger point" za Trust Tier evaluaciju. Logika napredovanja/degradacije živi u E06, ali se poziva iz E07 workflow-a.
+- Integration sa [E06](../e06-trust-tier-sistem.md): moderacijska odluka je "trigger point" za Trust Tier evaluaciju. Logika napredovanja/degradacije živi u [E06](../e06-trust-tier-sistem.md), ali se poziva iz E07 workflow-a.
 - `changes_requested` listing se vraća korisniku ali ostaje u sistemu — korisnik ga može ispraviti i resubmitovati, ili ga ignorisati (timeout → auto-reject, BR-MOD-14).
 
 **Testovi (MVP):**
