@@ -19,14 +19,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-02
+**Journey milestones:** **J-02**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim moći izmijeniti podatke, privremeno sakriti, otkazati event ili trajno obrisati svoj listing,  
 kako bih imao punu kontrolu nad sadržajem koji sam objavio.
 
-**Kontekst:** Korisnik ima listing u nekom od aktivnih statusa (`draft`, `in_review`, `changes_requested`, `published`, `published_under_review`, `published_needs_changes`). Ponašanje pri editu objavljenog listinga zavisi od Trust Tier-a korisnika (Ch.04, 4.8 — Ažuriranje objavljenog listinga). Brisanje ima različitu logiku zavisno o `wasEverActive` flagu i tipu listinga (Ch.04, 4.2 za Event, 4.3 za Place). Sakrivanje (`hidden_by_owner`) je reverzibilno, za razliku od brisanja (`removed`).
+**Kontekst:** Korisnik ima listing u nekom od aktivnih statusa (`draft`, `in_review`, `changes_requested`, `published`, `published_under_review`, `published_needs_changes`). Ponašanje pri editu objavljenog listinga zavisi od Trust Tier-a korisnika (**Ch.04**, 4.8 — Ažuriranje objavljenog listinga). Brisanje ima različitu logiku zavisno o `wasEverActive` flagu i tipu listinga (**Ch.04**, 4.2 za Event, 4.3 za Place). Sakrivanje (`hidden_by_owner`) je reverzibilno, za razliku od brisanja (`removed`).
 
 **Acceptance criteria:**
 
@@ -90,8 +90,8 @@ kako bih imao punu kontrolu nad sadržajem koji sam objavio.
 **Tehničke napomene:**
 
 - Brisanje je uvijek soft delete za listinge koji su ikad bili javno vidljivi — `wasEverActive` flag kontroliše ovo
-- `hidden_by_moderator` akcija dolazi iz moderatorskog panela (E07/E13) — ova storija pokriva samo `hidden_by_owner`
-- `hidden_by_system` je automatska akcija pri blokiranju korisnika ili AI detekciji (E06/E07)
+- `hidden_by_moderator` akcija dolazi iz moderatorskog panela ([E07](../e07-moderacijski-workflow-i-ai-screening.md)/[E13](../e13-staff-panel-autentifikacija-i-upravljanje-osobljem.md)) — ova storija pokriva samo `hidden_by_owner`
+- `hidden_by_system` je automatska akcija pri blokiranju korisnika ili AI detekciji ([E06](../e06-trust-tier-sistem.md)/[E07](../e07-moderacijski-workflow-i-ai-screening.md))
 - `removed` je terminalni status — nema reaktivacije
 
 **Testovi (MVP):**

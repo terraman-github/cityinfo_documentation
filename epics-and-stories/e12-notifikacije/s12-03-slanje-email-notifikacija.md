@@ -22,7 +22,7 @@ Kao registrovani korisnik,
 želim primiti email kad se desi nešto bitno sa mojim listingom ili promocijom,  
 kako bih mogao reagovati čak i kad nisam na platformi.
 
-**Kontekst:** Email notifikacije su drugi kanal pored in-app notifikacija. Šalju se automatski kad se dese ključni sistemski događaji. U MVP-u, svi korisnici dobijaju sve email notifikacije — nema preferenci za kontrolu tipova ili frekvencije (to dolazi u Fazi 2). Email template-i podržavaju primarni i sekundarni jezik tenanta. Detalji → Ch.07, sekcija 7.2.2 i 7.2.5.
+**Kontekst:** Email notifikacije su drugi kanal pored in-app notifikacija. Šalju se automatski kad se dese ključni sistemski događaji. U MVP-u, svi korisnici dobijaju sve email notifikacije — nema preferenci za kontrolu tipova ili frekvencije (to dolazi u Fazi 2). Email template-i podržavaju primarni i sekundarni jezik tenanta. Detalji → **Ch.07, sekcija 7.2**.2 i 7.2.5.
 
 **Acceptance criteria:**
 
@@ -37,7 +37,7 @@ kako bih mogao reagovati čak i kad nisam na platformi.
 **Backend Scope:**
 
 - EmailNotificationService — interni servis koji šalje email-ove koristeći email provider (SMTP ili transakcijski email servis)
-- Integracija sa NotificationService (S12-01) — kad se kreira notifikacija, paralelno se triggeruje email slanje
+- Integracija sa NotificationService ([S12-01](s12-01-kreiranje-i-slanje-in-app-notifikacija.md)) — kad se kreira notifikacija, paralelno se triggeruje email slanje
 - Template engine: generiše email HTML na osnovu tipa notifikacije i konteksta
 - Side effects: šalje email, kreira Notification zapis sa channel='email'
 
@@ -47,7 +47,7 @@ kako bih mogao reagovati čak i kad nisam na platformi.
 **Tehničke napomene:**
 
 - Email slanje mora biti async — ne smije usporiti glavni proces (moderacijska odluka, kreiranje promocije itd.)
-- Template-i su kategorizirani: transakcijski, moderacijski, promotivni, sistemski — Ch.07, sekcija 7.2.5
+- Template-i su kategorizirani: transakcijski, moderacijski, promotivni, sistemski — **Ch.07, sekcija 7.2**.5
 - Retry logika za neuspješno slanje — razmotriti jednostavan retry (1-2 pokušaja) za MVP
 - Email provider se koristi kroz apstrakciju — lako zamjenjiv bez promjene poslovne logike
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-05
+**Journey milestones:** **J-05**
 
 **User story:**  
 Kao posjetilac (registrovan ili visitor),  
 želim lajkovati listing koji mi se sviđa,  
 kako bih izrazio pozitivan stav i pomogao drugima da prepoznaju kvalitetan sadržaj.
 
-**Kontekst:** Lajk je dostupan na kartici i na detaljnoj stranici. Registrovani korisnici imaju Appreciation entitet (Ch.04, 4.9) — lajk se trajno evidentira, korisnik može unlike-ovati. Visitors dobijaju samo inkrement brojača bez zapisa. Zaštita od visitor duplikata koristi jednosmjerni hash identifikacionih signala + listingId.
+**Kontekst:** Lajk je dostupan na kartici i na detaljnoj stranici. Registrovani korisnici imaju Appreciation entitet (**Ch.04**, 4.9) — lajk se trajno evidentira, korisnik može unlike-ovati. Visitors dobijaju samo inkrement brojača bez zapisa. Zaštita od visitor duplikata koristi jednosmjerni hash identifikacionih signala + listingId.
 
 **Acceptance criteria:**
 
@@ -58,7 +58,7 @@ kako bih izrazio pozitivan stav i pomogao drugima da prepoznaju kvalitetan sadr�
 
 - Visitor identifikacioni signali za hash: kombinacija pasivno dostupnih meta-podataka (browser tip, jezik, itd.) + IP indikator — ne koristiti fingerprinting biblioteke.
 - Jednosmjerni hash se čuva privremeno za provjeru duplikata — retention period je konfigurabilan parametar.
-- Ne čuvati sirove visitor podatke — samo hash (GDPR compliance, Ch.04, 4.9).
+- Ne čuvati sirove visitor podatke — samo hash (GDPR compliance, **Ch.04**, 4.9).
 
 **Testovi (MVP):**
 

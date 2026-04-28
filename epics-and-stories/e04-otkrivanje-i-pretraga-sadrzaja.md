@@ -35,24 +35,24 @@ story_count: 7
 
 **Scope — šta NE ulazi:**
 
-- Listing detail stranica — pokriveno u E05
-- Korisničke interakcije (lajk, favorit, share) — pokriveno u E05
-- Related content na detail stranici — pokriveno u E05
+- Listing detail stranica — pokriveno u [E05](e05-prikaz-sadrzaja-i-korisnicke-interakcije.md)
+- Korisničke interakcije (lajk, favorit, share) — pokriveno u [E05](e05-prikaz-sadrzaja-i-korisnicke-interakcije.md)
+- Related content na detail stranici — pokriveno u [E05](e05-prikaz-sadrzaja-i-korisnicke-interakcije.md)
 - Admin konfiguracija featured sekcija — Backlog (za MVP: hardkodirane sekcije)
 - Geofencing notifikacije — Phase 2
 - Napredni search (faceted, weighted scoring, ML ranking) — Phase 2+
 
 **Persone:** Milica (mlada profesionalka — brza pretraga), Thomas (turist — browse po kategorijama, sekundarni jezik), Ana (vlasnica biznisa — provjerava poziciju svog listinga)
 
-**Journey milestones:** J-04
+**Journey milestones:** **J-04**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.02, sekcije 2.1–2.2, 2.4–2.5 (naslovna, pretraga, sortiranje, responsive)
+**Dokumentacijska referenca:** **Ch.02**, sekcije 2.1–2.2, 2.4–2.5 (naslovna, pretraga, sortiranje, responsive)
 
 **Tehničke napomene:**
 
-- Zavisnost od E02 (listinzi moraju postojati), E03a (kategorije i tagovi), i E10 (promocije — za ispravno sortiranje promoviranih listinga). Bez E10 se koristi samo sortDate sortiranje.
+- Zavisnost od [E02](e02-listing-crud-i-lifecycle.md) (listinzi moraju postojati), [E03a](e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md) (kategorije i tagovi), i [E10](e10-promocije-listinga.md) (promocije — za ispravno sortiranje promoviranih listinga). Bez [E10](e10-promocije-listinga.md) se koristi samo sortDate sortiranje.
 - Dva režima (Events / Places) koriste odvojene API pozive i odvojene sisteme kategorija/tagova — nema miješanja.
 - Lokacijski dijalog koristi Google Maps API za autocomplete (ručni unos) i Google Maps za prikaz mape sa zonom pokrivenosti.
 - Featured sekcije za MVP mogu biti hardkodirane (npr. "Ovaj vikend", "Novo otvoreno") — admin konfiguracija je Backlog.
@@ -68,10 +68,10 @@ story_count: 7
 
 | ID  | Naslov | Phase | Sprint |
 | --- | --- | --- | --- |
-| S04-01 | Naslovna stranica sa dva režima i promocijskim prioritetima | MVP | 5–6 |
-| S04-02 | Full-text pretraga sa alias mapiranjem | MVP | 5–6 |
-| S04-03 | Autosuggest pri pretrazi | MVP | 5–6 |
-| S04-04 | Filtriranje po kategoriji, tagu i datumu | MVP | 5–6 |
-| S04-05 | Lokacijski dijalog i filter po udaljenosti | MVP | 5–6 |
-| S04-06 | Sortiranje po sortDate sa promocijskim prioritetima i paginacija | MVP | 5–6 |
-| S04-07 | Responsive dizajn i mobile-first layout | MVP | 5–6 |
+| [S04-01](e04-otkrivanje-i-pretraga-sadrzaja/s04-01-naslovna-stranica-sa-dva-rezima-i-promocijskim-prioritetima.md) | Naslovna stranica sa dva režima i promocijskim prioritetima | MVP | 5–6 |
+| [S04-02](e04-otkrivanje-i-pretraga-sadrzaja/s04-02-full-text-pretraga-sa-alias-mapiranjem.md) | Full-text pretraga sa alias mapiranjem | MVP | 5–6 |
+| [S04-03](e04-otkrivanje-i-pretraga-sadrzaja/s04-03-autosuggest-pri-pretrazi.md) | Autosuggest pri pretrazi | MVP | 5–6 |
+| [S04-04](e04-otkrivanje-i-pretraga-sadrzaja/s04-04-filtriranje-po-kategoriji-tagu-i-datumu.md) | Filtriranje po kategoriji, tagu i datumu | MVP | 5–6 |
+| [S04-05](e04-otkrivanje-i-pretraga-sadrzaja/s04-05-lokacijski-dijalog-i-filter-po-udaljenosti.md) | Lokacijski dijalog i filter po udaljenosti | MVP | 5–6 |
+| [S04-06](e04-otkrivanje-i-pretraga-sadrzaja/s04-06-sortiranje-po-sortdate-sa-promocijskim-prioritetima-i-paginacija.md) | Sortiranje po sortDate sa promocijskim prioritetima i paginacija | MVP | 5–6 |
+| [S04-07](e04-otkrivanje-i-pretraga-sadrzaja/s04-07-responsive-dizajn-i-mobile-first-layout.md) | Responsive dizajn i mobile-first layout | MVP | 5–6 |

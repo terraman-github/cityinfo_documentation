@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-09
+**Journey milestones:** **J-09**
 
 **User story:**  
 Kao sistem,  
 želim automatski kreirati wallet za svakog novog korisnika pri registraciji,  
 kako bi korisnik imao spreman račun za kupovinu kredita čim mu zatreba.
 
-**Kontekst:** Wallet se kreira kao dio registracijskog procesa (E01). Početno stanje je 0 kredita, minimalni balans je 0 (ne može biti negativan). Wallet stanje treba biti vidljivo korisniku u header-u aplikacije od prvog logina. Detalji o wallet konceptu → Ch.06, sekcija 6.1.2.
+**Kontekst:** Wallet se kreira kao dio registracijskog procesa ([E01](../e01-korisnicka-registracija-i-profil.md)). Početno stanje je 0 kredita, minimalni balans je 0 (ne može biti negativan). Wallet stanje treba biti vidljivo korisniku u header-u aplikacije od prvog logina. Detalji o wallet konceptu → **Ch.06, sekcija 6.1**.2.
 
 **Acceptance criteria:**
 
@@ -41,7 +41,7 @@ kako bi korisnik imao spreman račun za kupovinu kredita čim mu zatreba.
 **Frontend Scope:**
 
 - UI: Wallet stanje prikazano u header-u aplikacije (npr. "💰 0 kredita") — uvijek vidljivo kad je korisnik ulogovan
-- UX: Klik na wallet stanje vodi na wallet stranicu (S09-03)
+- UX: Klik na wallet stanje vodi na wallet stranicu ([S09-03](s09-03-prikaz-wallet-stanja-i-historije-transakcija.md))
 
 **Tehničke napomene:**
 

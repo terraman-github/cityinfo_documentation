@@ -15,21 +15,21 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-01
+**Journey milestones:** **J-01**
 
 **User story:**  
 Kao registrovani korisnik,  
 želim pregledati i ažurirati svoje profilne podatke,  
 kako bih mogao držati informacije aktuelnim i prilagoditi platformu svojim preferencijama.
 
-**Kontekst:** Korisnik pristupa profilu kroz navigaciju. Profil prikazuje informacije iz User entiteta (Ch.03, sekcija 3.3). Neka polja su read-only (email, username), neka se mogu slobodno mijenjati (fullName, locale, timezone), a neka zahtijevaju revalidaciju (phoneNumber). Endpoint: `GET/PATCH /users/me` (Ch.03, sekcija 3.8).
+**Kontekst:** Korisnik pristupa profilu kroz navigaciju. Profil prikazuje informacije iz User entiteta (**Ch.03, sekcija 3.3**). Neka polja su read-only (email, username), neka se mogu slobodno mijenjati (fullName, locale, timezone), a neka zahtijevaju revalidaciju (phoneNumber). Endpoint: `GET/PATCH /users/me` (**Ch.03, sekcija 3.8**).
 
 **Acceptance criteria:**
 
 - [ ] Korisnik može vidjeti sve svoje profilne podatke
 - [ ] Polja `fullName`, `locale`, `timezone` se mogu slobodno mijenjati
 - [ ] Polja `email` i `username` su prikazana ali read-only (ne mogu se mijenjati)
-- [ ] Promjena `phoneNumber` resetuje `phoneVerified = false` i zahtijeva novu verifikaciju (S01-03)
+- [ ] Promjena `phoneNumber` resetuje `phoneVerified = false` i zahtijeva novu verifikaciju ([S01-03](s01-03-verifikacija-telefona-sms.md))
 - [ ] Korisnik vidi status svojih verifikacija (email verificiran ✅/❌, telefon verificiran ✅/❌)
 - [ ] Korisnik može promijeniti lozinku (unos stare + nove lozinke)
 - [ ] Promjena lozinke ne invalidira trenutnu sesiju, ali invalidira sve ostale
@@ -45,13 +45,13 @@ kako bih mogao držati informacije aktuelnim i prilagoditi platformu svojim pref
 
 **Frontend Scope:**
 
-- UI: profil stranica sa sekcijama — lični podaci (fullName, email read-only, username read-only), kontakt (phoneNumber sa verifikacioni status), preferencije (locale, timezone), sigurnost (promjena lozinke, 2FA status — link na S01-08)
+- UI: profil stranica sa sekcijama — lični podaci (fullName, email read-only, username read-only), kontakt (phoneNumber sa verifikacioni status), preferencije (locale, timezone), sigurnost (promjena lozinke, 2FA status — link na [S01-08](s01-08-dvofaktorska-autentifikacija-2fa-za-korisnike.md))
 - Klijentska validacija: obavezna polja, format telefona
 - UX: inline editing sa "Sačuvaj" dugmetom; uspjeh → toast "Promjene sačuvane"; promjena telefona → upozorenje da će trebati nova verifikacija; promjena locale-a → odmah mijenja jezik sučelja
 
 **Tehničke napomene:**
 
-- `locale` kontroliše jezik sučelja — promjena odmah utiče na prikaz (Ch.02, sekcija 2.2).
+- `locale` kontroliše jezik sučelja — promjena odmah utiče na prikaz (**Ch.02, sekcija 2.2**).
 - Profil stranica je i entry point za buduće funkcionalnosti (wallet, moji listinzi, notifikacije) — ali te sekcije dolaze u kasnijim epicima.
 
 **Testovi (MVP):**

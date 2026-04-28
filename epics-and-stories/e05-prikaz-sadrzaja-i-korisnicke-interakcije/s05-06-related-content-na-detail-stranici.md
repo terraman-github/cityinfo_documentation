@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-04, J-05
+**Journey milestones:** **J-04**, **J-05**
 
 **User story:**  
 Kao posjetilac,  
 želim vidjeti povezane sadržaje na dnu detail stranice,  
 kako bih otkrio još zanimljivih mjesta ili događaja bez vraćanja na pretragu.
 
-**Kontekst:** Related content se prikazuje na dnu svake detail stranice. Logika odabira je definisana u Ch.02, sekcija 2.3. Za Event: prioritet imaju drugi eventi na istom Place-u, zatim eventi iste kategorije u narednih 14 dana, pa eventi sa istim tagovima. Za Place: nadolazeći eventi na tom mjestu, zatim mjesta iste kategorije u blizini. Promovirani listinzi nemaju prioritet u related contentu.
+**Kontekst:** Related content se prikazuje na dnu svake detail stranice. Logika odabira je definisana u **Ch.02, sekcija 2.3**. Za Event: prioritet imaju drugi eventi na istom Place-u, zatim eventi iste kategorije u narednih 14 dana, pa eventi sa istim tagovima. Za Place: nadolazeći eventi na tom mjestu, zatim mjesta iste kategorije u blizini. Promovirani listinzi nemaju prioritet u related contentu.
 
 **Acceptance criteria:**
 
@@ -51,7 +51,7 @@ kako bih otkrio još zanimljivih mjesta ili događaja bez vraćanja na pretragu.
 
 **Tehničke napomene:**
 
-- Related content algoritam ne mora biti savršen pri lansiranju — bitno je da prikazuje nešto smisleno (Ch.02, 2.3).
+- Related content algoritam ne mora biti savršen pri lansiranju — bitno je da prikazuje nešto smisleno (**Ch.02**, 2.3).
 - Za "u blizini" logiku kod Place-ova, koristiti istu Haversine kalkulaciju kao za filter po udaljenosti.
 - Related content se može keširati kratkoročno jer se ne mijenja često.
 

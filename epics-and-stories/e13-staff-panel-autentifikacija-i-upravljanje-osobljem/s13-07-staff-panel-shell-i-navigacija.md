@@ -15,14 +15,14 @@ type: frontend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao moderator,  
 želim imati pregledan admin panel sa jasnom navigacijom,  
 kako bih mogao brzo pristupiti moderacijskom queue-u, korisnicima i drugim alatima bez lutanja.
 
-**Kontekst:** Staff panel živi na [admin.cityinfo.ba](http://admin.cityinfo.ba) kao odvojen SvelteKit projekat. Navigacija se razlikuje po ulogama — moderator vidi moderacijske alate, operator vidi finansijske izvještaje, local\_admin vidi sve + sistemske postavke. Detalji o matrici ovlasti → Ch.03, sekcija 3.5. Staff panel je tehnički postavljen u E14 (S14-03), ova storija gradi na tom temelju.
+**Kontekst:** Staff panel živi na [admin.cityinfo.ba](http://admin.cityinfo.ba) kao odvojen SvelteKit projekat. Navigacija se razlikuje po ulogama — moderator vidi moderacijske alate, operator vidi finansijske izvještaje, local\_admin vidi sve + sistemske postavke. Detalji o matrici ovlasti → **Ch.03, sekcija 3.5**. Staff panel je tehnički postavljen u [E14](../e14-infrastruktura-i18n-i-pozadinski-procesi.md) ([S14-03](../e14-infrastruktura-i18n-i-pozadinski-procesi/s14-03-inicijalni-sveltekit-frontend-projekat.md)), ova storija gradi na tom temelju.
 
 **Acceptance criteria:**
 
@@ -49,7 +49,7 @@ kako bih mogao brzo pristupiti moderacijskom queue-u, korisnicima i drugim alati
 - Navigacijske stavke se generišu na osnovu `role` ulogovanog Staff-a — nije hardcode po stranicama
 - Tenant switcher koristi `tenantAccess` listu iz profila Staff-a
 - Placeholder stranice za sekcije koje još nemaju implementaciju (Moderation Queue, Korisnici, itd.) — prikazuju "Coming soon" ili prazan state
-- Ova storija ne uključuje backend — koristi podatke iz Staff profila koji je već dostupan nakon logina (S13-01)
+- Ova storija ne uključuje backend — koristi podatke iz Staff profila koji je već dostupan nakon logina ([S13-01](s13-01-staff-login-i-session-management.md))
 
 **Testovi (MVP):**
 

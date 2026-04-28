@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao sistem,  
 želim automatski evaluirati da li korisnik ispunjava uslove za napredovanje kroz Trust Tier nivoe,  
 kako bi korisnici koji konzistentno objavljuju kvalitetan sadržaj automatski dobili manje restriktivnu moderaciju.
 
-**Kontekst:** Evaluacija se pokreće nakon svake moderatorske odluke (approve ili reject) na listingu. Sistem provjerava tri parametrizirana uslova istovremeno: minimalni broj odobrenih objava, minimalni procenat uspješnosti, i minimalnu starost računa. Sva tri moraju biti ispunjena da bi napredovanje bilo okidano. `changes_requested` se ne broji — samo finalna odluka po listingu utiče na statistiku. Detalji o pragovima i logici → Ch.03, sekcija 3.4.
+**Kontekst:** Evaluacija se pokreće nakon svake moderatorske odluke (approve ili reject) na listingu. Sistem provjerava tri parametrizirana uslova istovremeno: minimalni broj odobrenih objava, minimalni procenat uspješnosti, i minimalnu starost računa. Sva tri moraju biti ispunjena da bi napredovanje bilo okidano. `changes_requested` se ne broji — samo finalna odluka po listingu utiče na statistiku. Detalji o pragovima i logici → **Ch.03, sekcija 3.4**.
 
 **Acceptance criteria:**
 
@@ -49,7 +49,7 @@ kako bi korisnici koji konzistentno objavljuju kvalitetan sadržaj automatski do
 
 - Evaluacija treba biti idempotentna — ako se pozove dva puta za istog korisnika, rezultat je isti.
 - Statistika se računa iz moderacijskih odluka, ne iz listing statusa — jer listing može promijeniti status nakon moderacije (npr. expired). Relevantno je šta je moderator odlučio.
-- Preporučene početne vrijednosti su u Ch.03, sekcija 3.4, ali su samo polazna tačka.
+- Preporučene početne vrijednosti su u **Ch.03, sekcija 3.4**, ali su samo polazna tačka.
 
 **Testovi (MVP):**
 

@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03
+**Journey milestones:** **J-03**
 
 **User story:**  
 Kao moderator,  
 želim imati pregled svih message thread-ova sa filterima po statusu i dodijeljenom moderatoru,  
 kako bih mogao efikasno pratiti komunikaciju sa vlasnicima listinga i ne propustiti čekajuće odgovore.
 
-**Kontekst:** Moderator koristi Staff panel za upravljanje komunikacijom. Pored pristupa thread-u direktno iz listing pregleda (kao dio moderacijskog workflow-a), moderator treba i centraliziran pregled svih thread-ova — posebno onih u statusu `waiting_moderator` koji čekaju njegov odgovor. Ova storija pokriva Staff-specifičan UI i endpoint za upravljanje thread-ovima. Detalji o thread modelu → Ch.07, sekcije 7.1.3–7.1.5; PATCH endpoint za thread → Ch.07, sekcija 7.4.1.
+**Kontekst:** Moderator koristi Staff panel za upravljanje komunikacijom. Pored pristupa thread-u direktno iz listing pregleda (kao dio moderacijskog workflow-a), moderator treba i centraliziran pregled svih thread-ova — posebno onih u statusu `waiting_moderator` koji čekaju njegov odgovor. Ova storija pokriva Staff-specifičan UI i endpoint za upravljanje thread-ovima. Detalji o thread modelu → **Ch.07**, sekcije 7.1.3–7.1.5; PATCH endpoint za thread → **Ch.07, sekcija 7.4**.1.
 
 **Acceptance criteria:**
 
@@ -48,7 +48,7 @@ kako bih mogao efikasno pratiti komunikaciju sa vlasnicima listinga i ne propust
 
 - UI: Tabela/lista thread-ova sa kolonama: listing, status (badge), assigned moderator, zadnja poruka, broj poruka
 - UI: Filter bar sa dropdown za status i toggle "Moji / Svi"
-- UI: Thread detail view — lista poruka kronološki + textarea za odgovor (reuse iz S08-02)
+- UI: Thread detail view — lista poruka kronološki + textarea za odgovor (reuse iz [S08-02](s08-02-slanje-poruke-moderatora-vlasniku-listinga.md))
 - UI: Akcije na thread-u: "Označi kao riješeno" (→ idle), "Preuzmi" (→ assign to me), "Dodijeli" (→ assign to other)
 - UX: Badge/indikator na "Poruke" navigaciji koji pokazuje broj thread-ova u `waiting_moderator` statusu
 

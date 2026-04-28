@@ -29,30 +29,30 @@ story_count: 8
 
 **Scope — šta NE ulazi:**
 
-- Trust Tier logika i automatsko napredovanje/degradacija — E06
-- Wallet i kreditni sistem — E09
-- Staff registracija, login i admin panel — E13
+- Trust Tier logika i automatsko napredovanje/degradacija — [E06](e06-trust-tier-sistem.md)
+- Wallet i kreditni sistem — [E09](e09-kreditni-sistem-i-wallet.md)
+- Staff registracija, login i admin panel — [E13](e13-staff-panel-autentifikacija-i-upravljanje-osobljem.md)
 - GlobalAdmin portal — Faza 2
-- Blokiranje korisnika od strane moderatora — E07/E13 (accessStatus logika se implementira ovdje, ali UI i workflow za blokiranje dolaze u moderacijskom epicu)
+- Blokiranje korisnika od strane moderatora — [E07](e07-moderacijski-workflow-i-ai-screening.md)/[E13](e13-staff-panel-autentifikacija-i-upravljanje-osobljem.md) (accessStatus logika se implementira ovdje, ali UI i workflow za blokiranje dolaze u moderacijskom epicu)
 - Push notifikacije — Faza 2
 - Social login (Google, Facebook, Apple) — Backlog
 
 **Persone:** Marko (organizator događaja), Ana (vlasnica biznisa), Thomas (turist), Lejla (studentica) — svi prolaze kroz registraciju
 
-**Journey milestones:** J-01
+**Journey milestones:** **J-01**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.03, sekcije 3.2–3.3, 3.7; Ch.02, sekcija 2.7
+**Dokumentacijska referenca:** **Ch.03**, sekcije 3.2–3.3, 3.7; **Ch.02, sekcija 2.7**
 
 **Tehničke napomene:**
 
-- User entitet sa svim atributima iz Ch.03, sekcija 3.3 — uključujući `trustTier` polje (default: 1), ali bez logike napredovanja/degradacije (dolazi u E06).
-- `isVerifiedPublisher` polje postoji na entitetu (default: false), ali logika postavljanja dolazi u E07/E13.
-- `walletBalance` polje postoji (default: 0.00), ali wallet operacije dolaze u E09.
-- accountStatus (active/inactive/deleted) i accessStatus (allowed/blocked) su ortogonalni — oba se moraju provjeriti pri svakom autentificiranom requestu (Ch.03, 3.3).
-- Session politika za User: 30 dana refresh token, neograničene concurrent sessions, mogućnost odjave sa pojedinog ili svih uređaja (Ch.03, 3.7).
-- Audit logging za User akcije (login, registracija) sa retencijom 90 dana (Ch.03, 3.7).
+- User entitet sa svim atributima iz **Ch.03, sekcija 3.3** — uključujući `trustTier` polje (default: 1), ali bez logike napredovanja/degradacije (dolazi u [E06](e06-trust-tier-sistem.md)).
+- `isVerifiedPublisher` polje postoji na entitetu (default: false), ali logika postavljanja dolazi u [E07](e07-moderacijski-workflow-i-ai-screening.md)/[E13](e13-staff-panel-autentifikacija-i-upravljanje-osobljem.md).
+- `walletBalance` polje postoji (default: 0.00), ali wallet operacije dolaze u [E09](e09-kreditni-sistem-i-wallet.md).
+- accountStatus (active/inactive/deleted) i accessStatus (allowed/blocked) su ortogonalni — oba se moraju provjeriti pri svakom autentificiranom requestu (**Ch.03**, 3.3).
+- Session politika za User: 30 dana refresh token, neograničene concurrent sessions, mogućnost odjave sa pojedinog ili svih uređaja (**Ch.03**, 3.7).
+- Audit logging za User akcije (login, registracija) sa retencijom 90 dana (**Ch.03**, 3.7).
 - Ovaj epic je na kritičnom putu — gotovo svaki drugi epic zavisi od User entiteta i autentifikacije.
 
 **Success metrika:** Korisnik se može registrovati, verificirati email, potvrditi telefon, prijaviti se, urediti profil i obrisati račun — kompletan self-service lifecycle bez potrebe za intervencijom.
@@ -65,11 +65,11 @@ story_count: 8
 
 | ID  | Naslov | Phase | Sprint |
 | --- | --- | --- | --- |
-| S01-01 | Registracija novog korisnika | MVP | 1   |
-| S01-02 | Email verifikacija | MVP | 1   |
-| S01-03 | Verifikacija telefona (SMS) | MVP | 1   |
-| S01-04 | Login, logout i session management | MVP | 1   |
-| S01-05 | Zaboravljena lozinka i reset | MVP | 1–2 |
-| S01-06 | Korisnički profil — pregled i uređivanje | MVP | 1–2 |
-| S01-07 | Brisanje korisničkog računa (GDPR) | MVP | 2   |
-| S01-08 | Dvofaktorska autentifikacija (2FA) za korisnike | MVP | 2   |
+| [S01-01](e01-korisnicka-registracija-i-profil/s01-01-registracija-novog-korisnika.md) | Registracija novog korisnika | MVP | 1   |
+| [S01-02](e01-korisnicka-registracija-i-profil/s01-02-email-verifikacija.md) | Email verifikacija | MVP | 1   |
+| [S01-03](e01-korisnicka-registracija-i-profil/s01-03-verifikacija-telefona-sms.md) | Verifikacija telefona (SMS) | MVP | 1   |
+| [S01-04](e01-korisnicka-registracija-i-profil/s01-04-login-logout-i-session-management.md) | Login, logout i session management | MVP | 1   |
+| [S01-05](e01-korisnicka-registracija-i-profil/s01-05-zaboravljena-lozinka-i-reset.md) | Zaboravljena lozinka i reset | MVP | 1–2 |
+| [S01-06](e01-korisnicka-registracija-i-profil/s01-06-korisnicki-profil-pregled-i-uredivanje.md) | Korisnički profil — pregled i uređivanje | MVP | 1–2 |
+| [S01-07](e01-korisnicka-registracija-i-profil/s01-07-brisanje-korisnickog-racuna-gdpr.md) | Brisanje korisničkog računa (GDPR) | MVP | 2   |
+| [S01-08](e01-korisnicka-registracija-i-profil/s01-08-dvofaktorska-autentifikacija-2fa-za-korisnike.md) | Dvofaktorska autentifikacija (2FA) za korisnike | MVP | 2   |

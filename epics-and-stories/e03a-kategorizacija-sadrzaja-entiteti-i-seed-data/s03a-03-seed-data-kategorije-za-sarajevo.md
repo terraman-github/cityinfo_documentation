@@ -15,19 +15,19 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-02, J-04
+**Journey milestones:** **J-02**, **J-04**
 
 **User story:**  
 Kao developer,  
 želim imati bazu popunjenu inicijalnim kategorijama za Sarajevo,  
 kako bi listing forma imala šta ponuditi korisniku pri odabiru kategorije.
 
-**Kontekst:** Kompletne liste kategorija su definirane u Ch.04, sekcija 4.4 — 16 sektora za mjesta i 11 za događaje. Seed skripta treba biti idempotentna (može se pokrenuti više puta bez duplikata) i odvojena od schema migracija.
+**Kontekst:** Kompletne liste kategorija su definirane u **Ch.04, sekcija 4.4** — 16 sektora za mjesta i 11 za događaje. Seed skripta treba biti idempotentna (može se pokrenuti više puta bez duplikata) i odvojena od schema migracija.
 
 **Acceptance criteria:**
 
-- [ ] Seed skripta popunjava sve PlaceCategory zapise — 16 sektora sa svim kategorijama iz Ch.04, sekcija 4.4
-- [ ] Seed skripta popunjava sve EventCategory zapise — 11 sektora sa svim kategorijama iz Ch.04, sekcija 4.4
+- [ ] Seed skripta popunjava sve PlaceCategory zapise — 16 sektora sa svim kategorijama iz **Ch.04, sekcija 4.4**
+- [ ] Seed skripta popunjava sve EventCategory zapise — 11 sektora sa svim kategorijama iz **Ch.04, sekcija 4.4**
 - [ ] Svaka kategorija ima: slug (auto-generisan iz naziva), name (bosanski), sectorSlug, sectorName, sortOrder, isActive=true
 - [ ] `nameAlt`, `sectorNameAlt` su popunjeni engleskim prevodima gdje je očigledno (npr. "Restaurants" za "Restorani")
 - [ ] Ikona (emoji) je dodijeljena svakom sektoru

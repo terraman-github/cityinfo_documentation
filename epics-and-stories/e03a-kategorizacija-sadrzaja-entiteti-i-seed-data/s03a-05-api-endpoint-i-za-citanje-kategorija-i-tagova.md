@@ -15,14 +15,14 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-02, J-04
+**Journey milestones:** **J-02**, **J-04**
 
 **User story:**  
 Kao frontend developer,  
 želim imati API endpoint-e za dohvat kategorija i tagova,  
 kako bih mogao prikazati odabir kategorije i tagova u listing formi i filterima.
 
-**Kontekst:** Ovo su javni endpoint-i (ne zahtijevaju autentifikaciju) jer ih koriste i visitors za pretragu. Endpoint-i su definirani u Ch.04, sekcija 4.10. Kategorije se vraćaju grupirane po sektoru. Tagovi se vraćaju sortirani po orderIndex.
+**Kontekst:** Ovo su javni endpoint-i (ne zahtijevaju autentifikaciju) jer ih koriste i visitors za pretragu. Endpoint-i su definirani u **Ch.04, sekcija 4.10**. Kategorije se vraćaju grupirane po sektoru. Tagovi se vraćaju sortirani po orderIndex.
 
 **Acceptance criteria:**
 
@@ -48,7 +48,7 @@ kako bih mogao prikazati odabir kategorije i tagova u listing formi i filterima.
 
 **Tehničke napomene:**
 
-- Admin CRUD endpoint-i (POST/PUT/DELETE za kategorije i tagove) dolaze u E03b — ova storija pokriva samo čitanje.
+- Admin CRUD endpoint-i (POST/PUT/DELETE za kategorije i tagove) dolaze u [E03b](../e03b-kategorizacija-sadrzaja-admin-upravljanje.md) — ova storija pokriva samo čitanje.
 
 **Testovi (MVP):**
 

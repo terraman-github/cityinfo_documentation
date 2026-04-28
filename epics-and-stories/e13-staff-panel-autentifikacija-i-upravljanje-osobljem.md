@@ -11,7 +11,7 @@ story_count: 7
 
 **Naslov:** Staff panel, autentifikacija i upravljanje osobljem
 
-**Excerpt:** Bez admin panela nema moderacije, bez moderacije nema kvalitetnog sadržaja. Ovaj epic pokriva kompletnu infrastrukturu za Staff sistem — od autentifikacije sa obaveznom 2FA, preko kreiranja i upravljanja Staff nalozima, do shell-a admin panela kroz koji moderatori, operatori i lokalni admini svakodnevno rade. Cilj je da Staff tim ima siguran, funkcionalan radni prostor prije nego što moderacijski workflow (E07) bude pušten u produkciju.
+**Excerpt:** Bez admin panela nema moderacije, bez moderacije nema kvalitetnog sadržaja. Ovaj epic pokriva kompletnu infrastrukturu za Staff sistem — od autentifikacije sa obaveznom 2FA, preko kreiranja i upravljanja Staff nalozima, do shell-a admin panela kroz koji moderatori, operatori i lokalni admini svakodnevno rade. Cilj je da Staff tim ima siguran, funkcionalan radni prostor prije nego što moderacijski workflow ([E07](e07-moderacijski-workflow-i-ai-screening.md)) bude pušten u produkciju.
 
 **Scope — šta ulazi:**
 
@@ -25,20 +25,20 @@ story_count: 7
 
 **Scope — šta NE ulazi:**
 
-- Moderacijski workflow (queue, odluke, AI screening) — pokriveno u E07
-- Trust Tier logika i evaluacija — pokriveno u E06
-- Upravljanje korisnicima (User entitet) iz Staff panela — pokriveno u E06/E07
-- Upravljanje kategorijama i tagovima — pokriveno u E03b
-- Finansijski izvještaji i upravljanje cijenama — pokriveno u E09/E10
+- Moderacijski workflow (queue, odluke, AI screening) — pokriveno u [E07](e07-moderacijski-workflow-i-ai-screening.md)
+- Trust Tier logika i evaluacija — pokriveno u [E06](e06-trust-tier-sistem.md)
+- Upravljanje korisnicima (User entitet) iz Staff panela — pokriveno u [E06](e06-trust-tier-sistem.md)/[E07](e07-moderacijski-workflow-i-ai-screening.md)
+- Upravljanje kategorijama i tagovima — pokriveno u [E03b](e03b-kategorizacija-sadrzaja-admin-upravljanje.md)
+- Finansijski izvještaji i upravljanje cijenama — pokriveno u [E09](e09-kreditni-sistem-i-wallet.md)/[E10](e10-promocije-listinga.md)
 - GlobalAdmin sistem ([master.cityinfo.ba](http://master.cityinfo.ba)) — Phase 2
 
 **Persone:** Amra (moderatorica), Dino (operater), lokalni admin
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.03 (sekcija 3.5 — Staff entitet, uloge, permisije, matrica ovlasti), Ch.05 (sekcija 5.4 — moderatorske akcije i permisije), Ch.03 (sekcija 3.7 — sigurnost i pristup)
+**Dokumentacijska referenca:** **Ch.03** (sekcija 3.5 — Staff entitet, uloge, permisije, matrica ovlasti), **Ch.05** (sekcija 5.4 — moderatorske akcije i permisije), **Ch.03** (sekcija 3.7 — sigurnost i pristup)
 
 **Tehničke napomene:**
 
@@ -46,7 +46,7 @@ story_count: 7
 - Obavezna 2FA za sve Staff naloge — bez izuzetaka
 - Staff nalog se ne može samo-registrovati; kreira ga isključivo local\_admin za svoj tenant
 - Session je ograničen na 1 aktivan po Staff nalogu (nova prijava automatski gasi prethodni session)
-- Ovisi o E14 (infrastruktura) i E01 (auth mehanizmi koji se mogu dijeliti na tehničkom nivou)
+- Ovisi o [E14](e14-infrastruktura-i18n-i-pozadinski-procesi.md) (infrastruktura) i [E01](e01-korisnicka-registracija-i-profil.md) (auth mehanizmi koji se mogu dijeliti na tehničkom nivou)
 - Staff panel ([admin.cityinfo.ba](http://admin.cityinfo.ba)) je odvojen SvelteKit projekat — ne dijeli UI sa User frontend-om
 
 **Success metrika:** Local admin može kreirati moderatora, dodijeliti mu permisije i tenant pristup, a moderator se može prijaviti sa 2FA i vidjeti admin panel shell — sve u manje od 5 minuta.
@@ -59,10 +59,10 @@ story_count: 7
 
 | #   | Storija | Phase | Journey |
 | --- | --- | --- | --- |
-| S13-01 | Staff login i session management | MVP | J-08 |
-| S13-02 | Promjena lozinke i politika rotacije | MVP | J-08 |
-| S13-03 | Kreiranje Staff naloga | MVP | J-08 |
-| S13-04 | Pregled i upravljanje Staff nalozima | MVP | J-08 |
-| S13-05 | Dodjela i oduzimanje moderatorskih permisija | MVP | J-08 |
-| S13-06 | Upravljanje tenant pristupom za Staff | MVP | J-08 |
-| S13-07 | Staff panel shell i navigacija | MVP | J-08 |
+| [S13-01](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-01-staff-login-i-session-management.md) | Staff login i session management | MVP | **J-08** |
+| [S13-02](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-02-promjena-lozinke-i-politika-rotacije.md) | Promjena lozinke i politika rotacije | MVP | **J-08** |
+| [S13-03](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-03-kreiranje-staff-naloga.md) | Kreiranje Staff naloga | MVP | **J-08** |
+| [S13-04](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-04-pregled-i-upravljanje-staff-nalozima.md) | Pregled i upravljanje Staff nalozima | MVP | **J-08** |
+| [S13-05](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-05-dodjela-i-oduzimanje-moderatorskih-permisija.md) | Dodjela i oduzimanje moderatorskih permisija | MVP | **J-08** |
+| [S13-06](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-06-upravljanje-tenant-pristupom-za-staff.md) | Upravljanje tenant pristupom za Staff | MVP | **J-08** |
+| [S13-07](e13-staff-panel-autentifikacija-i-upravljanje-osobljem/s13-07-staff-panel-shell-i-navigacija.md) | Staff panel shell i navigacija | MVP | **J-08** |

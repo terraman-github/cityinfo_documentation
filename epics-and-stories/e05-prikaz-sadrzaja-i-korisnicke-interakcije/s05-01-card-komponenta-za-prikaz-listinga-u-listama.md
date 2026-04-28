@@ -15,14 +15,14 @@ type: frontend-only
 
 **Phase:** MVP
 
-**Journey milestones:** J-04
+**Journey milestones:** **J-04**
 
 **User story:**  
 Kao posjetilac,  
 želim vidjeti pregled listinga u kompaktnom formatu sa ključnim informacijama,  
 kako bih brzo mogao procijeniti da li me listing zanima prije nego kliknem na detalje.
 
-**Kontekst:** Card komponenta se koristi svuda gdje se prikazuje lista listinga — naslovna, pretraga, filteri, related content, favoriti. Elementi kartice su definirani u Ch.02, sekcija 2.3. Ista komponenta za Event i Place, ali sa razlikama u prikazanim podacima (Event ima datum, Place nema).
+**Kontekst:** Card komponenta se koristi svuda gdje se prikazuje lista listinga — naslovna, pretraga, filteri, related content, favoriti. Elementi kartice su definirani u **Ch.02, sekcija 2.3**. Ista komponenta za Event i Place, ali sa razlikama u prikazanim podacima (Event ima datum, Place nema).
 
 **Acceptance criteria:**
 
@@ -31,7 +31,7 @@ kako bih brzo mogao procijeniti da li me listing zanima prije nego kliknem na de
 - [ ] Za Place kartice: nema datuma
 - [ ] Udaljenost se prikazuje samo kad je korisnikova lokacija poznata i unutar zone tenanta
 - [ ] Verifikacioni badge "✓ Potvrđen vlasnik" se prikazuje kad je `verificationStatus = verified`
-- [ ] Tri nivoa promocijskog isticanja prema Ch.02, sekcija 2.3: Standard (suptilan highlight), Premium (jače isticanje), Premium+Homepage (isto kao Premium)
+- [ ] Tri nivoa promocijskog isticanja prema **Ch.02, sekcija 2.3**: Standard (suptilan highlight), Premium (jače isticanje), Premium+Homepage (isto kao Premium)
 - [ ] Naziv se skraćuje ako je predugačak za karticu (ellipsis)
 - [ ] Klik na karticu otvara detaljnu stranicu listinga
 - [ ] Kartica je responsive — full-width na mobilnom, u gridu na tabletu/desktopu
@@ -49,7 +49,7 @@ kako bih brzo mogao procijeniti da li me listing zanima prije nego kliknem na de
 
 **Tehničke napomene:**
 
-- Ovo je frontend-only storija — koristi podatke iz API-ja definisanog u E02/E04.
+- Ovo je frontend-only storija — koristi podatke iz API-ja definisanog u [E02](../e02-listing-crud-i-lifecycle.md)/[E04](../e04-otkrivanje-i-pretraga-sadrzaja.md).
 - Komponenta treba biti optimizirana za performanse jer se prikazuje mnogo puta na jednoj stranici (20+ kartica).
 - `primaryCategoryData` snapshot na listingu sadrži sve podatke potrebne za prikaz kategorije na kartici (ime, boja, sektor) — ne treba dodatni API poziv.
 

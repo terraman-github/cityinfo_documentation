@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim pregledati sve svoje promocije sa statusima i preostalim trajanjem,  
 kako bih mogao pratiti ulaganja i donositi odluke o nastavku ili pauziranju.
 
-**Kontekst:** Korisnik pristupa sekciji "Moje promocije" u profilu ili kroz navigaciju. Vidi listu svih svojih promocija — aktivnih, pauziranih i istorijskih (istekle, otkazane). Za svaku promociju vidi tip, listing, trajanje, preostalo dana, AutoRenew status, i dostupne akcije. Staff pristupa admin pregledu sa svim promocijama na platformi. Detalji o Promo entitetu i statusima → Ch.06, sekcije 6.2.2–6.2.3; API endpointi → Ch.06, sekcija 6.6.3.
+**Kontekst:** Korisnik pristupa sekciji "Moje promocije" u profilu ili kroz navigaciju. Vidi listu svih svojih promocija — aktivnih, pauziranih i istorijskih (istekle, otkazane). Za svaku promociju vidi tip, listing, trajanje, preostalo dana, AutoRenew status, i dostupne akcije. Staff pristupa admin pregledu sa svim promocijama na platformi. Detalji o Promo entitetu i statusima → **Ch.06**, sekcije 6.2.2–6.2.3; API endpointi → **Ch.06, sekcija 6.6**.3.
 
 **Acceptance criteria:**
 
@@ -55,7 +55,7 @@ kako bih mogao pratiti ulaganja i donositi odluke o nastavku ili pauziranju.
 
 **Tehničke napomene:**
 
-- Otkazivanje pri brisanju listinga ili blokiranju korisnika može biti automatsko (side effect iz E02/E06) — ova storija pokriva ručno otkazivanje
+- Otkazivanje pri brisanju listinga ili blokiranju korisnika može biti automatsko (side effect iz [E02](../e02-listing-crud-i-lifecycle.md)/[E06](../e06-trust-tier-sistem.md)) — ova storija pokriva ručno otkazivanje
 - Statistika (views, clicks) za MVP može biti bazična — detaljne demographics su post-MVP
 
 **Testovi (MVP):**

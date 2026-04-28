@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-05
+**Journey milestones:** **J-05**
 
 **User story:**  
 Kao registrovan korisnik,  
 želim spremiti zanimljive listinge u favorite,  
 kako bih im se mogao brzo vratiti kad budem spreman za posjetu.
 
-**Kontekst:** Favoriti su dostupni samo registrovanim korisnicima — visitors ne mogu koristiti ovu funkcionalnost. Favorite entitet je definisan u Ch.04, sekcija 4.9. Lista favorita je privatna — samo korisnik vidi svoju listu. Ako se listing zatvori ili obriše, zapis ostaje u favoritima ali se prikazuje kao "Više nije dostupan".
+**Kontekst:** Favoriti su dostupni samo registrovanim korisnicima — visitors ne mogu koristiti ovu funkcionalnost. Favorite entitet je definisan u **Ch.04, sekcija 4.9**. Lista favorita je privatna — samo korisnik vidi svoju listu. Ako se listing zatvori ili obriše, zapis ostaje u favoritima ali se prikazuje kao "Više nije dostupan".
 
 **Acceptance criteria:**
 

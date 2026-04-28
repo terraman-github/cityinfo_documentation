@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao moderator sa `can_manage_tags` permisijom,  
 želim upravljati tagovima kroz Staff panel,  
 kako bih mogao dodati nove tagove kad korisnici izraze potrebu ili ukloniti zastarjele bez developer pomoći.
 
-**Kontekst:** Moderator pristupa Staff panelu ([admin.cityinfo.ba](http://admin.cityinfo.ba)) i otvara sekciju za upravljanje tagovima. EventTags i PlaceTags su odvojeni sistemi — moderator radi sa jednim tipom u datom trenutku. Inicijalni tagovi su postavljeni u E03a. Pravila za tagove definisana u Ch.04, sekcija 4.5 — slug je PK, brisanje uklanja tag sa listinga (NULL), deaktivacija skriva tag iz odabira ali zadržava vezu.
+**Kontekst:** Moderator pristupa Staff panelu ([admin.cityinfo.ba](http://admin.cityinfo.ba)) i otvara sekciju za upravljanje tagovima. EventTags i PlaceTags su odvojeni sistemi — moderator radi sa jednim tipom u datom trenutku. Inicijalni tagovi su postavljeni u [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md). Pravila za tagove definisana u **Ch.04, sekcija 4.5** — slug je PK, brisanje uklanja tag sa listinga (NULL), deaktivacija skriva tag iz odabira ali zadržava vezu.
 
 **Acceptance criteria:**
 

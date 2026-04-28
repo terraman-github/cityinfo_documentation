@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao vlasnik listinga sa aktivnom promocijom,  
 želim pauzirati promociju kad mi ne treba i nastaviti je kad sam spreman,  
 kako ne bih gubio plaćene dane promocije u periodima kad listing nije relevantan.
 
-**Kontekst:** Korisnik pristupa opciji pauze kroz pregled svojih promocija ili kroz listing detail stranicu. Pauza zamrzava preostale dane i suspenduje sve efekte promocije — listing gubi promotivno isticanje i AutoRenew se zaustavlja. Korisnik može nastaviti promociju kad god želi; pri nastavku, endDate se preračunava na osnovu preostalih dana, sortDate se osvježava na NOW(), i AutoRenew se reaktivira. Maksimalno trajanje pauze je kontrolisano parametrom `PROMO_MAX_PAUSE_DAYS`. Detalji → Ch.06, sekcija 6.2.5.
+**Kontekst:** Korisnik pristupa opciji pauze kroz pregled svojih promocija ili kroz listing detail stranicu. Pauza zamrzava preostale dane i suspenduje sve efekte promocije — listing gubi promotivno isticanje i AutoRenew se zaustavlja. Korisnik može nastaviti promociju kad god želi; pri nastavku, endDate se preračunava na osnovu preostalih dana, sortDate se osvježava na NOW(), i AutoRenew se reaktivira. Maksimalno trajanje pauze je kontrolisano parametrom `PROMO_MAX_PAUSE_DAYS`. Detalji → **Ch.06, sekcija 6.2**.5.
 
 **Acceptance criteria:**
 

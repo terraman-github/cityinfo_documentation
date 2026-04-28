@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-01
+**Journey milestones:** **J-01**
 
 **User story:**  
 Kao korisnik koji brine o sigurnosti,  
 želim uključiti dvofaktorsku autentifikaciju na svom računu,  
 kako bih zaštitio svoj nalog čak i ako mi lozinka bude kompromitovana.
 
-**Kontekst:** 2FA za korisnike je opciona (Ch.03, sekcija 3.7 — `twoFactorEnabled` default: false). Korisnik pristupa 2FA setup-u kroz profil. Kad je aktiviran, pri svakom loginu se traži i TOTP kod uz email/password. API endpointi: `/auth/2fa/setup` i `/auth/2fa/verify` (Ch.03, sekcija 3.8).
+**Kontekst:** 2FA za korisnike je opciona (**Ch.03, sekcija 3.7** — `twoFactorEnabled` default: false). Korisnik pristupa 2FA setup-u kroz profil. Kad je aktiviran, pri svakom loginu se traži i TOTP kod uz email/password. API endpointi: `/auth/2fa/setup` i `/auth/2fa/verify` (**Ch.03, sekcija 3.8**).
 
 **Acceptance criteria:**
 

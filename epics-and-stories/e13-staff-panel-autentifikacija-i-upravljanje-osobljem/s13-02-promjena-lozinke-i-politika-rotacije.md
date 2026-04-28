@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao Staff član,  
 želim moći promijeniti svoju lozinku i biti upozoren kada je rotacija obavezna,  
 kako bih održavao sigurnost svog naloga u skladu sa politikom platforme.
 
-**Kontekst:** Staff nalozi imaju obaveznu rotaciju lozinke svakih 90 dana (definisano u Ch.03, sekcija 3.7). Polje `passwordChangedAt` prati kada je lozinka posljednji put promijenjena. Kada istekne rok, Staff ne može nastaviti rad dok ne postavi novu lozinku — sistem ga preusmjerava na formu za promjenu.
+**Kontekst:** Staff nalozi imaju obaveznu rotaciju lozinke svakih 90 dana (definisano u **Ch.03, sekcija 3.7**). Polje `passwordChangedAt` prati kada je lozinka posljednji put promijenjena. Kada istekne rok, Staff ne može nastaviti rad dok ne postavi novu lozinku — sistem ga preusmjerava na formu za promjenu.
 
 **Acceptance criteria:**
 

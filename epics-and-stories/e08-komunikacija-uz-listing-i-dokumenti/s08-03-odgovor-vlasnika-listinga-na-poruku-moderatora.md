@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-03, J-07
+**Journey milestones:** **J-03**, **J-07**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim odgovoriti na poruku moderatora kroz message thread,  
 kako bih mogao dostaviti tražene informacije ili pojašnjenja bez korištenja eksternih kanala.
 
-**Kontekst:** Vlasnik listinga prima obavijest (notifikacija — obrađena u E12) da je moderator poslao poruku. Korisnik pristupa thread-u kroz svoj profil ili kroz listing detail stranicu. Thread je u statusu `waiting_owner` ili `waiting_moderator` — u oba slučaja vlasnik može slati poruku. Kada je thread u `idle` statusu, vlasnik ne može slati poruke — samo moderator može pokrenuti komunikaciju. Detalji o kontroli pristupa → Ch.07, sekcija 7.1.4.
+**Kontekst:** Vlasnik listinga prima obavijest (notifikacija — obrađena u [E12](../e12-notifikacije.md)) da je moderator poslao poruku. Korisnik pristupa thread-u kroz svoj profil ili kroz listing detail stranicu. Thread je u statusu `waiting_owner` ili `waiting_moderator` — u oba slučaja vlasnik može slati poruku. Kada je thread u `idle` statusu, vlasnik ne može slati poruke — samo moderator može pokrenuti komunikaciju. Detalji o kontroli pristupa → **Ch.07, sekcija 7.1**.4.
 
 **Acceptance criteria:**
 

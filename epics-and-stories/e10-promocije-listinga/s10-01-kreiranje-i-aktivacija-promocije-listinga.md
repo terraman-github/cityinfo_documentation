@@ -15,19 +15,19 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-06
+**Journey milestones:** **J-06**
 
 **User story:**  
 Kao vlasnik listinga,  
 želim kreirati promociju za svoj listing birajući tip i trajanje,  
 kako bi moj listing bio istaknutiji i vidljiviji potencijalnim posjetiocima.
 
-**Kontekst:** Korisnik pristupa opciji promocije kroz listing detail stranicu ili kroz "Moji listinzi" pregled. Bira tip promocije (Standard/Premium/Premium+Homepage), trajanje (1/3/7/30 dana), i opciono AutoRenew interval. Sistem kalkuliše ukupnu cijenu u kreditima, provjerava wallet balance, i po potvrdi instant aktivira promociju. Listing mora biti javno vidljiv (`isPublic = true`). Detalji o tipovima → Ch.06, sekcija 6.2.3; workflow → Ch.06, sekcija 6.2.6; poslovna pravila → Ch.06, sekcija 6.2.7.
+**Kontekst:** Korisnik pristupa opciji promocije kroz listing detail stranicu ili kroz "Moji listinzi" pregled. Bira tip promocije (Standard/Premium/Premium+Homepage), trajanje (1/3/7/30 dana), i opciono AutoRenew interval. Sistem kalkuliše ukupnu cijenu u kreditima, provjerava wallet balance, i po potvrdi instant aktivira promociju. Listing mora biti javno vidljiv (`isPublic = true`). Detalji o tipovima → **Ch.06, sekcija 6.2**.3; workflow → **Ch.06, sekcija 6.2**.6; poslovna pravila → **Ch.06, sekcija 6.2**.7.
 
 **Acceptance criteria:**
 
 - [ ] Korisnik može kreirati promociju birajući: tip (standard/premium), trajanje, showOnHomepage (samo za premium), autoRenewEnabled, autoRenewInterval
-- [ ] Sistem kalkuliše ukupnu cijenu na osnovu tipa i trajanja (vidi pricing tabelu Ch.06, sekcija 6.5.3)
+- [ ] Sistem kalkuliše ukupnu cijenu na osnovu tipa i trajanja (vidi pricing tabelu **Ch.06, sekcija 6.5**.3)
 - [ ] Ako korisnik nema dovoljno kredita, prikazuje se poruka sa linkom na kupovinu kredita
 - [ ] Po potvrdi: kreira se Promo entitet sa `status: active`, kreira se CreditTransaction sa `type: promo_purchase`, wallet balance se umanjuje
 - [ ] Promocija se aktivira instant — `startDate = NOW()`, `endDate = NOW() + trajanje`

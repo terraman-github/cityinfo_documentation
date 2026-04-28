@@ -25,18 +25,18 @@ story_count: 5
 
 **Scope — šta NE ulazi:**
 
-- Notifikacije o novim porukama (E12 — Notifikacije)
-- Upload i upravljanje dokumentima (E02 — Listing CRUD, ListingDocument je definisan u Ch.04)
-- Support ticket sistem (Faza 3, Ch.07 sekcija 7.3)
+- Notifikacije o novim porukama ([E12](e12-notifikacije.md) — Notifikacije)
+- Upload i upravljanje dokumentima ([E02](e02-listing-crud-i-lifecycle.md) — Listing CRUD, ListingDocument je definisan u **Ch.04**)
+- Support ticket sistem (Faza 3, **Ch.07** sekcija 7.3)
 - Korisnik-korisnik komunikacija (nije planirana)
 
 **Persone:** Lejla (moderator), Marko (organizator događaja), Ana (vlasnica biznisa)
 
-**Journey milestones:** J-03 (Moderacija sadržaja), J-07 (Verifikacija vlasništva)
+**Journey milestones:** **J-03** (Moderacija sadržaja), **J-07** (Verifikacija vlasništva)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** Ch.07, sekcije 7.1.1–7.1.8; Ch.04, sekcija 4.7 (ListingDocument SSoT)
+**Dokumentacijska referenca:** **Ch.07**, sekcije 7.1.1–7.1.8; **Ch.04, sekcija 4.7** (ListingDocument SSoT)
 
 **Tehničke napomene:**
 
@@ -55,8 +55,8 @@ story_count: 5
 
 | #   | Naslov | Phase | Journey |
 | --- | --- | --- | --- |
-| S08-01 | Automatsko kreiranje message thread-a uz listing | MVP | J-03 |
-| S08-02 | Slanje poruke moderatora vlasniku listinga | MVP | J-03, J-07 |
-| S08-03 | Odgovor vlasnika listinga na poruku moderatora | MVP | J-03, J-07 |
-| S08-04 | Referenciranje dokumenata u porukama | MVP | J-07 |
-| S08-05 | Pregled i upravljanje thread-ovima u Staff panelu | MVP | J-03 |
+| [S08-01](e08-komunikacija-uz-listing-i-dokumenti/s08-01-automatsko-kreiranje-message-thread-a-uz-listing.md) | Automatsko kreiranje message thread-a uz listing | MVP | **J-03** |
+| [S08-02](e08-komunikacija-uz-listing-i-dokumenti/s08-02-slanje-poruke-moderatora-vlasniku-listinga.md) | Slanje poruke moderatora vlasniku listinga | MVP | **J-03**, **J-07** |
+| [S08-03](e08-komunikacija-uz-listing-i-dokumenti/s08-03-odgovor-vlasnika-listinga-na-poruku-moderatora.md) | Odgovor vlasnika listinga na poruku moderatora | MVP | **J-03**, **J-07** |
+| [S08-04](e08-komunikacija-uz-listing-i-dokumenti/s08-04-referenciranje-dokumenata-u-porukama.md) | Referenciranje dokumenata u porukama | MVP | **J-07** |
+| [S08-05](e08-komunikacija-uz-listing-i-dokumenti/s08-05-pregled-i-upravljanje-thread-ovima-u-staff-panelu.md) | Pregled i upravljanje thread-ovima u Staff panelu | MVP | **J-03** |

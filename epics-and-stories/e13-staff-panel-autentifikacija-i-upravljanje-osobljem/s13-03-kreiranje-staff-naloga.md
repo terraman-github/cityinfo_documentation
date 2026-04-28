@@ -15,14 +15,14 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** J-08
+**Journey milestones:** **J-08**
 
 **User story:**  
 Kao local\_admin,  
 želim kreirati novi Staff nalog za moderatora ili operatora,  
 kako bih mogao proširiti tim za upravljanje platformom u svom gradu.
 
-**Kontekst:** Staff naloge kreira isključivo local\_admin — ne postoji self-registration. Pri kreiranju se bira uloga (moderator, operator) i dodjeljuje pristup jednom ili više tenanta. Novi Staff član dobija inicijalne kredencijale i mora postaviti 2FA pri prvom loginu. Matrica ovlasti po ulogama → Ch.03, sekcija 3.5. Local\_admin može kreirati samo naloge za tenante kojima sam ima pristup.
+**Kontekst:** Staff naloge kreira isključivo local\_admin — ne postoji self-registration. Pri kreiranju se bira uloga (moderator, operator) i dodjeljuje pristup jednom ili više tenanta. Novi Staff član dobija inicijalne kredencijale i mora postaviti 2FA pri prvom loginu. Matrica ovlasti po ulogama → **Ch.03, sekcija 3.5**. Local\_admin može kreirati samo naloge za tenante kojima sam ima pristup.
 
 **Acceptance criteria:**
 
