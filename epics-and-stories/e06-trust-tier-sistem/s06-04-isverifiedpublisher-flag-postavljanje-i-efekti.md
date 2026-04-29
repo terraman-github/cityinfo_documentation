@@ -1,7 +1,7 @@
 ---
 id: S06-04
 parent_epic: E06
-linear_id: ""
+linear_id: "CIT2-43"
 phase: MVP
 journey_milestones: [J-03, J-07]
 type: fullstack
