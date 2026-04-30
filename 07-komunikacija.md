@@ -23,9 +23,9 @@ Ovaj dokument pokriva tri glavna komunikacijska podsistema: **Message sistem** (
 | **7.4 API Endpoints** | Lista endpointa za komunikaciju | Dev | —   |
 ### Povezani dokumenti
 
-- [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — Trust Tier sistem, blokiranje korisnika
-- [04 - Sadržaj](../project-specs/04-sadrzaj.md) — Listing lifecycle, ListingDocument entitet (SSoT, sekcija 4.7), korisničke interakcije (sekcija 4.9), API endpointi za dokumente (sekcija 4.10)
-- [05 - Moderacija](../project-specs/05-moderacija.md) — Moderacijski workflow, AI screening
+- [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — Trust Tier sistem, blokiranje korisnika
+- [04 - Sadržaj](04-sadrzaj.md) — Listing lifecycle, ListingDocument entitet (SSoT, sekcija 4.7), korisničke interakcije (sekcija 4.9), API endpointi za dokumente (sekcija 4.10)
+- [05 - Moderacija](05-moderacija.md) — Moderacijski workflow, AI screening
 
 * * *
 ## 7.1 Message sistem
@@ -122,7 +122,7 @@ Svaka pojedinačna poruka u thread-u. Poruke mogu slati vlasnik listinga, modera
 > 📝 Lista atributa nije konačna i može se proširivati prema potrebama sistema.
 ### 7.1.7 Dokumenti u porukama
 
-Poruke mogu referencirati dokumente vezane za listing. Dokumenti se ne čuvaju u poruci, već u centraliziranom **ListingDocument** entitetu koji je definisan u [04 - Sadržaj, sekcija 4.7](../project-specs/04-sadrzaj.md). Poruka samo sadrži listu `documentIds` koji referenciraju postojeće dokumente. API endpointi za dokumente žive u [04 - Sadržaj, sekcija 4.10](../project-specs/04-sadrzaj.md).
+Poruke mogu referencirati dokumente vezane za listing. Dokumenti se ne čuvaju u poruci, već u centraliziranom **ListingDocument** entitetu koji je definisan u [04 - Sadržaj, sekcija 4.7](04-sadrzaj.md). Poruka samo sadrži listu `documentIds` koji referenciraju postojeće dokumente. API endpointi za dokumente žive u [04 - Sadržaj, sekcija 4.10](04-sadrzaj.md).
 ### 7.1.8 Ključna pravila
 
 Nekoliko pravila osigurava da Message sistem funkcioniše kako treba:
@@ -388,7 +388,7 @@ Request: { messageText, documentIds? }
 Response: { messageId, threadId, sentAt, newThreadStatus }
 ```
 
-> 📝 **Napomena o dokumentima:** API endpointi za upload i upravljanje dokumentima listinga (ListingDocument) definisani su u [04 - Sadržaj, sekcija 4.10](../project-specs/04-sadrzaj.md). Poruke samo referenciraju postojeće dokumente kroz `documentIds` polje.
+> 📝 **Napomena o dokumentima:** API endpointi za upload i upravljanje dokumentima listinga (ListingDocument) definisani su u [04 - Sadržaj, sekcija 4.10](04-sadrzaj.md). Poruke samo referenciraju postojeće dokumente kroz `documentIds` polje.
 ### 7.4.2 Notifikacije
 
 | Metoda | Putanja | Opis |
@@ -433,7 +433,7 @@ Response: { ticketId, ticketNumber, status, createdAt }
 Ključne karakteristike:
 
 - **Jedan thread po listingu** — thread postoji dok postoji listing, nema zatvaranja/otvaranja
-- **Centralizirani dokumenti** — ListingDocument entitet definisan u [04 - Sadržaj](../project-specs/04-sadrzaj.md), poruke samo referenciraju
+- **Centralizirani dokumenti** — ListingDocument entitet definisan u [04 - Sadržaj](04-sadrzaj.md), poruke samo referenciraju
 - **Pojednostavljen statusni model** — `idle`, `waiting_owner`, `waiting_moderator`
 - **Statusni model kontroliše pristup** — ko može slati poruke zavisi od statusa thread-a (sekcija 7.1.4)
 - **Notification entitet** — svaka in-app notifikacija je zapis sa tipom, referencom i statusom čitanja

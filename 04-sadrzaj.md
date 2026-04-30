@@ -122,7 +122,7 @@ CityInfo koristi **jednostatus model** sa jednim poljem `listingStatus` koje obu
 
 > **📝 Napomena:** Lista atributa nije konačna i može se proširivati u skladu sa potrebama proizvoda.
 
-> **💡 Praktična napomena:** Polje `sortDate` je centralno za kontrolu gdje se listing pojavljuje u listama. Promocije i osvježavanje sadržaja manipulišu upravo ovim poljem. Korisnici mogu besplatno ručno osvježiti poziciju jednom u 24 sata. Više o tome u poglavlju [06 - Monetizacija](../project-specs/06-monetizacija.md).
+> **💡 Praktična napomena:** Polje `sortDate` je centralno za kontrolu gdje se listing pojavljuje u listama. Promocije i osvježavanje sadržaja manipulišu upravo ovim poljem. Korisnici mogu besplatno ručno osvježiti poziciju jednom u 24 sata. Više o tome u poglavlju [06 - Monetizacija](06-monetizacija.md).
 
 * * *
 ## 4.2 Event entitet
@@ -646,7 +646,7 @@ Mehanizam verifikacije se razlikuje po Trust Tier-u korisnika:
 | **3 (Established)** | Na nivou korisnika — `isVerifiedPublisher` flag | Poslovna odluka moderatora |
 | **4 (Verified Partner)** | Automatska — ugovorni odnos | Nije potreban |
 
-Za Tier 3, `isVerifiedPublisher` flag na nivou korisnika automatski daje `verified` status svim listinzima tog korisnika — bez potrebe za uploadom dokumenata po svakom listingu. Za Tier 4, svi listinzi automatski dobijaju `verified` jer ugovorni odnos već uključuje potvrdu identiteta. Detalji u [05 - Moderacija, sekcija 5.6.3](../project-specs/05-moderacija.md).
+Za Tier 3, `isVerifiedPublisher` flag na nivou korisnika automatski daje `verified` status svim listinzima tog korisnika — bez potrebe za uploadom dokumenata po svakom listingu. Za Tier 4, svi listinzi automatski dobijaju `verified` jer ugovorni odnos već uključuje potvrdu identiteta. Detalji u [05 - Moderacija, sekcija 5.6.3](05-moderacija.md).
 #### Naknadno traženje dokumentacije
 
 Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako postoji sumnja u legitimnost. U tom slučaju:
@@ -661,7 +661,7 @@ Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako po
 
 **Za Place:** vlasnički list, izvod iz registra, ugovor o zakupu, ovlaštenje za upravljanje, rješenje o registraciji obrta/firme
 
-> **💡 Praktična napomena:** Za Places, verifikacioni status ima veću težinu jer predstavljaju stalne poslovne subjekte. Dokumenti stariji od 2 godine od zatvaranja listinga mogu biti automatski obrisani radi usklađenosti sa GDPR-om. Detalji o workflow-u verifikacije iz moderatorske perspektive opisani su u [05 - Moderacija, sekcija 5.6](../project-specs/05-moderacija.md).
+> **💡 Praktična napomena:** Za Places, verifikacioni status ima veću težinu jer predstavljaju stalne poslovne subjekte. Dokumenti stariji od 2 godine od zatvaranja listinga mogu biti automatski obrisani radi usklađenosti sa GDPR-om. Detalji o workflow-u verifikacije iz moderatorske perspektive opisani su u [05 - Moderacija, sekcija 5.6](05-moderacija.md).
 
 * * *
 ## 4.8 Lifecycle i vidljivost
@@ -669,7 +669,7 @@ Moderatori mogu zatražiti dokumentaciju za **bilo koji aktivan listing** ako po
 
 CityInfo koristi **jednostatus model** koji opisuje kompletan životni ciklus listinga kroz jedno polje `listingStatus` sa 12 eksplicitnih vrijednosti. Ovaj model zamjenjuje stari dvostatus pristup (lifecycleStatus + moderationStatus + closedReason) koji je generisao nevalidne kombinacije statusa i kompleksnu kalkulacijsku logiku.
 
-Ideja je jednostavna: svako stanje u kojem se listing može naći ima svoju eksplicitnu vrijednost — nema skrivene logike koja se izvodi iz kombinacije dva polja. Dijagram tranzicija i narativni scenariji dostupni su u [Novi listing statusni model — specifikacija](../project-specs/migracija-listing-statusni-model-jedan-status/novi-listing-statusni-model-specifikacija.md).
+Ideja je jednostavna: svako stanje u kojem se listing može naći ima svoju eksplicitnu vrijednost — nema skrivene logike koja se izvodi iz kombinacije dva polja. Dijagram tranzicija i narativni scenariji dostupni su u [Novi listing statusni model — specifikacija](novi-listing-statusni-model-specifikacija.md).
 ### Pregled statusa
 
 | Status | Opis | isPublic | Terminalan? |
@@ -786,14 +786,14 @@ stateDiagram-v2
 ```
 ### Tok po Trust Tier-u
 
-Korisnikov Trust Tier direktno određuje **koji tok listing prolazi** pri objavi. Kompletna specifikacija Trust Tier sistema je u [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md), a moderacijski workflow u [05 - Moderacija](../project-specs/05-moderacija.md). Ovdje je prikazan praktični efekat na listing:
+Korisnikov Trust Tier direktno određuje **koji tok listing prolazi** pri objavi. Kompletna specifikacija Trust Tier sistema je u [03 - Korisnici i pristup](03-korisnici-i-pristup.md), a moderacijski workflow u [05 - Moderacija](05-moderacija.md). Ovdje je prikazan praktični efekat na listing:
 
 **Pre-moderacija (Tier 0 — Restricted, Tier 1 — Standard):**
 
 Korisnik klikne "Objavi" → listing prelazi u `in_review` → čeka u moderacijskom redu → moderator odlučuje → tek nakon odobrenja listing prelazi u `published` i postaje vidljiv.
 
 - Korisnik može imati maksimalno `TIER_PRE_MOD_MAX_PENDING` objava koje istovremeno čekaju pregled
-- Ciljno vrijeme odluke: 2 sata (detaljni SLA prioriteti u [05 - Moderacija, sekcija 5.2.4](../project-specs/05-moderacija.md))
+- Ciljno vrijeme odluke: 2 sata (detaljni SLA prioriteti u [05 - Moderacija, sekcija 5.2.4](05-moderacija.md))
 
 **Post-moderacija (Tier 2 — Trusted, Tier 3 — Established, Tier 4 — Verified Partner):**
 
@@ -803,7 +803,7 @@ Korisnik klikne "Objavi" → listing **odmah prelazi u** `published_under_review
 - Tier 3 i 4: pregleda se samo uzorak sadržaja (sampling — konfiguracijski parametri)
 - Ciljno vrijeme naknadnog pregleda: 8 sati
 
-> **💡 Praktična napomena:** Novi korisnici počinju kao Tier 1. Automatski napreduju prema Tier 2 kada ispune konfigurisane pragove (minimum odobrenih objava, procenat uspješnosti, starost računa). Detalji o napredovanju i degradaciji u [03 - Korisnici i pristup, sekcija 3.4](../project-specs/03-korisnici-i-pristup.md).
+> **💡 Praktična napomena:** Novi korisnici počinju kao Tier 1. Automatski napreduju prema Tier 2 kada ispune konfigurisane pragove (minimum odobrenih objava, procenat uspješnosti, starost računa). Detalji o napredovanju i degradaciji u [03 - Korisnici i pristup, sekcija 3.4](03-korisnici-i-pristup.md).
 ### Ažuriranje aktivnog listinga
 
 Korisnik može editovati listing koji je već vidljiv javnosti. Ponašanje pri editu ovisi o Trust Tier-u — važno je balansirati dvije potrebe: da promjene budu brzo vidljive i da kvalitet sadržaja ostane pod kontrolom.
@@ -819,7 +819,7 @@ Listing **ostaje vidljiv** tokom i nakon edita — prelazi u `published_under_re
 > **💡 Praktična napomena:** Ovaj pristup omogućava Verified Partner-u da ispravi radno vrijeme restorana bez čekanja odobrenja, dok novi korisnik ne može zaobići kontrolu kvaliteta izmjenom sadržaja nakon inicijalnog odobrenja.
 ### Šta se dešava sa listinzima blokiranog korisnika
 
-Kada se korisnik blokira (vidi [03 - Korisnici i pristup, sekcija 3.7](../project-specs/03-korisnici-i-pristup.md)), ponašanje ovisi o tipu blokiranja:
+Kada se korisnik blokira (vidi [03 - Korisnici i pristup, sekcija 3.7](03-korisnici-i-pristup.md)), ponašanje ovisi o tipu blokiranja:
 
 **Ručno blokiranje (moderator):** Moderator pri blokiranju bira šta se dešava sa sadržajem:
 
@@ -830,7 +830,7 @@ Kada se korisnik blokira (vidi [03 - Korisnici i pristup, sekcija 3.7](../projec
 
 **Trajno blokiranje:** Ako se korisnik trajno blokira sa uklanjanjem sadržaja, svi aktivni listinzi prelaze u `hidden_by_system`. Moderator pri pregledu odlučuje o daljem statusu svakog listinga.
 
-Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
+Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](05-moderacija.md).
 ### Timeout za changes\_requested
 
 Kada moderator vrati listing na doradu (`changes_requested`), korisnik ima ograničeno vrijeme za odgovor. Ako ne reaguje u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (parametar — preporučena početna vrijednost: 7 dana), listing automatski prelazi u `removed` (removedReason: `rejected`).
@@ -840,7 +840,7 @@ Sistem šalje reminder notifikaciju korisniku na `CHANGES_REQUESTED_REMINDER_DAY
 > **💡 Praktična napomena:** Timeout sprječava nakupljanje "zombie" listinga koji beskonačno stoje u `changes_requested` statusu. Korisnik uvijek može kreirati novi listing ako propusti rok.
 ### Detaljnija specifikacija
 
-Za kompletnu tabelu dozvoljenih tranzicija, zabranjene tranzicije, detaljna pravila za `removedReason`, `wasEverActive` granične slučajeve, i narativne scenarije (12 scenarija koji pokrivaju sve tipične tokove), vidi: [Novi listing statusni model — specifikacija](../project-specs/migracija-listing-statusni-model-jedan-status/novi-listing-statusni-model-specifikacija.md).
+Za kompletnu tabelu dozvoljenih tranzicija, zabranjene tranzicije, detaljna pravila za `removedReason`, `wasEverActive` granične slučajeve, i narativne scenarije (12 scenarija koji pokrivaju sve tipične tokove), vidi: [Novi listing statusni model — specifikacija](novi-listing-statusni-model-specifikacija.md).
 
 * * *
 ## 4.9 Korisničke interakcije
@@ -1024,9 +1024,9 @@ Response: { documentId, virusScanStatus, uploadedAt }
 
 Nakon razumijevanja strukture sadržaja, preporučeni sljedeći koraci:
 
-- **Moderacija sadržaja:** [05 - Moderacija](../project-specs/05-moderacija.md) — workflow pregleda i odluka
-- **Promocije i vidljivost:** [06 - Monetizacija](../project-specs/06-monetizacija.md) — kako promocije utiču na sortDate
-- **Korisnički doživljaj:** [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md) — kako se sadržaj prikazuje korisnicima
+- **Moderacija sadržaja:** [05 - Moderacija](05-moderacija.md) — workflow pregleda i odluka
+- **Promocije i vidljivost:** [06 - Monetizacija](06-monetizacija.md) — kako promocije utiču na sortDate
+- **Korisnički doživljaj:** [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md) — kako se sadržaj prikazuje korisnicima
 
 * * *
 ## Changelog

@@ -26,9 +26,9 @@ Ovo poglavlje objašnjava kako moderacija funkcioniše, ko ima koje ovlasti, i k
 | **5.7 API Endpoints** | Lista endpointa za moderaciju | Dev |
 ### Povezani dokumenti
 
-- [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — Trust Tier sistem, parametri napredovanja
-- [04 - Sadržaj](../project-specs/04-sadrzaj.md) — Listing statusni model (`listingStatus`), ListingDocument entitet (SSoT, sekcija 4.7), korisničke interakcije (sekcija 4.9), API endpointi (sekcija 4.10)
-- [07 - Komunikacija](../project-specs/07-komunikacija.md) — Message sistem
+- [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — Trust Tier sistem, parametri napredovanja
+- [04 - Sadržaj](04-sadrzaj.md) — Listing statusni model (`listingStatus`), ListingDocument entitet (SSoT, sekcija 4.7), korisničke interakcije (sekcija 4.9), API endpointi (sekcija 4.10)
+- [07 - Komunikacija](07-komunikacija.md) — Message sistem
 
 * * *
 ## 5.1 Filozofija moderacije
@@ -63,7 +63,7 @@ EDUKACIJA → PREVENCIJA → INTERVENCIJA → EVALUACIJA
 > 💡 **Praktična napomena:** Filozofija nije samo "lijepe riječi" — ovi principi se reflektuju u svakom template-u, svakoj odluci, svakom UX elementu. Moderatori prolaze trening upravo na ovim principima.
 ### 5.1.3 Trust Tier sistem
 
-CityInfo koristi sistem nivoa povjerenja (Trust Tier) koji određuje kako se sadržaj korisnika moderira. Umjesto binarnog pristupa "vjerujemo / ne vjerujemo", sistem prepoznaje da korisnici grade povjerenje kroz konzistentno kvalitetan sadržaj. Detaljna specifikacija Trust Tier sistema — uključujući sve konfiguracijske parametre — nalazi se u [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md). Ovdje je prikazan sažetak relevantan za moderacijski workflow.
+CityInfo koristi sistem nivoa povjerenja (Trust Tier) koji određuje kako se sadržaj korisnika moderira. Umjesto binarnog pristupa "vjerujemo / ne vjerujemo", sistem prepoznaje da korisnici grade povjerenje kroz konzistentno kvalitetan sadržaj. Detaljna specifikacija Trust Tier sistema — uključujući sve konfiguracijske parametre — nalazi se u [03 - Korisnici i pristup](03-korisnici-i-pristup.md). Ovdje je prikazan sažetak relevantan za moderacijski workflow.
 #### Trust Tier nivoi
 
 | Tier | Naziv | Moderacija | Sampling | Kako se dostiže |
@@ -285,7 +285,7 @@ Kada korisnik edituje aktivan listing, ponašanje zavisi od Trust Tier-a vlasnik
 
 **Tier 2+ (post-moderacija):** Editovani listing prelazi iz `published` u `published_under_review` — ostaje vidljiv javnosti. Sistem kreira novu stavku u moderacijskom queue-u za naknadni pregled, po istoj sampling logici kao za nove objave tog tier-a.
 
-> 💡 **Praktična napomena:** Ovo je važno za konzistentnost moderacije — korisnik na Tier 1 ne smije moći zaobići kontrolu kvaliteta izmjenom sadržaja nakon inicijalnog odobrenja. Istovremeno, Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Kompletna tabela tranzicija opisana je u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md).
+> 💡 **Praktična napomena:** Ovo je važno za konzistentnost moderacije — korisnik na Tier 1 ne smije moći zaobići kontrolu kvaliteta izmjenom sadržaja nakon inicijalnog odobrenja. Istovremeno, Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Kompletna tabela tranzicija opisana je u [04 - Sadržaj, sekcija 4.8](04-sadrzaj.md).
 
 * * *
 ## 5.3 AI Screening
@@ -400,7 +400,7 @@ Svi moderatori dijele iste bazne ovlasti za svakodnevni rad. Dodatne permisije p
 
 > 💡 **Praktična napomena:** Ovo nije hijerarhija — moderator sa dodatnim permisijama nema "viši rang" od ostalih. To je jednostavno pristup akcijama koje zahtijevaju dodatno povjerenje. U praksi, to će biti moderatori sa više iskustva koji su pokazali dobar sud u donošenju odluka.
 
-> ⚠️ **Napomena o local\_admin:** Staff sa ulogom `local_admin` ima šire sistemske ovlasti i može izvršavati sve akcije koje pokrivaju `can_manage_trust_tier` i `can_manage_tags` bez potrebe za dodatnim permisijama. Permisije su relevantne samo za Staff sa ulogom `moderator`. Detalji o matrici ovlasti po ulogama u [03 - Korisnici i pristup, sekcija 3.5](../project-specs/03-korisnici-i-pristup.md).
+> ⚠️ **Napomena o local\_admin:** Staff sa ulogom `local_admin` ima šire sistemske ovlasti i može izvršavati sve akcije koje pokrivaju `can_manage_trust_tier` i `can_manage_tags` bez potrebe za dodatnim permisijama. Permisije su relevantne samo za Staff sa ulogom `moderator`. Detalji o matrici ovlasti po ulogama u [03 - Korisnici i pristup, sekcija 3.5](03-korisnici-i-pristup.md).
 ### 5.4.2 Šta moderator MOŽE
 
 ✅ **Sadržaj:**
@@ -486,7 +486,7 @@ Instant block kreira stavku "Instant Block Review" u moderacijskom queue-u. Mode
 - Ako je korisnik ulogovan u trenutku blokiranja, automatski se odloguje
 - Aktivne promocije se otkazuju bez povrata kredita
 
-Detalji o `hidden_by_system` statusu i blokiranju korisnika opisani su u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md).
+Detalji o `hidden_by_system` statusu i blokiranju korisnika opisani su u [04 - Sadržaj, sekcija 4.8](04-sadrzaj.md).
 
 * * *
 ## 5.5 Komunikacija sa korisnicima
@@ -651,7 +651,7 @@ Verification badge treba dizajnirati pažljivo jer ima uticaj na percepciju svih
 - **Terminologija:** Koristimo "Potvrđen vlasnik" umjesto "Verifikovano" da izbjegnemo implikaciju da je neverifikovano = nepouzdano.
 - **Odsustvo badge-a nije negativan signal:** Ne prikazujemo "Nepotvrđeno" za listinge bez verifikacije — jednostavno ne prikazujemo ništa. Mnogi legitimni biznisi nemaju vremena ili resursa za verifikaciju i ne treba ih za to penalizovati.
 
-> 💡 **Praktična napomena:** Za Places, verifikacioni status ima veću težinu jer predstavljaju stalne poslovne subjekte. Badge motiviše vlasnike da prođu verifikaciju, ali ne smije stvarati percepciju da su neverifikovani listinzi "manje legitimni". Vizualni detalji implementacije opisani su u [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md).
+> 💡 **Praktična napomena:** Za Places, verifikacioni status ima veću težinu jer predstavljaju stalne poslovne subjekte. Badge motiviše vlasnike da prođu verifikaciju, ali ne smije stvarati percepciju da su neverifikovani listinzi "manje legitimni". Vizualni detalji implementacije opisani su u [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md).
 ### 5.6.3 Verifikacija po Trust Tier-u
 
 Mehanizam verifikacije se razlikuje po Trust Tier-u korisnika. Ovo odražava činjenicu da korisnici višeg tiera već imaju uspostavljen odnos povjerenja sa platformom.
@@ -748,7 +748,7 @@ Verifikacija nije odvojen proces — to je dio standardne moderacije listinga. K
 | Reject (→ `removed`, `removedReason: rejected`) | Bilo koji | Nije relevantno (listing odbijen) |
 ### 5.6.7 ListingDocument entitet
 
-Kompletna specifikacija ListingDocument entiteta — uključujući atribute, svrhe dokumenata (`purpose`), upload ograničenja i virus scanning workflow — definisana je u [04 - Sadržaj, sekcija 4.7](../project-specs/04-sadrzaj.md). Poglavlje 04 je jedini izvor istine (SSoT) za ovaj entitet.
+Kompletna specifikacija ListingDocument entiteta — uključujući atribute, svrhe dokumenata (`purpose`), upload ograničenja i virus scanning workflow — definisana je u [04 - Sadržaj, sekcija 4.7](04-sadrzaj.md). Poglavlje 04 je jedini izvor istine (SSoT) za ovaj entitet.
 
 Ovdje je relevantan sažetak za moderacijski kontekst:
 
@@ -826,7 +826,7 @@ Ova sekcija navodi ključne API endpoint-e za moderacijski modul. Endpoint-i su 
 | `GET` | `/api/moderation/stats/patterns` | Prepoznati obrasci (česti razlozi, problematični korisnici) |
 ### 5.7.7 Verifikacija
 
-Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Traženje dokumentacije koristi isti `/request-changes` endpoint kao i bilo koji drugi zahtjev za izmjenama. API endpointi za dokumente listinga definisani su u [04 - Sadržaj, sekcija 4.10](../project-specs/04-sadrzaj.md).
+Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Traženje dokumentacije koristi isti `/request-changes` endpoint kao i bilo koji drugi zahtjev za izmjenama. API endpointi za dokumente listinga definisani su u [04 - Sadržaj, sekcija 4.10](04-sadrzaj.md).
 
 * * *
 ## Poslovna pravila
@@ -846,7 +846,7 @@ Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Tra
 | **BR-MOD-11** | Blokiranje korisnika zahtijeva dokumentovan razlog i izbor opcije za sadržaj | Visok |
 | **BR-MOD-12** | Priloženi dokument mora biti pregledan kao dio moderacije listinga | Srednji |
 | **BR-MOD-13** | Ako dokument nije dovoljan za verified status, korisniku se daje feedback | Srednji |
-| **BR-MOD-14** | Ako korisnik ne odgovori na `changes_requested` u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (preporučena početna vrijednost: 7), listing automatski prelazi u `removed` (`removedReason: rejected`). Sistem šalje reminder notifikaciju `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (preporučena početna vrijednost: 2 dana prije). Detalji u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). | Srednji |
+| **BR-MOD-14** | Ako korisnik ne odgovori na `changes_requested` u roku od `CHANGES_REQUESTED_TIMEOUT_DAYS` dana (preporučena početna vrijednost: 7), listing automatski prelazi u `removed` (`removedReason: rejected`). Sistem šalje reminder notifikaciju `CHANGES_REQUESTED_REMINDER_DAYS` dana prije isteka (preporučena početna vrijednost: 2 dana prije). Detalji u [04 - Sadržaj, sekcija 4.8](04-sadrzaj.md). | Srednji |
 | **BR-MOD-15** | Dokumenti se automatski skeniraju na viruse prije čuvanja | Kritičan |
 | **BR-MOD-16** | Trust tier napredovanje (1→2, 2→3) zahtijeva ispunjenje sva tri uslova istovremeno (min approved, min success rate, min starost računa) | Srednji |
 | **BR-MOD-17** | Verified Partner (Tier 4) se postavlja isključivo ručno od moderatora sa `can_manage_trust_tier` permisijom | Visok |
@@ -887,7 +887,7 @@ Verifikacija se odvija kroz standardne listing moderation endpointe (5.7.2). Tra
 ## Napomene za implementaciju
 ### Trust Tier model
 
-Korisnik ima `trustTier` atribut sa vrijednostima 0–4. Napredovanje je automatsko za nivoe 1→2 i 2→3, bazirano na parametrima definisanim u [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md). Sva tri uslova (min approved, min success rate, min starost računa) moraju biti ispunjena istovremeno.
+Korisnik ima `trustTier` atribut sa vrijednostima 0–4. Napredovanje je automatsko za nivoe 1→2 i 2→3, bazirano na parametrima definisanim u [03 - Korisnici i pristup](03-korisnici-i-pristup.md). Sva tri uslova (min approved, min success rate, min starost računa) moraju biti ispunjena istovremeno.
 ### Moderatorske permisije
 
 Moderator entitet u Staff sistemu ima `permissions` polje (lista) koje može sadržavati:
@@ -906,7 +906,7 @@ Korisnik na Tier 3 može imati `isVerifiedPublisher = true`. Ovaj flag:
 - Automatski se uklanja ako korisnik bude degradiran ispod Tier 3
 ### Statusni model — `listingStatus`
 
-Moderacija koristi jedinstveni `listingStatus` enum na Listing entitetu. Kompletna specifikacija sa svim tranzicijama opisana je u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). Statusi relevantni za moderacijski kontekst:
+Moderacija koristi jedinstveni `listingStatus` enum na Listing entitetu. Kompletna specifikacija sa svim tranzicijama opisana je u [04 - Sadržaj, sekcija 4.8](04-sadrzaj.md). Statusi relevantni za moderacijski kontekst:
 
 - `in_review` — listing čeka moderatora (pre-mod tok za Tier 0/1, ili resubmit)
 - `changes_requested` — moderator vratio listing korisniku, nevidljiv, čeka popravku

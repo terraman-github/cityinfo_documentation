@@ -152,7 +152,7 @@ Oba tipa dijele zajedničke karakteristike (naziv, opis, slike, kategorija, vlas
 
 **Dva režima u korisničkom sučelju:**
 
-Ova separacija se direktno odražava i na korisničko iskustvo — platforma tretira događaje i mjesta kao **dva odvojena svijeta**. Korisnik u svakom trenutku radi u jednom od dva režima ("Događaji" ili "Mjesta"), a sučelje jasno stavlja do znanja koji je aktivan. Naslovna stranica po defaultu prikazuje događaje jer su oni vremenski osjetljivi. Više o ovome u dokumentu [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md).
+Ova separacija se direktno odražava i na korisničko iskustvo — platforma tretira događaje i mjesta kao **dva odvojena svijeta**. Korisnik u svakom trenutku radi u jednom od dva režima ("Događaji" ili "Mjesta"), a sučelje jasno stavlja do znanja koji je aktivan. Naslovna stranica po defaultu prikazuje događaje jer su oni vremenski osjetljivi. Više o ovome u dokumentu [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md).
 ### Kategorije i tagovi
 
 Svaki listing pripada **jednoj primarnoj kategoriji** i može imati do `MAX_SECONDARY_CATEGORIES` **sekundarnih kategorija** (parametar — preporučena početna vrijednost: 10). Ovaj sistem omogućava fleksibilno pronalaženje sadržaja iz različitih uglova.
@@ -256,37 +256,37 @@ Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći
 
 **Frontend development:**
 
-1. [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md) — razumijevanje UI tokova
-2. [04 - Sadržaj](../project-specs/04-sadrzaj.md) — struktura Listing entiteta
+1. [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md) — razumijevanje UI tokova
+2. [04 - Sadržaj](04-sadrzaj.md) — struktura Listing entiteta
 3. API Endpoints sekcije u svakom poglavlju — integracija
 
 **Backend development:**
 
-1. [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — autentifikacija i autorizacija
-2. [08 - Infrastruktura](../project-specs/08-infrastruktura.md) — multi-tenant logika
+1. [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — autentifikacija i autorizacija
+2. [08 - Infrastruktura](08-infrastruktura.md) — multi-tenant logika
 3. Poslovna pravila (BR-\*) u svakom poglavlju — validacije
 
 **Moderacija/admin panel:**
 
-1. [05 - Moderacija](../project-specs/05-moderacija.md) — workflow i queue logika
-2. [03 - Korisnici i pristup, sekcija Staff](../project-specs/03-korisnici-i-pristup.md) — uloge i ovlasti
+1. [05 - Moderacija](05-moderacija.md) — workflow i queue logika
+2. [03 - Korisnici i pristup, sekcija Staff](03-korisnici-i-pristup.md) — uloge i ovlasti
 ### 🛡️ Za moderatore
 
-1. **Obavezno:** [05 - Moderacija](../project-specs/05-moderacija.md) — glavni priručnik
-2. [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — kako trust utiče na workflow
-3. [07 - Komunikacija](../project-specs/07-komunikacija.md) — komunikacija sa korisnicima
+1. **Obavezno:** [05 - Moderacija](05-moderacija.md) — glavni priručnik
+2. [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — kako trust utiče na workflow
+3. [07 - Komunikacija](07-komunikacija.md) — komunikacija sa korisnicima
 4. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — Lejla (moderator persona) i putovanje 5
 ### 📊 Za product managere
 
 1. Ovaj dokument (1.1 i 1.5) — big picture
 2. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — detaljne persone, korisnička putovanja i mapiranje na journey milestones
-3. [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md) — user flows
-4. [06 - Monetizacija](../project-specs/06-monetizacija.md) — pricing i business model
+3. [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md) — user flows
+4. [06 - Monetizacija](06-monetizacija.md) — pricing i business model
 ### ⚙️ Za operatore
 
-1. [06 - Monetizacija](../project-specs/06-monetizacija.md) — financijski tokovi
-2. [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — upravljanje osobljem
-3. [08 - Infrastruktura](../project-specs/08-infrastruktura.md) — audit i logging
+1. [06 - Monetizacija](06-monetizacija.md) — financijski tokovi
+2. [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — upravljanje osobljem
+3. [08 - Infrastruktura](08-infrastruktura.md) — audit i logging
 4. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — Damir (operator persona) i putovanje 6
 
 > **💡 Praktična napomena:** Dokumentacija je živi organizam. Ako nešto nedostaje ili nije jasno, preporuka je otvoriti issue u repo-u ili direktno kontaktirati vlasnika dokumenta.
@@ -332,8 +332,8 @@ Na osnovu persona, identificirano je šest ključnih putovanja kroz sistem:
 Nakon čitanja ovog dokumenta, postoji solidna osnova za razumijevanje CityInfo platforme. Ovisno o ulozi, preporučeni su sljedeći koraci:
 
 - **Detaljne persone i putovanja:** [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md)
-- **Tehnički detalji o korisnicima:** [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md)
-- **Detaljni user flows:** [02 - Korisnički doživljaj](../project-specs/02-korisnicko-iskustvo.md)
+- **Tehnički detalji o korisnicima:** [03 - Korisnici i pristup](03-korisnici-i-pristup.md)
+- **Detaljni user flows:** [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md)
 
 * * *
 ## Changelog

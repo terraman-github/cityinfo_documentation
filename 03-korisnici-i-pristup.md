@@ -130,7 +130,7 @@ Ovo rješava problem samplinga: na Tier 3 moderacija funkcioniše sa samplingom,
 
 Flag postavlja moderator sa `can_manage_trust_tier` permisijom. Dokument nije obavezan — moderator koristi vlastitu procjenu (npr. vlasnik restorana sa verifikovanim Place-om koji organizuje evente ne treba ponovo dokazivati legitimitet). Flag se automatski uklanja ako korisnik bude degradiran ispod Tier 3.
 
-Više o verifikaciji po tier-u u [05 - Moderacija, sekcija 5.6.3](../project-specs/05-moderacija.md).
+Više o verifikaciji po tier-u u [05 - Moderacija, sekcija 5.6.3](05-moderacija.md).
 ### Statusi
 #### accountStatus — životni ciklus računa
 
@@ -280,7 +280,7 @@ stateDiagram-v2
     Restricted --> Standard: Ručno (can_manage_trust_tier)
 ```
 
-**📌 Praktična napomena:** Trust Tier je odvojen od access statusa. Korisnik može biti na Tier 2 (Trusted) ali blocked (npr. ima dobar sadržaj ali je vrijeđao u porukama), ili na Tier 0 (Restricted) ali allowed (može se prijaviti, ali svaki sadržaj ide na pregled). Detalji o moderacijskom workflow-u degradacije u [05 - Moderacija, sekcija 5.1.3](../project-specs/05-moderacija.md).
+**📌 Praktična napomena:** Trust Tier je odvojen od access statusa. Korisnik može biti na Tier 2 (Trusted) ali blocked (npr. ima dobar sadržaj ali je vrijeđao u porukama), ili na Tier 0 (Restricted) ali allowed (može se prijaviti, ali svaki sadržaj ide na pregled). Detalji o moderacijskom workflow-u degradacije u [05 - Moderacija, sekcija 5.1.3](05-moderacija.md).
 
 * * *
 ## 3.5 Staff entitet
@@ -339,7 +339,7 @@ Ovo nije hijerarhija — moderator sa dodatnim permisijama nema "viši rang" od 
 
 > ⚠️ **Napomena o local\_admin:** Staff sa ulogom `local_admin` ima šire sistemske ovlasti i može izvršavati sve akcije koje pokrivaju `can_manage_trust_tier` i `can_manage_tags` bez potrebe za eksplicitnim permisijama u `permissions` polju. Permisije su relevantne samo za Staff sa ulogom `moderator`.
 
-Detalji o moderatorskim akcijama i permisijama opisani su u [05 - Moderacija, sekcija 5.4](../project-specs/05-moderacija.md).
+Detalji o moderatorskim akcijama i permisijama opisani su u [05 - Moderacija, sekcija 5.4](05-moderacija.md).
 ### Uloge i ovlasti
 #### Pregled uloga
 
@@ -469,7 +469,7 @@ Moderator bira opciju na osnovu procjene — ako je blokada zbog neprimjerenih p
 
 Sistem automatski blokira korisnika u slučajevima koji zahtijevaju hitnu reakciju (hate speech, nasilje, spam, malicious sadržaj). Kod instant blokiranja, **default ponašanje je sakrivanje sadržaja** — svi javno vidljivi listinzi automatski prelaze u `hidden_by_system`. Instant block kreira stavku "Instant Block Review" u moderacijskom queue-u, gdje moderator može potvrditi blokadu ili revertovati ako je bila false positive.
 
-> **📌 Praktična napomena:** Pri ručnom blokiranju, sakriveni listinzi (`hidden_by_system`) se automatski reaktiviraju pri odblokiranju. Ako moderator želi **trajno** ukloniti sadržaj (npr. u slučaju prevare ili ilegalnog sadržaja), to je zasebna akcija — moderator može listinge prebaciti u `removed` sa odgovarajućim `removedReason` prije ili nakon blokiranja. Detalji o `listingStatus` vrijednostima i `removedReason` opisani su u [04 - Sadržaj, sekcija 4.8](../project-specs/04-sadrzaj.md). Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](../project-specs/05-moderacija.md).
+> **📌 Praktična napomena:** Pri ručnom blokiranju, sakriveni listinzi (`hidden_by_system`) se automatski reaktiviraju pri odblokiranju. Ako moderator želi **trajno** ukloniti sadržaj (npr. u slučaju prevare ili ilegalnog sadržaja), to je zasebna akcija — moderator može listinge prebaciti u `removed` sa odgovarajućim `removedReason` prije ili nakon blokiranja. Detalji o `listingStatus` vrijednostima i `removedReason` opisani su u [04 - Sadržaj, sekcija 4.8](04-sadrzaj.md). Detalji o razlici između ručnog i instant blokiranja u [05 - Moderacija, sekcija 5.4.4](05-moderacija.md).
 ### Session politike
 
 | Sistem | Trajanje | Concurrent sessions | Logout opcije |

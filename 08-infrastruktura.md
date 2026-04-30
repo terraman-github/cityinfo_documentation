@@ -272,10 +272,10 @@ Za mobilne korisnike, platforma podržava push notifikacije (Faza 2).
 Slike i dokumenti se čuvaju u eksternom cloud storage servisu sa CDN-om za brzo učitavanje.
 ### 8.4.5 AI Content Screening
 
-Slike koje korisnici uploaduju prolaze kroz automatsku provjeru sadržaja putem eksternih AI servisa. Detalji o scoring komponentama i blocking logici u [05 - Moderacija, sekcija 5.3](../project-specs/05-moderacija.md).
+Slike koje korisnici uploaduju prolaze kroz automatsku provjeru sadržaja putem eksternih AI servisa. Detalji o scoring komponentama i blocking logici u [05 - Moderacija, sekcija 5.3](05-moderacija.md).
 ### 8.4.6 Virus Scanning
 
-Dokumenti koji se uploaduju prolaze kroz virus scan. Detalji o workflow-u u [04 - Sadržaj, sekcija 4.7](../project-specs/04-sadrzaj.md).
+Dokumenti koji se uploaduju prolaze kroz virus scan. Detalji o workflow-u u [04 - Sadržaj, sekcija 4.7](04-sadrzaj.md).
 
 * * *
 ## 8.5 Technology Stack (pregled)
@@ -300,7 +300,7 @@ CityInfo koristi jasno definisan technology stack koji balansira performanse, ec
 | **Staff panel** | [admin.cityinfo.ba](http://admin.cityinfo.ba) | SvelteKit + TailwindCSS + Flowbite |
 | **GlobalAdmin** | [master.cityinfo.ba](http://master.cityinfo.ba) | SvelteKit + TailwindCSS + Flowbite (MVP može biti minimalan) |
 
-> **💡 Praktična napomena:** Svi frontend sistemi koriste isti stack i dijele komponentnu biblioteku, ali su zasebne SvelteKit aplikacije sa odvojenim routingom, autentifikacijom i API pozivima. Ovo odražava arhitekturu tri korisničke zone iz [01 - Uvod, sekcija 1.2](../project-specs/01-uvod-i-koncepti.md).
+> **💡 Praktična napomena:** Svi frontend sistemi koriste isti stack i dijele komponentnu biblioteku, ali su zasebne SvelteKit aplikacije sa odvojenim routingom, autentifikacijom i API pozivima. Ovo odražava arhitekturu tri korisničke zone iz [01 - Uvod, sekcija 1.2](01-uvod-i-koncepti.md).
 ### Cache i pretraga
 
 | Komponenta | Status | Namjena |

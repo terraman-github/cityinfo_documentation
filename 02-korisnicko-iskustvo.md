@@ -273,7 +273,7 @@ AutoRenew automatski osvježava `sortDate` na odabranom intervalu. Dostupni inte
 | 8h  | 3×  | Pojačana vidljivost |
 | 3h  | 8×  | Maksimalna ekspozicija |
 
-> ⚠️ **Napomena:** Pricing model za AutoRenew opciju (množitelji bazne cijene, fiksni dodaci, ili drugi pristup) **još nije finaliziran**. Detalji o trenutnom stanju pricinga u [06 - Monetizacija, sekcija 6.2.4](../project-specs/06-monetizacija.md).
+> ⚠️ **Napomena:** Pricing model za AutoRenew opciju (množitelji bazne cijene, fiksni dodaci, ili drugi pristup) **još nije finaliziran**. Detalji o trenutnom stanju pricinga u [06 - Monetizacija, sekcija 6.2.4](06-monetizacija.md).
 ### Paginacija i infinite scroll
 
 Za duge liste koristi se lazy loading pristup — učitava se inicijalni set rezultata, a dodatni se dohvataju kako korisnik skrola ili klikne "Prikaži više".
@@ -320,7 +320,7 @@ Visitors mogu lajkati listinge, ali na jednostavniji način nego registrovani ko
 - **Bez historije:** Ne čuva se informacija o tome ko je lajkao — visitor ne može vidjeti "svoje" lajkove
 - **Zaštita od zloupotrebe:** Sistem kombinuje IP adresu i digitalni otisak preglednika (tip preglednika, jezik, ostali pasivno dostupni meta-podaci) kako bi prepoznao i ignorisao ponavljane interakcije sa iste "lokacije" — čak i kada se IP adresa mijenja
 
-Detalji o Appreciation entitetu (za registrovane korisnike) i Favorite funkcionalnosti opisani su u [04 - Sadržaj, sekcija 4.9](../project-specs/04-sadrzaj.md).
+Detalji o Appreciation entitetu (za registrovane korisnike) i Favorite funkcionalnosti opisani su u [04 - Sadržaj, sekcija 4.9](04-sadrzaj.md).
 
 > **💡 Praktična napomena:** Visitor lajkovi doprinose popularnosti listinga, ali bez pohrane ličnih podataka — u skladu sa GDPR zahtjevima. Ovo omogućava platformi da ima živu interakciju čak i sa korisnicima koji ne žele kreirati račun.
 
@@ -421,10 +421,10 @@ Korisnik može vidjeti kako promocija utiče na vidljivost:
 * * *
 ## Šta dalje?
 
-- **Korisnici i pristup:** [03 - Korisnici i pristup](../project-specs/03-korisnici-i-pristup.md) — User entitet, Trust Tier sistem, registracija
-- **Detalji o sadržaju:** [04 - Sadržaj](../project-specs/04-sadrzaj.md) — Listing, Event, Place entiteti i njihovi atributi
-- **Moderacija:** [05 - Moderacija](../project-specs/05-moderacija.md) — Kako funkcioniše pregled i odobravanje sadržaja
-- **Promocije i monetizacija:** [06 - Monetizacija](../project-specs/06-monetizacija.md) — Kreditni sistem i promocijski paketi
+- **Korisnici i pristup:** [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — User entitet, Trust Tier sistem, registracija
+- **Detalji o sadržaju:** [04 - Sadržaj](04-sadrzaj.md) — Listing, Event, Place entiteti i njihovi atributi
+- **Moderacija:** [05 - Moderacija](05-moderacija.md) — Kako funkcioniše pregled i odobravanje sadržaja
+- **Promocije i monetizacija:** [06 - Monetizacija](06-monetizacija.md) — Kreditni sistem i promocijski paketi
 
 * * *
 ## Changelog
