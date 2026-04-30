@@ -6,6 +6,9 @@ journey_milestones: [J-02, J-04]
 personas: [Marko, Ana, Thomas]
 story_count: 5
 ---
+<!-- confluence-page-id: 251297793 -->
+<!-- confluence-space-key: GI -->
+
 
 # E03a — Kategorizacija sadržaja — entiteti i seed data
 
@@ -33,11 +36,11 @@ story_count: 5
 
 **Persone:** Marko (organizator), Ana (vlasnica biznisa), Thomas (turist) — indirektno, jer ovdje se postavljaju kategorije koje će oni koristiti
 
-**Journey milestones:** **J-02**, **J-04**
+**Journey milestones:** J-02, **J-04**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.04**, sekcije 4.4–4.5 (kategorije i tagovi)
+**Dokumentacijska referenca:** Ch.04, sekcije 4.4–4.5 (kategorije i tagovi)
 
 **Tehničke napomene:**
 

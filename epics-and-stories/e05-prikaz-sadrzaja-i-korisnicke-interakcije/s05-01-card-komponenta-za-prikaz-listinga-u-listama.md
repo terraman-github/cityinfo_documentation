@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: frontend-only
 ---
 
-# S05-01 — Card komponenta za prikaz listinga u listama
-
 **Naslov:** Card komponenta za prikaz listinga u listama
 
 **Excerpt:** Kartica je osnovna "jedinica prikaza" — svaki listing se u listama/gridovima prikazuje kao kompaktna kartica sa slikom, nazivom, kategorijom, datumom, udaljenošću i socijalnim signalima. Tri nivoa promocije se vizuelno razlikuju. Ista komponenta se koristi na naslovnoj, u pretrazi, i u related contentu.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac,  
-želim vidjeti pregled listinga u kompaktnom formatu sa ključnim informacijama,  
+Kao posjetilac,
+
+želim vidjeti pregled listinga u kompaktnom formatu sa ključnim informacijama,
+
 kako bih brzo mogao procijeniti da li me listing zanima prije nego kliknem na detalje.
 
 **Kontekst:** Card komponenta se koristi svuda gdje se prikazuje lista listinga — naslovna, pretraga, filteri, related content, favoriti. Elementi kartice su definirani u **Ch.02, sekcija 2.3**. Ista komponenta za Event i Place, ali sa razlikama u prikazanim podacima (Event ima datum, Place nema).

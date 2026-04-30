@@ -8,19 +8,19 @@ journey_milestones: [J-06]
 type: fullstack
 ---
 
-# S10-05 — Ručno osvježavanje pozicije listinga
-
 **Naslov:** Ručno osvježavanje pozicije listinga
 
 **Excerpt:** Svaki korisnik može besplatno osvježiti poziciju svog javno vidljivog listinga jednom u 24 sata. Ovo je bazična funkcionalnost dostupna svima — ne zahtijeva promociju niti kredite. Listing dobija novi `sortDate` i efektivno "raste" na vrh liste.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-06**
+**Journey milestones:** J-06
 
 **User story:**  
-Kao vlasnik listinga,  
-želim besplatno osvježiti poziciju svog listinga jednom dnevno,  
+Kao vlasnik listinga,
+
+želim besplatno osvježiti poziciju svog listinga jednom dnevno,
+
 kako bi moj listing bio vidljiviji bez troškova.
 
 **Kontekst:** Korisnik pristupa opciji refresh-a kroz "Moji listinzi" pregled ili listing detail stranicu. Klikom na "Osvježi poziciju", `sortDate` se ažurira na NOW() i listing se pojavljuje više u rezultatima. Cooldown je 24 sata — korisnik ne može osvježiti ponovo dok ne prođe 24h od zadnjeg ručnog refresh-a. Listing ima polje `lastManualRefreshAt` koje prati kad je korisnik zadnji put ručno osvježio. Detalji → **Ch.06, sekcija 6.2**.4.

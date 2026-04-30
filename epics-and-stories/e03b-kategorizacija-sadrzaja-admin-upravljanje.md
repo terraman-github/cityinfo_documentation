@@ -6,6 +6,9 @@ journey_milestones: [J-08]
 personas: [Lejla, Damir]
 story_count: 4
 ---
+<!-- confluence-page-id: 251691009 -->
+<!-- confluence-space-key: GI -->
+
 
 # E03b — Kategorizacija sadržaja — admin upravljanje
 
@@ -30,11 +33,11 @@ story_count: 4
 
 **Persone:** Lejla (moderator — upravljanje tagovima), Damir (ops manager — upravljanje kategorijama i aliasima)
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.04**, sekcije 4.4–4.5 (pravila za kategorije, tagove, aliase, spajanje tagova)
+**Dokumentacijska referenca:** Ch.04, sekcije 4.4–4.5 (pravila za kategorije, tagove, aliase, spajanje tagova)
 
 **Tehničke napomene:**
 

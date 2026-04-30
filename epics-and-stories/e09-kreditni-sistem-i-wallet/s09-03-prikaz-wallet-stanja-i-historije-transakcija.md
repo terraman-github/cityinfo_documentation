@@ -8,19 +8,19 @@ journey_milestones: [J-09]
 type: fullstack
 ---
 
-# S09-03 — Prikaz wallet stanja i historije transakcija
-
 **Naslov:** Prikaz wallet stanja i historije transakcija
 
 **Excerpt:** Korisnik pristupa wallet stranici gdje vidi trenutno stanje kredita i kompletnu historiju transakcija — kupovine, trošenja na promocije, admin korekcije. Transparentnost troškova i zarada je ključna za povjerenje korisnika u monetizacijski sistem.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-09**
+**Journey milestones:** J-09
 
 **User story:**  
-Kao korisnik platforme,  
-želim pregledati stanje wallet-a i historiju svih transakcija,  
+Kao korisnik platforme,
+
+želim pregledati stanje wallet-a i historiju svih transakcija,
+
 kako bih imao potpunu kontrolu i pregled nad svojim troškovima i dopunama.
 
 **Kontekst:** Korisnik pristupa wallet stranici kroz header (klik na wallet stanje) ili kroz navigaciju u profilu. Stranica prikazuje trenutno stanje i listu transakcija sa filtrima. Svaka transakcija ima tip, iznos (+/-), opis i datum. Detalji o CreditTransaction entitetu → **Ch.06, sekcija 6.1**.4; tipovi transakcija → **Ch.06, sekcija 6.1**.4.

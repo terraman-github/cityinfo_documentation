@@ -8,8 +8,6 @@ journey_milestones: [J-02, J-03, J-05, J-06]
 type: backend-only
 ---
 
-# S12-01 — Kreiranje i slanje in-app notifikacija
-
 **Naslov:** Kreiranje i slanje in-app notifikacija
 
 **Excerpt:** Backend infrastruktura za kreiranje Notification zapisa u bazi i njihovo slanje kao in-app notifikacije. Ovo je temelj notifikacijskog sistema — svaki sistemski događaj koji zahtijeva korisnikovu pažnju kreira Notification zapis koji se prikazuje u aplikaciji.
@@ -19,8 +17,10 @@ type: backend-only
 **Journey milestones:** Cross-cutting
 
 **User story:**  
-Kao sistem,  
-želim kreirati i pohraniti notifikaciju svaki put kad se desi bitan događaj za korisnika,  
+Kao sistem,
+
+želim kreirati i pohraniti notifikaciju svaki put kad se desi bitan događaj za korisnika,
+
 kako bi korisnik bio obaviješten o promjenama na svojim listinzima, porukama i promocijama.
 
 **Kontekst:** Notification entitet evidentira svaku notifikaciju sa tipom, referencom na povezani entitet, statusom čitanja i kanalom. In-app notifikacije (channel='in\_app') su vidljive korisniku u aplikaciji; email notifikacije (channel='email') se loguju ali nisu vidljive u in-app listi. Svaki tip notifikacije ima predefinisan naslov i tijelo koje se generira na osnovu konteksta događaja. Detalji o Notification entitetu → **Ch.07, sekcija 7.2**.3.

@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S11-02 — Prikaz banner oglasa na javnom frontendu
-
 **Naslov:** Prikaz banner oglasa na javnom frontendu
 
 **Excerpt:** Javni frontend prikazuje banner oglase na predefinisanim pozicijama (header, sidebar, in-feed, mobile). Sistem dohvata aktivne oglase za traženu zonu, prikazuje ih po prioritetu sa round-robin rotacijom, a klik vodi na destination URL oglašivača.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao posjetilac platforme,  
-želim vidjeti relevantne banner oglase na stranici,  
+Kao posjetilac platforme,
+
+želim vidjeti relevantne banner oglase na stranici,
+
 kako bih mogao otkriti lokalne ponude i usluge.
 
 **Kontekst:** Oglasi se prikazuju na predefinisanim pozicijama (zonama) na javnom frontendu. Za svaku zonu, sistem dohvata aktivne oglase čiji datumski okvir uključuje danas, sortira ih po prioritetu (sortOrder), i prikazuje onaj sa najvećim prioritetom. Ako ima više oglasa za istu zonu, rotira ih pri svakom učitavanju (round-robin). Prazna zona se ne prikazuje. Detalji o logici prikaza → **Ch.06, sekcija 6.3**.4.

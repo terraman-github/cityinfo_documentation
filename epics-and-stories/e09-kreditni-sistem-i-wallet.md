@@ -8,8 +8,6 @@ personas: [Marko, Ana]
 story_count: 4
 ---
 
-# E09 — Kreditni sistem i wallet
-
 **Naslov:** Kreditni sistem i wallet
 
 **Excerpt:** Kreditni sistem je temelj monetizacije CityInfo platforme — korisnici kupuju kredite unaprijed, a zatim ih troše na promocije listinga. Ovaj prepaid model smanjuje friction pri svakoj akciji i omogućava instant aktivaciju usluga. Epic pokriva wallet, kupovinu kredit paketa, transakcijski log, i admin operacije.
@@ -35,11 +33,11 @@ story_count: 4
 
 **Persone:** Marko (organizator događaja), Ana (vlasnica biznisa)
 
-**Journey milestones:** **J-09** (Wallet i plaćanje)
+**Journey milestones:** J-09 (Wallet i plaćanje)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.06**, sekcije 6.1.1–6.1.7
+**Dokumentacijska referenca:** Ch.06, sekcije 6.1.1–6.1.7
 
 **Tehničke napomene:**
 

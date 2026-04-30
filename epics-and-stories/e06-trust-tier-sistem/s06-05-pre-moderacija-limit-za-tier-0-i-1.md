@@ -8,19 +8,19 @@ journey_milestones: [J-02, J-03]
 type: fullstack
 ---
 
-# S06-05 — Pre-moderacija limit za Tier 0 i 1
-
 **Naslov:** Pre-moderacija limit za Tier 0 i 1
 
 **Excerpt:** Korisnici na Tier 0 i 1 (pre-moderacija) imaju ograničen broj objava koje mogu čekati pregled istovremeno. Ovo sprečava flood — korisnik ne može poslati 50 listinga odjednom i zagušiti moderacijski queue.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**, **J-03**
+**Journey milestones:** J-02, **J-03**
 
 **User story:**  
-Kao sistem,  
-želim ograničiti broj istovremenih objava koje čekaju moderaciju za korisnike na pre-moderaciji,  
+Kao sistem,
+
+želim ograničiti broj istovremenih objava koje čekaju moderaciju za korisnike na pre-moderaciji,
+
 kako bi moderacijski queue ostao upravljiv i korisnici bili poticani da kreiraju kvalitetan sadržaj umjesto masovnog postanja.
 
 **Kontekst:** Korisnici na Tier 0 i 1 su na pre-moderaciji — svaki sadržaj čeka odobrenje prije nego postane vidljiv. Bez limita, korisnik bi mogao poslati veliki broj listinga odjednom, zagušiti queue i otežati rad moderatorima. Parametar `TIER_PRE_MOD_MAX_PENDING` definira maksimalan broj objava u statusu `in_review` istovremeno. Korisnik mora sačekati odluku na jednoj od postojećih objava prije slanja nove. Detalji → **Ch.03, sekcija 3.4**; **Ch.05, sekcija 5.1**.3.

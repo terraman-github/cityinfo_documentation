@@ -8,19 +8,19 @@ journey_milestones: [J-01]
 type: fullstack
 ---
 
-# S01-05 — Zaboravljena lozinka i reset
-
 **Naslov:** Zaboravljena lozinka i reset
 
 **Excerpt:** Korisnik koji je zaboravio lozinku može zatražiti reset putem emaila. Standardan flow — unese email, primi link, postavi novu lozinku. Jednostavno ali kritično jer bez ovoga korisnici gube pristup računu.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-01**
+**Journey milestones:** J-01
 
 **User story:**  
-Kao korisnik koji je zaboravio lozinku,  
-želim zatražiti reset putem emaila i postaviti novu lozinku,  
+Kao korisnik koji je zaboravio lozinku,
+
+želim zatražiti reset putem emaila i postaviti novu lozinku,
+
 kako bih ponovo mogao pristupiti svom računu.
 
 **Kontekst:** Korisnik je na login stranici i ne može se sjetiti lozinke. Klikne "Zaboravljena lozinka", unese email, i prima link za reset. Ovo je standardan sigurnosni flow — API endpointi su definirani u **Ch.03, sekcija 3.8** (`/auth/forgot-password`, `/auth/reset-password`).

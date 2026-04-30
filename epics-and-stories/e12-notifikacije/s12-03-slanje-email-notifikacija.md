@@ -8,8 +8,6 @@ journey_milestones: [J-02, J-03, J-05, J-06]
 type: backend-only
 ---
 
-# S12-03 — Slanje email notifikacija
-
 **Naslov:** Slanje email notifikacija
 
 **Excerpt:** Sistem šalje email notifikacije korisnicima pri ključnim događajima — odobrenje/odbijanje listinga, nova poruka od moderatora, istek promocije. Email-ovi koriste predefinisane template-e sa konzistentnim brandingom i podrškom za dva jezika.
@@ -19,8 +17,10 @@ type: backend-only
 **Journey milestones:** Cross-cutting
 
 **User story:**  
-Kao registrovani korisnik,  
-želim primiti email kad se desi nešto bitno sa mojim listingom ili promocijom,  
+Kao registrovani korisnik,
+
+želim primiti email kad se desi nešto bitno sa mojim listingom ili promocijom,
+
 kako bih mogao reagovati čak i kad nisam na platformi.
 
 **Kontekst:** Email notifikacije su drugi kanal pored in-app notifikacija. Šalju se automatski kad se dese ključni sistemski događaji. U MVP-u, svi korisnici dobijaju sve email notifikacije — nema preferenci za kontrolu tipova ili frekvencije (to dolazi u Fazi 2). Email template-i podržavaju primarni i sekundarni jezik tenanta. Detalji → **Ch.07, sekcija 7.2**.2 i 7.2.5.

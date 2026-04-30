@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: fullstack
 ---
 
-# S04-06 — Sortiranje po sortDate sa promocijskim prioritetima i paginacija
-
 **Naslov:** Sortiranje po sortDate sa promocijskim prioritetima i paginacija
 
 **Excerpt:** Redoslijed listinga nije slučajan — kontroliše ga sortDate u kombinaciji sa promocijskim statusom. Premium listinzi imaju prioritet unutar kategorije, Premium+Homepage na naslovnoj. Dugi rezultati koriste lazy loading pristup sa cursor-based paginacijom.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac,  
-želim da mi se listinzi prikazuju u smislenom redoslijedu i da mogu pregledati sve rezultate,  
+Kao posjetilac,
+
+želim da mi se listinzi prikazuju u smislenom redoslijedu i da mogu pregledati sve rezultate,
+
 kako bih vidio najrelevantnije sadržaje prvi, a zatim nastaviti listanje bez čekanja.
 
 **Kontekst:** Sortiranje je definirano u **Ch.02, sekcija 2.4**. `sortDate` je centralni mehanizam — svaki listing ima ovo polje koje se osvježava pri kreiranju, odobrenju, ručnom refresh-u (jednom u 24h), i AutoRenew promocijama. Promocijski status dodaje drugi sloj: Premium listinzi idu na vrh unutar kategorije, Premium+Homepage na vrh naslovne. Paginacija koristi lazy loading — inicijalni set rezultata se učitava, a dodatni po potrebi.

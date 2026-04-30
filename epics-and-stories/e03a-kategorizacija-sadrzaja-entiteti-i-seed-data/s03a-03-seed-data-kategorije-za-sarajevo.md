@@ -6,6 +6,9 @@ phase: MVP
 journey_milestones: [J-02, J-04]
 type: backend-only
 ---
+<!-- confluence-page-id: 251396097 -->
+<!-- confluence-space-key: GI -->
+
 
 # S03a-03 — Seed data — kategorije za Sarajevo
 
@@ -15,11 +18,13 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**, **J-04**
+**Journey milestones:** J-02, **J-04**
 
 **User story:**  
-Kao developer,  
-želim imati bazu popunjenu inicijalnim kategorijama za Sarajevo,  
+Kao developer,
+
+želim imati bazu popunjenu inicijalnim kategorijama za Sarajevo,
+
 kako bi listing forma imala šta ponuditi korisniku pri odabiru kategorije.
 
 **Kontekst:** Kompletne liste kategorija su definirane u **Ch.04, sekcija 4.4** — 16 sektora za mjesta i 11 za događaje. Seed skripta treba biti idempotentna (može se pokrenuti više puta bez duplikata) i odvojena od schema migracija.

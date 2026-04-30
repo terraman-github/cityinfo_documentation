@@ -8,8 +8,6 @@ journey_milestones: [J-02, J-03]
 type: fullstack
 ---
 
-# S02-07 — Objava listinga i statusne tranzicije
-
 <a id="s02-07-objava-listinga-i-statusne-tranzicije"></a>
 
 # S02-07 — Objava listinga i statusne tranzicije
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**, **J-03**
+**Journey milestones:** J-02, **J-03**
 
 **User story:**  
-Kao korisnik platforme,  
-želim objaviti svoj pripremljeni listing tako da postane vidljiv javnosti,  
+Kao korisnik platforme,
+
+želim objaviti svoj pripremljeni listing tako da postane vidljiv javnosti,
+
 kako bi posjetioci mogli pronaći moj događaj ili mjesto.
 
 **Kontekst:** Korisnik je kreirao listing ([S02-01](s02-01-kreiranje-event-listinga-sa-osnovnim-podacima.md) ili [S02-02](s02-02-kreiranje-place-listinga-sa-osnovnim-podacima.md)), dodao lokaciju (za Event — [S02-03](s02-03-lokacija-event-a-povezivanje-sa-place-om-ili-rucna-adresa.md)), i opciono uploadovao slike/dokumente. Sada klikće "Objavi". Dalji tok zavisi od Trust Tier-a korisnika — pre-moderacija (Tier 0–1: listing čeka odobrenje) ili post-moderacija (Tier 2+: listing odmah vidljiv uz naknadni pregled). `isPublic` se derivira iz `listingStatus` — nije zasebno polje koje se upisuje. Statusni dijagram → **Ch.04, sekcija 4.8**. Korisničko iskustvo objave → **Ch.02, sekcija 2.8**.

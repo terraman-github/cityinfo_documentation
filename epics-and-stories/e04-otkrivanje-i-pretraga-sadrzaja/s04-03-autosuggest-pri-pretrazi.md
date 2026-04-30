@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: fullstack
 ---
 
-# S04-03 — Autosuggest pri pretrazi
-
 **Naslov:** Autosuggest pri pretrazi
 
 **Excerpt:** Dok korisnik kuca u search bar, sistem nudi prijedloge u hijerarhijskom redoslijedu: kategorije, zatim tagovi, pa listinzi. Klik na kategoriju aktivira filter, klik na listing otvara detail stranicu. Autosuggest radi samo unutar aktivnog režima.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac,  
-želim vidjeti prijedloge dok kucam u search bar,  
+Kao posjetilac,
+
+želim vidjeti prijedloge dok kucam u search bar,
+
 kako bih brže došao do željenog rezultata bez kompletnog unosa i čekanja na pretragu.
 
 **Kontekst:** Korisnik počinje kucati u search bar. Nakon minimalno 2 karaktera, dropdown se pojavljuje sa hijerarhijskim prijedlozima. Redoslijed prikazivanja: kategorije → tagovi → listinzi (**Ch.02, sekcija 2.2**). Autosuggest prikazuje samo sadržaj relevantan za aktivni režim.

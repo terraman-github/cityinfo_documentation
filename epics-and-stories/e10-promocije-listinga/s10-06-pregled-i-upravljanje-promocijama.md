@@ -8,19 +8,19 @@ journey_milestones: [J-06]
 type: fullstack
 ---
 
-# S10-06 — Pregled i upravljanje promocijama
-
 **Naslov:** Pregled i upravljanje promocijama
 
 **Excerpt:** Korisnik vidi svoje promocije (aktivne, pauzirane, istekle) sa ključnim informacijama i akcijama. Admin/Staff vidi sve promocije na platformi sa mogućnošću otkazivanja. Ova storija pokriva pregled promocija iz obje perspektive — korisničke i admin.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-06**
+**Journey milestones:** J-06
 
 **User story:**  
-Kao vlasnik listinga,  
-želim pregledati sve svoje promocije sa statusima i preostalim trajanjem,  
+Kao vlasnik listinga,
+
+želim pregledati sve svoje promocije sa statusima i preostalim trajanjem,
+
 kako bih mogao pratiti ulaganja i donositi odluke o nastavku ili pauziranju.
 
 **Kontekst:** Korisnik pristupa sekciji "Moje promocije" u profilu ili kroz navigaciju. Vidi listu svih svojih promocija — aktivnih, pauziranih i istorijskih (istekle, otkazane). Za svaku promociju vidi tip, listing, trajanje, preostalo dana, AutoRenew status, i dostupne akcije. Staff pristupa admin pregledu sa svim promocijama na platformi. Detalji o Promo entitetu i statusima → **Ch.06**, sekcije 6.2.2–6.2.3; API endpointi → **Ch.06, sekcija 6.6**.3.

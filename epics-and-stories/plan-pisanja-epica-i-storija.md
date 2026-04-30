@@ -1,3 +1,5 @@
+<!-- confluence-page-id: 267386881 -->
+<!-- confluence-space-key: GI -->
 # Plan pisanja epica i storija
 
 <a id="cityinfo-plan-pisanja-epica-i-storija"></a>

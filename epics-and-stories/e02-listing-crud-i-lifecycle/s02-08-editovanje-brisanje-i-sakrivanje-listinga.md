@@ -8,8 +8,6 @@ journey_milestones: [J-02]
 type: fullstack
 ---
 
-# S02-08 — Editovanje, brisanje i sakrivanje listinga
-
 <a id="s02-08-editovanje-brisanje-i-sakrivanje-listinga"></a>
 
 # S02-08 — Editovanje, brisanje i sakrivanje listinga
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao vlasnik listinga,  
-želim moći izmijeniti podatke, privremeno sakriti, otkazati event ili trajno obrisati svoj listing,  
+Kao vlasnik listinga,
+
+želim moći izmijeniti podatke, privremeno sakriti, otkazati event ili trajno obrisati svoj listing,
+
 kako bih imao punu kontrolu nad sadržajem koji sam objavio.
 
 **Kontekst:** Korisnik ima listing u nekom od aktivnih statusa (`draft`, `in_review`, `changes_requested`, `published`, `published_under_review`, `published_needs_changes`). Ponašanje pri editu objavljenog listinga zavisi od Trust Tier-a korisnika (**Ch.04**, 4.8 — Ažuriranje objavljenog listinga). Brisanje ima različitu logiku zavisno o `wasEverActive` flagu i tipu listinga (**Ch.04**, 4.2 za Event, 4.3 za Place). Sakrivanje (`hidden_by_owner`) je reverzibilno, za razliku od brisanja (`removed`).

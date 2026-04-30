@@ -8,8 +8,6 @@ personas: [Marko, Lejla, Emir, Amra]
 story_count: 5
 ---
 
-# E06 — Trust Tier sistem
-
 **Naslov:** Trust Tier sistem
 
 **Excerpt:** Trust Tier je mehanizam koji automatski prilagođava nivo moderacije prema ponašanju korisnika — umjesto binarnog "vjerujemo / ne vjerujemo", sistem prepoznaje da se povjerenje gradi kroz konzistentno kvalitetan sadržaj. Ovaj epic pokriva kompletnu backend logiku za evaluaciju napredovanja, automatsku i ručnu degradaciju, `isVerifiedPublisher` flag, te ograničenja za pre-moderaciju. Bez Trust Tier-a, moderacijski workflow nema osnovu na kojoj donosi odluke.
@@ -33,11 +31,11 @@ story_count: 5
 
 **Persone:** Marko (organizator), Lejla (posjetioc koja postaje kreator), Emir (moderator), Amra (operatorka)
 
-**Journey milestones:** **J-03** (Moderacija sadržaja), **J-08** (Operativno upravljanje)
+**Journey milestones:** J-03 (Moderacija sadržaja), **J-08** (Operativno upravljanje)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.03, sekcija 3.4** (Trust Tier sistem); **Ch.05, sekcija 5.1**.3 (Trust Tier u kontekstu moderacije)
+**Dokumentacijska referenca:** Ch.03, sekcija 3.4 (Trust Tier sistem); **Ch.05, sekcija 5.1**.3 (Trust Tier u kontekstu moderacije)
 
 **Tehničke napomene:**
 

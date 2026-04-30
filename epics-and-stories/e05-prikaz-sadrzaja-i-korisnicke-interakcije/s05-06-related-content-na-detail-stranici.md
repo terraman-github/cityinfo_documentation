@@ -8,19 +8,19 @@ journey_milestones: [J-04, J-05]
 type: fullstack
 ---
 
-# S05-06 — Related content na detail stranici
-
 **Naslov:** Related content na detail stranici
 
 **Excerpt:** Na dnu svake detail stranice prikazuju se povezani sadržaji — do 6 stavki koje pomažu korisniku da otkrije još relevantnog sadržaja bez povratka na pretragu. Logika odabira se razlikuje za Event i Place i prioritizira relevantnost nad monetizacijom.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**, **J-05**
+**Journey milestones:** J-04, **J-05**
 
 **User story:**  
-Kao posjetilac,  
-želim vidjeti povezane sadržaje na dnu detail stranice,  
+Kao posjetilac,
+
+želim vidjeti povezane sadržaje na dnu detail stranice,
+
 kako bih otkrio još zanimljivih mjesta ili događaja bez vraćanja na pretragu.
 
 **Kontekst:** Related content se prikazuje na dnu svake detail stranice. Logika odabira je definisana u **Ch.02, sekcija 2.3**. Za Event: prioritet imaju drugi eventi na istom Place-u, zatim eventi iste kategorije u narednih 14 dana, pa eventi sa istim tagovima. Za Place: nadolazeći eventi na tom mjestu, zatim mjesta iste kategorije u blizini. Promovirani listinzi nemaju prioritet u related contentu.

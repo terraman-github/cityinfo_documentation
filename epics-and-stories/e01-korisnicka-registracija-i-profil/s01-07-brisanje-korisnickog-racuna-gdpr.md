@@ -8,19 +8,19 @@ journey_milestones: [J-01]
 type: fullstack
 ---
 
-# S01-07 — Brisanje korisničkog računa (GDPR)
-
 **Naslov:** Brisanje korisničkog računa (GDPR)
 
 **Excerpt:** Korisnik ima pravo obrisati svoj račun — GDPR to zahtijeva. Brisanje je soft delete sa 30-dnevnim grace periodom tokom kojeg se račun može reaktivirati. Nakon 30 dana, podaci se trajno brišu. Aktivni listinzi i promocije se moraju obraditi pri brisanju.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-01**
+**Journey milestones:** J-01
 
 **User story:**  
-Kao korisnik koji želi napustiti platformu,  
-želim obrisati svoj račun i sve vezane podatke,  
+Kao korisnik koji želi napustiti platformu,
+
+želim obrisati svoj račun i sve vezane podatke,
+
 kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.
 
 **Kontekst:** Korisnik pristupa opciji brisanja kroz profil. Brisanje postavlja `accountStatus = deleted` i pokreće 30-dnevni countdown. Tokom tog perioda, korisnik se ne može prijaviti, ali podaci postoje u bazi. Nakon 30 dana, background job trajno briše podatke. Detalji o accountStatus → **Ch.03, sekcija 3.3**. Endpoint: `DELETE /users/me` (**Ch.03, sekcija 3.8**).

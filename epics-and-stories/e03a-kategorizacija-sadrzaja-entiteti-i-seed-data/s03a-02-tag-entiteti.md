@@ -6,6 +6,9 @@ phase: MVP
 journey_milestones: [J-02]
 type: backend-only
 ---
+<!-- confluence-page-id: 251363329 -->
+<!-- confluence-space-key: GI -->
+
 
 # S03a-02 — Tag entiteti
 
@@ -15,11 +18,13 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao developer,  
-želim imati Tag entitete za evente i mjesta,  
+Kao developer,
+
+želim imati Tag entitete za evente i mjesta,
+
 kako bih mogao omogućiti korisnicima da označe specifičnosti svojih listinga.
 
 **Kontekst:** Tagovi opisuju karakteristike listinga (parking, wifi, besplatno, za-djecu). Odvojeni su za evente i mjesta jer su semantički različiti — **Ch.04, sekcija 4.5**. Slugovi tagova se čuvaju denormalizovano u Listing entitetu (`primaryTagSlug`, `secondaryTagSlug`).

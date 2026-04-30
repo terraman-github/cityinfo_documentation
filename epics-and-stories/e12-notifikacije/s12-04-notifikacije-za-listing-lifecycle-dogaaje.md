@@ -8,19 +8,19 @@ journey_milestones: [J-02, J-03]
 type: backend-only
 ---
 
-# S12-04 — Notifikacije za listing lifecycle događaje
-
 **Naslov:** Notifikacije za listing lifecycle događaje
 
 **Excerpt:** Sistem automatski obavještava vlasnika listinga kad se desi promjena statusa — odobrenje, odbijanje, zahtjev za izmjenama, ili podsjetnik da rok za izmjene ističe. Notifikacije su prilagođene Trust Tier nivou korisnika — Tier 0-1 dobija sve moderacijske obavijesti, dok Tier 2+ dobija obavijesti samo ako moderator naknadno pronađe problem.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**, **J-03**
+**Journey milestones:** J-02, **J-03**
 
 **User story:**  
-Kao vlasnik listinga,  
-želim biti obaviješten kad moderator donese odluku o mom listingu,  
+Kao vlasnik listinga,
+
+želim biti obaviješten kad moderator donese odluku o mom listingu,
+
 kako bih mogao reagovati na vrijeme — bilo da je listing odobren, treba doradu, ili je odbijen.
 
 **Kontekst:** Listing lifecycle prolazi kroz moderacijski workflow (**Ch.05**) gdje moderator donosi jednu od tri odluke: approved, changes\_requested, rejected. Svaka od ovih odluka triggeruje notifikaciju vlasniku (in-app + email). Dodatno, ako je listing u statusu changes\_requested i korisnik nije reagovao, sistem šalje podsjetnik (changes\_timeout\_reminder). Notifikacije su prilagođene Trust Tier nivou — **Ch.07, sekcija 7.2**.6.

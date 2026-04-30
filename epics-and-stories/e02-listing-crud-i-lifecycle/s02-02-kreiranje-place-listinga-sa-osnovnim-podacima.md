@@ -8,8 +8,6 @@ journey_milestones: [J-02]
 type: fullstack
 ---
 
-# S02-02 — Kreiranje Place listinga sa osnovnim podacima
-
 <a id="s02-02-kreiranje-place-listinga-sa-osnovnim-podacima"></a>
 
 # S02-02 — Kreiranje Place listinga sa osnovnim podacima
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao vlasnica biznisa,  
-želim kreirati Place listing sa informacijama o mom poslovnom objektu,  
+Kao vlasnica biznisa,
+
+želim kreirati Place listing sa informacijama o mom poslovnom objektu,
+
 kako bih ga učinila vidljivim na platformi i privukla korisnike.
 
 **Kontekst:** Korisnik je ulogovan, ima verificiran telefon. Pristupa formi za kreiranje Place-a kroz navigaciju. Place listing zahtijeva fizičku adresu i koordinate — za razliku od Event-a koji ima fleksibilniju lokaciju. Listing se kreira u `listingStatus = draft`. Detalji o Place atributima → **Ch.04, sekcija 4.3**. Zajednički atributi → **Ch.04, sekcija 4.1**.

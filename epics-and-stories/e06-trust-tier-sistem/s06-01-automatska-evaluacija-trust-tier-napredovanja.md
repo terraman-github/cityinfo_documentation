@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: backend-only
 ---
 
-# S06-01 — Automatska evaluacija Trust Tier napredovanja
-
 **Naslov:** Automatska evaluacija Trust Tier napredovanja
 
 **Excerpt:** Sistem automatski provjerava da li korisnik ispunjava uslove za napredovanje na viši Trust Tier nakon svake moderatorske odluke. Ovo je osnova Trust Tier mehanizma — bez evaluacije, korisnici bi zauvijek ostali na Tier 1 i svaki sadržaj bi čekao ručno odobrenje.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao sistem,  
-želim automatski evaluirati da li korisnik ispunjava uslove za napredovanje kroz Trust Tier nivoe,  
+Kao sistem,
+
+želim automatski evaluirati da li korisnik ispunjava uslove za napredovanje kroz Trust Tier nivoe,
+
 kako bi korisnici koji konzistentno objavljuju kvalitetan sadržaj automatski dobili manje restriktivnu moderaciju.
 
 **Kontekst:** Evaluacija se pokreće nakon svake moderatorske odluke (approve ili reject) na listingu. Sistem provjerava tri parametrizirana uslova istovremeno: minimalni broj odobrenih objava, minimalni procenat uspješnosti, i minimalnu starost računa. Sva tri moraju biti ispunjena da bi napredovanje bilo okidano. `changes_requested` se ne broji — samo finalna odluka po listingu utiče na statistiku. Detalji o pragovima i logici → **Ch.03, sekcija 3.4**.

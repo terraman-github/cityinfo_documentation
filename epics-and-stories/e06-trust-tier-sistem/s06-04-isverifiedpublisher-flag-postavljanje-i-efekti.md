@@ -8,19 +8,19 @@ journey_milestones: [J-03, J-07]
 type: fullstack
 ---
 
-# S06-04 — isVerifiedPublisher flag — postavljanje i efekti
-
 **Naslov:** isVerifiedPublisher flag — postavljanje i efekti
 
 **Excerpt:** Korisnici na Tier 3 (Established) mogu dobiti `isVerifiedPublisher` flag koji automatski daje verified status svim njihovim listinzima. Ovo rješava problem samplinga — kad se ne pregleda svaki listing, verifikacija na nivou korisnika je konzistentnija od verifikacije po listingu.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**, **J-07**
+**Journey milestones:** J-03, **J-07**
 
 **User story:**  
-Kao moderator sa `can_manage_trust_tier` permisijom,  
-želim postaviti `isVerifiedPublisher` flag na korisniku koji je dokazao legitimitet,  
+Kao moderator sa `can_manage_trust_tier` permisijom,
+
+želim postaviti `isVerifiedPublisher` flag na korisniku koji je dokazao legitimitet,
+
 kako bi svi njegovi listinzi automatski dobili verified badge bez potrebe za pojedinačnom verifikacijom.
 
 **Kontekst:** Na Tier 3 moderacija koristi sampling — ne pregleda se svaki listing. Verifikacija per listing bi bila nekonzistentna jer listinzi koji ne uđu u sampling nikad ne bi imali priliku za verified status. Flag prebacuje verifikaciju na nivo korisnika. Moderator odlučuje da li će tražiti dokument — to je poslovna odluka (npr. vlasnik restorana sa već verificiranim Place-om ne treba ponovo dokazivati legitimitet za evente). Flag se automatski uklanja ako korisnik padne ispod Tier 3. Detalji → **Ch.03, sekcija 3.3** (isVerifiedPublisher); **Ch.05, sekcija 5.6**.3.

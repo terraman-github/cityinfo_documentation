@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: backend-only
 ---
 
-# S07-05 — Sampling logika za post-moderaciju
-
 **Naslov:** Sampling logika za post-moderaciju
 
 **Excerpt:** Korisnici na Tier 2 imaju 100% post-moderaciju, ali za Tier 3 i 4 moderator pregleda samo nasumični uzorak sadržaja. Sampling značajno smanjuje opterećenje moderatora za provjerene korisnike, dok i dalje održava kontrolu kvaliteta — ako se u uzorku pronađe problem, korisnik može biti degradiran.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao sistem,  
-želim primjenjivati sampling logiku na post-moderaciju za korisnike višeg Trust Tier-a,  
+Kao sistem,
+
+želim primjenjivati sampling logiku na post-moderaciju za korisnike višeg Trust Tier-a,
+
 kako bi moderatori fokusirali vrijeme na novi i riskantniji sadržaj umjesto na rutinski pregled provjerenih korisnika.
 
 **Kontekst:** Post-moderacija znači da je sadržaj već vidljiv — moderator ga pregleda naknadno. Za Tier 2 sav sadržaj se pregleda (100%). Za Tier 3 i 4, sistem nasumično odabire uzorak na osnovu konfigurabilnih procenata. Neodabrani sadržaj automatski prelazi u `published` bez pregleda. Ako se u pregledanom uzorku pronađe problem, moderator može degradirati korisnika, privremeno povećati sampling, ili reagovati na drugi način. Detalji → **Ch.05, sekcija 5.1**.3 (Sampling).

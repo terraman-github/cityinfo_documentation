@@ -8,8 +8,6 @@ personas: [Marko, Ana, Kemal]
 story_count: 9
 ---
 
-# E02 — Listing CRUD i lifecycle
-
 <a id="e02-listing-crud-i-lifecycle"></a>
 
 # E02 — Listing CRUD i lifecycle
@@ -54,11 +52,11 @@ story_count: 9
 
 **Persone:** Marko (organizator događaja), Ana (vlasnica biznisa), Kemal (lokalni entuzijast)
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.04** (sekcije 4.1–4.3, 4.6–4.8), **Ch.02** (sekcija 2.8)
+**Dokumentacijska referenca:** Ch.04 (sekcije 4.1–4.3, 4.6–4.8), **Ch.02** (sekcija 2.8)
 
 **Tehničke napomene:**
 

@@ -8,8 +8,6 @@ personas: [Amra, Dino, lokalni admin]
 story_count: 7
 ---
 
-# E13 — Staff panel, autentifikacija i upravljanje osobljem
-
 **Naslov:** Staff panel, autentifikacija i upravljanje osobljem
 
 **Excerpt:** Bez admin panela nema moderacije, bez moderacije nema kvalitetnog sadržaja. Ovaj epic pokriva kompletnu infrastrukturu za Staff sistem — od autentifikacije sa obaveznom 2FA, preko kreiranja i upravljanja Staff nalozima, do shell-a admin panela kroz koji moderatori, operatori i lokalni admini svakodnevno rade. Cilj je da Staff tim ima siguran, funkcionalan radni prostor prije nego što moderacijski workflow ([E07](e07-moderacijski-workflow-i-ai-screening.md)) bude pušten u produkciju.
@@ -35,11 +33,11 @@ story_count: 7
 
 **Persone:** Amra (moderatorica), Dino (operater), lokalni admin
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.03** (sekcija 3.5 — Staff entitet, uloge, permisije, matrica ovlasti), **Ch.05** (sekcija 5.4 — moderatorske akcije i permisije), **Ch.03** (sekcija 3.7 — sigurnost i pristup)
+**Dokumentacijska referenca:** Ch.03 (sekcija 3.5 — Staff entitet, uloge, permisije, matrica ovlasti), **Ch.05** (sekcija 5.4 — moderatorske akcije i permisije), **Ch.03** (sekcija 3.7 — sigurnost i pristup)
 
 **Tehničke napomene:**
 

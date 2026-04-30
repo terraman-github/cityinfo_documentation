@@ -8,8 +8,6 @@ journey_milestones: [J-02]
 type: fullstack
 ---
 
-# S02-09 — Ručno osvježavanje sortDate i praćenje statusa objave
-
 <a id="s02-09-ručno-osvježavanje-sortdate-i-praćenje-statusa-objave"></a>
 
 # S02-09 — Ručno osvježavanje sortDate i praćenje statusa objave
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao vlasnik listinga,  
-želim moći osvježiti poziciju svog listinga u rezultatima i pratiti status svih svojih objava,  
+Kao vlasnik listinga,
+
+želim moći osvježiti poziciju svog listinga u rezultatima i pratiti status svih svojih objava,
+
 kako bih imao pregled i kontrolu nad vidljivošću svog sadržaja.
 
 **Kontekst:** `sortDate` je centralni mehanizam za pozicioniranje listinga u svim sortiranim prikazima (**Ch.02**, 2.4). Ručno osvježavanje postavlja `sortDate` na trenutno vrijeme — efektivno "bumpujući" listing na vrh. Dostupno svim korisnicima, jednom u 24 sata, besplatno. Korisničko iskustvo praćenja statusa → **Ch.02, sekcija 2.8**.

@@ -1,3 +1,5 @@
+<!-- confluence-page-id: 267354113 -->
+<!-- confluence-space-key: GI -->
 # Pisanje Epica i User Storija — Instrukcija
 
 <a id="pisanje-epica-i-user-storija-instrukcija"></a>

@@ -8,19 +8,19 @@ journey_milestones: [J-06]
 type: backend-only
 ---
 
-# S12-05 — Notifikacije za promocije i Trust Tier
-
 **Naslov:** Notifikacije za promocije i Trust Tier
 
 **Excerpt:** Sistem obavještava korisnike kad im promocija uskoro ističe ili je istekla, kad je verifikacija vlasništva uspješna, i kad se promijeni Trust Tier nivo. Ove notifikacije pomažu korisnicima da pravovremeno reaguju na promjene koje utiču na vidljivost njihovog sadržaja i status na platformi.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-06**
+**Journey milestones:** J-06
 
 **User story:**  
-Kao vlasnik listinga sa aktivnom promocijom,  
-želim biti obaviješten kad mi promocija ističe ili kad se promijeni moj Trust Tier status,  
+Kao vlasnik listinga sa aktivnom promocijom,
+
+želim biti obaviješten kad mi promocija ističe ili kad se promijeni moj Trust Tier status,
+
 kako bih mogao pravovremeno obnoviti promociju ili razumjeti novi status na platformi.
 
 **Kontekst:** Promocije imaju definisan endDate nakon kojeg prestaju. Sistem treba obavijestiti korisnika unaprijed (npr. 1 dan prije isteka) da ima vremena za akciju — produženje ili novu promociju. Trust Tier promjene (napredovanje ili degradacija) značajno utiču na korisnikovo iskustvo (pre-moderacija vs post-moderacija), pa je bitno da korisnik razumije šta se promijenilo. Detalji o promocijama → **Ch.06, sekcija 6.2**; Trust Tier → **Ch.03, sekcija 3.4**; tipovi notifikacija → **Ch.07, sekcija 7.2**.3.

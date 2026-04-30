@@ -8,8 +8,6 @@ personas: [Marko, Ana, Thomas, Lejla]
 story_count: 8
 ---
 
-# E01 — Korisnička registracija i profil
-
 **Naslov:** Korisnička registracija i profil
 
 **Excerpt:** Bez korisnika nema sadržaja, bez sadržaja nema platforme. Ovaj epic pokriva kompletni tok od anonimnog posjetioca do registrovanog korisnika sa verificiranim emailom, potvrđenim telefonom i funkcionalnim profilom. Uključuje i mehanizme zaštite — session management, reset lozinke, GDPR brisanje — jer registracija bez tih temelja nije ozbiljna.
@@ -40,11 +38,11 @@ story_count: 8
 
 **Persone:** Marko (organizator događaja), Ana (vlasnica biznisa), Thomas (turist), Lejla (studentica) — svi prolaze kroz registraciju
 
-**Journey milestones:** **J-01**
+**Journey milestones:** J-01
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.03**, sekcije 3.2–3.3, 3.7; **Ch.02, sekcija 2.7**
+**Dokumentacijska referenca:** Ch.03, sekcije 3.2–3.3, 3.7; **Ch.02, sekcija 2.7**
 
 **Tehničke napomene:**
 

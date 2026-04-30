@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: fullstack
 ---
 
-# S04-04 — Filtriranje po kategoriji, tagu i datumu
-
 **Naslov:** Filtriranje po kategoriji, tagu i datumu
 
 **Excerpt:** Korisnik sužava rezultate kombinacijom filtera — kategorija, tag, i datum (samo za Events). Filteri koriste AND logiku, prikazuju se kao chipovi, i ostaju aktivni dok ih korisnik eksplicitno ne ukloni. Kad kombinacija ne daje rezultate, sistem nudi prijedloge za relaksaciju.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac,  
-želim filtrirati sadržaj po kategoriji, tagu i datumu,  
+Kao posjetilac,
+
+želim filtrirati sadržaj po kategoriji, tagu i datumu,
+
 kako bih suzio rezultate na ono što me zaista zanima bez ručnog prolaženja kroz sve listinge.
 
 **Kontekst:** Korisnik je na stranici sa rezultatima (naslovna ili pretraga) i želi suziti prikaz. Filteri se koriste unutar aktivnog režima. Kategorije dolaze iz odgovarajućeg sistema (EventCategory ili PlaceCategory), tagovi iz EventTags ili PlaceTags. Datum filter postoji samo u Events režimu — filtrira po jednom datumu, ne po intervalu. Pravila za filtere u **Ch.02, sekcija 2.2**.

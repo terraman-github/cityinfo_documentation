@@ -8,19 +8,19 @@ journey_milestones: [J-06]
 type: fullstack
 ---
 
-# S10-02 — Prikaz promotivnih listinga (sortiranje i vizualno isticanje)
-
 **Naslov:** Prikaz promotivnih listinga (sortiranje i vizualno isticanje)
 
 **Excerpt:** Promotivni listinzi se ističu vizualno i poziciono u listama i na naslovnoj stranici. Premium listinzi su izdvojeni na vrhu kategorije, Standard su izmiješani sa običnim ali vizualno istaknuti. Na naslovnoj, Premium+Homepage imaju apsolutni prioritet. Ovo je "vidljivi" dio promotivnog sistema — ono što korisnici i posjetioci zapravo vide.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-06**
+**Journey milestones:** J-06
 
 **User story:**  
-Kao posjetilac platforme,  
-želim vidjeti istaknute listinge na naslovnoj i u kategorijama,  
+Kao posjetilac platforme,
+
+želim vidjeti istaknute listinge na naslovnoj i u kategorijama,
+
 kako bih mogao otkriti najrelevantnije i najaktuelnije sadržaje.
 
 **Kontekst:** Kada korisnik pregledava naslovnu stranicu ili listu listinga u kategoriji, sistem prikazuje tri grupe sadržaja: Premium sekcija na vrhu (sortirani po sortDate), zatim Standard i obični izmiješani (također po sortDate). Na naslovnoj stranici, Premium+Homepage ima dodatni apsolutni prioritet. Svaki promotivni listing ima vizualno isticanje — badge, border, pozadina. Detalji o sortiranju → **Ch.06, sekcija 6.2**.3; naslovna → **Ch.02, sekcija 2.1**.

@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: fullstack
 ---
 
-# S04-02 — Full-text pretraga sa alias mapiranjem
-
 **Naslov:** Full-text pretraga sa alias mapiranjem
 
 **Excerpt:** Korisnik kuca u search bar i dobija rezultate po nazivu, opisu i aliasima kategorija. Pretraga "gym" pronalazi kategoriju "Teretane i fitness" zahvaljujući alias tabeli. Pretraga radi isključivo unutar aktivnog režima (Events ili Places).
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac,  
-želim pretražiti sadržaj unosom teksta u search bar,  
+Kao posjetilac,
+
+želim pretražiti sadržaj unosom teksta u search bar,
+
 kako bih brzo pronašao konkretne listinge, kategorije ili tagove bez ručnog prolaženja kroz liste.
 
 **Kontekst:** Korisnik je na naslovnoj ili stranici sa rezultatima i koristi search bar. Pretraga pretražuje samo sadržaj aktivnog režima (Events ili Places). Full-text pretraga pokriva polja: name, nameAlt, description, descriptionAlt. Alias tabela (iz [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md)) proširuje pretraživo polje — termin "picerija" pronalazi kategoriju "Restorani". Detalji o pretrazi u **Ch.02, sekcija 2.2**.

@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S11-04 — Pregled statistike display oglasa (Staff)
-
 **Naslov:** Pregled statistike display oglasa (Staff)
 
 **Excerpt:** Staff može pregledati detaljnu statistiku za svaki display oglas — impressions, clicks, CTR (click-through rate) i aktivni period. Ovo je osnova za izvještavanje prema oglašivačima i evaluaciju performansi oglasnih pozicija.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao Staff korisnik,  
-želim pregledati statistiku prikaza i klikova za svaki display oglas,  
+Kao Staff korisnik,
+
+želim pregledati statistiku prikaza i klikova za svaki display oglas,
+
 kako bih mogao informisati oglašivače o performansama i donositi odluke o optimizaciji.
 
 **Kontekst:** Staff pristupa statistici kroz admin panel, bilo iz liste oglasa (osnovni pregled) ili kroz detaljnu statistiku pojedinog oglasa. U MVP-u, statistika je ograničena na ukupne brojke — bez breakdown-a po danu ili po zoni (to dolazi s Naprednim Display Ads u Fazi 2). CTR se kalkuliše na klijentu ili serveru kao clicks/impressions × 100. Detalji o DisplayAd entitetu → **Ch.06, sekcija 6.3**.2.

@@ -8,8 +8,6 @@ personas: [Milica, Thomas, Ana]
 story_count: 6
 ---
 
-# E05 — Prikaz sadržaja i korisničke interakcije
-
 **Naslov:** Prikaz sadržaja i korisničke interakcije
 
 **Excerpt:** Korisnik je pronašao listing — sada ga treba vidjeti u punom sjaju i moći interagovati sa njim. Ovaj epic pokriva card komponentu za liste, detaljnu stranicu sa galerijom i mapom, te tri forme interakcije: lajkovi (uključujući visitor lajkove), favoriti, i dijeljenje. Na dnu detail stranice, related content pomaže korisniku da otkrije još relevantnog sadržaja.
@@ -38,11 +36,11 @@ story_count: 6
 
 **Persone:** Milica (mlada profesionalka — lajkuje i sprema u favorite), Thomas (turist — dijeli listing prijateljima, koristi sekundarni jezik), Ana (vlasnica biznisa — provjerava kako joj listing izgleda)
 
-**Journey milestones:** **J-04**, **J-05**
+**Journey milestones:** J-04, **J-05**
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.02**, sekcije 2.3, 2.6 (listing prikaz, visitors); **Ch.04, sekcija 4.9** (korisničke interakcije)
+**Dokumentacijska referenca:** Ch.02, sekcije 2.3, 2.6 (listing prikaz, visitors); **Ch.04, sekcija 4.9** (korisničke interakcije)
 
 **Tehničke napomene:**
 

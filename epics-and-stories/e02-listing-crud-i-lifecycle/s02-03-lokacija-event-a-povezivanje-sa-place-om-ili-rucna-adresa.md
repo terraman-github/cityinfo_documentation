@@ -8,8 +8,6 @@ journey_milestones: [J-02]
 type: fullstack
 ---
 
-# S02-03 — Lokacija Event-a — povezivanje sa Place-om ili ručna adresa
-
 <a id="s02-03-lokacija-event-a-povezivanje-sa-place-om-ili-ručna-adresa"></a>
 
 # S02-03 — Lokacija Event-a — povezivanje sa Place-om ili ručna adresa
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao organizator događaja,  
-želim definisati gdje se moj event održava — bilo povezivanjem sa mojim mjestom ili unosom adrese,  
+Kao organizator događaja,
+
+želim definisati gdje se moj event održava — bilo povezivanjem sa mojim mjestom ili unosom adrese,
+
 kako bi posjetioci znali gdje doći.
 
 **Kontekst:** Korisnik je kreirao Event draft ([S02-01](s02-01-kreiranje-event-listinga-sa-osnovnim-podacima.md)) i sada dodaje lokaciju. Postoje dvije opcije: povezivanje sa vlastitim Place-om (samo ako je isti korisnik vlasnik oba listinga) ili ručna adresa sa koordinatama. Jedna od opcija je obavezna za objavu, ali ne za draft. Detalji → **Ch.04, sekcija 4.2** (Lokacija listinga događaja).

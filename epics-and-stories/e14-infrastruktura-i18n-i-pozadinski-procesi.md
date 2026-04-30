@@ -8,8 +8,6 @@ personas: [Svi]
 story_count: 7
 ---
 
-# E14 — Infrastruktura, i18n i pozadinski procesi
-
 **Naslov:** Infrastruktura, i18n i pozadinski procesi
 
 **Excerpt:** Sve ostalo stoji na ovom epicu. Prije nego ijedan korisnik kreira listing ili moderator odobri sadržaj, mora postojati funkcionalan razvojni okruženje, baza podataka, i18n framework za dvojezičnost, konfiguracija tenanta i skeleton aplikacije. Ovaj epic postavlja tehničke temelje bez kojih nijedan drugi epic ne može početi.
@@ -35,11 +33,11 @@ story_count: 7
 
 **Persone:** Svi (indirektno — ovo je fundament za sve)
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.08**, sekcije 8.1 (single-tenant aspekt), 8.5 (tech stack); **Ch.01, sekcija 1.1** (dvojezičnost)
+**Dokumentacijska referenca:** Ch.08, sekcije 8.1 (single-tenant aspekt), 8.5 (tech stack); **Ch.01, sekcija 1.1** (dvojezičnost)
 
 **Tehničke napomene:**
 

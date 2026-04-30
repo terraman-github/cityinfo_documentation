@@ -6,6 +6,9 @@ phase: MVP
 journey_milestones: [J-08]
 type: fullstack
 ---
+<!-- confluence-page-id: 251822081 -->
+<!-- confluence-space-key: GI -->
+
 
 # S03b-04 — CRUD aliasa kategorija kroz Staff panel
 
@@ -15,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao local\_admin,  
-želim upravljati aliasima kategorija kroz Staff panel,  
+Kao local\_admin,
+
+želim upravljati aliasima kategorija kroz Staff panel,
+
 kako bih mogao dodati lokalne sinonime i poboljšati uspješnost pretrage bez promjene strukture kategorija.
 
 **Kontekst:** Admin pristupa sekciji za upravljanje aliasima u Staff panelu. Inicijalni aliasi za Sarajevo su postavljeni u [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md). Aliasi su nevidljivi korisnicima — koriste se interno za mapiranje pretrage. Tabela aliasa je konfigurabilan parametar po tenantu — svaki grad može imati lokalne sinonime. Više o aliasima u **Ch.04, sekcija 4.4**.

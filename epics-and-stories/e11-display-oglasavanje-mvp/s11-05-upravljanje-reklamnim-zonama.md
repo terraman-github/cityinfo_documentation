@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S11-05 — Upravljanje reklamnim zonama
-
 **Naslov:** Upravljanje reklamnim zonama
 
 **Excerpt:** Reklamne zone definišu pozicije na stranici gdje se prikazuju banner oglasi. Zone su predefinisane i konfigurisane po tenantu — Staff ih može pregledati i vidjeti koje su dostupne, a sistem ih koristi za mapiranje oglasa na konkretne pozicije.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao Staff korisnik,  
-želim vidjeti listu dostupnih reklamnih zona sa njihovim karakteristikama,  
+Kao Staff korisnik,
+
+želim vidjeti listu dostupnih reklamnih zona sa njihovim karakteristikama,
+
 kako bih znao na koje pozicije mogu dodijeliti oglase.
 
 **Kontekst:** Reklamne zone su predefinisane u sistemu i konfigurisane po tenantu. MVP koristi 4 zone: Z-001 (Header Banner, 728×90), Z-002 (Sidebar, 300×250), Z-003 (In-Feed, 600×100), Z-004 (Mobile Banner, 320×50). Zone se mogu dodavati ili mijenjati bez promjene koda — konfigurisane su na nivou tenanta. Detalji o zonama → **Ch.06, sekcija 6.3**.3.

@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: fullstack
 ---
 
-# S07-01 — Moderacijski queue — struktura, prioritizacija i claim/release
-
 **Naslov:** Moderacijski queue — struktura, prioritizacija i claim/release
 
 **Excerpt:** Queue je centralno mjesto gdje moderatori vide sve što čeka pregled. Sadržaj nije samo lista — prioritiziran je tako da najhitnije stvari budu na vrhu. Moderator može "preuzeti" stavku (claim) da drugi ne rade na istoj, i "pustiti" je (release) ako ne može završiti.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao moderator,  
-želim vidjeti prioritiziranu listu sadržaja koji čeka moderaciju i preuzeti stavke za pregled,  
+Kao moderator,
+
+želim vidjeti prioritiziranu listu sadržaja koji čeka moderaciju i preuzeti stavke za pregled,
+
 kako bih efikasno radio bez da stalno odlučujem "šta sljedeće" i bez rizika da dva moderatora rade na istom sadržaju.
 
 **Kontekst:** Queue se dijeli u četiri zone prema prioritetu: Urgent (AI blocking flag), High Priority (score > 75), Normal Priority (score 40–75), Low Priority (score < 40). Pored sadržaja za moderaciju, u queue ulaze i sistemske stavke: Trust Tier Auto-Degradation Review i Instant Block Review. Prioritizacija koristi različite formule za pre-moderaciju i post-moderaciju. Detalji o prioritizaciji → **Ch.05**, sekcije 5.2.1–5.2.2.

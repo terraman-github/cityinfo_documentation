@@ -8,19 +8,19 @@ journey_milestones: [J-06]
 type: fullstack
 ---
 
-# S10-04 — Pauziranje i nastavak promocije
-
 **Naslov:** Pauziranje i nastavak promocije
 
 **Excerpt:** Korisnik može privremeno pauzirati aktivnu promociju da "sačuva" preostale dane — npr. restoran zatvoren za renovaciju ili organizator čeka bolji termin. Pri pauzi se zamrzavaju preostali dani i suspenduje AutoRenew; pri nastavku se preračunava endDate, osvježava sortDate, i reaktivira AutoRenew.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-06**
+**Journey milestones:** J-06
 
 **User story:**  
-Kao vlasnik listinga sa aktivnom promocijom,  
-želim pauzirati promociju kad mi ne treba i nastaviti je kad sam spreman,  
+Kao vlasnik listinga sa aktivnom promocijom,
+
+želim pauzirati promociju kad mi ne treba i nastaviti je kad sam spreman,
+
 kako ne bih gubio plaćene dane promocije u periodima kad listing nije relevantan.
 
 **Kontekst:** Korisnik pristupa opciji pauze kroz pregled svojih promocija ili kroz listing detail stranicu. Pauza zamrzava preostale dane i suspenduje sve efekte promocije — listing gubi promotivno isticanje i AutoRenew se zaustavlja. Korisnik može nastaviti promociju kad god želi; pri nastavku, endDate se preračunava na osnovu preostalih dana, sortDate se osvježava na NOW(), i AutoRenew se reaktivira. Maksimalno trajanje pauze je kontrolisano parametrom `PROMO_MAX_PAUSE_DAYS`. Detalji → **Ch.06, sekcija 6.2**.5.

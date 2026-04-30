@@ -8,19 +8,19 @@ journey_milestones: [J-09]
 type: fullstack
 ---
 
-# S09-01 — Kreiranje wallet-a pri registraciji korisnika
-
 **Naslov:** Kreiranje wallet-a pri registraciji korisnika
 
 **Excerpt:** Svaki korisnik automatski dobija wallet pri registraciji sa početnim stanjem 0 kredita. Wallet je preduvjet za sve monetizacijske funkcionalnosti — bez njega korisnik ne može kupovati kredite niti aktivirati promocije.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-09**
+**Journey milestones:** J-09
 
 **User story:**  
-Kao sistem,  
-želim automatski kreirati wallet za svakog novog korisnika pri registraciji,  
+Kao sistem,
+
+želim automatski kreirati wallet za svakog novog korisnika pri registraciji,
+
 kako bi korisnik imao spreman račun za kupovinu kredita čim mu zatreba.
 
 **Kontekst:** Wallet se kreira kao dio registracijskog procesa ([E01](../e01-korisnicka-registracija-i-profil.md)). Početno stanje je 0 kredita, minimalni balans je 0 (ne može biti negativan). Wallet stanje treba biti vidljivo korisniku u header-u aplikacije od prvog logina. Detalji o wallet konceptu → **Ch.06, sekcija 6.1**.2.

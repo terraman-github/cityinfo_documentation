@@ -8,8 +8,6 @@ journey_milestones: [J-02, J-07]
 type: fullstack
 ---
 
-# S02-06 — Upload i upravljanje dokumentima listinga
-
 <a id="s02-06-upload-i-upravljanje-dokumentima-listinga"></a>
 
 # S02-06 — Upload i upravljanje dokumentima listinga
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**, **J-07**
+**Journey milestones:** J-02, **J-07**
 
 **User story:**  
-Kao vlasnik listinga,  
-želim priložiti dokumente uz svoj listing (npr. dokaz vlasništva ili dozvolu za događaj),  
+Kao vlasnik listinga,
+
+želim priložiti dokumente uz svoj listing (npr. dokaz vlasništva ili dozvolu za događaj),
+
 kako bih ubrzao proces moderacije i dobio verifikacioni badge.
 
 **Kontekst:** Korisnik ima kreiran listing u bilo kojem statusu osim terminalnih (`removed`, `rejected`, `expired`). Dokumenti se mogu uploadovati pri kreiranju ili naknadno. ListingDocument je SSoT za sve dokumente vezane za listing — **Ch.04** (sekcija 4.7) je autoritativna referenca za ovaj entitet. Verifikacija vlasništva nije obavezna za objavu ali donosi prednosti (brža moderacija, badge). Detalji o verifikaciji → **Ch.04, sekcija 4.7**.

@@ -8,8 +8,6 @@ journey_milestones: [J-02]
 type: fullstack
 ---
 
-# S02-05 — Upload i upravljanje slikama listinga
-
 <a id="s02-05-upload-i-upravljanje-slikama-listinga"></a>
 
 # S02-05 — Upload i upravljanje slikama listinga
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao vlasnik listinga,  
-želim dodati slike svom listingu — glavnu sliku i galeriju,  
+Kao vlasnik listinga,
+
+želim dodati slike svom listingu — glavnu sliku i galeriju,
+
 kako bi listing bio vizuelno atraktivniji i privlačio više posjetilaca.
 
 **Kontekst:** Korisnik ima kreiran listing (Event ili Place) u bilo kojem statusu osim terminalnih (`removed`, `rejected`, `expired`). Slike se uploaduju na stranicu drafta ili na edit stranici objavljenog listinga. Sistem automatski generiše optimizirane verzije (thumbnail, medium, original, WebP). Detalji o Image entitetu → **Ch.04, sekcija 4.6**. Default slika kategorije služi kao fallback ako listing nema vlastitu sliku (hijerarhija slika → **Ch.04**, 4.6).

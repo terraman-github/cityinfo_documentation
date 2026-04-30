@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: fullstack
 ---
 
-# S07-02 — Moderatorske odluke (approve, reject, changes_requested)
-
 **Naslov:** Moderatorske odluke (approve, reject, changes\_requested)
 
 **Excerpt:** Tri osnovna ishoda moderacije: odobri sadržaj, odbaci ga, ili vrati na doradu sa konkretnim feedbackom. Svaka odluka pokreće lanac efekata — od promjene vidljivosti listinga do evaluacije Trust Tier napredovanja vlasnika.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao moderator,  
-želim donijeti odluku o sadržaju (odobriti, odbaciti ili tražiti izmjene) i da sistem automatski primijeni sve posljedice te odluke,  
+Kao moderator,
+
+želim donijeti odluku o sadržaju (odobriti, odbaciti ili tražiti izmjene) i da sistem automatski primijeni sve posljedice te odluke,
+
 kako bih mogao efikasno raditi bez ručnog praćenja statusnih tranzicija i Trust Tier kalkulacija.
 
 **Kontekst:** Moderator pregleda stavku iz queue-a i donosi jednu od tri odluke. Approve i reject su finalne odluke koje utiču na Trust Tier statistiku korisnika. Changes\_requested nije finalna — korisnik dobija povratnu informaciju i priliku da ispravi sadržaj. Svaka odluka osim approve zahtijeva obrazloženje. Nakon finalne odluke, sistem evaluira Trust Tier napredovanje (→ [E06](../e06-trust-tier-sistem.md), [S06-01](../e06-trust-tier-sistem/s06-01-automatska-evaluacija-trust-tier-napredovanja.md)) i auto-degradaciju (→ [E06](../e06-trust-tier-sistem.md), [S06-02](../e06-trust-tier-sistem/s06-02-automatska-degradacija-na-restricted-tier-0.md)). Detalji → **Ch.05**, sekcije 5.2.3–5.2.4.

@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S11-03 — Praćenje impressions i clicks
-
 **Naslov:** Praćenje impressions i clicks
 
 **Excerpt:** Sistem automatski broji impressions (prikazi) i clicks (klikove) za svaki display oglas. Ove metrike su osnova za izvještavanje prema oglašivačima i jedini mjerljivi indikator vrijednosti display oglašavanja u MVP-u.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao Staff korisnik,  
-želim da sistem automatski prati koliko puta je oglas prikazan i koliko puta je kliknut,  
+Kao Staff korisnik,
+
+želim da sistem automatski prati koliko puta je oglas prikazan i koliko puta je kliknut,
+
 kako bih mogao izvijestiti oglašivače o performansama njihovih oglasa.
 
 **Kontekst:** Impressions se inkrementiraju svaki put kad se oglas prikaže korisniku (pri dohvatu iz API-ja za prikaz u zoni). Clicks se inkrementiraju pri kliku na oglas — frontend šalje zahtjev za registraciju klika prije redirecta na targetUrl. Ovo su osnovne metrike bez napredne analitike — dovoljan nivo za MVP izvještavanje. Detalji → **Ch.06, sekcija 6.3**.5.

@@ -8,19 +8,19 @@ journey_milestones: [J-03, J-07]
 type: fullstack
 ---
 
-# S08-02 — Slanje poruke moderatora vlasniku listinga
-
 **Naslov:** Slanje poruke moderatora vlasniku listinga
 
 **Excerpt:** Moderator pokreće komunikaciju sa vlasnikom listinga — šalje poruku koja aktivira thread i postavlja status na `waiting_owner`. Ovo je ključna akcija u moderacijskom workflow-u kad listing zahtijeva pojašnjenje, ispravku ili dokument.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**, **J-07**
+**Journey milestones:** J-03, **J-07**
 
 **User story:**  
-Kao moderator,  
-želim poslati poruku vlasniku listinga kroz message thread,  
+Kao moderator,
+
+želim poslati poruku vlasniku listinga kroz message thread,
+
 kako bih mogao zatražiti pojašnjenje, ispravke ili dokumente bez korištenja eksternih kanala.
 
 **Kontekst:** Moderator pregledava listing u Staff panelu i odlučuje da treba kontaktirati vlasnika — npr. opis je nejasan, nedostaje informacija, ili treba dokaz vlasništva. Moderator piše poruku u thread-u koji već postoji za taj listing (kreiran automatski u [S08-01](s08-01-automatsko-kreiranje-message-thread-a-uz-listing.md)). Ako je thread u statusu `idle`, ovo je prva komunikacija; ako je u `waiting_moderator`, ovo je odgovor na korisnikov prethodni odgovor. U oba slučaja, thread prelazi u `waiting_owner`. Detalji o statusnom modelu i kontroli pristupa → **Ch.07, sekcija 7.1**.4.

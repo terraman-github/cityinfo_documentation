@@ -8,8 +8,6 @@ personas: [Milica, Thomas, Ana]
 story_count: 7
 ---
 
-# E04 — Otkrivanje i pretraga sadržaja
-
 **Naslov:** Otkrivanje i pretraga sadržaja
 
 **Excerpt:** Platforma bez pretrage je katalog koji niko ne čita. Ovaj epic pokriva sve načine na koje korisnik pronalazi sadržaj — od naslovne stranice sa promocijskim prioritetima, preko full-text pretrage sa autosuggest-om i alias mapiranjem, do filtriranja po kategoriji, tagu, datumu i lokaciji. Uključuje i lokacijski dijalog, paginaciju, te responsive prilagodbu svih prikaza.
@@ -45,11 +43,11 @@ story_count: 7
 
 **Persone:** Milica (mlada profesionalka — brza pretraga), Thomas (turist — browse po kategorijama, sekundarni jezik), Ana (vlasnica biznisa — provjerava poziciju svog listinga)
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.02**, sekcije 2.1–2.2, 2.4–2.5 (naslovna, pretraga, sortiranje, responsive)
+**Dokumentacijska referenca:** Ch.02, sekcije 2.1–2.2, 2.4–2.5 (naslovna, pretraga, sortiranje, responsive)
 
 **Tehničke napomene:**
 

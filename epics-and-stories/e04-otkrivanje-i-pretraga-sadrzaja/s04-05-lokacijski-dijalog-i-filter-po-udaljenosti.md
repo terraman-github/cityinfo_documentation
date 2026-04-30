@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: fullstack
 ---
 
-# S04-05 — Lokacijski dijalog i filter po udaljenosti
-
 **Naslov:** Lokacijski dijalog i filter po udaljenosti
 
 **Excerpt:** Korisnik postavlja svoju lokaciju putem GPS-a ili ručnog unosa — sistem provjerava da li je unutar zone pokrivenosti tenanta i omogućava filter po udaljenosti. Lokacijski indikator u headeru uvijek pokazuje trenutno stanje, a klik otvara dijalog za promjenu.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac,  
-želim postaviti svoju lokaciju i filtrirati sadržaj po udaljenosti,  
+Kao posjetilac,
+
+želim postaviti svoju lokaciju i filtrirati sadržaj po udaljenosti,
+
 kako bih pronašao mjesta i događaje koji su mi blizu.
 
 **Kontekst:** Lokacija nije obavezna za korištenje platforme, ali bez nje korisnik gubi filter po udaljenosti i prikaz distance na karticama. Sistem podržava GPS (browser geolokacija) i ručni unos (pretraga adrese/grada). Zona pokrivenosti tenanta je definisana kao centar + radijus. Detalji u **Ch.02, sekcija 2.2** (lokacijski dijalog).

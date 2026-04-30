@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: fullstack
 ---
 
-# S07-06 — Moderacija editovanog sadržaja
-
 **Naslov:** Moderacija editovanog sadržaja
 
 **Excerpt:** Kada korisnik edituje aktivan listing, ponašanje u moderacijskom queue-u zavisi od Trust Tier-a. Za Tier 0/1, editovani listing se skriva i ponovo čeka odobrenje. Za Tier 2+, listing ostaje vidljiv ali ulazi u queue za naknadni pregled. Ovo sprečava zaobilaženje kontrole kvaliteta kroz editovanje.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao sistem,  
-želim primijeniti odgovarajuću moderaciju kada korisnik edituje aktivan listing,  
+Kao sistem,
+
+želim primijeniti odgovarajuću moderaciju kada korisnik edituje aktivan listing,
+
 kako bi se spriječilo zaobilaženje kontrole kvaliteta kroz izmjenu sadržaja nakon inicijalnog odobrenja.
 
 **Kontekst:** Korisnik može editovati aktivan listing u bilo kojem trenutku. Bez ovog mehanizma, korisnik na Tier 1 bi mogao dobiti odobrenje za kvalitetan listing, pa ga zatim izmijeniti u potpuno neprikladan sadržaj koji bi bio vidljiv bez ponovnog pregleda. Ponašanje se razlikuje po tier-u da bi se balansirala sigurnost i korisničko iskustvo — Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Detalji → **Ch.05, sekcija 5.2**.5.

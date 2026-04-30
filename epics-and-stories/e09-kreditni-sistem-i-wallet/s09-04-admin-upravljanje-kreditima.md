@@ -8,19 +8,19 @@ journey_milestones: [J-09]
 type: fullstack
 ---
 
-# S09-04 — Admin upravljanje kreditima
-
 **Naslov:** Admin upravljanje kreditima
 
 **Excerpt:** Staff/admin može ručno dodati ili oduzeti kredite korisniku — za korekcije, kompenzacije, ili penalizacije. Svaka admin operacija kreira CreditTransaction sa odgovarajućim tipom i opisom za potpunu revizijsku traživost.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-09**
+**Journey milestones:** J-09
 
 **User story:**  
-Kao admin/staff,  
-želim ručno dodati ili oduzeti kredite korisniku,  
+Kao admin/staff,
+
+želim ručno dodati ili oduzeti kredite korisniku,
+
 kako bih mogao rješavati izuzetne situacije (kompenzacije, korekcije grešaka, penalizacije) bez direktnog pristupa bazi.
 
 **Kontekst:** U operativnom radu će se pojaviti situacije koje zahtijevaju ručnu korekciju wallet stanja — npr. korisnik je imao tehnički problem pri kupovini pa mu se odobrava kompenzacija, ili je zloupotrijebio sistem pa se oduzimaju krediti. Admin pristupa korisničkom profilu u Staff panelu i koristi formu za dodavanje/oduzimanje kredita. Svaka operacija zahtijeva opis razloga. Detalji o admin operacijama → **Ch.06, sekcija 6.1**.4 (tipovi `admin_credit` i `admin_debit`).

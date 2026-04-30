@@ -6,6 +6,9 @@ phase: MVP
 journey_milestones: [J-08]
 type: fullstack
 ---
+<!-- confluence-page-id: 251723777 -->
+<!-- confluence-space-key: GI -->
+
 
 # S03b-01 — CRUD kategorija kroz Staff panel
 
@@ -15,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao local\_admin,  
-želim upravljati kategorijama (EventCategory i PlaceCategory) kroz Staff panel,  
+Kao local\_admin,
+
+želim upravljati kategorijama (EventCategory i PlaceCategory) kroz Staff panel,
+
 kako bih mogao prilagoditi ponudu kategorija potrebama grada bez developer intervencije.
 
 **Kontekst:** Admin pristupa Staff panelu ([admin.cityinfo.ba](http://admin.cityinfo.ba)) gdje postoji sekcija za upravljanje kategorizacijom. Kategorije su grupisane po sektorima. Entiteti i seed data su već postavljeni kroz [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md). Pravila za kategorije definisana u **Ch.04, sekcija 4.4** — slug je immutable, brisanje moguće samo ako nema povezanih listinga, deaktivacija je preferirana opcija.

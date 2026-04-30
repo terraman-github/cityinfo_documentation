@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S11-01 — Kreiranje i upravljanje display oglasima (Staff)
-
 **Naslov:** Kreiranje i upravljanje display oglasima (Staff)
 
 **Excerpt:** Staff kreira, uređuje i briše banner oglase kroz admin panel. Svaki oglas ima sliku, destination link, dodijeljenu zonu i opcioni vremenski okvir — to je sve što treba za MVP model ručnog upravljanja display oglašavanjem.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao Staff korisnik,  
-želim kreirati i upravljati banner oglasima kroz admin panel,  
+Kao Staff korisnik,
+
+želim kreirati i upravljati banner oglasima kroz admin panel,
+
 kako bih mogao brzo postaviti oglase za lokalne oglašivače bez potrebe za složenim kampanjama.
 
 **Kontekst:** Display oglašavanje u MVP-u koristi maksimalno jednostavan model — Staff ručno postavlja oglase, nema self-service portala za oglašivače. Staff pristupa admin panelu ([admin.cityinfo.ba](http://admin.cityinfo.ba)), odabire sekciju za display oglase i kreira nove ili uređuje postojeće. Svaki oglas je vezan za konkretnu zonu (header, sidebar, in-feed, mobile). Detalji o DisplayAd entitetu → **Ch.06, sekcija 6.3**.2.

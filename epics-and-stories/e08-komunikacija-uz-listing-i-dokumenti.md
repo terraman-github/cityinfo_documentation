@@ -8,8 +8,6 @@ personas: [Lejla, Marko, Ana]
 story_count: 5
 ---
 
-# E08 — Komunikacija uz listing i dokumenti
-
 **Naslov:** Komunikacija uz listing i dokumenti
 
 **Excerpt:** Message sistem omogućava strukturiranu komunikaciju između moderatora i vlasnika listinga — svaki listing ima jedan trajni thread koji prati kompletnu historiju razgovora. Bez ovog sistema, moderatori nemaju način da zatraže pojašnjenja ili dokumente prije donošenja odluke, a vlasnici nemaju kanal za odgovor. Epic pokriva kreiranje thread-ova, slanje i primanje poruka, referenciranje dokumenata, i Staff UI za upravljanje komunikacijom.
@@ -33,11 +31,11 @@ story_count: 5
 
 **Persone:** Lejla (moderator), Marko (organizator događaja), Ana (vlasnica biznisa)
 
-**Journey milestones:** **J-03** (Moderacija sadržaja), **J-07** (Verifikacija vlasništva)
+**Journey milestones:** J-03 (Moderacija sadržaja), **J-07** (Verifikacija vlasništva)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.07**, sekcije 7.1.1–7.1.8; **Ch.04, sekcija 4.7** (ListingDocument SSoT)
+**Dokumentacijska referenca:** Ch.07, sekcije 7.1.1–7.1.8; **Ch.04, sekcija 4.7** (ListingDocument SSoT)
 
 **Tehničke napomene:**
 

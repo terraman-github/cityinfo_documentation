@@ -8,8 +8,6 @@ personas: [Milica, Marko, Ana, Thomas]
 story_count: 5
 ---
 
-# E12 — Notifikacije
-
 **Naslov:** Notifikacije
 
 **Excerpt:** Notifikacije obavještavaju korisnike o bitnim događajima na platformi — od odobravanja listinga, preko novih poruka od moderatora, do isteka promocija. CityInfo u MVP-u koristi dva kanala: email notifikacije (za važne informacije sa trajnim zapisom) i in-app notifikacije (badge + lista unutar aplikacije). Push notifikacije i korisničke preference za kontrolu notifikacija planirane su za Fazu 2.
@@ -36,7 +34,7 @@ story_count: 5
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.07, sekcija 7.2**
+**Dokumentacijska referenca:** Ch.07, sekcija 7.2
 
 **Tehničke napomene:**
 

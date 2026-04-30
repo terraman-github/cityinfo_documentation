@@ -8,19 +8,19 @@ journey_milestones: [J-03, J-08]
 type: backend-only
 ---
 
-# S06-02 — Automatska degradacija na Restricted (Tier 0)
-
 **Naslov:** Automatska degradacija na Restricted (Tier 0)
 
 **Excerpt:** Kada korisnik dosegne konfigurisani prag odbijenih objava u definisanom vremenskom prozoru, sistem ga automatski degradira na Tier 0 (Restricted) i kreira review stavku u moderacijskom queue-u. Ovo je sigurnosna mreža koja štiti platformu i izvan radnog vremena — ali uvijek podliježe ljudskom pregledu.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**, **J-08**
+**Journey milestones:** J-03, **J-08**
 
 **User story:**  
-Kao sistem,  
-želim automatski degradirati korisnika na Tier 0 kada dosegne prag odbijenih objava,  
+Kao sistem,
+
+želim automatski degradirati korisnika na Tier 0 kada dosegne prag odbijenih objava,
+
 kako bi platforma bila zaštićena od korisnika koji ponavljano krše pravila, čak i kada moderatori nisu dostupni.
 
 **Kontekst:** Automatska degradacija se triggeruje kada korisnik ima `TIER_REJECTED_THRESHOLD` odbijenih objava unutar `TIER_REJECTED_WINDOW_DAYS` dana. Ovo važi za korisnike na bilo kojem tier-u (1–4). Svaka automatska degradacija kreira review stavku u moderacijskom queue-u — moderator mora potvrditi ili revertovati odluku. Detalji → **Ch.03, sekcija 3.4** (Degradacija); **Ch.05, sekcija 5.1**.3.

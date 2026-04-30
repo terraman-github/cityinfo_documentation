@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S13-01 — Staff login i session management
-
 **Naslov:** Staff login i session management
 
 **Excerpt:** Omogućava Staff članu da se prijavi na admin panel sa email/password + obaveznom 2FA, uz stroge session politike (1 aktivan session, 8h idle timeout, auto-lockout). Ovo je preduslov za svaku drugu funkcionalnost Staff panela.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao moderator,  
-želim se prijaviti na admin panel sa sigurnom autentifikacijom,  
+Kao moderator,
+
+želim se prijaviti na admin panel sa sigurnom autentifikacijom,
+
 kako bih mogao pristupiti moderacijskim alatima bez rizika od neovlaštenog pristupa.
 
 **Kontekst:** Staff pristupa admin panelu na [admin.cityinfo.ba](http://admin.cityinfo.ba). Za razliku od User sistema, Staff autentifikacija zahtijeva obaveznu 2FA za sve naloge i ima strože session politike. Staff nalog mora biti `isActive = true` da bi login bio moguć. Detalji o sigurnosnim zahtjevima → **Ch.03, sekcija 3.7**. Staff entitet i atributi → **Ch.03, sekcija 3.5**.

@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: backend-only
 ---
 
-# S08-01 — Automatsko kreiranje message thread-a uz listing
-
 **Naslov:** Automatsko kreiranje message thread-a uz listing
 
 **Excerpt:** Svaki listing (Event ili Place) automatski dobija message thread pri kreiranju. Thread je trajni komunikacijski kanal između moderatora i vlasnika — ne otvara se i ne zatvara, samo mijenja status ovisno o aktivnosti.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao sistem,  
-želim automatski kreirati ListingMessageThread pri kreiranju svakog listinga,  
+Kao sistem,
+
+želim automatski kreirati ListingMessageThread pri kreiranju svakog listinga,
+
 kako bi moderator imao spreman komunikacijski kanal kad god treba kontaktirati vlasnika.
 
 **Kontekst:** Kada korisnik kreira novi listing (Event ili Place), sistem pored samog listinga kreira i prazan message thread sa statusom `idle`. Thread živi koliko i listing — nema potrebe za ručnim otvaranjem ili zatvaranjem. Ovaj pristup osigurava da je komunikacijski kanal uvijek dostupan bez dodatne akcije. Detalji o thread modelu → **Ch.07, sekcija 7.1**.3.

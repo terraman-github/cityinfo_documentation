@@ -8,8 +8,6 @@ journey_milestones: [J-02]
 type: fullstack
 ---
 
-# S02-01 — Kreiranje Event listinga sa osnovnim podacima
-
 <a id="s02-01-kreiranje-event-listinga-sa-osnovnim-podacima"></a>
 
 # S02-01 — Kreiranje Event listinga sa osnovnim podacima
@@ -20,11 +18,13 @@ type: fullstack
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**
+**Journey milestones:** J-02
 
 **User story:**  
-Kao organizator događaja,  
-želim kreirati novi Event listing sa svim relevantnim informacijama,  
+Kao organizator događaja,
+
+želim kreirati novi Event listing sa svim relevantnim informacijama,
+
 kako bih mogao pripremiti sadržaj za objavu i privući posjetioce.
 
 **Kontekst:** Korisnik je ulogovan, ima verificiran telefon (preduslov iz [E01](../e01-korisnicka-registracija-i-profil.md)), i pristupa formi za kreiranje Event-a kroz navigaciju ili floating action button. Listing se kreira u `listingStatus = draft` — objava je zasebna akcija ([S02-07](s02-07-objava-listinga-i-statusne-tranzicije.md)). Kategorije i tagovi moraju biti seedani ([E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md)). Detalji o zajedničkim Listing atributima → **Ch.04, sekcija 4.1**. Specifični Event atributi → **Ch.04, sekcija 4.2**. Dvojezična polja → **Ch.04**, napomena o dvojezičnosti u 4.1.

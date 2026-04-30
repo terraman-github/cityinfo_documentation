@@ -8,19 +8,19 @@ journey_milestones: [J-04]
 type: fullstack
 ---
 
-# S04-01 — Naslovna stranica sa dva režima i promocijskim prioritetima
-
 **Naslov:** Naslovna stranica sa dva režima i promocijskim prioritetima
 
 **Excerpt:** Naslovna stranica je ulazna tačka za većinu posjetilaca. Po defaultu prikazuje događaje, a korisnik može prebaciti na mjesta. Sadržaj se prikazuje u dvije grupe: Premium+Homepage listinzi imaju apsolutni prioritet, a svi ostali se sortiraju po sortDate.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-04**
+**Journey milestones:** J-04
 
 **User story:**  
-Kao posjetilac (visitor ili registrovan korisnik),  
-želim vidjeti relevantne listinge čim otvorim platformu,  
+Kao posjetilac (visitor ili registrovan korisnik),
+
+želim vidjeti relevantne listinge čim otvorim platformu,
+
 kako bih brzo saznao šta se dešava u gradu ili gdje otići.
 
 **Kontekst:** Korisnik otvara [cityinfo.ba](http://cityinfo.ba). Naslovna po defaultu prikazuje Events režim jer su događaji vremenski osjetljivi. Korisnik može prebaciti na Places režim kroz vidljivu navigaciju. Sadržaj je podijeljen u dvije grupe prema **Ch.02, sekcija 2.1** — Grupa 1 su Premium+Homepage promocije (apsolutni prioritet), Grupa 2 su svi ostali listinzi sortirani po sortDate. Featured sekcije (npr. "Ovaj vikend") su za MVP hardkodirane.

@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S13-06 — Upravljanje tenant pristupom za Staff
-
 **Naslov:** Upravljanje tenant pristupom za Staff
 
 **Excerpt:** Staff može pristupiti samo tenantima koji su eksplicitno navedeni u `tenantAccess` listi. Ova storija pokriva upravljanje tom listom — dodavanje i uklanjanje tenanta kojima Staff ima pristup.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao local\_admin,  
-želim upravljati kojim tenantima Staff članovi imaju pristup,  
+Kao local\_admin,
+
+želim upravljati kojim tenantima Staff članovi imaju pristup,
+
 kako bih mogao kontrolisati da moderator iz Sarajeva ne vidi podatke iz Banja Luke — osim ako mu je to eksplicitno dodijeljeno.
 
 **Kontekst:** CityInfo je multi-tenant platforma — svaki grad ima svoju bazu. Staff vidi samo podatke tenanta kojima ima pristup (`tenantAccess` lista). Čak i local\_admin za jedan grad ne može vidjeti podatke drugog. Detalji → **Ch.03, sekcija 3.5**. U MVP-u postoji samo jedan tenant (Sarajevo), ali sistem mora biti spreman za multi-tenant scenarij.

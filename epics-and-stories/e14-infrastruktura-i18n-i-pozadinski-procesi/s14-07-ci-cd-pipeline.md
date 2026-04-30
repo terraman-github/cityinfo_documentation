@@ -8,15 +8,13 @@ journey_milestones: [J-08]
 type: infra
 ---
 
-# S14-07 — CI/CD pipeline
-
 **Naslov:** CI/CD pipeline
 
 **Excerpt:** Automatski build i test pipeline koji se pokreće na svaki push. Pipeline je prilagođen monorepo strukturi (backend + frontend u istom repu) i koristi path filtere da ne troši CI resurse na nepromjenjene dijelove. Nije strogi prioritet za Sprint 0, ali preporuka je uvući ga u Sprint 0 jer je investicija mala (pola dana) a koristi se pojavljuju odmah u Sprint 1.
 
 **Phase:** MVP (preporuka: Sprint 0; fallback: kad tim procijeni da je potrebno)
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**
 Kao developer,

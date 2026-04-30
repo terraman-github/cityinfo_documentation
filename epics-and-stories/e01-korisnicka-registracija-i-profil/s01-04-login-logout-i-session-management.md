@@ -8,19 +8,19 @@ journey_milestones: [J-01]
 type: fullstack
 ---
 
-# S01-04 — Login, logout i session management
-
 **Naslov:** Login, logout i session management
 
 **Excerpt:** Korisnik se prijavljuje emailom i lozinkom, dobija session koji traje do 30 dana, i može se odjaviti sa jednog ili svih uređaja. Sistem provjerava i accountStatus i accessStatus pri svakoj prijavi — blokirani ili neaktivni korisnici ne mogu pristupiti.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-01**
+**Journey milestones:** J-01
 
 **User story:**  
-Kao registrovani korisnik,  
-želim se prijaviti na platformu i ostati prijavljen na svim svojim uređajima,  
+Kao registrovani korisnik,
+
+želim se prijaviti na platformu i ostati prijavljen na svim svojim uređajima,
+
 kako bih mogao koristiti platformu bez stalnog ponovnog prijavljivanja.
 
 **Kontekst:** Login je ulazna tačka za sve autentificirane funkcionalnosti. Session politika za User: 30 dana refresh token, neograničene concurrent sessions (**Ch.03, sekcija 3.7**). Pri prijavi, sistem provjerava oba statusa — accountStatus i accessStatus. Korisnik sa `accountStatus = active` ali `accessStatus = blocked` ne smije moći pristupiti (**Ch.03, sekcija 3.3** — ortogonalnost statusa). Lockout nakon 10 neuspjelih pokušaja na 15 minuta (**Ch.03**, 3.7).

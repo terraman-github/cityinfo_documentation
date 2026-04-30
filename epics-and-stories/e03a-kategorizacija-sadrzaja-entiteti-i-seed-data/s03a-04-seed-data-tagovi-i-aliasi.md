@@ -6,6 +6,9 @@ phase: MVP
 journey_milestones: [J-02, J-04]
 type: backend-only
 ---
+<!-- confluence-page-id: 251232276 -->
+<!-- confluence-space-key: GI -->
+
 
 # S03a-04 — Seed data — tagovi i aliasi
 
@@ -15,11 +18,13 @@ type: backend-only
 
 **Phase:** MVP
 
-**Journey milestones:** **J-02**, **J-04**
+**Journey milestones:** J-02, **J-04**
 
 **User story:**  
-Kao developer,  
-želim imati inicijalne tagove i aliase u bazi,  
+Kao developer,
+
+želim imati inicijalne tagove i aliase u bazi,
+
 kako bi korisnici mogli označiti specifičnosti listinga, a pretraga razumjela lokalne sinonime.
 
 **Kontekst:** Primjeri tagova su navedeni u **Ch.04, sekcija 4.5** — EventTags (besplatno, za-djecu, online, radionica, festival, porodično) i PlaceTags (parking, wifi, pet-friendly, dostava, rezervacije, kartice). Aliasi su definisani u **Ch.04, sekcija 4.4** — mapiranje alternativnih termina na kategorije (gym → Teretane i fitness, picerija → Restorani, itd.).

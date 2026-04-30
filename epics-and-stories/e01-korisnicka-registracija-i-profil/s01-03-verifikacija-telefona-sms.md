@@ -8,19 +8,19 @@ journey_milestones: [J-01]
 type: fullstack
 ---
 
-# S01-03 — Verifikacija telefona (SMS)
-
 **Naslov:** Verifikacija telefona (SMS)
 
 **Excerpt:** Telefon se verificira unosom SMS koda. Ovo je preduslov za kreiranje listinga — korisnik bez verificiranog telefona može pregledati sadržaj i koristiti bazične funkcije, ali ne može objavljivati. Cilj je spriječiti masovne spam račune.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-01**
+**Journey milestones:** J-01
 
 **User story:**  
-Kao registrovani korisnik,  
-želim verificirati svoj telefonski broj unosom koda koji sam primio putem SMS-a,  
+Kao registrovani korisnik,
+
+želim verificirati svoj telefonski broj unosom koda koji sam primio putem SMS-a,
+
 kako bih mogao kreirati i objavljivati sadržaj na platformi.
 
 **Kontekst:** Verifikacija telefona je odvojena od registracije — korisnik može kreirati račun i bez telefona, ali kreiranje listinga zahtijeva `phoneVerified = true` (**Ch.02, sekcija 2.7** — korak "Telefon verifikacija"). Korisnik unosi broj telefona, prima SMS sa kodom, i unosi kod na platformi. Broj telefona se čuva u `phoneNumber` polju User entiteta (**Ch.03, sekcija 3.3**).

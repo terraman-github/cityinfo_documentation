@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: fullstack
 ---
 
-# S08-05 — Pregled i upravljanje thread-ovima u Staff panelu
-
 **Naslov:** Pregled i upravljanje thread-ovima u Staff panelu
 
 **Excerpt:** Moderatori trebaju pregled svih aktivnih thread-ova, mogućnost filtriranja po statusu, i brz pristup thread-u iz moderacijskog queue-a. Ova storija pokriva Staff UI za message sistem — listu thread-ova, prikaz poruka, i ažuriranje thread statusa.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao moderator,  
-želim imati pregled svih message thread-ova sa filterima po statusu i dodijeljenom moderatoru,  
+Kao moderator,
+
+želim imati pregled svih message thread-ova sa filterima po statusu i dodijeljenom moderatoru,
+
 kako bih mogao efikasno pratiti komunikaciju sa vlasnicima listinga i ne propustiti čekajuće odgovore.
 
 **Kontekst:** Moderator koristi Staff panel za upravljanje komunikacijom. Pored pristupa thread-u direktno iz listing pregleda (kao dio moderacijskog workflow-a), moderator treba i centraliziran pregled svih thread-ova — posebno onih u statusu `waiting_moderator` koji čekaju njegov odgovor. Ova storija pokriva Staff-specifičan UI i endpoint za upravljanje thread-ovima. Detalji o thread modelu → **Ch.07**, sekcije 7.1.3–7.1.5; PATCH endpoint za thread → **Ch.07, sekcija 7.4**.1.

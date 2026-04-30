@@ -8,8 +8,6 @@ personas: [Marko, Ana]
 story_count: 6
 ---
 
-# E10 — Promocije listinga
-
 **Naslov:** Promocije listinga
 
 **Excerpt:** Promocije omogućavaju listing-ima bolju vidljivost kroz plaćeno isticanje. Tri tipa promocija (Standard, Premium, Premium+Homepage) sa različitim nivoima vidljivosti i cijenom, plus AutoRenew mehanizam za automatsko osvježavanje pozicije i mogućnost pauziranja/nastavka. Ovo je primarni mehanizam monetizacije koji direktno povezuje kreditni sistem sa vidljivošću sadržaja.
@@ -35,11 +33,11 @@ story_count: 6
 
 **Persone:** Marko (organizator događaja), Ana (vlasnica biznisa)
 
-**Journey milestones:** **J-06** (Promocija sadržaja)
+**Journey milestones:** J-06 (Promocija sadržaja)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.06**, sekcije 6.2.1–6.2.7; **Ch.02, sekcija 2.1** (naslovna stranica sortiranje)
+**Dokumentacijska referenca:** Ch.06, sekcije 6.2.1–6.2.7; **Ch.02, sekcija 2.1** (naslovna stranica sortiranje)
 
 **Tehničke napomene:**
 

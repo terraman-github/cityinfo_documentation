@@ -8,19 +8,19 @@ journey_milestones: [J-09]
 type: fullstack
 ---
 
-# S09-02 — Prikaz kredit paketa i kupovina kredita
-
 **Naslov:** Prikaz kredit paketa i kupovina kredita
 
 **Excerpt:** Korisnik bira jedan od ponuđenih kredit paketa, prolazi kroz payment proces, i krediti se dodaju na wallet. Ovo je centralni tok monetizacije — od odluke o kupovini do kredita na računu. Pokriva prikaz paketa, payment gateway integraciju, i kreiranje PaymentHistory + CreditTransaction zapisa.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-09**
+**Journey milestones:** J-09
 
 **User story:**  
-Kao korisnik platforme,  
-želim kupiti paket kredita kroz jednostavan payment proces,  
+Kao korisnik platforme,
+
+želim kupiti paket kredita kroz jednostavan payment proces,
+
 kako bih imao kredite za promociju svojih listinga.
 
 **Kontekst:** Korisnik pristupa stranici za kupovinu kredita (direktno iz navigacije ili kroz redirect kad nema dovoljno kredita za promociju). Vidi listu dostupnih paketa sa cijenama i popustima. Bira paket, prolazi kroz payment formu (gateway integracija), i po uspješnom plaćanju krediti se dodaju na wallet. Cijeli proces od PaymentHistory do wallet update-a je atomska transakcija. Detalji o paketima → **Ch.06, sekcija 6.1**.3; workflow kupovine → **Ch.06, sekcija 6.1**.6.

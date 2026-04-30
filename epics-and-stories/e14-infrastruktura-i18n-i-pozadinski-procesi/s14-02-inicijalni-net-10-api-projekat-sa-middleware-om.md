@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: infra
 ---
 
-# S14-02 — Inicijalni .NET 10 API projekat sa middleware-om
-
 **Naslov:** Inicijalni .NET 10 API projekat sa middleware-om
 
 **Excerpt:** Skeleton backend API koji može primiti HTTP request, rutirati ga i vratiti odgovor. Osnova na koju se nadograđuju svi endpoint-i.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao developer,  
-želim imati funkcionalan .NET 10 API projekat sa bazičnim middleware-om,  
+Kao developer,
+
+želim imati funkcionalan .NET 10 API projekat sa bazičnim middleware-om,
+
 kako bih mogao početi graditi endpoint-e za korisničke i sadržajne funkcionalnosti.
 
 **Kontekst:** Ovo se radi paralelno ili odmah nakon [S14-01](s14-01-postavljanje-repozitorija-i-razvojnog-okruzenja.md) (repo setup). API koristi RESTful stil sa JSON-om — **Ch.08, sekcija 8.5**. Projekat treba podržavati tri odvojena API sistema (User, Staff, GlobalAdmin) od starta, čak i ako se u MVP-u gradi samo User i Staff.

@@ -8,8 +8,6 @@ personas: [Emir, Amra, Marko]
 story_count: 6
 ---
 
-# E07 — Moderacijski workflow i AI screening
-
 **Naslov:** Moderacijski workflow i AI screening
 
 **Excerpt:** Moderacija je srce sistema kvaliteta — osigurava da korisnici dobijaju tačan, koristan i primjeren sadržaj. Ovaj epic pokriva kompletni moderacijski pipeline: od trenutka kada korisnik submituje listing, preko AI screening-a koji prioritizira queue, do moderatorskih odluka i njihovih efekata. AI pomaže ali ne zamjenjuje ljudske odluke — osim u ekstremnim slučajevima gdje automatski blokira očigledno problematičan sadržaj.
@@ -35,11 +33,11 @@ story_count: 6
 
 **Persone:** Emir (moderator), Amra (operatorka), Marko (organizator — čeka odobrenje)
 
-**Journey milestones:** **J-03** (Moderacija sadržaja)
+**Journey milestones:** J-03 (Moderacija sadržaja)
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.05**, sekcije 5.2 (Queue i workflow), 5.3 (AI Screening), 5.4 (Moderatorske akcije — bazne), 5.7 (API Endpoints)
+**Dokumentacijska referenca:** Ch.05, sekcije 5.2 (Queue i workflow), 5.3 (AI Screening), 5.4 (Moderatorske akcije — bazne), 5.7 (API Endpoints)
 
 **Tehničke napomene:**
 

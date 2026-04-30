@@ -8,8 +8,6 @@ personas: [Lejla, Damir]
 story_count: 5
 ---
 
-# E11 — Display oglašavanje (MVP)
-
 **Naslov:** Display oglašavanje (MVP)
 
 **Excerpt:** Display oglašavanje je u MVP-u dizajnirano kao maksimalno jednostavan model: Staff ručno postavlja banner oglase kroz admin panel, a sistem ih prikazuje na predefinisanim pozicijama. Nema self-service portala za oglašivače, nema kampanja ni biddinga — samo slika, link, zona i vremenski okvir. Ovaj pristup daje potpunu kontrolu timu i dovoljan je za prvih 5–10 oglašivača u ranoj fazi, dok display ads vjerovatno predstavlja primarni izvor prihoda dok korisnici još ne vide dovoljno traffica da investiraju u promocije listinga.
@@ -34,11 +32,11 @@ story_count: 5
 
 **Persone:** Lejla (moderator/staff), Damir (ops manager)
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **Phase:** MVP
 
-**Dokumentacijska referenca:** **Ch.06, sekcija 6.3**
+**Dokumentacijska referenca:** Ch.06, sekcija 6.3
 
 **Tehničke napomene:**
 

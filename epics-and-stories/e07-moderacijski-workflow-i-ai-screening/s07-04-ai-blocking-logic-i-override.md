@@ -8,19 +8,19 @@ journey_milestones: [J-03]
 type: fullstack
 ---
 
-# S07-04 — AI blocking logic i override
-
 **Naslov:** AI blocking logic i override
 
 **Excerpt:** U ekstremnim slučajevima (hate speech, explicit nasilje, ilegalni sadržaj), AI može blokirati publikaciju sadržaja bez obzira na Trust Tier korisnika. Blokirani sadržaj ulazi u Urgent queue za hitni pregled. Moderator mora ručno pregledati i može override-ati AI odluku ako je bila false positive.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-03**
+**Journey milestones:** J-03
 
 **User story:**  
-Kao sistem,  
-želim automatski blokirati publikaciju sadržaja kada AI detektuje ekstreman rizik,  
+Kao sistem,
+
+želim automatski blokirati publikaciju sadržaja kada AI detektuje ekstreman rizik,
+
 kako bi platforma bila zaštićena od očigledno štetnog sadržaja čak i prije nego moderator stigne pogledati.
 
 **Kontekst:** AI blocking se aktivira kada score za kritičnu kategoriju (hate speech, adult, violence, illegal) premaši konfigurisani blocking threshold. Ovo je "sigurnosna mreža" — sadržaj se ne objavljuje, listing prelazi u `hidden_by_system` i ulazi u Urgent queue za hitni pregled. Važno: AI ne donosi finalnu odluku — moderator mora pregledati i eksplicitno odobriti ili odbaciti. Korisnici višeg tiera dobijaju transparentniju poruku nego novi korisnici. Detalji → **Ch.05**, sekcije 5.3.4–5.3.6.

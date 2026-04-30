@@ -8,19 +8,19 @@ journey_milestones: [J-05]
 type: fullstack
 ---
 
-# S05-03 — Lajkovi za registrovane korisnike i visitore
-
 **Naslov:** Lajkovi za registrovane korisnike i visitore
 
 **Excerpt:** Registrovani korisnici lajkuju listing i mogu vidjeti historiju svojih lajkova. Visitors mogu lajkati ali bez historije — samo brojač raste. Zaštita od zloupotrebe koristi jednosmjerni hash za visitor detekciju. Ukupan broj lajkova (`totalAppreciations`) kombinuje obje grupe.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-05**
+**Journey milestones:** J-05
 
 **User story:**  
-Kao posjetilac (registrovan ili visitor),  
-želim lajkovati listing koji mi se sviđa,  
+Kao posjetilac (registrovan ili visitor),
+
+želim lajkovati listing koji mi se sviđa,
+
 kako bih izrazio pozitivan stav i pomogao drugima da prepoznaju kvalitetan sadržaj.
 
 **Kontekst:** Lajk je dostupan na kartici i na detaljnoj stranici. Registrovani korisnici imaju Appreciation entitet (**Ch.04**, 4.9) — lajk se trajno evidentira, korisnik može unlike-ovati. Visitors dobijaju samo inkrement brojača bez zapisa. Zaštita od visitor duplikata koristi jednosmjerni hash identifikacionih signala + listingId.

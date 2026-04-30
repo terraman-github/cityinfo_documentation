@@ -8,19 +8,19 @@ journey_milestones: [J-08]
 type: fullstack
 ---
 
-# S13-04 — Pregled i upravljanje Staff nalozima
-
 **Naslov:** Pregled i upravljanje Staff nalozima
 
 **Excerpt:** Local\_admin i operator trebaju vidjeti listu svih Staff članova, pregledati njihove detalje, editovati podatke i deaktivirati naloge. Ova storija pokriva CRUD operacije nad Staff entitetom — osim kreiranja koje je u [S13-03](s13-03-kreiranje-staff-naloga.md).
 
 **Phase:** MVP
 
-**Journey milestones:** **J-08**
+**Journey milestones:** J-08
 
 **User story:**  
-Kao local\_admin,  
-želim pregledati, editovati i deaktivirati Staff naloge u svom tenantu,  
+Kao local\_admin,
+
+želim pregledati, editovati i deaktivirati Staff naloge u svom tenantu,
+
 kako bih mogao upravljati timom i reagovati kada neki član napusti organizaciju.
 
 **Kontekst:** Staff entitet koristi `isActive` boolean umjesto accountStatus enum-a — deaktivacija je jedini način "brisanja" naloga (nema soft/hard delete kao kod User-a). Svi Staff atributi → **Ch.03, sekcija 3.5**. Local\_admin vidi samo Staff za tenante kojima ima pristup. Deaktiviran Staff se ne može prijaviti.

@@ -8,19 +8,19 @@ journey_milestones: [J-06]
 type: backend-only
 ---
 
-# S10-03 — AutoRenew mehanizam za automatsko osvježavanje pozicije
-
 **Naslov:** AutoRenew mehanizam za automatsko osvježavanje pozicije
 
 **Excerpt:** AutoRenew automatski osvježava `sortDate` listinga na odabranom intervalu (3h/8h/24h), čime listing periodično "raste" na vrh liste. Ovo je plaćena automatizacija besplatnog ručnog refresh-a — bez 24h ograničenja, sa do 8 osvježavanja dnevno. Zahtijeva background job koji periodično pronalazi i ažurira eligible promocije.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-06**
+**Journey milestones:** J-06
 
 **User story:**  
-Kao vlasnik listinga sa aktivnom promocijom,  
-želim da se moj listing automatski osvježava na odabranom intervalu,  
+Kao vlasnik listinga sa aktivnom promocijom,
+
+želim da se moj listing automatski osvježava na odabranom intervalu,
+
 kako bih zadržao visoku vidljivost bez da se ručno vraćam na platformu.
 
 **Kontekst:** Korisnik je kreirao promociju ([S10-01](s10-01-kreiranje-i-aktivacija-promocije-listinga.md)) sa uključenim AutoRenew-om i odabranim intervalom. Background job periodično provjerava sve aktivne promocije sa `autoRenewEnabled: true` i ažurira `sortDate` za one čiji je `nextAutoRenewAt` prošao. Nakon svakog osvježavanja, `nextAutoRenewAt` se pomjera za interval unaprijed, a `autoRenewsCompleted` se inkrementira. Detalji o AutoRenew mehanizmu → **Ch.06, sekcija 6.2**.4.

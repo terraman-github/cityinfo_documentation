@@ -8,19 +8,19 @@ journey_milestones: [J-01]
 type: fullstack
 ---
 
-# S01-01 — Registracija novog korisnika
-
 **Naslov:** Registracija novog korisnika
 
 **Excerpt:** Prvi korak na platformi — korisnik kreira račun sa emailom, username-om i lozinkom, i prihvata GDPR saglasnost. Nakon uspješne registracije dobija Tier 1 (Standard) i može pregledati sadržaj, ali ne može kreirati listinge dok ne verificira email i telefon.
 
 **Phase:** MVP
 
-**Journey milestones:** **J-01**
+**Journey milestones:** J-01
 
 **User story:**  
-Kao posjetilac CityInfo platforme,  
-želim kreirati korisnički račun unosom osnovnih podataka,  
+Kao posjetilac CityInfo platforme,
+
+želim kreirati korisnički račun unosom osnovnih podataka,
+
 kako bih mogao pristupiti funkcionalnostima koje zahtijevaju registraciju.
 
 **Kontekst:** Korisnik dolazi na platformu prvi put. Može pregledati javni sadržaj kao visitor, ali kad želi kreirati listing, sačuvati favorite ili koristiti naprednije funkcije — mora se registrovati. Registracijska forma traži minimalne podatke; telefon se verificira naknadno ([S01-03](s01-03-verifikacija-telefona-sms.md)), a email odmah nakon registracije ([S01-02](s01-02-email-verifikacija.md)). Detalji o User entitetu → **Ch.03, sekcija 3.3**. Onboarding flow → **Ch.02, sekcija 2.7**.
