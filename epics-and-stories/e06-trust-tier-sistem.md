@@ -1,5 +1,6 @@
 ---
 id: E06
+confluence_page_id: "250478652"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-03, J-08]

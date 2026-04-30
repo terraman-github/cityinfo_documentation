@@ -1,3 +1,8 @@
+---
+title: "07 - KOMUNIKACIJA"
+confluence_page_id: "240320540"
+---
+
 # 07 - KOMUNIKACIJA
 
 > **Verzija:** 1.5  

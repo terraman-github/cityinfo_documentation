@@ -1,3 +1,8 @@
+---
+title: "06 - MONETIZACIJA"
+confluence_page_id: "240222244"
+---
+
 # 06 - MONETIZACIJA
 
 > **Verzija:** 1.5  

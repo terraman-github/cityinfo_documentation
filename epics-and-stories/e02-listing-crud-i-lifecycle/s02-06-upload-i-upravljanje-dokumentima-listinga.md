@@ -1,5 +1,6 @@
 ---
 id: S02-06
+confluence_page_id: "250478633"
 parent_epic: E02
 linear_id: "CIT2-14"
 phase: MVP

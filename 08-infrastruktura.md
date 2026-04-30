@@ -1,3 +1,8 @@
+---
+title: "08 - INFRASTRUKTURA"
+confluence_page_id: "240189509"
+---
+
 # 08 - INFRASTRUKTURA
 
 > **Verzija:** 2.4  

@@ -1,3 +1,8 @@
+---
+title: "Novi listing statusni model — specifikacija"
+confluence_page_id: "253526019"
+---
+
 # Novi listing statusni model — specifikacija
 
 > **Verzija:** 1.1  
