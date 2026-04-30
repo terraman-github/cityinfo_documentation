@@ -1,0 +1,112 @@
+﻿name: md2conf sync
+
+# Trigger:
+#   - automatski na svaki push u main
+#   - ručno preko "Run workflow" dugmeta u Actions tab-u
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Concurrency: ako stigne novi push dok prethodni run još traje,
+# otkaži stari (Confluence sync na zastarjelom commit-u nije korisno).
+concurrency:
+  group: md2conf-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    name: Sync markdown to Confluence
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      CONFLUENCE_DOMAIN: terraprojects.atlassian.net
+      CONFLUENCE_PATH: /wiki/
+      CONFLUENCE_SPACE_KEY: GI
+      CONFLUENCE_USER_NAME: ${{ secrets.ATLASSIAN_EMAIL }}
+      CONFLUENCE_API_KEY: ${{ secrets.ATLASSIAN_API_TOKEN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install md2conf
+        run: |
+          python -m pip install --upgrade pip
+          pip install markdown-to-confluence
+
+      - name: Verify md2conf
+        run: md2conf --version
+
+      - name: Run md2conf sync
+        id: sync
+        run: |
+          set -o pipefail
+          md2conf "." --no-generated-by -l info 2>&1 | tee md2conf-push.log
+
+      - name: Generate sync summary
+        if: always() && hashFiles('md2conf-push.log') != ''
+        run: |
+          {
+            echo "## md2conf sync rezultat"
+            echo ""
+            echo "**Commit:** \`${{ github.sha }}\`"
+            echo "**Trigger:** \`${{ github.event_name }}\`"
+            echo "**Pokrenuo:** \`${{ github.actor }}\`"
+            echo ""
+
+            if [ "${{ job.status }}" = "success" ] || [ "${{ steps.sync.outcome }}" = "success" ]; then
+              echo "**Status:** ✅ Uspješno"
+            else
+              echo "**Status:** ❌ Neuspješno"
+            fi
+            echo ""
+
+            UPDATED=$(grep -cE "Updating page" md2conf-push.log || true)
+            CREATED=$(grep -cE "Creating page" md2conf-push.log || true)
+            UPTODATE=$(grep -cE "Up-to-date page" md2conf-push.log || true)
+            ERRORS=$(grep -cE "ERROR" md2conf-push.log || true)
+
+            echo "### Sažetak"
+            echo ""
+            echo "| Akcija | Broj |"
+            echo "|--------|------|"
+            echo "| Ažurirano | ${UPDATED:-0} |"
+            echo "| Kreirano | ${CREATED:-0} |"
+            echo "| Bez promjene | ${UPTODATE:-0} |"
+            echo "| Greške | ${ERRORS:-0} |"
+            echo ""
+
+            if [ "${UPDATED:-0}" != "0" ] || [ "${CREATED:-0}" != "0" ]; then
+              echo "### Promijenjene stranice"
+              echo ""
+              echo '```'
+              grep -E "(Updating page|Creating page)" md2conf-push.log || echo "(nema)"
+              echo '```'
+              echo ""
+            fi
+
+            if [ "${ERRORS:-0}" != "0" ]; then
+              echo "### Greške"
+              echo ""
+              echo '```'
+              grep -E "ERROR" md2conf-push.log | head -20
+              echo '```'
+              echo ""
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload md2conf log
+        if: always() && hashFiles('md2conf-push.log') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: md2conf-push-log
+          path: md2conf-push.log
+          retention-days: 14
