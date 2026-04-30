@@ -1,6 +1,7 @@
 ---
 id: E11
 confluence_page_id: "252706817"
+title: "E11 — Display oglašavanje (MVP)"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-08]

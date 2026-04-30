@@ -1,6 +1,7 @@
 ---
 id: S14-06
 confluence_page_id: "250642480"
+title: "S14-06 — i18n framework i lokalizacija"
 parent_epic: E14
 linear_id: "CIT2-88"
 phase: MVP

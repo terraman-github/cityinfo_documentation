@@ -1,6 +1,7 @@
 ---
 id: S07-02
 confluence_page_id: "251297831"
+title: "S07-02 — Moderatorske odluke (approve, reject, changes_requested)"
 parent_epic: E07
 linear_id: "CIT2-46"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: E02
 confluence_page_id: "251330580"
+title: "E02 — Listing CRUD i lifecycle"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-02]

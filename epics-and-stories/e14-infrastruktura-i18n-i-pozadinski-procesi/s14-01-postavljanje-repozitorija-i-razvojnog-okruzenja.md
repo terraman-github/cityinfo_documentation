@@ -1,6 +1,7 @@
 ---
 id: S14-01
 confluence_page_id: "250839044"
+title: "S14-01 — Postavljanje repozitorija i razvojnog okruženja"
 parent_epic: E14
 linear_id: "CIT2-83"
 phase: MVP

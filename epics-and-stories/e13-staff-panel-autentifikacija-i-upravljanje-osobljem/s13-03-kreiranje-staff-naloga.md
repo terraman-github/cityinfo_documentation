@@ -1,6 +1,7 @@
 ---
 id: S13-03
 confluence_page_id: "251199547"
+title: "S13-03 — Kreiranje Staff naloga"
 parent_epic: E13
 linear_id: "CIT2-78"
 phase: MVP

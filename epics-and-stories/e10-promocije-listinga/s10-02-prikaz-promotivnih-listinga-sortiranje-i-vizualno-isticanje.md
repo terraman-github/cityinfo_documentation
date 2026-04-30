@@ -1,6 +1,7 @@
 ---
 id: S10-02
 confluence_page_id: "252510228"
+title: "S10-02 — Prikaz promotivnih listinga (sortiranje i vizualno isticanje)"
 parent_epic: E10
 linear_id: "CIT2-61"
 phase: MVP

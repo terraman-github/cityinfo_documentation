@@ -1,6 +1,7 @@
 ---
 id: S02-08
 confluence_page_id: "250970186"
+title: "S02-08 — Editovanje, brisanje i sakrivanje listinga"
 parent_epic: E02
 linear_id: "CIT2-16"
 phase: MVP

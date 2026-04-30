@@ -1,6 +1,7 @@
 ---
 id: S12-04
 confluence_page_id: "252805121"
+title: "S12-04 — Notifikacije za listing lifecycle događaje"
 parent_epic: E12
 linear_id: "CIT2-74"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S12-03
 confluence_page_id: "251887641"
+title: "S12-03 — Slanje email notifikacija"
 parent_epic: E12
 linear_id: "CIT2-73"
 phase: MVP

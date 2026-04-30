@@ -1,6 +1,7 @@
 ---
 id: S11-02
 confluence_page_id: "252739585"
+title: "S11-02 — Prikaz banner oglasa na javnom frontendu"
 parent_epic: E11
 linear_id: "CIT2-67"
 phase: MVP

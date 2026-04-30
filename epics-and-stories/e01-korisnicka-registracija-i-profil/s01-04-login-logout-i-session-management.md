@@ -1,6 +1,7 @@
 ---
 id: S01-04
 confluence_page_id: "251297812"
+title: "S01-04 — Login, logout i session management"
 parent_epic: E01
 linear_id: "CIT2-4"
 phase: MVP

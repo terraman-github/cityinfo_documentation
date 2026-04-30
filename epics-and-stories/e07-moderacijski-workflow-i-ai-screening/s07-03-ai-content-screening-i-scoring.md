@@ -1,6 +1,7 @@
 ---
 id: S07-03
 confluence_page_id: "250478672"
+title: "S07-03 — AI content screening i scoring"
 parent_epic: E07
 linear_id: "CIT2-47"
 phase: MVP

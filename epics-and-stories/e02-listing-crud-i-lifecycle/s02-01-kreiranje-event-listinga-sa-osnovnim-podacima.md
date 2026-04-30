@@ -1,6 +1,7 @@
 ---
 id: S02-01
 confluence_page_id: "251527176"
+title: "S02-01 — Kreiranje Event listinga sa osnovnim podacima"
 parent_epic: E02
 linear_id: "CIT2-9"
 phase: MVP

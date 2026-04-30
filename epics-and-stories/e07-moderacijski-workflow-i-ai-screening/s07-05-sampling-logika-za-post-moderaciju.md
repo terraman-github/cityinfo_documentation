@@ -1,6 +1,7 @@
 ---
 id: S07-05
 confluence_page_id: "251494448"
+title: "S07-05 — Sampling logika za post-moderaciju"
 parent_epic: E07
 linear_id: "CIT2-49"
 phase: MVP

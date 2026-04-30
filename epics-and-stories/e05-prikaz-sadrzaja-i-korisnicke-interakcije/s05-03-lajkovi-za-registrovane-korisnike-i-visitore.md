@@ -1,6 +1,7 @@
 ---
 id: S05-03
 confluence_page_id: "252182529"
+title: "S05-03 — Lajkovi za registrovane korisnike i visitore"
 parent_epic: E05
 linear_id: "CIT2-36"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S02-04
 confluence_page_id: "251461659"
+title: "S02-04 — Event hijerarhija — kreiranje i upravljanje child eventima"
 parent_epic: E02
 linear_id: "CIT2-12"
 phase: MVP

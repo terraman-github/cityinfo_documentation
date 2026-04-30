@@ -1,6 +1,7 @@
 ---
 id: S01-06
 confluence_page_id: "250970114"
+title: "S01-06 — Korisnički profil — pregled i uređivanje"
 parent_epic: E01
 linear_id: "CIT2-6"
 phase: MVP

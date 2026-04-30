@@ -1,6 +1,7 @@
 ---
 id: S01-05
 confluence_page_id: "250478614"
+title: "S01-05 — Zaboravljena lozinka i reset"
 parent_epic: E01
 linear_id: "CIT2-5"
 phase: MVP

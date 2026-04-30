@@ -1,6 +1,7 @@
 ---
 id: S08-03
 confluence_page_id: "252379137"
+title: "S08-03 — Odgovor vlasnika listinga na poruku moderatora"
 parent_epic: E08
 linear_id: "CIT2-53"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: E14
 confluence_page_id: "251199489"
+title: "E14 — Infrastruktura, i18n i pozadinski procesi"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-08]

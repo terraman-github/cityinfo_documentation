@@ -1,6 +1,7 @@
 ---
 id: S12-05
 confluence_page_id: "252837889"
+title: "S12-05 — Notifikacije za promocije i Trust Tier"
 parent_epic: E12
 linear_id: "CIT2-75"
 phase: MVP

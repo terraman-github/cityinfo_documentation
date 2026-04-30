@@ -1,6 +1,7 @@
 ---
 id: E05
 confluence_page_id: "252084225"
+title: "E05 — Prikaz sadržaja i korisničke interakcije"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-04, J-05]

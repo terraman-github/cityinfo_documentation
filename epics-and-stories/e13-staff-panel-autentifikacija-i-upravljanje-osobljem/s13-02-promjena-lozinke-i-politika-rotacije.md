@@ -1,6 +1,7 @@
 ---
 id: S13-02
 confluence_page_id: "251297851"
+title: "S13-02 — Promjena lozinke i politika rotacije"
 parent_epic: E13
 linear_id: "CIT2-77"
 phase: MVP

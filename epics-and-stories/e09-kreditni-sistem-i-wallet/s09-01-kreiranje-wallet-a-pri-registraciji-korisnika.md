@@ -1,6 +1,7 @@
 ---
 id: S09-01
 confluence_page_id: "252444673"
+title: "S09-01 — Kreiranje wallet-a pri registraciji korisnika"
 parent_epic: E09
 linear_id: "CIT2-56"
 phase: MVP

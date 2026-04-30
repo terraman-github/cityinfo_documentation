@@ -1,6 +1,7 @@
 ---
 id: E09
 confluence_page_id: "252411905"
+title: "E09 — Kreditni sistem i wallet"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-09]

@@ -1,6 +1,7 @@
 ---
 id: S01-08
 confluence_page_id: "250642499"
+title: "S01-08 — Dvofaktorska autentifikacija (2FA) za korisnike"
 parent_epic: E01
 linear_id: "CIT2-8"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S02-03
 confluence_page_id: "251330600"
+title: "S02-03 — Lokacija Event-a — povezivanje sa Place-om ili ručna adresa"
 parent_epic: E02
 linear_id: "CIT2-11"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S04-01
 confluence_page_id: "251887617"
+title: "S04-01 — Naslovna stranica sa dva režima i promocijskim prioritetima"
 parent_epic: E04
 linear_id: "CIT2-27"
 phase: MVP

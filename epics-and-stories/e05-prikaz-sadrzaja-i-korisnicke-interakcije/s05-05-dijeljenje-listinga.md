@@ -1,6 +1,7 @@
 ---
 id: S05-05
 confluence_page_id: "252248065"
+title: "S05-05 — Dijeljenje listinga"
 parent_epic: E05
 linear_id: "CIT2-38"
 phase: MVP

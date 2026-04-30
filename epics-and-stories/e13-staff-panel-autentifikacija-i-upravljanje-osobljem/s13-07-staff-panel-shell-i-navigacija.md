@@ -1,6 +1,7 @@
 ---
 id: S13-07
 confluence_page_id: "250970229"
+title: "S13-07 — Staff panel shell i navigacija"
 parent_epic: E13
 linear_id: "CIT2-82"
 phase: MVP

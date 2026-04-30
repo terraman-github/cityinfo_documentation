@@ -1,6 +1,7 @@
 ---
 id: S14-03
 confluence_page_id: "250642457"
+title: "S14-03 — Inicijalni SvelteKit frontend projekat"
 parent_epic: E14
 linear_id: "CIT2-85"
 phase: MVP

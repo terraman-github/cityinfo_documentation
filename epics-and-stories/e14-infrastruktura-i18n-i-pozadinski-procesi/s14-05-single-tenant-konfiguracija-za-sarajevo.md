@@ -1,6 +1,7 @@
 ---
 id: S14-05
 confluence_page_id: "251265025"
+title: "S14-05 — Single-tenant konfiguracija za Sarajevo"
 parent_epic: E14
 linear_id: "CIT2-87"
 phase: MVP

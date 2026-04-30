@@ -1,6 +1,7 @@
 ---
 id: S13-05
 confluence_page_id: "250478712"
+title: "S13-05 — Dodjela i oduzimanje moderatorskih permisija"
 parent_epic: E13
 linear_id: "CIT2-80"
 phase: MVP

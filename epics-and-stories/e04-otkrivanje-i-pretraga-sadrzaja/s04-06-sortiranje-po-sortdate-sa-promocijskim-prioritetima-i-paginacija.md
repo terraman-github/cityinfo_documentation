@@ -1,6 +1,7 @@
 ---
 id: S04-06
 confluence_page_id: "252051457"
+title: "S04-06 — Sortiranje po sortDate sa promocijskim prioritetima i paginacija"
 parent_epic: E04
 linear_id: "CIT2-32"
 phase: MVP

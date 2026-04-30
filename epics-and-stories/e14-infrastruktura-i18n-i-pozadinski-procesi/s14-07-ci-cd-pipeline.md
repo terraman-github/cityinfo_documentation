@@ -1,6 +1,7 @@
 ---
 id: S14-07
 confluence_page_id: "251166722"
+title: "S14-07 — CI/CD pipeline"
 parent_epic: E14
 linear_id: "CIT2-89"
 phase: MVP

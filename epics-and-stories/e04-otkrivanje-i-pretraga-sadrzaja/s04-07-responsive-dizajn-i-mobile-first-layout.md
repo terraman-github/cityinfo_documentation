@@ -1,6 +1,7 @@
 ---
 id: S04-07
 confluence_page_id: "251723798"
+title: "S04-07 — Responsive dizajn i mobile-first layout"
 parent_epic: E04
 linear_id: "CIT2-33"
 phase: MVP

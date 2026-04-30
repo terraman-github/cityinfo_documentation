@@ -1,6 +1,7 @@
 ---
 id: S07-04
 confluence_page_id: "251494429"
+title: "S07-04 — AI blocking logic i override"
 parent_epic: E07
 linear_id: "CIT2-48"
 phase: MVP

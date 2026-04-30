@@ -1,6 +1,7 @@
 ---
 id: E10
 confluence_page_id: "252280852"
+title: "E10 — Promocije listinga"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-06]

@@ -1,6 +1,7 @@
 ---
 id: E08
 confluence_page_id: "252018708"
+title: "E08 — Komunikacija uz listing i dokumenti"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-03, J-07]

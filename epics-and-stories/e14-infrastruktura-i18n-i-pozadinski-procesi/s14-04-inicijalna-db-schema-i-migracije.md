@@ -1,6 +1,7 @@
 ---
 id: S14-04
 confluence_page_id: "250478595"
+title: "S14-04 — Inicijalna DB schema i migracije"
 parent_epic: E14
 linear_id: "CIT2-86"
 phase: MVP

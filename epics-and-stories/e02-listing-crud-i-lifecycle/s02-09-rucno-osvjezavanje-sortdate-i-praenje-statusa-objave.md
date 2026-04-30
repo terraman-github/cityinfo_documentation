@@ -1,6 +1,7 @@
 ---
 id: S02-09
 confluence_page_id: "251428910"
+title: "S02-09 — Ručno osvježavanje sortDate i praćenje statusa objave"
 parent_epic: E02
 linear_id: "CIT2-17"
 phase: MVP

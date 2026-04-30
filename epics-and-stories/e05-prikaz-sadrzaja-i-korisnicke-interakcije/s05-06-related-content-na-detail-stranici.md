@@ -1,6 +1,7 @@
 ---
 id: S05-06
 confluence_page_id: "252280833"
+title: "S05-06 — Related content na detail stranici"
 parent_epic: E05
 linear_id: "CIT2-39"
 phase: MVP

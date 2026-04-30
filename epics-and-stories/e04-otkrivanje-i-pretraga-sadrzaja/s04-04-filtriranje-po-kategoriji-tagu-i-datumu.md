@@ -1,6 +1,7 @@
 ---
 id: S04-04
 confluence_page_id: "251985921"
+title: "S04-04 — Filtriranje po kategoriji, tagu i datumu"
 parent_epic: E04
 linear_id: "CIT2-30"
 phase: MVP

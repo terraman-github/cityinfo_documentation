@@ -1,6 +1,7 @@
 ---
 id: S10-06
 confluence_page_id: "252674049"
+title: "S10-06 — Pregled i upravljanje promocijama"
 parent_epic: E10
 linear_id: "CIT2-65"
 phase: MVP

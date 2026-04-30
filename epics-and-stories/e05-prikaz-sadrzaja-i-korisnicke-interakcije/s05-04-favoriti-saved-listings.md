@@ -1,6 +1,7 @@
 ---
 id: S05-04
 confluence_page_id: "252215297"
+title: "S05-04 — Favoriti (Saved listings)"
 parent_epic: E05
 linear_id: "CIT2-37"
 phase: MVP

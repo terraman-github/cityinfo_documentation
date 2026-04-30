@@ -1,6 +1,7 @@
 ---
 id: S01-01
 confluence_page_id: "251396116"
+title: "S01-01 — Registracija novog korisnika"
 parent_epic: E01
 linear_id: "CIT2-1"
 phase: MVP

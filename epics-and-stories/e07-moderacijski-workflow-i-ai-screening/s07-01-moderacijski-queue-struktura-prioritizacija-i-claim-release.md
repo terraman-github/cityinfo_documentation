@@ -1,6 +1,7 @@
 ---
 id: S07-01
 confluence_page_id: "251363387"
+title: "S07-01 — Moderacijski queue — struktura, prioritizacija i claim/release"
 parent_epic: E07
 linear_id: "CIT2-45"
 phase: MVP

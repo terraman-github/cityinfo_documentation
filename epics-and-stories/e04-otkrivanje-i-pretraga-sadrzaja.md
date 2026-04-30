@@ -1,6 +1,7 @@
 ---
 id: E04
 confluence_page_id: "251854849"
+title: "E04 — Otkrivanje i pretraga sadržaja"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-04]

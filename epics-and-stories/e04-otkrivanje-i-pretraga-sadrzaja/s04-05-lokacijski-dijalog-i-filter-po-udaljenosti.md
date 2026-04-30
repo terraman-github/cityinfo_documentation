@@ -1,6 +1,7 @@
 ---
 id: S04-05
 confluence_page_id: "252018689"
+title: "S04-05 — Lokacijski dijalog i filter po udaljenosti"
 parent_epic: E04
 linear_id: "CIT2-31"
 phase: MVP

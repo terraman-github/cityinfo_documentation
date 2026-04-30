@@ -1,6 +1,7 @@
 ---
 id: S12-01
 confluence_page_id: "252084245"
+title: "S12-01 — Kreiranje i slanje in-app notifikacija"
 parent_epic: E12
 linear_id: "CIT2-71"
 phase: MVP

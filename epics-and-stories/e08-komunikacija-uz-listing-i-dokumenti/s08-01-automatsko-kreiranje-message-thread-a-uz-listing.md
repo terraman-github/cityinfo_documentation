@@ -1,6 +1,7 @@
 ---
 id: S08-01
 confluence_page_id: "252313611"
+title: "S08-01 — Automatsko kreiranje message thread-a uz listing"
 parent_epic: E08
 linear_id: "CIT2-51"
 phase: MVP

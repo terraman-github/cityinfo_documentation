@@ -1,6 +1,7 @@
 ---
 id: S13-01
 confluence_page_id: "250478691"
+title: "S13-01 — Staff login i session management"
 parent_epic: E13
 linear_id: "CIT2-76"
 phase: MVP

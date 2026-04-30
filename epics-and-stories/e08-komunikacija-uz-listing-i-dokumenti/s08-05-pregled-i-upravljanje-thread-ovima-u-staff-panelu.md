@@ -1,6 +1,7 @@
 ---
 id: S08-05
 confluence_page_id: "252313630"
+title: "S08-05 — Pregled i upravljanje thread-ovima u Staff panelu"
 parent_epic: E08
 linear_id: "CIT2-55"
 phase: MVP

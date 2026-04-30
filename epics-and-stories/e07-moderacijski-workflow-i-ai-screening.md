@@ -1,6 +1,7 @@
 ---
 id: E07
 confluence_page_id: "251265065"
+title: "E07 — Moderacijski workflow i AI screening"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-03]

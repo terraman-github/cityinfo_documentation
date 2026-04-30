@@ -1,6 +1,7 @@
 ---
 id: S08-02
 confluence_page_id: "252182548"
+title: "S08-02 — Slanje poruke moderatora vlasniku listinga"
 parent_epic: E08
 linear_id: "CIT2-52"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S06-01
 confluence_page_id: "251428929"
+title: "S06-01 — Automatska evaluacija Trust Tier napredovanja"
 parent_epic: E06
 linear_id: "CIT2-40"
 phase: MVP

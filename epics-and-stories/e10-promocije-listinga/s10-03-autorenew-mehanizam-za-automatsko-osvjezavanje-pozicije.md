@@ -1,6 +1,7 @@
 ---
 id: S10-03
 confluence_page_id: "252575745"
+title: "S10-03 — AutoRenew mehanizam za automatsko osvježavanje pozicije"
 parent_epic: E10
 linear_id: "CIT2-62"
 phase: MVP

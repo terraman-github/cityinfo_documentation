@@ -1,6 +1,7 @@
 ---
 id: S08-04
 confluence_page_id: "251822101"
+title: "S08-04 — Referenciranje dokumenata u porukama"
 parent_epic: E08
 linear_id: "CIT2-54"
 phase: MVP

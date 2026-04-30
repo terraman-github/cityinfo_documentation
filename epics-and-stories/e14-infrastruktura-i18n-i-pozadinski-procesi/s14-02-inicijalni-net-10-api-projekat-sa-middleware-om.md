@@ -1,6 +1,7 @@
 ---
 id: S14-02
 confluence_page_id: "251232257"
+title: "S14-02 — Inicijalni .NET 10 API projekat sa middleware-om"
 parent_epic: E14
 linear_id: "CIT2-84"
 phase: MVP

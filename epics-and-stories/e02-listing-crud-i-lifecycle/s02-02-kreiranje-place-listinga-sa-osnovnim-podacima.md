@@ -1,6 +1,7 @@
 ---
 id: S02-02
 confluence_page_id: "251428891"
+title: "S02-02 — Kreiranje Place listinga sa osnovnim podacima"
 parent_epic: E02
 linear_id: "CIT2-10"
 phase: MVP

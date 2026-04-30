@@ -1,6 +1,7 @@
 ---
 id: S13-04
 confluence_page_id: "251166775"
+title: "S13-04 — Pregled i upravljanje Staff nalozima"
 parent_epic: E13
 linear_id: "CIT2-79"
 phase: MVP

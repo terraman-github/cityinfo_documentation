@@ -1,6 +1,7 @@
 ---
 id: S10-04
 confluence_page_id: "252608513"
+title: "S10-04 — Pauziranje i nastavak promocije"
 parent_epic: E10
 linear_id: "CIT2-63"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S06-03
 confluence_page_id: "251363368"
+title: "S06-03 — Ručna promjena Trust Tier-a"
 parent_epic: E06
 linear_id: "CIT2-42"
 phase: MVP

@@ -1,6 +1,7 @@
 ---
 id: S06-05
 confluence_page_id: "251494410"
+title: "S06-05 — Pre-moderacija limit za Tier 0 i 1"
 parent_epic: E06
 linear_id: "CIT2-44"
 phase: MVP

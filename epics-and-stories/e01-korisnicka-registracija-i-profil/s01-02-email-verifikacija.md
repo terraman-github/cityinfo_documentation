@@ -1,6 +1,7 @@
 ---
 id: S01-02
 confluence_page_id: "251166741"
+title: "S01-02 — Email verifikacija"
 parent_epic: E01
 linear_id: "CIT2-2"
 phase: MVP

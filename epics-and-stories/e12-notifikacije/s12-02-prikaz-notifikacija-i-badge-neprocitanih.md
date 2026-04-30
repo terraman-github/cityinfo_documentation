@@ -1,6 +1,7 @@
 ---
 id: S12-02
 confluence_page_id: "252706837"
+title: "S12-02 — Prikaz notifikacija i badge nepročitanih"
 parent_epic: E12
 linear_id: "CIT2-72"
 phase: MVP

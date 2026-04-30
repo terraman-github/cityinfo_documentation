@@ -1,6 +1,7 @@
 ---
 id: E13
 confluence_page_id: "250970205"
+title: "E13 — Staff panel, autentifikacija i upravljanje osobljem"
 linear_id: ""
 phase: MVP
 journey_milestones: [J-08]

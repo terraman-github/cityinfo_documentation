@@ -1,6 +1,7 @@
 ---
 id: S10-01
 confluence_page_id: "252542977"
+title: "S10-01 — Kreiranje i aktivacija promocije listinga"
 parent_epic: E10
 linear_id: "CIT2-60"
 phase: MVP

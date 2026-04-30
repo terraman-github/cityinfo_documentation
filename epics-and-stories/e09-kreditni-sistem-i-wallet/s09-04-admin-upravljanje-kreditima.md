@@ -1,6 +1,7 @@
 ---
 id: S09-04
 confluence_page_id: "252510209"
+title: "S09-04 — Admin upravljanje kreditima"
 parent_epic: E09
 linear_id: "CIT2-59"
 phase: MVP

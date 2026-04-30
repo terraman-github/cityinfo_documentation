@@ -1,6 +1,7 @@
 ---
 id: S04-03
 confluence_page_id: "251953153"
+title: "S04-03 — Autosuggest pri pretrazi"
 parent_epic: E04
 linear_id: "CIT2-29"
 phase: MVP
