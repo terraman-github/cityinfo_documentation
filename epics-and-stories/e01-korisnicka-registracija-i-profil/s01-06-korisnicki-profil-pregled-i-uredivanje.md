@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-01
 
-**User story:**  
-Kao registrovani korisnik,
+**User story:**
 
-želim pregledati i ažurirati svoje profilne podatke,
-
-kako bih mogao držati informacije aktuelnim i prilagoditi platformu svojim preferencijama.
+*Kao registrovani korisnik,*  
+*želim pregledati i ažurirati svoje profilne podatke,*  
+*kako bih mogao držati informacije aktuelnim i prilagoditi platformu svojim preferencijama.*
 
 **Kontekst:** Korisnik pristupa profilu kroz navigaciju. Profil prikazuje informacije iz User entiteta (**Ch.03, sekcija 3.3**). Neka polja su read-only (email, username), neka se mogu slobodno mijenjati (fullName, locale, timezone), a neka zahtijevaju revalidaciju (phoneNumber). Endpoint: `GET/PATCH /users/me` (**Ch.03, sekcija 3.8**).
 

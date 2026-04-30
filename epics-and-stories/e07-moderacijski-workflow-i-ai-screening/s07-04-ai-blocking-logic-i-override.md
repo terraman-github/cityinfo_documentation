@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-03
 
-**User story:**  
-Kao sistem,
+**User story:**
 
-želim automatski blokirati publikaciju sadržaja kada AI detektuje ekstreman rizik,
-
-kako bi platforma bila zaštićena od očigledno štetnog sadržaja čak i prije nego moderator stigne pogledati.
+*Kao sistem,*  
+*želim automatski blokirati publikaciju sadržaja kada AI detektuje ekstreman rizik,*  
+*kako bi platforma bila zaštićena od očigledno štetnog sadržaja čak i prije nego moderator stigne pogledati.*
 
 **Kontekst:** AI blocking se aktivira kada score za kritičnu kategoriju (hate speech, adult, violence, illegal) premaši konfigurisani blocking threshold. Ovo je "sigurnosna mreža" — sadržaj se ne objavljuje, listing prelazi u `hidden_by_system` i ulazi u Urgent queue za hitni pregled. Važno: AI ne donosi finalnu odluku — moderator mora pregledati i eksplicitno odobriti ili odbaciti. Korisnici višeg tiera dobijaju transparentniju poruku nego novi korisnici. Detalji → **Ch.05**, sekcije 5.3.4–5.3.6.
 

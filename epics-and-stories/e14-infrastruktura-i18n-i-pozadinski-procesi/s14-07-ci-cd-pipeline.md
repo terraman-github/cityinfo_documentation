@@ -18,9 +18,10 @@ type: infra
 **Journey milestones:** J-08
 
 **User story:**
-Kao developer,
-želim imati CI/CD pipeline koji automatski bildi i testira kod na svaki push,
-kako bih dobio brzi feedback o tome da li moje promjene rade ispravno — bez čekanja na nepromjenjene dijelove monorepoa.
+
+*Kao developer,*  
+*želim imati CI/CD pipeline koji automatski bildi i testira kod na svaki push,*  
+*kako bih dobio brzi feedback o tome da li moje promjene rade ispravno — bez čekanja na nepromjenjene dijelove monorepoa.*
 
 **Kontekst:** Pipeline treba podržavati .NET 10 backend build + test i SvelteKit frontend build unutar monorepo strukture (`backend/`, `frontend/`, `db/seed/`). U monorepu CI bez path filtera nepotrebno vrti oba stacka na svaki PR (~5 min), što usporava dev loop. Cilj ove storije je pipeline koji vrti **samo ono što se tiče izmjene** (~2 min na single-stack PR, ~5 min na end-to-end PR). Ova storija je namjerno odvojena od repo setupa ([S14-01](s14-01-postavljanje-repozitorija-i-razvojnog-okruzenja.md)) jer CI/CD nije preduslov za početak razvoja, ali se preporučuje da uđe u Sprint 0 dok se postavlja ostatak infrastrukture.
 

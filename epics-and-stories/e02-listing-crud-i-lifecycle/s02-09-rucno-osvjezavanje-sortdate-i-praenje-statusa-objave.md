@@ -21,12 +21,11 @@ type: fullstack
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim moći osvježiti poziciju svog listinga u rezultatima i pratiti status svih svojih objava,
-
-kako bih imao pregled i kontrolu nad vidljivošću svog sadržaja.
+*Kao vlasnik listinga,*  
+*želim moći osvježiti poziciju svog listinga u rezultatima i pratiti status svih svojih objava,*  
+*kako bih imao pregled i kontrolu nad vidljivošću svog sadržaja.*
 
 **Kontekst:** `sortDate` je centralni mehanizam za pozicioniranje listinga u svim sortiranim prikazima (**Ch.02**, 2.4). Ručno osvježavanje postavlja `sortDate` na trenutno vrijeme — efektivno "bumpujući" listing na vrh. Dostupno svim korisnicima, jednom u 24 sata, besplatno. Korisničko iskustvo praćenja statusa → **Ch.02, sekcija 2.8**.
 

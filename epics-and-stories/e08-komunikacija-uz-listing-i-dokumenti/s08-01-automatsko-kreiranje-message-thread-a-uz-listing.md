@@ -17,12 +17,11 @@ type: backend-only
 
 **Journey milestones:** J-03
 
-**User story:**  
-Kao sistem,
+**User story:**
 
-želim automatski kreirati ListingMessageThread pri kreiranju svakog listinga,
-
-kako bi moderator imao spreman komunikacijski kanal kad god treba kontaktirati vlasnika.
+*Kao sistem,*  
+*želim automatski kreirati ListingMessageThread pri kreiranju svakog listinga,*  
+*kako bi moderator imao spreman komunikacijski kanal kad god treba kontaktirati vlasnika.*
 
 **Kontekst:** Kada korisnik kreira novi listing (Event ili Place), sistem pored samog listinga kreira i prazan message thread sa statusom `idle`. Thread živi koliko i listing — nema potrebe za ručnim otvaranjem ili zatvaranjem. Ovaj pristup osigurava da je komunikacijski kanal uvijek dostupan bez dodatne akcije. Detalji o thread modelu → **Ch.07, sekcija 7.1**.3.
 

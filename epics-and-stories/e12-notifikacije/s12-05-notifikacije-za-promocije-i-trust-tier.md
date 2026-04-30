@@ -17,12 +17,11 @@ type: backend-only
 
 **Journey milestones:** J-06
 
-**User story:**  
-Kao vlasnik listinga sa aktivnom promocijom,
+**User story:**
 
-želim biti obaviješten kad mi promocija ističe ili kad se promijeni moj Trust Tier status,
-
-kako bih mogao pravovremeno obnoviti promociju ili razumjeti novi status na platformi.
+*Kao vlasnik listinga sa aktivnom promocijom,*  
+*želim biti obaviješten kad mi promocija ističe ili kad se promijeni moj Trust Tier status,*  
+*kako bih mogao pravovremeno obnoviti promociju ili razumjeti novi status na platformi.*
 
 **Kontekst:** Promocije imaju definisan endDate nakon kojeg prestaju. Sistem treba obavijestiti korisnika unaprijed (npr. 1 dan prije isteka) da ima vremena za akciju — produženje ili novu promociju. Trust Tier promjene (napredovanje ili degradacija) značajno utiču na korisnikovo iskustvo (pre-moderacija vs post-moderacija), pa je bitno da korisnik razumije šta se promijenilo. Detalji o promocijama → **Ch.06, sekcija 6.2**; Trust Tier → **Ch.03, sekcija 3.4**; tipovi notifikacija → **Ch.07, sekcija 7.2**.3.
 

@@ -17,12 +17,11 @@ type: backend-only
 
 **Journey milestones:** Cross-cutting
 
-**User story:**  
-Kao registrovani korisnik,
+**User story:**
 
-želim primiti email kad se desi nešto bitno sa mojim listingom ili promocijom,
-
-kako bih mogao reagovati čak i kad nisam na platformi.
+*Kao registrovani korisnik,*  
+*želim primiti email kad se desi nešto bitno sa mojim listingom ili promocijom,*  
+*kako bih mogao reagovati čak i kad nisam na platformi.*
 
 **Kontekst:** Email notifikacije su drugi kanal pored in-app notifikacija. Šalju se automatski kad se dese ključni sistemski događaji. U MVP-u, svi korisnici dobijaju sve email notifikacije — nema preferenci za kontrolu tipova ili frekvencije (to dolazi u Fazi 2). Email template-i podržavaju primarni i sekundarni jezik tenanta. Detalji → **Ch.07, sekcija 7.2**.2 i 7.2.5.
 

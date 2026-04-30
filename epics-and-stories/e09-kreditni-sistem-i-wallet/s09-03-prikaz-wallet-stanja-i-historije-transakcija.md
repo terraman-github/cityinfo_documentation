@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-09
 
-**User story:**  
-Kao korisnik platforme,
+**User story:**
 
-želim pregledati stanje wallet-a i historiju svih transakcija,
-
-kako bih imao potpunu kontrolu i pregled nad svojim troškovima i dopunama.
+*Kao korisnik platforme,*  
+*želim pregledati stanje wallet-a i historiju svih transakcija,*  
+*kako bih imao potpunu kontrolu i pregled nad svojim troškovima i dopunama.*
 
 **Kontekst:** Korisnik pristupa wallet stranici kroz header (klik na wallet stanje) ili kroz navigaciju u profilu. Stranica prikazuje trenutno stanje i listu transakcija sa filtrima. Svaka transakcija ima tip, iznos (+/-), opis i datum. Detalji o CreditTransaction entitetu → **Ch.06, sekcija 6.1**.4; tipovi transakcija → **Ch.06, sekcija 6.1**.4.
 

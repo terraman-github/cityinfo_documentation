@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-04
 
-**User story:**  
-Kao posjetilac,
+**User story:**
 
-želim pretražiti sadržaj unosom teksta u search bar,
-
-kako bih brzo pronašao konkretne listinge, kategorije ili tagove bez ručnog prolaženja kroz liste.
+*Kao posjetilac,*  
+*želim pretražiti sadržaj unosom teksta u search bar,*  
+*kako bih brzo pronašao konkretne listinge, kategorije ili tagove bez ručnog prolaženja kroz liste.*
 
 **Kontekst:** Korisnik je na naslovnoj ili stranici sa rezultatima i koristi search bar. Pretraga pretražuje samo sadržaj aktivnog režima (Events ili Places). Full-text pretraga pokriva polja: name, nameAlt, description, descriptionAlt. Alias tabela (iz [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md)) proširuje pretraživo polje — termin "picerija" pronalazi kategoriju "Restorani". Detalji o pretrazi u **Ch.02, sekcija 2.2**.
 

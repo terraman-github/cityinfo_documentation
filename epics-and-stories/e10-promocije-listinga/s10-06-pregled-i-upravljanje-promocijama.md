@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-06
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim pregledati sve svoje promocije sa statusima i preostalim trajanjem,
-
-kako bih mogao pratiti ulaganja i donositi odluke o nastavku ili pauziranju.
+*Kao vlasnik listinga,*  
+*želim pregledati sve svoje promocije sa statusima i preostalim trajanjem,*  
+*kako bih mogao pratiti ulaganja i donositi odluke o nastavku ili pauziranju.*
 
 **Kontekst:** Korisnik pristupa sekciji "Moje promocije" u profilu ili kroz navigaciju. Vidi listu svih svojih promocija — aktivnih, pauziranih i istorijskih (istekle, otkazane). Za svaku promociju vidi tip, listing, trajanje, preostalo dana, AutoRenew status, i dostupne akcije. Staff pristupa admin pregledu sa svim promocijama na platformi. Detalji o Promo entitetu i statusima → **Ch.06**, sekcije 6.2.2–6.2.3; API endpointi → **Ch.06, sekcija 6.6**.3.
 

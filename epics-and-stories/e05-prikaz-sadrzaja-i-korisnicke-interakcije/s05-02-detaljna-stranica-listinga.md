@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-04, **J-05**
 
-**User story:**  
-Kao posjetilac,
+**User story:**
 
-želim vidjeti sve detalje listinga na jednoj stranici,
-
-kako bih mogao donijeti odluku da li ću posjetiti to mjesto ili prisustvovati tom događaju.
+*Kao posjetilac,*  
+*želim vidjeti sve detalje listinga na jednoj stranici,*  
+*kako bih mogao donijeti odluku da li ću posjetiti to mjesto ili prisustvovati tom događaju.*
 
 **Kontekst:** Korisnik je kliknuo na karticu iz liste rezultata, naslovne, ili related contenta. Detaljna stranica prikazuje sve dostupne informacije o listingu. Razlikuje se za Event i Place — Event ima datum/vrijeme i hijerarhiju child evenata, Place ima adresu i povezane evente vlasnika. Elementi stranice definirani u **Ch.02, sekcija 2.3**.
 

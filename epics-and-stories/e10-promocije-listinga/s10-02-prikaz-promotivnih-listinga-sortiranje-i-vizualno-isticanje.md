@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-06
 
-**User story:**  
-Kao posjetilac platforme,
+**User story:**
 
-želim vidjeti istaknute listinge na naslovnoj i u kategorijama,
-
-kako bih mogao otkriti najrelevantnije i najaktuelnije sadržaje.
+*Kao posjetilac platforme,*  
+*želim vidjeti istaknute listinge na naslovnoj i u kategorijama,*  
+*kako bih mogao otkriti najrelevantnije i najaktuelnije sadržaje.*
 
 **Kontekst:** Kada korisnik pregledava naslovnu stranicu ili listu listinga u kategoriji, sistem prikazuje tri grupe sadržaja: Premium sekcija na vrhu (sortirani po sortDate), zatim Standard i obični izmiješani (također po sortDate). Na naslovnoj stranici, Premium+Homepage ima dodatni apsolutni prioritet. Svaki promotivni listing ima vizualno isticanje — badge, border, pozadina. Detalji o sortiranju → **Ch.06, sekcija 6.2**.3; naslovna → **Ch.02, sekcija 2.1**.
 

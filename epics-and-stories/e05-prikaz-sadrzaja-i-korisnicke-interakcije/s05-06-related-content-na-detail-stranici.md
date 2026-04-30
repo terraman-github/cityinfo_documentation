@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-04, **J-05**
 
-**User story:**  
-Kao posjetilac,
+**User story:**
 
-želim vidjeti povezane sadržaje na dnu detail stranice,
-
-kako bih otkrio još zanimljivih mjesta ili događaja bez vraćanja na pretragu.
+*Kao posjetilac,*  
+*želim vidjeti povezane sadržaje na dnu detail stranice,*  
+*kako bih otkrio još zanimljivih mjesta ili događaja bez vraćanja na pretragu.*
 
 **Kontekst:** Related content se prikazuje na dnu svake detail stranice. Logika odabira je definisana u **Ch.02, sekcija 2.3**. Za Event: prioritet imaju drugi eventi na istom Place-u, zatim eventi iste kategorije u narednih 14 dana, pa eventi sa istim tagovima. Za Place: nadolazeći eventi na tom mjestu, zatim mjesta iste kategorije u blizini. Promovirani listinzi nemaju prioritet u related contentu.
 

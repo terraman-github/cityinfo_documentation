@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-04
 
-**User story:**  
-Kao posjetilac,
+**User story:**
 
-želim postaviti svoju lokaciju i filtrirati sadržaj po udaljenosti,
-
-kako bih pronašao mjesta i događaje koji su mi blizu.
+*Kao posjetilac,*  
+*želim postaviti svoju lokaciju i filtrirati sadržaj po udaljenosti,*  
+*kako bih pronašao mjesta i događaje koji su mi blizu.*
 
 **Kontekst:** Lokacija nije obavezna za korištenje platforme, ali bez nje korisnik gubi filter po udaljenosti i prikaz distance na karticama. Sistem podržava GPS (browser geolokacija) i ručni unos (pretraga adrese/grada). Zona pokrivenosti tenanta je definisana kao centar + radijus. Detalji u **Ch.02, sekcija 2.2** (lokacijski dijalog).
 

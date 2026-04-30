@@ -17,12 +17,11 @@ type: backend-only
 
 **Journey milestones:** J-06
 
-**User story:**  
-Kao vlasnik listinga sa aktivnom promocijom,
+**User story:**
 
-želim da se moj listing automatski osvježava na odabranom intervalu,
-
-kako bih zadržao visoku vidljivost bez da se ručno vraćam na platformu.
+*Kao vlasnik listinga sa aktivnom promocijom,*  
+*želim da se moj listing automatski osvježava na odabranom intervalu,*  
+*kako bih zadržao visoku vidljivost bez da se ručno vraćam na platformu.*
 
 **Kontekst:** Korisnik je kreirao promociju ([S10-01](s10-01-kreiranje-i-aktivacija-promocije-listinga.md)) sa uključenim AutoRenew-om i odabranim intervalom. Background job periodično provjerava sve aktivne promocije sa `autoRenewEnabled: true` i ažurira `sortDate` za one čiji je `nextAutoRenewAt` prošao. Nakon svakog osvježavanja, `nextAutoRenewAt` se pomjera za interval unaprijed, a `autoRenewsCompleted` se inkrementira. Detalji o AutoRenew mehanizmu → **Ch.06, sekcija 6.2**.4.
 

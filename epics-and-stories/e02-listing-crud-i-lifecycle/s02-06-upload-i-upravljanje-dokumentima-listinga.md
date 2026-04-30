@@ -21,12 +21,11 @@ type: fullstack
 
 **Journey milestones:** J-02, **J-07**
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim priložiti dokumente uz svoj listing (npr. dokaz vlasništva ili dozvolu za događaj),
-
-kako bih ubrzao proces moderacije i dobio verifikacioni badge.
+*Kao vlasnik listinga,*  
+*želim priložiti dokumente uz svoj listing (npr. dokaz vlasništva ili dozvolu za događaj),*  
+*kako bih ubrzao proces moderacije i dobio verifikacioni badge.*
 
 **Kontekst:** Korisnik ima kreiran listing u bilo kojem statusu osim terminalnih (`removed`, `rejected`, `expired`). Dokumenti se mogu uploadovati pri kreiranju ili naknadno. ListingDocument je SSoT za sve dokumente vezane za listing — **Ch.04** (sekcija 4.7) je autoritativna referenca za ovaj entitet. Verifikacija vlasništva nije obavezna za objavu ali donosi prednosti (brža moderacija, badge). Detalji o verifikaciji → **Ch.04, sekcija 4.7**.
 

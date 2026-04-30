@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao local\_admin,
+**User story:**
 
-želim upravljati kojim tenantima Staff članovi imaju pristup,
-
-kako bih mogao kontrolisati da moderator iz Sarajeva ne vidi podatke iz Banja Luke — osim ako mu je to eksplicitno dodijeljeno.
+*Kao local\_admin,*  
+*želim upravljati kojim tenantima Staff članovi imaju pristup,*  
+*kako bih mogao kontrolisati da moderator iz Sarajeva ne vidi podatke iz Banja Luke — osim ako mu je to eksplicitno dodijeljeno.*
 
 **Kontekst:** CityInfo je multi-tenant platforma — svaki grad ima svoju bazu. Staff vidi samo podatke tenanta kojima ima pristup (`tenantAccess` lista). Čak i local\_admin za jedan grad ne može vidjeti podatke drugog. Detalji → **Ch.03, sekcija 3.5**. U MVP-u postoji samo jedan tenant (Sarajevo), ali sistem mora biti spreman za multi-tenant scenarij.
 

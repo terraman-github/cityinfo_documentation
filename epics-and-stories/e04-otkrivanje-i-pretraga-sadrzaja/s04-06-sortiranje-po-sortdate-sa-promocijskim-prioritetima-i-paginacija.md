@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-04
 
-**User story:**  
-Kao posjetilac,
+**User story:**
 
-želim da mi se listinzi prikazuju u smislenom redoslijedu i da mogu pregledati sve rezultate,
-
-kako bih vidio najrelevantnije sadržaje prvi, a zatim nastaviti listanje bez čekanja.
+*Kao posjetilac,*  
+*želim da mi se listinzi prikazuju u smislenom redoslijedu i da mogu pregledati sve rezultate,*  
+*kako bih vidio najrelevantnije sadržaje prvi, a zatim nastaviti listanje bez čekanja.*
 
 **Kontekst:** Sortiranje je definirano u **Ch.02, sekcija 2.4**. `sortDate` je centralni mehanizam — svaki listing ima ovo polje koje se osvježava pri kreiranju, odobrenju, ručnom refresh-u (jednom u 24h), i AutoRenew promocijama. Promocijski status dodaje drugi sloj: Premium listinzi idu na vrh unutar kategorije, Premium+Homepage na vrh naslovne. Paginacija koristi lazy loading — inicijalni set rezultata se učitava, a dodatni po potrebi.
 

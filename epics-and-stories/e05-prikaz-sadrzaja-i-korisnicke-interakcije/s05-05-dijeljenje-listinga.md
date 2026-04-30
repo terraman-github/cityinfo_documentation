@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-05
 
-**User story:**  
-Kao posjetilac (registrovan ili visitor),
+**User story:**
 
-želim podijeliti zanimljiv listing sa prijateljima,
-
-kako bih im preporučio mjesto ili događaj bez potrebe da im objašnjavam detalje.
+*Kao posjetilac (registrovan ili visitor),*  
+*želim podijeliti zanimljiv listing sa prijateljima,*  
+*kako bih im preporučio mjesto ili događaj bez potrebe da im objašnjavam detalje.*
 
 **Kontekst:** Dijeljenje ne zahtijeva autentifikaciju — dostupno je svima. Mehanizam koristi native share API preglednika gdje je dostupan (tipično mobilni), a copy-to-clipboard kao fallback (tipično desktop). Dijeljeni URL vodi na javnu detail stranicu. Open Graph meta tagovi su definirani u [S05-02](s05-02-detaljna-stranica-listinga.md). Detalji u **Ch.04, sekcija 4.9**.
 

@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-04
 
-**User story:**  
-Kao posjetilac (visitor ili registrovan korisnik),
+**User story:**
 
-želim vidjeti relevantne listinge čim otvorim platformu,
-
-kako bih brzo saznao šta se dešava u gradu ili gdje otići.
+*Kao posjetilac (visitor ili registrovan korisnik),*  
+*želim vidjeti relevantne listinge čim otvorim platformu,*  
+*kako bih brzo saznao šta se dešava u gradu ili gdje otići.*
 
 **Kontekst:** Korisnik otvara [cityinfo.ba](http://cityinfo.ba). Naslovna po defaultu prikazuje Events režim jer su događaji vremenski osjetljivi. Korisnik može prebaciti na Places režim kroz vidljivu navigaciju. Sadržaj je podijeljen u dvije grupe prema **Ch.02, sekcija 2.1** — Grupa 1 su Premium+Homepage promocije (apsolutni prioritet), Grupa 2 su svi ostali listinzi sortirani po sortDate. Featured sekcije (npr. "Ovaj vikend") su za MVP hardkodirane.
 

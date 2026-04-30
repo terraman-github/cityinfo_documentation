@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-03
 
-**User story:**  
-Kao moderator,
+**User story:**
 
-želim imati pregled svih message thread-ova sa filterima po statusu i dodijeljenom moderatoru,
-
-kako bih mogao efikasno pratiti komunikaciju sa vlasnicima listinga i ne propustiti čekajuće odgovore.
+*Kao moderator,*  
+*želim imati pregled svih message thread-ova sa filterima po statusu i dodijeljenom moderatoru,*  
+*kako bih mogao efikasno pratiti komunikaciju sa vlasnicima listinga i ne propustiti čekajuće odgovore.*
 
 **Kontekst:** Moderator koristi Staff panel za upravljanje komunikacijom. Pored pristupa thread-u direktno iz listing pregleda (kao dio moderacijskog workflow-a), moderator treba i centraliziran pregled svih thread-ova — posebno onih u statusu `waiting_moderator` koji čekaju njegov odgovor. Ova storija pokriva Staff-specifičan UI i endpoint za upravljanje thread-ovima. Detalji o thread modelu → **Ch.07**, sekcije 7.1.3–7.1.5; PATCH endpoint za thread → **Ch.07, sekcija 7.4**.1.
 

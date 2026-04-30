@@ -20,12 +20,11 @@ type: backend-only
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao developer,
+**User story:**
 
-želim imati Tag entitete za evente i mjesta,
-
-kako bih mogao omogućiti korisnicima da označe specifičnosti svojih listinga.
+*Kao developer,*  
+*želim imati Tag entitete za evente i mjesta,*  
+*kako bih mogao omogućiti korisnicima da označe specifičnosti svojih listinga.*
 
 **Kontekst:** Tagovi opisuju karakteristike listinga (parking, wifi, besplatno, za-djecu). Odvojeni su za evente i mjesta jer su semantički različiti — **Ch.04, sekcija 4.5**. Slugovi tagova se čuvaju denormalizovano u Listing entitetu (`primaryTagSlug`, `secondaryTagSlug`).
 

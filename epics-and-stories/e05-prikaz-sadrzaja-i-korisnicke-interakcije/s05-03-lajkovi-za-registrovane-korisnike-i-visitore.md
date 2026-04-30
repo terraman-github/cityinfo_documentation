@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-05
 
-**User story:**  
-Kao posjetilac (registrovan ili visitor),
+**User story:**
 
-želim lajkovati listing koji mi se sviđa,
-
-kako bih izrazio pozitivan stav i pomogao drugima da prepoznaju kvalitetan sadržaj.
+*Kao posjetilac (registrovan ili visitor),*  
+*želim lajkovati listing koji mi se sviđa,*  
+*kako bih izrazio pozitivan stav i pomogao drugima da prepoznaju kvalitetan sadržaj.*
 
 **Kontekst:** Lajk je dostupan na kartici i na detaljnoj stranici. Registrovani korisnici imaju Appreciation entitet (**Ch.04**, 4.9) — lajk se trajno evidentira, korisnik može unlike-ovati. Visitors dobijaju samo inkrement brojača bez zapisa. Zaštita od visitor duplikata koristi jednosmjerni hash identifikacionih signala + listingId.
 

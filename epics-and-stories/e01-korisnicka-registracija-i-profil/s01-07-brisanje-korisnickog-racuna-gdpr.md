@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-01
 
-**User story:**  
-Kao korisnik koji želi napustiti platformu,
+**User story:**
 
-želim obrisati svoj račun i sve vezane podatke,
-
-kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.
+*Kao korisnik koji želi napustiti platformu,*  
+*želim obrisati svoj račun i sve vezane podatke,*  
+*kako bih ostvario svoje pravo na brisanje podataka prema GDPR-u.*
 
 **Kontekst:** Korisnik pristupa opciji brisanja kroz profil. Brisanje postavlja `accountStatus = deleted` i pokreće 30-dnevni countdown. Tokom tog perioda, korisnik se ne može prijaviti, ali podaci postoje u bazi. Nakon 30 dana, background job trajno briše podatke. Detalji o accountStatus → **Ch.03, sekcija 3.3**. Endpoint: `DELETE /users/me` (**Ch.03, sekcija 3.8**).
 

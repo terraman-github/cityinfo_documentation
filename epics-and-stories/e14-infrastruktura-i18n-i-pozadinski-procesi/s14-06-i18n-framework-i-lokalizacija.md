@@ -17,12 +17,11 @@ type: infra
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao developer,
+**User story:**
 
-želim imati i18n framework za frontend i backend,
-
-kako bi sistem mogao prikazivati sadržaj i UI elemente na oba jezika tenanta.
+*Kao developer,*  
+*želim imati i18n framework za frontend i backend,*  
+*kako bi sistem mogao prikazivati sadržaj i UI elemente na oba jezika tenanta.*
 
 **Kontekst:** CityInfo je od početka dvojezična platforma — svaki tenant podržava primarni i sekundarni jezik (**Ch.01, sekcija 1.1**). Dvojezičnost ima dvije dimenzije: (1) UI stringovi — labele, poruke, navigacija — koji se lokalizuju kroz i18n framework, i (2) korisnički sadržaj — `name`/`nameAlt`, `description`/`descriptionAlt` — koji koristi fallback logiku (ako alt ne postoji, prikaži primarni). Korisnik bira jezik sučelja — **Ch.02, sekcija 2.2**.
 

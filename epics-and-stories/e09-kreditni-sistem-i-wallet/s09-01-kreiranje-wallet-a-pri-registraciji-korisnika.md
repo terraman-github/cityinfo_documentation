@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-09
 
-**User story:**  
-Kao sistem,
+**User story:**
 
-želim automatski kreirati wallet za svakog novog korisnika pri registraciji,
-
-kako bi korisnik imao spreman račun za kupovinu kredita čim mu zatreba.
+*Kao sistem,*  
+*želim automatski kreirati wallet za svakog novog korisnika pri registraciji,*  
+*kako bi korisnik imao spreman račun za kupovinu kredita čim mu zatreba.*
 
 **Kontekst:** Wallet se kreira kao dio registracijskog procesa ([E01](../e01-korisnicka-registracija-i-profil.md)). Početno stanje je 0 kredita, minimalni balans je 0 (ne može biti negativan). Wallet stanje treba biti vidljivo korisniku u header-u aplikacije od prvog logina. Detalji o wallet konceptu → **Ch.06, sekcija 6.1**.2.
 

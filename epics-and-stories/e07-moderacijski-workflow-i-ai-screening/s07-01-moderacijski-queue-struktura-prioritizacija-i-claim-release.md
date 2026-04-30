@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-03
 
-**User story:**  
-Kao moderator,
+**User story:**
 
-želim vidjeti prioritiziranu listu sadržaja koji čeka moderaciju i preuzeti stavke za pregled,
-
-kako bih efikasno radio bez da stalno odlučujem "šta sljedeće" i bez rizika da dva moderatora rade na istom sadržaju.
+*Kao moderator,*  
+*želim vidjeti prioritiziranu listu sadržaja koji čeka moderaciju i preuzeti stavke za pregled,*  
+*kako bih efikasno radio bez da stalno odlučujem "šta sljedeće" i bez rizika da dva moderatora rade na istom sadržaju.*
 
 **Kontekst:** Queue se dijeli u četiri zone prema prioritetu: Urgent (AI blocking flag), High Priority (score > 75), Normal Priority (score 40–75), Low Priority (score < 40). Pored sadržaja za moderaciju, u queue ulaze i sistemske stavke: Trust Tier Auto-Degradation Review i Instant Block Review. Prioritizacija koristi različite formule za pre-moderaciju i post-moderaciju. Detalji o prioritizaciji → **Ch.05**, sekcije 5.2.1–5.2.2.
 

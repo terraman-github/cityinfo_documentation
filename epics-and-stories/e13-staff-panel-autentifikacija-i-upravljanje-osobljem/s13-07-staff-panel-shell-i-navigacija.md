@@ -17,12 +17,11 @@ type: frontend-only
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao moderator,
+**User story:**
 
-želim imati pregledan admin panel sa jasnom navigacijom,
-
-kako bih mogao brzo pristupiti moderacijskom queue-u, korisnicima i drugim alatima bez lutanja.
+*Kao moderator,*  
+*želim imati pregledan admin panel sa jasnom navigacijom,*  
+*kako bih mogao brzo pristupiti moderacijskom queue-u, korisnicima i drugim alatima bez lutanja.*
 
 **Kontekst:** Staff panel živi na [admin.cityinfo.ba](http://admin.cityinfo.ba) kao odvojen SvelteKit projekat. Navigacija se razlikuje po ulogama — moderator vidi moderacijske alate, operator vidi finansijske izvještaje, local\_admin vidi sve + sistemske postavke. Detalji o matrici ovlasti → **Ch.03, sekcija 3.5**. Staff panel je tehnički postavljen u [E14](../e14-infrastruktura-i18n-i-pozadinski-procesi.md) ([S14-03](../e14-infrastruktura-i18n-i-pozadinski-procesi/s14-03-inicijalni-sveltekit-frontend-projekat.md)), ova storija gradi na tom temelju.
 

@@ -17,12 +17,11 @@ type: backend-only
 
 **Journey milestones:** J-03, **J-08**
 
-**User story:**  
-Kao sistem,
+**User story:**
 
-želim automatski degradirati korisnika na Tier 0 kada dosegne prag odbijenih objava,
-
-kako bi platforma bila zaštićena od korisnika koji ponavljano krše pravila, čak i kada moderatori nisu dostupni.
+*Kao sistem,*  
+*želim automatski degradirati korisnika na Tier 0 kada dosegne prag odbijenih objava,*  
+*kako bi platforma bila zaštićena od korisnika koji ponavljano krše pravila, čak i kada moderatori nisu dostupni.*
 
 **Kontekst:** Automatska degradacija se triggeruje kada korisnik ima `TIER_REJECTED_THRESHOLD` odbijenih objava unutar `TIER_REJECTED_WINDOW_DAYS` dana. Ovo važi za korisnike na bilo kojem tier-u (1–4). Svaka automatska degradacija kreira review stavku u moderacijskom queue-u — moderator mora potvrditi ili revertovati odluku. Detalji → **Ch.03, sekcija 3.4** (Degradacija); **Ch.05, sekcija 5.1**.3.
 

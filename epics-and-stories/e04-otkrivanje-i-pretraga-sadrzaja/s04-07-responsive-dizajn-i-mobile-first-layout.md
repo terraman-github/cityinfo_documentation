@@ -17,12 +17,11 @@ type: frontend-only
 
 **Journey milestones:** J-04
 
-**User story:**  
-Kao korisnik na mobilnom uređaju,
+**User story:**
 
-želim da platforma bude prilagođena mom ekranu i touch interakciji,
-
-kako bih mogao udobno koristiti sve funkcionalnosti bez zumiranja ili horizontalnog scrolla.
+*Kao korisnik na mobilnom uređaju,*  
+*želim da platforma bude prilagođena mom ekranu i touch interakciji,*  
+*kako bih mogao udobno koristiti sve funkcionalnosti bez zumiranja ili horizontalnog scrolla.*
 
 **Kontekst:** Mobile-first pristup je definisan u **Ch.02, sekcija 2.5**. Tri breakpointa: telefon (< 640px), tablet (640–1024px), desktop (> 1024px). Mobile-specifični elementi uključuju sticky header, bottom navigation bar, floating action button za kreiranje sadržaja, i filtere u drawer/modal formatu. Ova storija je horizontalna — utiče na sve ostale storije iz E04 i [E05](../e05-prikaz-sadrzaja-i-korisnicke-interakcije.md).
 

@@ -17,12 +17,11 @@ type: backend-only
 
 **Journey milestones:** J-03
 
-**User story:**  
-Kao sistem,
+**User story:**
 
-želim automatski evaluirati da li korisnik ispunjava uslove za napredovanje kroz Trust Tier nivoe,
-
-kako bi korisnici koji konzistentno objavljuju kvalitetan sadržaj automatski dobili manje restriktivnu moderaciju.
+*Kao sistem,*  
+*želim automatski evaluirati da li korisnik ispunjava uslove za napredovanje kroz Trust Tier nivoe,*  
+*kako bi korisnici koji konzistentno objavljuju kvalitetan sadržaj automatski dobili manje restriktivnu moderaciju.*
 
 **Kontekst:** Evaluacija se pokreće nakon svake moderatorske odluke (approve ili reject) na listingu. Sistem provjerava tri parametrizirana uslova istovremeno: minimalni broj odobrenih objava, minimalni procenat uspješnosti, i minimalnu starost računa. Sva tri moraju biti ispunjena da bi napredovanje bilo okidano. `changes_requested` se ne broji — samo finalna odluka po listingu utiče na statistiku. Detalji o pragovima i logici → **Ch.03, sekcija 3.4**.
 

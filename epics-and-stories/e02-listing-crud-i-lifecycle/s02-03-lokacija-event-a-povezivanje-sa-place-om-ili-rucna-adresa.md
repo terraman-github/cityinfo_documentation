@@ -21,12 +21,11 @@ type: fullstack
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao organizator događaja,
+**User story:**
 
-želim definisati gdje se moj event održava — bilo povezivanjem sa mojim mjestom ili unosom adrese,
-
-kako bi posjetioci znali gdje doći.
+*Kao organizator događaja,*  
+*želim definisati gdje se moj event održava — bilo povezivanjem sa mojim mjestom ili unosom adrese,*  
+*kako bi posjetioci znali gdje doći.*
 
 **Kontekst:** Korisnik je kreirao Event draft ([S02-01](s02-01-kreiranje-event-listinga-sa-osnovnim-podacima.md)) i sada dodaje lokaciju. Postoje dvije opcije: povezivanje sa vlastitim Place-om (samo ako je isti korisnik vlasnik oba listinga) ili ručna adresa sa koordinatama. Jedna od opcija je obavezna za objavu, ali ne za draft. Detalji → **Ch.04, sekcija 4.2** (Lokacija listinga događaja).
 

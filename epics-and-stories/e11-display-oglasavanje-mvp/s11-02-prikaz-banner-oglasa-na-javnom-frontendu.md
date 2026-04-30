@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao posjetilac platforme,
+**User story:**
 
-želim vidjeti relevantne banner oglase na stranici,
-
-kako bih mogao otkriti lokalne ponude i usluge.
+*Kao posjetilac platforme,*  
+*želim vidjeti relevantne banner oglase na stranici,*  
+*kako bih mogao otkriti lokalne ponude i usluge.*
 
 **Kontekst:** Oglasi se prikazuju na predefinisanim pozicijama (zonama) na javnom frontendu. Za svaku zonu, sistem dohvata aktivne oglase čiji datumski okvir uključuje danas, sortira ih po prioritetu (sortOrder), i prikazuje onaj sa najvećim prioritetom. Ako ima više oglasa za istu zonu, rotira ih pri svakom učitavanju (round-robin). Prazna zona se ne prikazuje. Detalji o logici prikaza → **Ch.06, sekcija 6.3**.4.
 

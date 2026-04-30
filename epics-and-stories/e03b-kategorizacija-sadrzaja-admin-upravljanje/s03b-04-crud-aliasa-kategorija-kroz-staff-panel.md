@@ -20,12 +20,11 @@ type: fullstack
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao local\_admin,
+**User story:**
 
-želim upravljati aliasima kategorija kroz Staff panel,
-
-kako bih mogao dodati lokalne sinonime i poboljšati uspješnost pretrage bez promjene strukture kategorija.
+*Kao local\_admin,*  
+*želim upravljati aliasima kategorija kroz Staff panel,*  
+*kako bih mogao dodati lokalne sinonime i poboljšati uspješnost pretrage bez promjene strukture kategorija.*
 
 **Kontekst:** Admin pristupa sekciji za upravljanje aliasima u Staff panelu. Inicijalni aliasi za Sarajevo su postavljeni u [E03a](../e03a-kategorizacija-sadrzaja-entiteti-i-seed-data.md). Aliasi su nevidljivi korisnicima — koriste se interno za mapiranje pretrage. Tabela aliasa je konfigurabilan parametar po tenantu — svaki grad može imati lokalne sinonime. Više o aliasima u **Ch.04, sekcija 4.4**.
 

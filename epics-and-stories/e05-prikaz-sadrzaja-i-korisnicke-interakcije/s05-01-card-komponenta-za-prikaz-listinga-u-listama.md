@@ -17,12 +17,11 @@ type: frontend-only
 
 **Journey milestones:** J-04
 
-**User story:**  
-Kao posjetilac,
+**User story:**
 
-želim vidjeti pregled listinga u kompaktnom formatu sa ključnim informacijama,
-
-kako bih brzo mogao procijeniti da li me listing zanima prije nego kliknem na detalje.
+*Kao posjetilac,*  
+*želim vidjeti pregled listinga u kompaktnom formatu sa ključnim informacijama,*  
+*kako bih brzo mogao procijeniti da li me listing zanima prije nego kliknem na detalje.*
 
 **Kontekst:** Card komponenta se koristi svuda gdje se prikazuje lista listinga — naslovna, pretraga, filteri, related content, favoriti. Elementi kartice su definirani u **Ch.02, sekcija 2.3**. Ista komponenta za Event i Place, ali sa razlikama u prikazanim podacima (Event ima datum, Place nema).
 

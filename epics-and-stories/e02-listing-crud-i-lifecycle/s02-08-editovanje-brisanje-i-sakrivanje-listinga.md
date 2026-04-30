@@ -21,12 +21,11 @@ type: fullstack
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim moći izmijeniti podatke, privremeno sakriti, otkazati event ili trajno obrisati svoj listing,
-
-kako bih imao punu kontrolu nad sadržajem koji sam objavio.
+*Kao vlasnik listinga,*  
+*želim moći izmijeniti podatke, privremeno sakriti, otkazati event ili trajno obrisati svoj listing,*  
+*kako bih imao punu kontrolu nad sadržajem koji sam objavio.*
 
 **Kontekst:** Korisnik ima listing u nekom od aktivnih statusa (`draft`, `in_review`, `changes_requested`, `published`, `published_under_review`, `published_needs_changes`). Ponašanje pri editu objavljenog listinga zavisi od Trust Tier-a korisnika (**Ch.04**, 4.8 — Ažuriranje objavljenog listinga). Brisanje ima različitu logiku zavisno o `wasEverActive` flagu i tipu listinga (**Ch.04**, 4.2 za Event, 4.3 za Place). Sakrivanje (`hidden_by_owner`) je reverzibilno, za razliku od brisanja (`removed`).
 

@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao operator,
+**User story:**
 
-želim dodijeliti ili oduzeti specifične permisije moderatorima,
-
-kako bih mogao kontrolisati ko ima pristup osjetljivim akcijama poput promjene Trust Tier-a ili upravljanja tagovima.
+*Kao operator,*  
+*želim dodijeliti ili oduzeti specifične permisije moderatorima,*  
+*kako bih mogao kontrolisati ko ima pristup osjetljivim akcijama poput promjene Trust Tier-a ili upravljanja tagovima.*
 
 **Kontekst:** Permisije se čuvaju u `permissions` polju Staff entiteta kao lista stringova. Trenutno postoje dvije permisije: `can_manage_trust_tier` i `can_manage_tags`. Operator i local\_admin mogu dodijeljivati permisije moderatorima. Local\_admin ima inherentno sve permisije bez potrebe za eksplicitnim dodavanjem. Detalji → **Ch.03, sekcija 3.5** (moderatorske permisije) i **Ch.05, sekcija 5.4**.1.
 

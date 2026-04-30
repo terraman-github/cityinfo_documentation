@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao Staff korisnik,
+**User story:**
 
-želim da sistem automatski prati koliko puta je oglas prikazan i koliko puta je kliknut,
-
-kako bih mogao izvijestiti oglašivače o performansama njihovih oglasa.
+*Kao Staff korisnik,*  
+*želim da sistem automatski prati koliko puta je oglas prikazan i koliko puta je kliknut,*  
+*kako bih mogao izvijestiti oglašivače o performansama njihovih oglasa.*
 
 **Kontekst:** Impressions se inkrementiraju svaki put kad se oglas prikaže korisniku (pri dohvatu iz API-ja za prikaz u zoni). Clicks se inkrementiraju pri kliku na oglas — frontend šalje zahtjev za registraciju klika prije redirecta na targetUrl. Ovo su osnovne metrike bez napredne analitike — dovoljan nivo za MVP izvještavanje. Detalji → **Ch.06, sekcija 6.3**.5.
 

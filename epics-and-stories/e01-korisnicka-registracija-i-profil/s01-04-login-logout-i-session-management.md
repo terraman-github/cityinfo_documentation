@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-01
 
-**User story:**  
-Kao registrovani korisnik,
+**User story:**
 
-želim se prijaviti na platformu i ostati prijavljen na svim svojim uređajima,
-
-kako bih mogao koristiti platformu bez stalnog ponovnog prijavljivanja.
+*Kao registrovani korisnik,*  
+*želim se prijaviti na platformu i ostati prijavljen na svim svojim uređajima,*  
+*kako bih mogao koristiti platformu bez stalnog ponovnog prijavljivanja.*
 
 **Kontekst:** Login je ulazna tačka za sve autentificirane funkcionalnosti. Session politika za User: 30 dana refresh token, neograničene concurrent sessions (**Ch.03, sekcija 3.7**). Pri prijavi, sistem provjerava oba statusa — accountStatus i accessStatus. Korisnik sa `accountStatus = active` ali `accessStatus = blocked` ne smije moći pristupiti (**Ch.03, sekcija 3.3** — ortogonalnost statusa). Lockout nakon 10 neuspjelih pokušaja na 15 minuta (**Ch.03**, 3.7).
 

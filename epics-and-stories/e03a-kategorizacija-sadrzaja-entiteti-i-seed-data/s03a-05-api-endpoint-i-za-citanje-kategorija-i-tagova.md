@@ -20,12 +20,11 @@ type: backend-only
 
 **Journey milestones:** J-02, **J-04**
 
-**User story:**  
-Kao frontend developer,
+**User story:**
 
-želim imati API endpoint-e za dohvat kategorija i tagova,
-
-kako bih mogao prikazati odabir kategorije i tagova u listing formi i filterima.
+*Kao frontend developer,*  
+*želim imati API endpoint-e za dohvat kategorija i tagova,*  
+*kako bih mogao prikazati odabir kategorije i tagova u listing formi i filterima.*
 
 **Kontekst:** Ovo su javni endpoint-i (ne zahtijevaju autentifikaciju) jer ih koriste i visitors za pretragu. Endpoint-i su definirani u **Ch.04, sekcija 4.10**. Kategorije se vraćaju grupirane po sektoru. Tagovi se vraćaju sortirani po orderIndex.
 

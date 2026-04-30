@@ -17,12 +17,11 @@ type: infra
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao developer,
+**User story:**
 
-želim imati konfigurisan tenant za Sarajevo sa svim potrebnim parametrima,
-
-kako bi sistem znao koji grad opslužuje, koje jezike podržava i koji su operativni parametri.
+*Kao developer,*  
+*želim imati konfigurisan tenant za Sarajevo sa svim potrebnim parametrima,*  
+*kako bi sistem znao koji grad opslužuje, koje jezike podržava i koji su operativni parametri.*
 
 **Kontekst:** MVP radi sa jednim tenantom (Sarajevo) bez TenantRegistry-a i multi-tenant infrastrukture — **MVP SCOPE**. Konfiguracija se čita iz config fajla ili environment varijabli. Parametri pokrivaju identitet tenanta, jezike, zonu pokrivenosti i operativne vrijednosti. Preporuka iz **MVP SCOPE**: koristiti konfiguracijske parametre umjesto hardkodiranja, čime se olakšava kasnija tranzicija na multi-tenant.
 

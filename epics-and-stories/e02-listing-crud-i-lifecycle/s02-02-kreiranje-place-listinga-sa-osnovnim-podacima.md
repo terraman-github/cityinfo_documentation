@@ -21,12 +21,11 @@ type: fullstack
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao vlasnica biznisa,
+**User story:**
 
-želim kreirati Place listing sa informacijama o mom poslovnom objektu,
-
-kako bih ga učinila vidljivim na platformi i privukla korisnike.
+*Kao vlasnica biznisa,*  
+*želim kreirati Place listing sa informacijama o mom poslovnom objektu,*  
+*kako bih ga učinila vidljivim na platformi i privukla korisnike.*
 
 **Kontekst:** Korisnik je ulogovan, ima verificiran telefon. Pristupa formi za kreiranje Place-a kroz navigaciju. Place listing zahtijeva fizičku adresu i koordinate — za razliku od Event-a koji ima fleksibilniju lokaciju. Listing se kreira u `listingStatus = draft`. Detalji o Place atributima → **Ch.04, sekcija 4.3**. Zajednički atributi → **Ch.04, sekcija 4.1**.
 

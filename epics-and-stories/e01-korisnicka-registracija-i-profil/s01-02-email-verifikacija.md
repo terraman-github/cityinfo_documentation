@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-01
 
-**User story:**  
-Kao novoregistrovani korisnik,
+**User story:**
 
-želim potvrditi svoju email adresu klikom na verifikacioni link,
-
-kako bih dokazao da imam pristup tom emailu i otključao punu funkcionalnost platforme.
+*Kao novoregistrovani korisnik,*  
+*želim potvrditi svoju email adresu klikom na verifikacioni link,*  
+*kako bih dokazao da imam pristup tom emailu i otključao punu funkcionalnost platforme.*
 
 **Kontekst:** Odmah nakon registracije ([S01-01](s01-01-registracija-novog-korisnika.md)), korisnik prima email sa verifikacionim linkom. Korisnik se može prijaviti i prije verifikacije emaila, ali ne može kreirati listinge dok email nije potvrđen (uz dodatni preduslov verifikacije telefona — [S01-03](s01-03-verifikacija-telefona-sms.md)). Ovo je standardni tok iz **Ch.02, sekcija 2.7** — korak "Email verifikacija".
 

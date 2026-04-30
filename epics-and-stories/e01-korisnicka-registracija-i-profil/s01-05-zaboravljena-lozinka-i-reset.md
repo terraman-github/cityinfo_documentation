@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-01
 
-**User story:**  
-Kao korisnik koji je zaboravio lozinku,
+**User story:**
 
-želim zatražiti reset putem emaila i postaviti novu lozinku,
-
-kako bih ponovo mogao pristupiti svom računu.
+*Kao korisnik koji je zaboravio lozinku,*  
+*želim zatražiti reset putem emaila i postaviti novu lozinku,*  
+*kako bih ponovo mogao pristupiti svom računu.*
 
 **Kontekst:** Korisnik je na login stranici i ne može se sjetiti lozinke. Klikne "Zaboravljena lozinka", unese email, i prima link za reset. Ovo je standardan sigurnosni flow — API endpointi su definirani u **Ch.03, sekcija 3.8** (`/auth/forgot-password`, `/auth/reset-password`).
 

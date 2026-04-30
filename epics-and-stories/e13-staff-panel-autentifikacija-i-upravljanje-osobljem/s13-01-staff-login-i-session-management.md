@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao moderator,
+**User story:**
 
-želim se prijaviti na admin panel sa sigurnom autentifikacijom,
-
-kako bih mogao pristupiti moderacijskim alatima bez rizika od neovlaštenog pristupa.
+*Kao moderator,*  
+*želim se prijaviti na admin panel sa sigurnom autentifikacijom,*  
+*kako bih mogao pristupiti moderacijskim alatima bez rizika od neovlaštenog pristupa.*
 
 **Kontekst:** Staff pristupa admin panelu na [admin.cityinfo.ba](http://admin.cityinfo.ba). Za razliku od User sistema, Staff autentifikacija zahtijeva obaveznu 2FA za sve naloge i ima strože session politike. Staff nalog mora biti `isActive = true` da bi login bio moguć. Detalji o sigurnosnim zahtjevima → **Ch.03, sekcija 3.7**. Staff entitet i atributi → **Ch.03, sekcija 3.5**.
 

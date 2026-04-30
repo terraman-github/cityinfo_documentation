@@ -20,12 +20,11 @@ type: backend-only
 
 **Journey milestones:** J-02, **J-04**
 
-**User story:**  
-Kao developer,
+**User story:**
 
-želim imati inicijalne tagove i aliase u bazi,
-
-kako bi korisnici mogli označiti specifičnosti listinga, a pretraga razumjela lokalne sinonime.
+*Kao developer,*  
+*želim imati inicijalne tagove i aliase u bazi,*  
+*kako bi korisnici mogli označiti specifičnosti listinga, a pretraga razumjela lokalne sinonime.*
 
 **Kontekst:** Primjeri tagova su navedeni u **Ch.04, sekcija 4.5** — EventTags (besplatno, za-djecu, online, radionica, festival, porodično) i PlaceTags (parking, wifi, pet-friendly, dostava, rezervacije, kartice). Aliasi su definisani u **Ch.04, sekcija 4.4** — mapiranje alternativnih termina na kategorije (gym → Teretane i fitness, picerija → Restorani, itd.).
 

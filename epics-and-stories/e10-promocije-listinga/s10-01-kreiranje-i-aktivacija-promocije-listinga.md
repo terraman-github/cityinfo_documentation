@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-06
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim kreirati promociju za svoj listing birajući tip i trajanje,
-
-kako bi moj listing bio istaknutiji i vidljiviji potencijalnim posjetiocima.
+*Kao vlasnik listinga,*  
+*želim kreirati promociju za svoj listing birajući tip i trajanje,*  
+*kako bi moj listing bio istaknutiji i vidljiviji potencijalnim posjetiocima.*
 
 **Kontekst:** Korisnik pristupa opciji promocije kroz listing detail stranicu ili kroz "Moji listinzi" pregled. Bira tip promocije (Standard/Premium/Premium+Homepage), trajanje (1/3/7/30 dana), i opciono AutoRenew interval. Sistem kalkuliše ukupnu cijenu u kreditima, provjerava wallet balance, i po potvrdi instant aktivira promociju. Listing mora biti javno vidljiv (`isPublic = true`). Detalji o tipovima → **Ch.06, sekcija 6.2**.3; workflow → **Ch.06, sekcija 6.2**.6; poslovna pravila → **Ch.06, sekcija 6.2**.7.
 

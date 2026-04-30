@@ -17,12 +17,11 @@ type: infra
 
 **Journey milestones:** J-08
 
-**User story:**  
-Kao developer,
+**User story:**
 
-želim imati inicijalnu DB schema-u sa migration sistemom,
-
-kako bih mogao kreirati i evoluirati strukturu baze podataka na kontrolisan način.
+*Kao developer,*  
+*želim imati inicijalnu DB schema-u sa migration sistemom,*  
+*kako bih mogao kreirati i evoluirati strukturu baze podataka na kontrolisan način.*
 
 **Kontekst:** Baza je MS SQL Server — **Ch.08, sekcija 8.5**. U MVP-u je single-tenant (jedna baza za Sarajevo — **Ch.08, sekcija 8.1**). Schema treba pokriti osnovne entitete iz **Ch.03** (User, Staff) i **Ch.04** (Listing, Event, Place, Category, Tag, Image, ListingDocument). Ovo je skeleton — ne svi atributi, ali dovoljno za početak rada na [E01](../e01-korisnicka-registracija-i-profil.md) i [E02](../e02-listing-crud-i-lifecycle.md).
 

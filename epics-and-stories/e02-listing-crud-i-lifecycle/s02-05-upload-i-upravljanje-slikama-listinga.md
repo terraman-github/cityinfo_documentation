@@ -21,12 +21,11 @@ type: fullstack
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim dodati slike svom listingu — glavnu sliku i galeriju,
-
-kako bi listing bio vizuelno atraktivniji i privlačio više posjetilaca.
+*Kao vlasnik listinga,*  
+*želim dodati slike svom listingu — glavnu sliku i galeriju,*  
+*kako bi listing bio vizuelno atraktivniji i privlačio više posjetilaca.*
 
 **Kontekst:** Korisnik ima kreiran listing (Event ili Place) u bilo kojem statusu osim terminalnih (`removed`, `rejected`, `expired`). Slike se uploaduju na stranicu drafta ili na edit stranici objavljenog listinga. Sistem automatski generiše optimizirane verzije (thumbnail, medium, original, WebP). Detalji o Image entitetu → **Ch.04, sekcija 4.6**. Default slika kategorije služi kao fallback ako listing nema vlastitu sliku (hijerarhija slika → **Ch.04**, 4.6).
 

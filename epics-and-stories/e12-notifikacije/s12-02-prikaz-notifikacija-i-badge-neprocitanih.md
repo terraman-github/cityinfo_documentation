@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** Cross-cutting
 
-**User story:**  
-Kao registrovani korisnik,
+**User story:**
 
-želim vidjeti svoje notifikacije i broj nepročitanih u headeru,
-
-kako bih bio u toku sa dešavanjima na mojim listinzima i promocijama.
+*Kao registrovani korisnik,*  
+*želim vidjeti svoje notifikacije i broj nepročitanih u headeru,*  
+*kako bih bio u toku sa dešavanjima na mojim listinzima i promocijama.*
 
 **Kontekst:** Badge sa brojem nepročitanih notifikacija se uvijek prikazuje u headeru aplikacije za ulogovane korisnike. Klik na badge otvara listu notifikacija (paginirano, sortirano od najnovije). Svaka notifikacija ima naslov, kratki tekst, vrijeme i indikator da li je pročitana. Klik na notifikaciju je označava kao pročitanu i navigira korisnika na relevantni entitet. Detalji o Notification entitetu → **Ch.07, sekcija 7.2**.3.
 

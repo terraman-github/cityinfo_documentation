@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-03, **J-08**
 
-**User story:**  
-Kao moderator,
+**User story:**
 
-želim ručno promijeniti Trust Tier korisnika,
-
-kako bih mogao reagovati na situacije koje automatski sistem ne pokriva — od ozbiljnih kršenja do uspostavljanja poslovnih partnerstava.
+*Kao moderator,*  
+*želim ručno promijeniti Trust Tier korisnika,*  
+*kako bih mogao reagovati na situacije koje automatski sistem ne pokriva — od ozbiljnih kršenja do uspostavljanja poslovnih partnerstava.*
 
 **Kontekst:** Ručna promjena tier-a pokriva scenarije koji zahtijevaju ljudsku procjenu: degradacija zbog ozbiljnog kršenja (hate speech, spam, ilegalni sadržaj) direktno na Tier 0, promjena sa Tier 3 na Tier 2 zbog problema u samplingu, ili postavljanje Tier 4 za ugovorne partnere. Akcije prema Tier 0 i Tier 4 zahtijevaju `can_manage_trust_tier` permisiju — ostale promjene (npr. Tier 3 → Tier 2) mogu izvršiti svi moderatori. Staff sa ulogom `local_admin` ima inherentnu ovlast za sve akcije. Detalji → **Ch.03, sekcija 3.4** (Degradacija); **Ch.05, sekcija 5.4**.
 

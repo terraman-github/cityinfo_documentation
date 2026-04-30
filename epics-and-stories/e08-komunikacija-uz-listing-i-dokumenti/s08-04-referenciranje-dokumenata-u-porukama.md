@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-07
 
-**User story:**  
-Kao vlasnik listinga,
+**User story:**
 
-želim priložiti dokument (dokaz vlasništva, dozvolu, certifikat) uz poruku moderatoru,
-
-kako bih mogao dostaviti traženu dokumentaciju bez eksternih kanala.
+*Kao vlasnik listinga,*  
+*želim priložiti dokument (dokaz vlasništva, dozvolu, certifikat) uz poruku moderatoru,*  
+*kako bih mogao dostaviti traženu dokumentaciju bez eksternih kanala.*
 
 **Kontekst:** Moderator je kroz poruku zatražio od vlasnika da dostavi dokument — npr. dokaz vlasništva nad mjestom, dozvolu za organizaciju događaja, ili certifikat. Vlasnik uploaduje dokument kroz listing (ListingDocument entitet — SSoT u **Ch.04, sekcija 4.7**), a zatim ga referencira u poruci koristeći `documentIds` polje. Poruka ne sadrži sam dokument, samo ID reference. Upload i virus scanning dokumenata su pokriveni u [E02](../e02-listing-crud-i-lifecycle.md) (Listing CRUD). Ova storija pokriva samo referenciranje postojećih dokumenata u porukama.
 

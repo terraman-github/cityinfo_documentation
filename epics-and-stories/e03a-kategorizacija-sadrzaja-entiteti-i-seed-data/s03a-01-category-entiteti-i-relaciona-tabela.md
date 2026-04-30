@@ -20,12 +20,11 @@ type: backend-only
 
 **Journey milestones:** J-02
 
-**User story:**  
-Kao developer,
+**User story:**
 
-želim imati Category entitete i relacionu tabelu za listing-kategorija vezu,
-
-kako bih mogao povezati listinge sa kategorijama pri kreiranju sadržaja.
+*Kao developer,*  
+*želim imati Category entitete i relacionu tabelu za listing-kategorija vezu,*  
+*kako bih mogao povezati listinge sa kategorijama pri kreiranju sadržaja.*
 
 **Kontekst:** Migracije za skeleton tabele su kreirane u [S14-04](../e14-infrastruktura-i18n-i-pozadinski-procesi/s14-04-inicijalna-db-schema-i-migracije.md), ali bez svih atributa. Ova storija dodaje kompletne atribute na Category entitete prema **Ch.04, sekcija 4.4**, i kreira relacionu tabelu `ListingCategories` (odvojeno za Event i Place) sa `isPrimary` flagom.
 

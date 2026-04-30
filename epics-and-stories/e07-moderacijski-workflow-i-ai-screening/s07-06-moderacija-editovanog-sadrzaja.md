@@ -17,12 +17,11 @@ type: fullstack
 
 **Journey milestones:** J-03
 
-**User story:**  
-Kao sistem,
+**User story:**
 
-želim primijeniti odgovarajuću moderaciju kada korisnik edituje aktivan listing,
-
-kako bi se spriječilo zaobilaženje kontrole kvaliteta kroz izmjenu sadržaja nakon inicijalnog odobrenja.
+*Kao sistem,*  
+*želim primijeniti odgovarajuću moderaciju kada korisnik edituje aktivan listing,*  
+*kako bi se spriječilo zaobilaženje kontrole kvaliteta kroz izmjenu sadržaja nakon inicijalnog odobrenja.*
 
 **Kontekst:** Korisnik može editovati aktivan listing u bilo kojem trenutku. Bez ovog mehanizma, korisnik na Tier 1 bi mogao dobiti odobrenje za kvalitetan listing, pa ga zatim izmijeniti u potpuno neprikladan sadržaj koji bi bio vidljiv bez ponovnog pregleda. Ponašanje se razlikuje po tier-u da bi se balansirala sigurnost i korisničko iskustvo — Verified Partner ne bi trebao čekati odobrenje za ispravku radnog vremena. Detalji → **Ch.05, sekcija 5.2**.5.
 
