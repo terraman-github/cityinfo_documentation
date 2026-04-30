@@ -3,8 +3,6 @@ title: "01 - UVOD I KONCEPTI"
 confluence_page_id: "240156678"
 ---
 
-# 01 - UVOD I KONCEPTI
-
 > **Verzija:** 3.4  
 > **Datum:** 3.4.2026  
 > **Status:** Završeno ✅

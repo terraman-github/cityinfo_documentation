@@ -3,8 +3,6 @@ title: "MVP SCOPE — Opseg prve verzije"
 confluence_page_id: "242188289"
 ---
 
-# MVP SCOPE — Opseg prve verzije
-
 > **Verzija:** 1.5  
 > **Datum:** 3.4.2026  
 > **Status:** Draft — čeka review tima

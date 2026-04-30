@@ -3,8 +3,6 @@ title: "07 - KOMUNIKACIJA"
 confluence_page_id: "240320540"
 ---
 
-# 07 - KOMUNIKACIJA
-
 > **Verzija:** 1.5  
 > **Status:** Završeno ✅  
 > **Datum:** 3.4.2026

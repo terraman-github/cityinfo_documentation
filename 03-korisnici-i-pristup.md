@@ -3,8 +3,6 @@ title: "03 - KORISNICI I PRISTUP"
 confluence_page_id: "240156686"
 ---
 
-# 03 - KORISNICI I PRISTUP
-
 > **Verzija:** 2.1  
 > **Datum:** 3.4.2026  
 > **Status:** Završeno ✅

@@ -123,18 +123,22 @@ H1_RE = re.compile(r"^#\s+(?P<heading>.+?)\s*$")
 
 
 def fix_redundant_h1(
-    body_lines: list[str], frontmatter_id: str | None
+    body_lines: list[str],
+    frontmatter_id: str | None,
+    frontmatter_title: str | None,
 ) -> tuple[list[str], bool]:
     """
-    Pronađi prvi H1 u body-ju. Ako počinje sa logičkim ID-em iz frontmatter-a
-    (npr. "# E01 — ...", "# S01-01 — ..."), ukloni ga.
+    Pronađi prvi H1 u body-ju. Ukloni ga ako:
+    1. Počinje sa logičkim ID-em iz frontmatter-a (npr. "# E01 — ..."), ILI
+    2. Tekst H1-a je identičan title-u iz frontmatter-a (case-insensitive,
+       tolerantan na - vs —).
 
     Vrati (nove_linije, is_modified).
     """
-    if not frontmatter_id:
+    if not frontmatter_id and not frontmatter_title:
         return body_lines, False
 
-    # Pronađi prvu nepraznu liniju (i njen index)
+    # Pronađi prvu nepraznu liniju
     first_nonempty_idx = None
     for i, line in enumerate(body_lines):
         if line.strip():
@@ -150,23 +154,45 @@ def fix_redundant_h1(
         return body_lines, False
 
     heading = m.group("heading").strip()
-    # Provjera: heading počinje sa frontmatter ID-em (case insensitive)
-    # npr. ID="E01", heading="E01 — Korisnička registracija..."
-    # npr. ID="S01-01", heading="S01-01 — Registracija novog korisnika"
-    heading_starts_with_id = heading.upper().startswith(frontmatter_id.upper())
-    if not heading_starts_with_id:
+
+    # Pokušaj 1: H1 počinje sa frontmatter ID-em (E01, S01-01, ...)
+    matches_id = (
+        frontmatter_id
+        and heading.upper().startswith(frontmatter_id.upper())
+    )
+
+    # Pokušaj 2: H1 je u suštini isti kao title (case-insensitive,
+    # tolerantan na različite tipove dash-eva)
+    matches_title = False
+    if frontmatter_title:
+        norm_heading = _normalize_for_match(heading)
+        norm_title = _normalize_for_match(frontmatter_title)
+        matches_title = norm_heading == norm_title
+
+    if not (matches_id or matches_title):
         return body_lines, False
 
     # Ukloni H1 liniju + prazne linije ispred (ako ih ima)
     new_lines = list(body_lines)
-    # Obriši H1 liniju
     del new_lines[first_nonempty_idx]
-    # Obriši prazne linije ispred
     while first_nonempty_idx > 0 and not new_lines[first_nonempty_idx - 1].strip():
         del new_lines[first_nonempty_idx - 1]
         first_nonempty_idx -= 1
 
     return new_lines, True
+
+
+def _normalize_for_match(text: str) -> str:
+    """
+    Normalizuj string za match: lowercase, sve dash-eve pretvori u jedan tip,
+    skupi razmake.
+    """
+    # Sve vrste dash-eva u običan -
+    for dash in ["—", "–", "‒", "−"]:
+        text = text.replace(dash, "-")
+    # Skupi višestruke razmake u jedan
+    text = re.sub(r"\s+", " ", text)
+    return text.strip().lower()
 
 
 # --------------------------------------------------------------------------
@@ -350,11 +376,14 @@ def process_file(
 
     frontmatter, body, line_ending = split_frontmatter(content)
     frontmatter_id = extract_frontmatter_id(frontmatter or [])
+    frontmatter_title = extract_frontmatter_title(frontmatter or [])
 
     new_body = body
 
-    if do_h1 and frontmatter_id:
-        new_body, h1_removed = fix_redundant_h1(new_body, frontmatter_id)
+    if do_h1 and (frontmatter_id or frontmatter_title):
+        new_body, h1_removed = fix_redundant_h1(
+            new_body, frontmatter_id, frontmatter_title
+        )
         result.h1_removed = h1_removed
 
     if do_bold:

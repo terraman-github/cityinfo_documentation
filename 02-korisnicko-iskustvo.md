@@ -3,8 +3,6 @@ title: "02 - KORISNIČKO ISKUSTVO"
 confluence_page_id: "240254995"
 ---
 
-# 02 - KORISNIČKO ISKUSTVO
-
 > **Verzija:** 3.6  
 > **Datum:** 3.4.2026  
 > **Status:** Završeno ✅
