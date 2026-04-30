@@ -1,0 +1,13 @@
+﻿# Internal documentation that doesn't sync to Confluence
+audit-report.md
+CLAUDE.md
+CLAUDE-13-to-12.md
+cityinfo-epics-stories-instructions.md
+README.md
+
+# Tooling folders (bare names, no trailing slash!)
+jira-sync
+md2conf-tooling
+
+# Generated artifacts
+*.csf

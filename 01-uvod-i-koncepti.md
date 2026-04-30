@@ -275,11 +275,11 @@ Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći
 1. **Obavezno:** [05 - Moderacija](05-moderacija.md) — glavni priručnik
 2. [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — kako trust utiče na workflow
 3. [07 - Komunikacija](07-komunikacija.md) — komunikacija sa korisnicima
-4. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — Lejla (moderator persona) i putovanje 5
+4. [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) — Lejla (moderator persona) i putovanje 5
 ### 📊 Za product managere
 
 1. Ovaj dokument (1.1 i 1.5) — big picture
-2. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — detaljne persone, korisnička putovanja i mapiranje na journey milestones
+2. [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) — detaljne persone, korisnička putovanja i mapiranje na journey milestones
 3. [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md) — user flows
 4. [06 - Monetizacija](06-monetizacija.md) — pricing i business model
 ### ⚙️ Za operatore
@@ -287,14 +287,14 @@ Ovisno o ulozi, različiti dijelovi dokumentacije će biti relevantni. Sljedeći
 1. [06 - Monetizacija](06-monetizacija.md) — financijski tokovi
 2. [03 - Korisnici i pristup](03-korisnici-i-pristup.md) — upravljanje osobljem
 3. [08 - Infrastruktura](08-infrastruktura.md) — audit i logging
-4. [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) — Damir (operator persona) i putovanje 6
+4. [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) — Damir (operator persona) i putovanje 6
 
 > **💡 Praktična napomena:** Dokumentacija je živi organizam. Ako nešto nedostaje ili nije jasno, preporuka je otvoriti issue u repo-u ili direktno kontaktirati vlasnika dokumenta.
 
 * * *
 ## 1.5 Persone i korisnička putovanja
 
-> **📄 Detaljna verzija:** Kompletne persone sa ciljevima, frustracijama, "aha" momentima, i detaljnim korisničkim putovanjima (uključujući Staff persone — moderator i operator) dostupne su u zasebnom dokumentu: [**Persone i korisnička putovanja**](../project-specs/persone-i-korisnicka-putovanja.md). Taj dokument također sadrži mapiranje putovanja na journey milestones (J-01 do J-09) iz development plana.
+> **📄 Detaljna verzija:** Kompletne persone sa ciljevima, frustracijama, "aha" momentima, i detaljnim korisničkim putovanjima (uključujući Staff persone — moderator i operator) dostupne su u zasebnom dokumentu: [**Persone i korisnička putovanja**](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257). Taj dokument također sadrži mapiranje putovanja na journey milestones (J-01 do J-09) iz development plana.
 
 Da bi se bolje razumjelo za koga se gradi platforma, definisano je šest reprezentativnih persona — četiri korisničke i dvije staff persone. Ovdje je sažeti pregled; za detalje pogledajte linkani dokument.
 ### Korisničke persone
@@ -317,12 +317,12 @@ Na osnovu persona, identificirano je šest ključnih putovanja kroz sistem:
 
 | Putovanje | Persona | Prolazi kroz | Dokumentacija |
 | --- | --- | --- | --- |
-| Otkrivanje vikend plana | Milica | J-04 | [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) |
-| Objava koncerta i promocija | Marko | J-01 → J-02 → J-03 → J-06 → J-09 | [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) |
-| Kreiranje profila restorana | Ana | J-01 → J-02 → J-03 → J-07 | [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) |
-| Plan za večer u stranom gradu | Thomas | J-04 | [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) |
-| Obrada jutarnjeg queue-a | Lejla | J-03 → J-07 → J-08 | [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) |
-| Analiza i kalibracija parametara | Damir | J-08 → J-09 | [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md) |
+| Otkrivanje vikend plana | Milica | J-04 | [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) |
+| Objava koncerta i promocija | Marko | J-01 → J-02 → J-03 → J-06 → J-09 | [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) |
+| Kreiranje profila restorana | Ana | J-01 → J-02 → J-03 → J-07 | [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) |
+| Plan za večer u stranom gradu | Thomas | J-04 | [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) |
+| Obrada jutarnjeg queue-a | Lejla | J-03 → J-07 → J-08 | [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) |
+| Analiza i kalibracija parametara | Damir | J-08 → J-09 | [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257) |
 
 > **💡 Praktična napomena:** Persone i journey-i nisu statični. Kako platforma bude rasla i kako se bude prikupljalo više podataka o stvarnom ponašanju korisnika, ovi profili će se ažurirati. Ako se primijeti da se stvarni korisnici ponašaju drugačije od opisanih persona, to je vrijedna informacija za Product tim.
 
@@ -331,7 +331,7 @@ Na osnovu persona, identificirano je šest ključnih putovanja kroz sistem:
 
 Nakon čitanja ovog dokumenta, postoji solidna osnova za razumijevanje CityInfo platforme. Ovisno o ulozi, preporučeni su sljedeći koraci:
 
-- **Detaljne persone i putovanja:** [Persone i korisnička putovanja](../project-specs/persone-i-korisnicka-putovanja.md)
+- **Detaljne persone i putovanja:** [Persone i korisnička putovanja](https://terraprojects.atlassian.net/wiki/spaces/GI/pages/243040257)
 - **Tehnički detalji o korisnicima:** [03 - Korisnici i pristup](03-korisnici-i-pristup.md)
 - **Detaljni user flows:** [02 - Korisnički doživljaj](02-korisnicko-iskustvo.md)
 
