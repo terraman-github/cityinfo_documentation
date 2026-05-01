@@ -1,1 +1,10 @@
-﻿HANDOFF-md2conf-migration.md
+README.md
+audit-report.md
+cityinfo-epics-stories-instructions.md
+CLAUDE-13-to-12.md
+CLAUDE.md
+HANDOFF-md2conf-migration.md
+jira-sync
+md2conf-tooling
+*.csf
+*.log
