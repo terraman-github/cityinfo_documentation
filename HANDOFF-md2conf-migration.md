@@ -8,20 +8,19 @@
 
 ## TL;DR za naredne sesije
 
-1. **Workflow je live.** GitHub Actions sinhronizuje Confluence na svaki push u `main` (auto) ili kroz "Run workflow" dugme (ručno). Trajanje: ~3 minute. Idempotentno.
-2. **Coristi se Zoranov lični Atlassian token.** Bot user setup (`admin@terrafirma.ba`) je probali ali nije radilo. Detalji u sekciji "Bot user — backlog stavka" niže. **Ne pokušavati ponovo bez konkretnog pristupa**.
-3. **Faza 5 (operating manual) je sljedeći logičan korak** — kratak `OPERATING.md` u root-u repoa za buduće reference (sebe za 3 mjeseca, novog Svelte dev-a kad uđe).
+1. **Workflow je live i radi.** GitHub Actions sinhronizuje Confluence na svaki push u `main` (auto) ili kroz "Run workflow" dugme (ručno). Trajanje: ~3 minute. Idempotentno.
+2. **Coristi se Zoranov lični Atlassian token.** Bot user setup (`admin@terrafirma.ba`) je probali, nije radilo, ostavili smo za kasnije. Detalji u sekciji "Bot user — backlog stavka" niže. **Ne pokušavati ponovo bez konkretnog plana**.
+3. **Faza 5 (operating manual) je sljedeći logičan korak** — kratak `OPERATING.md` u root-u repoa za buduće reference (tebe za 3 mjeseca, novog Svelte dev-a kad uđe).
 4. **Handoff fajl je u `.mdignore`** — ne ide na Confluence, živi samo u repou.
 
 ---
 
-## Trenutno stanje (1. maj 2026)
+## Trenutno stanje (1. maj 2026, kraj sesije)
 
 ### Repo
 
 - **Lokalna putanja:** `C:\Code\cityinfo_documentation` (nova radna stanica — stara `C:\Users\zoran\source\repos\` se **ne koristi više**)
 - **Branch:** `main`
-- **Zadnji commit:** `7754150` — `test: trigger md2conf workflow on real push`
 - **Stanje:** clean, push-ovano
 
 ### GitHub Actions
@@ -31,7 +30,7 @@
 - **Concurrency control:** `cancel-in-progress: true` (novi push otkazuje stari run)
 - **Timeout:** 15 min
 - **Artifact:** `md2conf-push-log` (raw md2conf log, 14 dana retention)
-- **Summary:** custom markdown summary u Actions UI-u sa brojačima (Ažurirano / Kreirano / Bez promjene / Greške)
+- **Summary:** custom markdown summary u Actions UI-u sa brojačima
 
 ### Secrets (GitHub → Settings → Secrets and variables → Actions)
 
@@ -39,11 +38,11 @@
 |--------|---------------------|
 | `ATLASSIAN_EMAIL` | `zoran.husanovic@terrafirma.ba` (Zoranov lični email) |
 | `ATLASSIAN_API_TOKEN` | Zoranov lični classic API token |
-| ~~`CONFLUENCE_DOMAIN`~~ | nije korišten kao secret — hardcoded u workflow-u |
 
-### md2conf konfiguracija
+`CONFLUENCE_DOMAIN`, `CONFLUENCE_PATH`, `CONFLUENCE_SPACE_KEY` nisu secrets — hardcoded u workflow env varijablama.
 
-Hardcoded u workflow env varijablama:
+### md2conf konfiguracija u workflow-u
+
 ```yaml
 CONFLUENCE_DOMAIN: terraprojects.atlassian.net
 CONFLUENCE_PATH: /wiki/
@@ -52,41 +51,179 @@ CONFLUENCE_USER_NAME: ${{ secrets.ATLASSIAN_EMAIL }}
 CONFLUENCE_API_KEY: ${{ secrets.ATLASSIAN_API_TOKEN }}
 ```
 
+### `.mdignore` fajlovi (KRITIČNO za stabilnost)
+
+**`C:\Code\cityinfo_documentation\.mdignore`** (root, 10 linija):
+
+```
+README.md
+audit-report.md
+cityinfo-epics-stories-instructions.md
+CLAUDE-13-to-12.md
+CLAUDE.md
+HANDOFF-md2conf-migration.md
+jira-sync
+md2conf-tooling
+*.csf
+*.log
+```
+
+**`epics-and-stories/.mdignore`** (2 linije):
+
+```
+plan-pisanja-epica-i-storija.md
+pisanje-epica-i-user-storija-instrukcija.md
+```
+
+**Ostali .mdignore u repou (postojeći, ne diraj):**
+- `jira-sync/.mdignore`
+- `md2conf-tooling/.mdignore`
+
 ### Stanje sinkronizacije
 
-- **Confluence stranice u GI space-u:** 114 (svi indeksirani fajlovi iz `epics-and-stories/` + chapter-i + ostale dokumentacijske stranice)
-- **Provjera radnog stanja:** zadnji push (`7754150`) — Status ✅ Uspješno, 0 izmjena (idempotentno)
+- **Confluence stranice u GI space-u:** 114 (chapter-i, MVP SCOPE, status spec, persone, journeys, instrukcije, 15 epica + 89 storija)
+- **Zadnji workflow run:** ✅ Uspješno, 24 ažurirano, 90 bez promjene, 0 grešaka, 0 kreiranih
+- **Idempotentnost:** sljedeći run će biti 0 izmjena (Actions/local checksum će se izjednačiti)
 
 ---
 
-## Šta je urađeno u ovoj sesiji (Faza 4)
+## Šta je urađeno u ovoj sesiji
 
-### Korak 1: Bot user setup (probali, ne radi za sad)
+### Faza 4 — GitHub Actions automatizacija
 
-Kreiran je novi Atlassian korisnik `admin@terrafirma.ba` (display name: "CityInfo Docs Bot") sa idejom da automatski sync ne dolazi pod Zoranovim ličnim nalogom. **Permissions su postavljene maksimalno na CityInfo (GI) space** — bot ima sve što i Zoran. **Token je generisan kao scoped token** sa svim Confluence scope-ovima (vidi screenshot iz sesije). Workflow je probao auth — nije uspio, ostaje **401 Unauthorized** na API v2 endpoint-e.
+**Cilj:** push u `main` → Confluence se ažurira automatski.
 
-Detalji + dijagnostika u sekciji "Bot user — backlog stavka" niže.
+**Šta je urađeno:**
 
-**Odluka:** prebacujemo na Zoranov lični token kao **privremeno rješenje** dok ne bude vremena za pravi diagnostički pristup. Trošak: Confluence audit log ne razlikuje "ručna izmjena" od "auto sync" jer obje izgledaju kao Zoranove.
+1. ✅ Kreiran workflow fajl `.github/workflows/md2conf-sync.yml` sa push + workflow_dispatch trigger-ima, concurrency control, custom summary u Actions UI-u, log artifact.
+2. ✅ Postavljeni GitHub Secrets (`ATLASSIAN_EMAIL`, `ATLASSIAN_API_TOKEN`).
+3. ❌ **Pokušaj sa bot user-om** (`admin@terrafirma.ba`) nije uspio — vidi sekciju "Bot user — backlog stavka" niže. Vraćeno na Zoranov lični token kao privremeno rješenje.
+4. ✅ Workflow proradio sa Zoranovim tokenom — manualni run i real push test prošli su zeleno.
 
-### Korak 2: Workflow fajl
+**Faza 4 zatvorena — workflow je live.**
 
-`.github/workflows/md2conf-sync.yml` kreiran sa sljedećim karakteristikama:
+### Cleanup mizerija (kasnije u sesiji)
 
-- **Triggers:** push u main + workflow_dispatch (ručni)
-- **Concurrency control:** stari run-ovi se otkazuju kad stigne novi push (sprječava race conditions)
-- **Steps:** checkout → Python setup → pip install md2conf → md2conf --version → md2conf sync → generiši summary → upload log artifact
-- **Fail strategija:** `set -o pipefail` osigurava da md2conf greška obara cijeli workflow (ne tiho)
-- **Summary:** custom GitHub Actions summary sa tabelom brojača i listom promijenjenih stranica
+Kad smo dodali HANDOFF fajl u repo i pokrenuli novi push, **workflow je pao i kreirao 10 orphan stranica na Confluenceu** (HANDOFF, CLAUDE, audit-report, CLAUDE-13-to-12, plus duplikate iz tooling foldera). Razlog: tokom dodavanja `.mdignore` fajlova, **PowerShell here-string je auto-konvertovao plain filename-ove u markdown linkove**, što je `.mdignore` učinilo nefunkcionalnim.
 
-### Korak 3: GitHub Secrets
+**Cleanup koraci (urađeni):**
 
-Kreirana 2 secret-a (`ATLASSIAN_EMAIL`, `ATLASSIAN_API_TOKEN`). Token vrsta i email su mijenjani tokom debugging-a (vidi diagnostic put u sekciji bot user-a niže).
+1. ✅ Disable-ovan workflow privremeno
+2. ✅ Manualno obrisano 10 orphan stranica na Confluenceu (Zoran, kroz Confluence UI)
+3. ✅ Rebuild oba `.mdignore` fajla preko **Notepad-a** (PowerShell here-string je probematic)
+4. ✅ Dodati tooling foldere (`jira-sync`, `md2conf-tooling`) u root `.mdignore`
+5. ✅ Lokalni dry-run sa md2conf-om kao verifikacija prije push-a (114 docs, 0 errors, 0 creates)
+6. ✅ Push fix-a, re-enable workflow, manualni run = ✅
 
-### Korak 4: Test
+**Zaključak: kombinacija (a) PowerShell auto-konverzije i (b) zaboravljanja tooling foldera u `.mdignore` napravila je probleme. Lessons learned u sekciji niže.**
 
-- **Manual run** sa Zoranovim tokenom: ✅ Uspješno (114 bez promjene, 0 grešaka)
-- **Real push test** (`.mdignore` modifikacija): ✅ Uspješno (push trigger radi, workflow se auto-pokreće)
+---
+
+## Lessons Learned (KRITIČNO za buduće sesije)
+
+### 1. PowerShell here-string konvertuje `.md` filename u markdown link
+
+**Symptom:** Kreiraš `.mdignore` sa:
+```powershell
+$content = @"
+HANDOFF-md2conf-migration.md
+"@
+$content | Set-Content -Path .mdignore
+```
+
+Rezultat u fajlu:
+```
+[HANDOFF-md2conf-migration.md](http://HANDOFF-md2conf-migration.md)
+```
+
+**Razlog:** Neki PowerShell terminal renderer (vjerovatno VS Code integration ili Windows clipboard) tretira `.md` ekstenziju kao "ovo izgleda kao markdown link" i auto-konvertuje. Bug se manifestuje i pri direct paste-u u terminal.
+
+**Workaround: Notepad.** Notepad ne radi nikakvu auto-konverziju. Za kreiranje ili editovanje `.mdignore` fajlova:
+
+```powershell
+notepad .mdignore
+```
+
+**Kucati ručno** (ne paste, jer i clipboard može biti zaražen). Ctrl+S, zatvori.
+
+**Provjera:** poslije bilo koje edit operacije, uvijek:
+```powershell
+Get-Content .mdignore
+```
+
+Treba da vidiš plain filename-ove. Ako vidiš `[X](http://X)` — bug se pojavio, treba ponovo Notepad.
+
+### 2. md2conf `.mdignore` sintaksa
+
+- **Lokacija:** `.mdignore` mora biti u **istom direktoriju** kao fajl koji ignoriše. `.mdignore` u rootu pokriva samo root, ne podfoldere.
+- **Pattern:** koristi fnmatch glob (npr. `*.md`, `up-*.md`).
+- **Folderi:** **bare ime, BEZ trailing slash-a** (`md2conf-tooling`, ne `md2conf-tooling/`).
+- **Hidden direktoriji:** `.git`, `.venv`, `.claude`, `.github`, `.vscode` — md2conf ih automatski preskače.
+- **Komentari:** linije koje počinju sa `#` su komentari.
+
+### 3. Markdown fajlovi bez frontmatter-a uvijek kreiraju nove stranice
+
+Ako fajl nema YAML frontmatter sa `confluence_page_id`, md2conf:
+1. Ne može ga vezati za postojeću Confluence stranicu
+2. Kreira **novu** stranicu pri svakom run-u
+3. Upisuje page ID nazad u frontmatter — **ali samo ako frontmatter postoji**
+
+Tooling fajlovi (README u `md2conf-tooling/`, `jira-sync/`, ATLASSIAN-SCRIPTING-NOTES, itd.) **nemaju frontmatter**, pa svaki run kreira nove orphan stranice. **Zato moraju biti u `.mdignore`**.
+
+### 4. Lokalni dry-run je obavezan korak prije push-a
+
+Kad mijenjaš:
+- `.mdignore` fajlove
+- Dodaješ nove markdown fajlove
+- Mijenjaš strukturu repoa
+
+**Uvijek prvo pokreni lokalni dry-run** prije push-a:
+
+```powershell
+cd C:\Code\cityinfo_documentation
+.\.venv\Scripts\Activate.ps1
+
+# Postavi env varijable u sesiji
+$env:CONFLUENCE_DOMAIN = "terraprojects.atlassian.net"
+$env:CONFLUENCE_PATH = "/wiki/"
+$env:CONFLUENCE_SPACE_KEY = "GI"
+$env:CONFLUENCE_USER_NAME = "zoran.husanovic@terrafirma.ba"
+$env:CONFLUENCE_API_KEY = "<token>"
+
+md2conf "." --no-generated-by -l info > md2conf-local.log 2>&1
+```
+
+(Koristi `> file 2>&1` umjesto `Tee-Object` — manje encoding problema.)
+
+**Šta tražiti u logu:**
+
+```powershell
+findstr /C:"Indexed" md2conf-local.log
+findstr /C:"Creating page" md2conf-local.log
+findstr /C:"ERROR" md2conf-local.log
+```
+
+Ako:
+- `Indexed N documents` gdje je N očekivani broj (114 trenutno)
+- 0 `Creating page` linija
+- 0 `ERROR` linija
+
+→ sigurno za push.
+
+Ako iz dry-run-a izađu nove `Creating page` linije za fajlove koji **ne treba** da budu na Confluenceu, dodati ih u `.mdignore` PRIJE push-a.
+
+### 5. Lokalni run i Actions run mogu imati različite checksum-e
+
+Pri prvom push-u poslije lokalnog rada, **Actions može pokazati N "ažurirano"** stranica iako je lokalno sve "up-to-date". Razlog: razlike u CRLF (Windows) vs LF (Linux) line endings, trailing whitespace, encoding nijanse.
+
+**Ovo je očekivano i normalno** — **drugi push** će biti idempotentan (0 izmjena).
+
+### 6. PowerShell terminal skraćuje stdout na 80 znakova
+
+`Tee-Object` i ponekad `Out-File` propuštaju output kroz konzolu i skraćuju na terminal width. Za log fajlove sa dugim putanjama:
+- Koristi `> file.log 2>&1` umjesto `| Tee-Object`
+- Ili `Out-File -Width 500 -FilePath file.log`
+- Za parsing log fajla u UTF-16 encodingu, najbrže ga je poslati Claude-u koji može iconv UTF-16 → UTF-8 i grep normalno
 
 ---
 
@@ -103,9 +240,9 @@ Razdvojiti "ljudske" od "automatskih" izmjena u Confluence audit log-u. Posebno 
 #### Pokušaj 1: Classic API token (bez scope-ova)
 
 - **Setup:** bot user kreiran, dodan u CityInfo (GI) space sa svim permissions
-- **Token:** `Create API token` (klasični, samo label)
+- **Token:** `Create API token` (klasični, samo label, bez scope-ova)
 - **Rezultat:** ❌ **404 Not Found** na `api.atlassian.com/ex/confluence/{cloudId}/api/v2/pages/240156678`
-- **Dijagnoza u trenutku:** mislili smo da je permissions problem, dodali pune permissions na space — nije pomoglo. md2conf je u logu izvjestio:
+- **md2conf log:**
   ```
   Configured scoped Confluence REST API URL: https://api.atlassian.com/ex/confluence/{cloudId}/
   ```
@@ -114,7 +251,7 @@ Razdvojiti "ljudske" od "automatskih" izmjena u Confluence audit log-u. Posebno 
 
 - **Setup:** isti bot user, isti space permissions
 - **Token:** `Create API token with scopes` (kategorija: Classic), odabrani scope-ovi:
-  - Read: `read:confluence-content.all`, `read:confluence-content.permission`, `read:confluence-content.summary`, `read:confluence-groups`, `read:confluence-props`, `read:confluence-space.summary`, `read:confluence-user`, `read:me`, `readonly:content.attachment:confluence`, `read:account`
+  - Read: `read:confluence-content.all`, `.permission`, `.summary`, `read:confluence-groups`, `read:confluence-props`, `read:confluence-space.summary`, `read:confluence-user`, `read:me`, `readonly:content.attachment:confluence`, `read:account`
   - Write: `write:confluence-content`, `write:confluence-file`, `write:confluence-groups`, `write:confluence-props`, `write:confluence-space`
   - Search: `search:confluence`
   - Manage: `manage:confluence-configuration`
@@ -124,13 +261,13 @@ Razdvojiti "ljudske" od "automatskih" izmjena u Confluence audit log-u. Posebno 
   Probing scoped Confluence REST API URL
   Configured classic Confluence REST API URL: https://terraprojects.atlassian.net/wiki/
   ```
-  Tj. md2conf je sada uspio detektovati i konfigurisati direktni site URL (nije više `api.atlassian.com/ex/...`), ali server je svejedno odbio auth.
+  md2conf je sada uspio detektovati i konfigurisati direktni site URL, ali server je svejedno odbio auth.
 
 #### Hipoteza koja nije testirana
 
 Atlassian je u tranziciji oko token vrsta. Postoje **granularni** scope-ovi (`read:page:confluence`, `write:page:confluence`, `read:space:confluence` itd.) koji su novija generacija — možda baš oni rade sa API v2 endpoint-ima koje md2conf koristi. Naš token je imao **klasične** scope-ove (`read:confluence-content.all`, `write:confluence-content` itd.) koje su starije.
 
-**Sljedeći korak za debug** kad bude vremena:
+### Sljedeći korak za debug (kad bude vremena)
 
 1. Generisati novi scoped token za bot user-a, ali ovaj put odabrati **granularne** scope-ove:
    - `read:page:confluence`
@@ -148,8 +285,8 @@ Atlassian je u tranziciji oko token vrsta. Postoje **granularni** scope-ovi (`re
 
 ### Šta je probano i radilo (za referencu)
 
-- **Tvoj nalog (Zoran) sa classic tokenom (bez scope-ova):** ✅ radi, scoped URL detection radi, sve API v1 i v2 endpoint-i prolaze
-- **Tvoj nalog sa scoped granularnim tokenom:** nije probano u ovoj sesiji (radio si sa classic-om, koji već radi)
+- **Zoranov nalog sa classic tokenom (bez scope-ova):** ✅ radi, sve API v1 i v2 endpoint-i prolaze
+- Trenutno workflow koristi ovo
 
 ### Zaključak
 
@@ -164,19 +301,26 @@ Atlassian token sistem je u tranziciji i dokumentacija je nedosljedna — minimu
 Kratak `OPERATING.md` u root-u repoa koji odgovara na 3 pitanja:
 
 1. **Kako se mijenja dokumentacija?** (workflow: edit md → commit → push → Actions sinhronizuje)
-2. **Šta da radim ako sync padne?** (provjera GitHub Actions log-a, common failure modes)
+2. **Šta da radim ako sync padne?** (provjera GitHub Actions log-a, common failure modes, lessons learned iz ove sesije)
 3. **Kako lokalno testirati md2conf prije push-a?** (povratak na manuelni `md2conf "."` kao backup)
 
-### Predlog strukture (~150-200 linija)
+### Predlog strukture (~150-250 linija)
 
 - **Pregled** — šta je SSoT, šta je view layer, kako su povezani
-- **Workflow** — typical edit cycle (par komandi)
-- **Što se dešava na push** — high-level dijagram (markdown → Actions → Confluence)
+- **Workflow za izmjene**
+  - Mali fix (1-2 fajla) — direktno commit + push, Actions sinhronizuje
+  - Veća izmjena (`.mdignore` modifikacije, novi tooling fajlovi, struktura repoa) — **lokalni dry-run prvo**
+- **Lokalni setup**
+  - venv, pip install, env varijable, lokalni dry-run komanda
+  - Korisno za debug i za fallback ako Actions ne radi
+- **Šta se dešava na push** — high-level dijagram (markdown → Actions → Confluence)
 - **Troubleshooting**
-  - Workflow run failed sa 401 → token expired ili invalid
-  - Workflow run failed sa 404 → vjerovatno page page_id u frontmatter-u koji više ne postoji na Confluenceu
-  - Workflow run failed pri pip install → vjerovatno PyPI outage, retry
-  - Lokalni `md2conf` failure modes (separate sekcija)
+  - Workflow failed sa 401 → token expired ili invalid
+  - Workflow failed sa 404 → page_id u frontmatter-u koji više ne postoji na Confluenceu
+  - Workflow failed pri pip install → vjerovatno PyPI outage, retry
+  - **Workflow kreirao orphan stranice** → fajl bez frontmatter-a koji nije u `.mdignore`
+  - **`.mdignore` izgleda pokvareno** (sa `[X](http://X)`) → PowerShell auto-konverzija, koristi Notepad
+- **`.mdignore` cheat sheet** — sintaksa, primjeri, šta NE raditi
 - **Manualni override** — kako lokalno pokrenuti md2conf ako Actions je out
 - **Sigurnosne napomene** — token expiration, secret rotation
 - **Kontakt / odgovornost** — ko upravlja secret-ovima, ko je vlasnik repoa
@@ -184,12 +328,12 @@ Kratak `OPERATING.md` u root-u repoa koji odgovara na 3 pitanja:
 ### Šta NE ide u OPERATING.md
 
 - Sve što je već u `cityinfo-epics-stories-instructions.md` (format epica i storija) — taj fajl je za pisanje sadržaja, OPERATING.md je za infrastrukturu
-- Detalji md2conf-a kao alata — ide kroz link na hunyadi/markdown-to-confluence repo
+- Detalji md2conf-a kao alata — link na hunyadi/markdown-to-confluence repo
 - Bot user backlog (to ostaje u handoff-u, ne u OPERATING-u)
 
 ### Sljedeća sesija — preporučen prompt
 
-> "Krećemo Fazu 5 md2conf migracije. Pročitaj `HANDOFF-md2conf-migration.md` u root-u repoa za kontekst. Cilj: napiši `OPERATING.md` po predloženoj strukturi iz handoff-a."
+> "Krećemo Fazu 5 md2conf migracije. Pročitaj `HANDOFF-md2conf-migration.md` u root-u repoa za kontekst. Cilj: napiši `OPERATING.md` po predloženoj strukturi iz handoff-a. Posebno uključi lessons learned iz Faza 4 cleanup mizerije (PowerShell `.mdignore` bug, tooling foldere, lokalni dry-run obavezan)."
 
 ---
 
@@ -197,44 +341,38 @@ Kratak `OPERATING.md` u root-u repoa koji odgovara na 3 pitanja:
 
 ### Workflow fajl (snapshot)
 
-Lokacija: `.github/workflows/md2conf-sync.yml`. Ako trebaš ga regenerisati, kopija je commit-ovana u `7754150`. Ne mijenjati bez razumijevanja:
+Lokacija: `.github/workflows/md2conf-sync.yml`. Ne mijenjati bez razumijevanja:
 
 - **Concurrency group `md2conf-sync`** — globalan, otkazuje stari run kad stigne novi push
 - **`set -o pipefail`** — md2conf failure ne smije biti maskiran tee-om
 - **`hashFiles('md2conf-push.log') != ''`** — summary i artifact step rade samo ako log fajl postoji (sigurnost ako md2conf padne prije nego što išta logira)
 
-### md2conf scope-ovi koji su radili sa Zoranovim Classic tokenom
-
-Zoranov token je **stari classic** (`Create API token`, ne `Create API token with scopes`). Nema scope-ove uopšte. Atlassian ga tretira kao "token sa svim legacy permissions". Radi za sve što md2conf zove — i scoped (`api.atlassian.com/ex/confluence/...`) i direct (`terraprojects.atlassian.net/wiki/...`) endpoint-e.
-
 ### Token expiration
 
-Zoranov token nema expiration (ili je default 1 godina, treba provjeriti). Za production bi trebao biti scoped sa eksplicitnim expiration-om i kalendar reminder-om za rotaciju. **Backlog stavka** za later.
-
-### `.mdignore`
-
-Ovaj handoff fajl mora biti dodat u `.mdignore` da md2conf ne pokušava da ga sinhronizuje na Confluence. Provjeri da li je dodan prije commit-a.
-
-```
-# .mdignore
-HANDOFF-md2conf-migration.md
-```
+Zoranov token nema expiration ili je default 1 godina. **Backlog stavka:** kreirati expiration sa kalendar reminder-om za rotaciju, ili još bolje — riješiti bot user pa migriraju na expiring token.
 
 ### Lokalni md2conf workflow (backup)
 
-Ako GitHub Actions je iz nekog razloga out, manuelni run sa Zoranovog laptopa i dalje radi:
+Ako GitHub Actions je iz nekog razloga out, manuelni run sa Zoranovog laptopa:
 
 ```powershell
 cd C:\Code\cityinfo_documentation
 .\.venv\Scripts\Activate.ps1
-md2conf "." --no-generated-by -l info
-```
 
-Koristi iste credentials kao Actions (Zoranov email + token preko local env varijabli).
+$env:CONFLUENCE_DOMAIN = "terraprojects.atlassian.net"
+$env:CONFLUENCE_PATH = "/wiki/"
+$env:CONFLUENCE_SPACE_KEY = "GI"
+$env:CONFLUENCE_USER_NAME = "zoran.husanovic@terrafirma.ba"
+$env:CONFLUENCE_API_KEY = "<token>"
+
+md2conf "." --no-generated-by -l info > md2conf-local.log 2>&1
+```
 
 ---
 
-## Diagnostički put — full timeline (za buduće reference)
+## Diagnostički put — full timeline
+
+### Bot user pokušaji
 
 | Korak | Token tip | URL koji md2conf koristi | Rezultat |
 |-------|-----------|--------------------------|----------|
@@ -242,14 +380,14 @@ Koristi iste credentials kao Actions (Zoranov email + token preko local env vari
 | 2 | Bot user, scoped sa klasičnim scope-ovima | `terraprojects.atlassian.net/wiki/api/v2/pages/...` | ❌ 401 Unauthorized |
 | 3 | Zoranov classic (bez scope-ova) | `api.atlassian.com/ex/confluence/{cloudId}/api/v2/pages/...` | ✅ Radi |
 
-**Konkretne URL razlike:**
+### Cleanup mizerija
 
-- md2conf prvo proba `api.atlassian.com/ex/confluence/{cloudId}/...` (scoped path)
-- Ako server odbije auth na tom putu, prebacuje se na `terraprojects.atlassian.net/wiki/...` (direct site path)
-- Tvoj Zoranov classic token radi na **prvom** putu (scoped)
-- Bot scoped tokens su radili na **drugom** putu (direct), ali server je svejedno odbijao auth
-
-To sugeriše da je problem **specifičan za bot user**, ne za vrstu tokena. Možda u tome kako je dodan u organizaciju, ili neka stvar oko "managed account" statusa, ili nešto drugo.
+| Problem | Uzrok | Fix |
+|---------|-------|-----|
+| `.mdignore` ne radi | PowerShell here-string je konvertovao `.md` filename u markdown link | Rebuild kroz Notepad |
+| Workflow kreirao 10 orphan stranica | (a) `.mdignore` ne radi (b) tooling foldere nisu bili u `.mdignore` | Manualno obrisati 10 stranica + dodati `jira-sync` i `md2conf-tooling` u `.mdignore` |
+| ConversionError u plan-pisanja-epica | Broken link `/wiki/pages/createpage.action` | Fajl uključen u `.mdignore` (interni plan, ne za sync) |
+| Lokalni log ima skraćene putanje | UTF-16 encoding + 80-char terminal width | `> file.log 2>&1` umjesto `Tee-Object`, ili pošalji fajl Claude-u za UTF-8 konverziju |
 
 ---
 
@@ -263,12 +401,23 @@ To sugeriše da je problem **specifičan za bot user**, ne za vrstu tokena. Mož
 
 ---
 
-## Promjena u radnom okruženju
-
-**Bitno za sve buduće sesije:**
+## Promjena u radnom okruženju (bitno za buduće sesije)
 
 - **Stara putanja:** `C:\Users\zoran\source\repos\cityinfo_documentation` ❌ (nije više aktualno)
 - **Nova putanja:** `C:\Code\cityinfo_documentation` ✅
 - **Razlog:** Zoran je promijenio radnu stanicu
 
 Sve PowerShell komande u workflow-u, dokumentaciji, i instrukcijama treba referencirati **novu putanju**.
+
+---
+
+## Status checklist na kraju sesije
+
+- ✅ GitHub Actions workflow live i radi
+- ✅ Push u `main` automatski sinhronizuje Confluence
+- ✅ `.mdignore` fajlovi ispravno konfigurisani (root + epics-and-stories)
+- ✅ Tooling foldere (`jira-sync`, `md2conf-tooling`) isključeni iz sync-a
+- ✅ Confluence GI space čist od orphan stranica
+- ✅ Lokalni dry-run validan kao verifikacijski korak
+- ⏳ Bot user — backlog (probano, nije radilo)
+- ⏳ Faza 5 (operating manual) — sljedeća sesija
